@@ -8,15 +8,18 @@ import { getEmailTemplate } from '@/persistence/queries/appConfigQueries';
 import { sendBookingConfirmationEmail } from '@/lib/email/mailer';
 import { BookingStatus } from '@prisma/client';
 
+const CoordinateSchema = z.number().min(-180).max(180);
+const LatitudeSchema = z.number().min(-90).max(90);
+
 const CreateBookingSchema = z.object({
   pickupAddress: z.string().min(1, 'Adresse de départ requise'),
   pickupCity: z.string().min(1, 'Ville de départ requise'),
-  pickupLat: z.number(),
-  pickupLng: z.number(),
+  pickupLat: LatitudeSchema.refine(v => !isNaN(v), 'Latitude invalide'),
+  pickupLng: CoordinateSchema.refine(v => !isNaN(v), 'Longitude invalide'),
   dropoffAddress: z.string().min(1, 'Adresse de destination requise'),
   dropoffCity: z.string().min(1, 'Ville de destination requise'),
-  dropoffLat: z.number(),
-  dropoffLng: z.number(),
+  dropoffLat: LatitudeSchema.refine(v => !isNaN(v), 'Latitude invalide'),
+  dropoffLng: CoordinateSchema.refine(v => !isNaN(v), 'Longitude invalide'),
   passengers: z.number().int().min(1).max(8),
   luggage: z.boolean().default(false),
   vehicleType: z.enum(['BERLINE', 'SUV', 'VAN', 'PREMIUM']),

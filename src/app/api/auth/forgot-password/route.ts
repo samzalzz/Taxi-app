@@ -3,6 +3,7 @@ import { z } from 'zod';
 import { getUserByEmail } from '@/persistence/queries/userQueries';
 import { createPasswordResetToken } from '@/persistence/queries/passwordResetQueries';
 import { sendPasswordResetEmail } from '@/lib/email/mailer';
+import { checkRateLimit } from '@/lib/auth/rateLimit';
 
 const ForgotPasswordSchema = z.object({
   email: z.string().email('Email invalide'),
@@ -15,6 +16,26 @@ const SUCCESS_RESPONSE = NextResponse.json(
 
 export async function POST(request: NextRequest): Promise<NextResponse> {
   try {
+    // Get client IP for rate limiting
+    const ip = request.headers.get('x-forwarded-for') ||
+               request.headers.get('x-real-ip') ||
+               'unknown';
+
+    // Check rate limit (max 3 password reset attempts per 15 minutes)
+    if (!checkRateLimit(ip, { maxAttempts: 3, windowMs: 15 * 60 * 1000 })) {
+      // Return 200 to avoid leaking rate limit info, but with Retry-After header
+      return new NextResponse(
+        JSON.stringify({ success: true, message: 'Si un compte existe avec cet email, vous recevrez un lien de réinitialisation.' }),
+        {
+          status: 200,
+          headers: {
+            'Retry-After': '900', // 15 minutes in seconds
+            'Content-Type': 'application/json',
+          }
+        }
+      );
+    }
+
     const body = await request.json();
     const { email } = ForgotPasswordSchema.parse(body);
 

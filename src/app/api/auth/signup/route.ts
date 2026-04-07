@@ -3,6 +3,7 @@ import { z } from 'zod';
 import { createUser, getUserByEmail } from '@/persistence/queries/userQueries';
 import { signToken } from '@/lib/auth/jwt';
 import { setSessionCookie } from '@/lib/auth/session';
+import { checkRateLimit } from '@/lib/auth/rateLimit';
 
 const SignupSchema = z.object({
   email: z.string().email('Email invalide'),
@@ -13,6 +14,26 @@ const SignupSchema = z.object({
 
 export async function POST(request: NextRequest) {
   try {
+    // Get client IP for rate limiting
+    const ip = request.headers.get('x-forwarded-for') ||
+               request.headers.get('x-real-ip') ||
+               'unknown';
+
+    // Check rate limit (max 10 signup attempts per 15 minutes)
+    if (!checkRateLimit(ip, { maxAttempts: 10, windowMs: 15 * 60 * 1000 })) {
+      return NextResponse.json(
+        {
+          error: 'Trop de tentatives d\'inscription. Veuillez réessayer dans 15 minutes.'
+        },
+        {
+          status: 429,
+          headers: {
+            'Retry-After': '900', // 15 minutes in seconds
+          }
+        }
+      );
+    }
+
     const body = await request.json();
     const data = SignupSchema.parse(body);
 

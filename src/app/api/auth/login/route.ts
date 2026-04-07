@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
 import { getUserByEmail, verifyPassword } from '@/persistence/queries/userQueries';
 import { signToken } from '@/lib/auth/jwt';
+import { checkRateLimit, getRemainingAttempts } from '@/lib/auth/rateLimit';
 
 const LoginSchema = z.object({
   email: z.string().email('Email invalide'),
@@ -10,6 +11,27 @@ const LoginSchema = z.object({
 
 export async function POST(request: NextRequest) {
   try {
+    // Get client IP for rate limiting
+    const ip = request.headers.get('x-forwarded-for') ||
+               request.headers.get('x-real-ip') ||
+               'unknown';
+
+    // Check rate limit (max 5 attempts per 15 minutes)
+    if (!checkRateLimit(ip, { maxAttempts: 5, windowMs: 15 * 60 * 1000 })) {
+      const remaining = getRemainingAttempts(ip);
+      return NextResponse.json(
+        {
+          error: 'Trop de tentatives de connexion. Veuillez réessayer dans 15 minutes.'
+        },
+        {
+          status: 429,
+          headers: {
+            'Retry-After': '900', // 15 minutes in seconds
+          }
+        }
+      );
+    }
+
     const body = await request.json();
     const data = LoginSchema.parse(body);
 

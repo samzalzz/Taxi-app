@@ -5,18 +5,21 @@ import { calculateDistance, calculatePrice, estimateDuration } from '@/lib/utils
 import { sendGuestBookingConfirmationEmail } from '@/lib/email/mailer';
 import { VehicleType } from '@prisma/client';
 
+const CoordinateSchema = z.number().min(-180).max(180).finite();
+const LatitudeSchema = z.number().min(-90).max(90).finite();
+
 const CreateGuestBookingSchema = z.object({
   guestName: z.string().trim().min(2, 'Nom requis'),
   guestEmail: z.string().trim().toLowerCase().email('Email invalide'),
   guestPhone: z.string().trim().min(9, 'Téléphone invalide'),
   pickupAddress: z.string().trim().min(1, 'Adresse de départ requise'),
   pickupCity: z.string().trim().min(1, 'Ville de départ requise'),
-  pickupLat: z.number().finite(),
-  pickupLng: z.number().finite(),
+  pickupLat: LatitudeSchema,
+  pickupLng: CoordinateSchema,
   dropoffAddress: z.string().trim().min(1, 'Adresse de destination requise'),
   dropoffCity: z.string().trim().min(1, 'Ville de destination requise'),
-  dropoffLat: z.number().finite(),
-  dropoffLng: z.number().finite(),
+  dropoffLat: LatitudeSchema,
+  dropoffLng: CoordinateSchema,
   passengers: z.number().int().min(1).max(8).default(1),
   luggage: z.boolean().default(false),
   vehicleType: z.enum(['BERLINE', 'SUV', 'VAN', 'PREMIUM'] as const),

@@ -76,6 +76,9 @@ build/
 tmp/
 temp/
 
+# Markdown files (documentation - local only)
+*.md
+
 # Lock files (optional - uncomment to commit lockfile)
 # package-lock.json
 # yarn.lock
