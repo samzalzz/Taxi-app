@@ -60,6 +60,16 @@ export function BackgroundPaths({
 
     return (
         <div className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-background dark:bg-background">
+            {/* Background Image with Blur Overlay */}
+            <div
+                className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+                style={{
+                    backgroundImage: 'url("https://images.unsplash.com/photo-1507152832265-692b0ead067d?w=1200&q=80")',
+                }}
+            >
+                <div className="absolute inset-0 bg-black/40 backdrop-blur-sm"></div>
+            </div>
+
             <div className="absolute inset-0">
                 <FloatingPaths position={1} />
                 <FloatingPaths position={-1} />
@@ -92,8 +102,8 @@ export function BackgroundPaths({
                                             damping: 25,
                                         }}
                                         className="inline-block text-transparent bg-clip-text
-                                        bg-gradient-to-r from-on-surface to-on-surface/80
-                                        dark:from-on-surface dark:to-on-surface/80"
+                                        bg-gradient-to-r from-primary via-primary to-primary/80
+                                        dark:from-primary dark:via-primary dark:to-primary/80"
                                     >
                                         {letter}
                                     </motion.span>
