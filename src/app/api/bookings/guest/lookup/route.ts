@@ -1,14 +1,28 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
 import { getBookingByReservationCode } from '@/persistence/queries/bookingQueries';
+import { checkRateLimit } from '@/lib/auth/rateLimit';
 
 const LookupQuerySchema = z.object({
-  code: z.string().regex(/^[A-Z0-9]{6}$/, 'Invalid reservation code format'),
+  code: z.string().regex(/^[A-Z0-9]{10}$/, 'Invalid reservation code format'),
   email: z.string().email('Invalid email'),
 });
 
 export async function GET(request: NextRequest): Promise<NextResponse> {
   try {
+    // Rate limit by IP to prevent brute force attacks
+    const ip = request.headers.get('x-forwarded-for') ||
+               request.headers.get('x-real-ip') ||
+               'unknown';
+
+    // Max 10 lookup attempts per 15 minutes per IP
+    if (!checkRateLimit(ip, { maxAttempts: 10, windowMs: 15 * 60 * 1000 })) {
+      return NextResponse.json(
+        { error: 'Trop de tentatives. Veuillez réessayer dans 15 minutes.' },
+        { status: 429 }
+      );
+    }
+
     const url = new URL(request.url);
     const code = url.searchParams.get('code');
     const email = url.searchParams.get('email');

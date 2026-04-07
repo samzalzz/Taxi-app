@@ -32,20 +32,24 @@ export interface CreateBookingInput {
 }
 
 /**
- * Generate a unique 6-character reservation code for guest bookings
+ * Generate a unique 10-character reservation code for guest bookings
  * Uses alphanumeric characters without ambiguous characters (0/O, 1/I, etc)
  * Alphabet: ABCDEFGHJKLMNPQRSTUVWXYZ23456789 (32 chars)
+ *
+ * Security: 32^10 ≈ 1.1 * 10^15 possible combinations
+ * Resistant to brute force attacks even with rate limiting bypasses
+ *
  * Retries up to 10 times if collision detected
  */
 export async function generateUniqueReservationCode(): Promise<string> {
   const alphabet = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
-  const codeLength = 6;
+  const codeLength = 10; // Increased from 6 to 10 for better security
   const maxRetries = 10;
 
   for (let attempt = 0; attempt < maxRetries; attempt++) {
-    // Generate 6 random bytes and map to alphabet (32 chars = 5 bits needed)
-    const randomBytes6 = randomBytes(codeLength);
-    const code = Array.from(randomBytes6)
+    // Generate random bytes and map to alphabet
+    const randomBytesArray = randomBytes(codeLength);
+    const code = Array.from(randomBytesArray)
       .map((byte) => alphabet[byte % alphabet.length])
       .join('');
 

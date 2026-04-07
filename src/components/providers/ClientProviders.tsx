@@ -2,11 +2,14 @@
 
 import { ReactNode } from 'react';
 import { ToastProvider } from '@/components/ui/Toast';
+import ErrorBoundary from '@/components/common/ErrorBoundary';
 
 export function ClientProviders({ children }: { children: ReactNode }) {
   return (
-    <ToastProvider>
-      {children}
-    </ToastProvider>
+    <ErrorBoundary>
+      <ToastProvider>
+        {children}
+      </ToastProvider>
+    </ErrorBoundary>
   );
 }
