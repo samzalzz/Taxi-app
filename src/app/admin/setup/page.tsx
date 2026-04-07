@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/Button';
 import { Input } from '@/components/ui/Input';
 
 export default function AdminSetupPage() {
-  const { toast } = useToast();
+  const { error: showError, success: showSuccess } = useToast();
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
@@ -21,26 +21,17 @@ export default function AdminSetupPage() {
 
     // Validate
     if (!formData.name || !formData.email || !formData.password) {
-      toast({
-        type: 'error',
-        message: 'Tous les champs sont requis',
-      });
+      showError('Tous les champs sont requis');
       return;
     }
 
     if (formData.password !== formData.confirmPassword) {
-      toast({
-        type: 'error',
-        message: 'Les mots de passe ne correspondent pas',
-      });
+      showError('Les mots de passe ne correspondent pas');
       return;
     }
 
     if (formData.password.length < 8) {
-      toast({
-        type: 'error',
-        message: 'Le mot de passe doit contenir au moins 8 caractères',
-      });
+      showError('Le mot de passe doit contenir au moins 8 caractères');
       return;
     }
 
@@ -60,10 +51,7 @@ export default function AdminSetupPage() {
       const data = await response.json();
 
       if (response.ok) {
-        toast({
-          type: 'success',
-          message: 'Admin créé avec succès!',
-        });
+        showSuccess('Admin créé avec succès!');
         setFormData({
           name: '',
           email: '',
@@ -76,16 +64,10 @@ export default function AdminSetupPage() {
           window.location.href = '/connexion';
         }, 2000);
       } else {
-        toast({
-          type: 'error',
-          message: data.error || 'Erreur lors de la création',
-        });
+        showError(data.error || 'Erreur lors de la création');
       }
     } catch (error) {
-      toast({
-        type: 'error',
-        message: 'Erreur lors de la création de l\'admin',
-      });
+      showError('Erreur lors de la création de l\'admin');
     } finally {
       setLoading(false);
     }
