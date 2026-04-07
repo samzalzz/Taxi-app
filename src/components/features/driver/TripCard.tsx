@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { Button } from '@/components/ui/Button';
-import { MapPin, Users, Euro, Clock } from 'lucide-react';
+import { MapPin, Users, Clock } from 'lucide-react';
 
 interface Booking {
   id: string;
@@ -212,7 +212,7 @@ export function TripCard({ booking, mode, onAction }: TripCardProps) {
             disabled={isLoading}
             isLoading={isLoading}
             className="flex-1"
-            variant="default"
+            variant="primary"
           >
             Accepter la course
           </Button>
@@ -225,7 +225,7 @@ export function TripCard({ booking, mode, onAction }: TripCardProps) {
               disabled={isLoading}
               isLoading={isLoading}
               className="flex-1"
-              variant="default"
+              variant="primary"
             >
               {getActionLabel(booking.status)}
             </Button>

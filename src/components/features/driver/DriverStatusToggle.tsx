@@ -83,7 +83,7 @@ export function DriverStatusToggle({
             className={`flex-1 transition-all ${
               status === s ? `${getStatusColor(s)} ring-2 ring-offset-2 ring-primary` : 'bg-on-surface/10 text-on-surface hover:bg-on-surface/20'
             }`}
-            variant={status === s ? 'default' : 'secondary'}
+            variant={status === s ? 'primary' : 'secondary'}
           >
             <div className={`inline-block w-2 h-2 rounded-full mr-2 ${status === s ? getStatusColor(s).split(' ')[0] : 'bg-on-surface/50'}`} />
             {getStatusLabel(s)}

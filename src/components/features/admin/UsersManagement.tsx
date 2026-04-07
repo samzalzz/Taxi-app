@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from 'react';
 import { useToast } from '@/components/ui/Toast';
-import { Button } from '@/components/ui/Button';
 import { Input } from '@/components/ui/Input';
 
 interface User {

@@ -1,9 +1,8 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { MapPin, Flag, Users, Filter, ArrowUpDown } from 'lucide-react';
+import { MapPin, Flag, Filter, ArrowUpDown } from 'lucide-react';
 import { BookingStatus } from '@prisma/client';
-import { Button } from '@/components/ui/Button';
 
 interface Booking {
   id: string;

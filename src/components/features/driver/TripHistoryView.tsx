@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { MapPin, Euro, Calendar, Clock } from 'lucide-react';
+import { MapPin, Clock } from 'lucide-react';
 
 interface CompletedTrip {
   id: string;
