@@ -2,8 +2,8 @@
 
 import { useState, useEffect } from 'react';
 import { useToast } from '@/components/ui/Toast';
-import Button from '@/components/ui/Button';
-import Input from '@/components/ui/Input';
+import { Button } from '@/components/ui/Button';
+import { Input } from '@/components/ui/Input';
 
 interface User {
   id: string;
@@ -15,7 +15,7 @@ interface User {
 }
 
 export default function UsersManagement() {
-  const { toast } = useToast();
+  const { error: showError, success: showSuccess } = useToast();
   const [users, setUsers] = useState<User[]>([]);
   const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(1);
@@ -49,16 +49,10 @@ export default function UsersManagement() {
         setUsers(data.users);
         setTotal(data.total);
       } else {
-        toast({
-          type: 'error',
-          message: data.error || 'Failed to fetch users',
-        });
+        showError(data.error || 'Failed to fetch users');
       }
     } catch (error) {
-      toast({
-        type: 'error',
-        message: 'Error fetching users',
-      });
+      showError('Error fetching users');
     } finally {
       setLoading(false);
     }
@@ -76,22 +70,13 @@ export default function UsersManagement() {
       const data = await response.json();
 
       if (response.ok) {
-        toast({
-          type: 'success',
-          message: `User role updated to ${newRole}`,
-        });
+        showSuccess(`User role updated to ${newRole}`);
         fetchUsers();
       } else {
-        toast({
-          type: 'error',
-          message: data.error || 'Failed to update role',
-        });
+        showError(data.error || 'Failed to update role');
       }
     } catch (error) {
-      toast({
-        type: 'error',
-        message: 'Error updating user role',
-      });
+      showError('Error updating user role');
     } finally {
       setUpdatingId(null);
     }
