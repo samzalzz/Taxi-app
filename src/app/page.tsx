@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/Button';
 import { Footer } from '@/components/layout/Footer';
 import { StatCounter } from '@/components/features/stats/StatCounter';
-import { GoogleGeminiEffectDemo } from '@/components/features/home/GoogleGeminiEffectDemo';
+import { BackgroundPathsDemo } from '@/components/features/home/BackgroundPathsDemo';
 import { Car, Stethoscope, Users, Shield, Zap } from 'lucide-react';
 
 export const metadata = {
@@ -30,8 +30,8 @@ export default function HomePage() {
         </div>
       </nav>
 
-      {/* Hero Section with Google Gemini Effect */}
-      <GoogleGeminiEffectDemo />
+      {/* Hero Section with Background Paths */}
+      <BackgroundPathsDemo />
 
       {/* Services Section */}
       <section className="py-20 px-4 bg-background">
