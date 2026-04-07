@@ -1,0 +1,601 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ============ USER MANAGEMENT ============
+
+model User {
+  id            String     @id @default(cuid())
+  email         String     @unique
+  name          String
+  passwordHash  String
+  phone         String?
+  avatar        String?
+  role          UserRole   @default(CLIENT)
+  cpamByDefault Boolean    @default(false)
+
+  // Relations
+  asClient      Booking[]  @relation("ClientBookings")
+  asDriver      Driver?
+  payments      Payment[]
+  notifications Notification[]
+  messages      Message[]
+  conversationParticipants ConversationParticipant[]
+  reviewsGiven  Review[]   @relation("ReviewsGiven")
+  reviewsReceived Review[] @relation("ReviewsReceived")
+  complaintsField Complaint[] @relation("ComplaintsField")
+  complaintsAgainst Complaint[] @relation("ComplaintsAgainst")
+  complaintReplies ComplaintReply[]
+  passwordResetTokens PasswordResetToken[]
+
+  // Timestamps
+  createdAt     DateTime   @default(now())
+  updatedAt     DateTime   @updatedAt
+
+  @@index([email])
+  @@index([role])
+}
+
+enum UserRole {
+  CLIENT
+  DRIVER
+  ADMIN
+}
+
+// ============ DRIVER MANAGEMENT ============
+
+model Driver {
+  id                String    @id @default(cuid())
+  userId            String    @unique
+  user              User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  licenseNumber     String    @unique
+  licenseExpiryDate DateTime
+
+  vehicleId         String?   @unique
+  vehicle           Vehicle?  @relation("DriverVehicle")
+
+  status            DriverStatus @default(OFFLINE)
+  rating            Float     @default(5.0)
+  totalTrips        Int       @default(0)
+  totalEarnings     Float     @default(0)
+  isCpamApproved    Boolean   @default(false)
+
+  // Location tracking
+  currentLat        Float?
+  currentLng        Float?
+  lastLocationUpdate DateTime?
+
+  // Bookings
+  bookings          Booking[] @relation("DriverBookings")
+
+  // Timestamps
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+
+  @@index([status])
+  @@index([rating])
+}
+
+enum DriverStatus {
+  OFFLINE
+  AVAILABLE
+  BUSY
+  ON_BREAK
+}
+
+model Vehicle {
+  id            String    @id @default(cuid())
+  driverId      String    @unique
+  driver        Driver    @relation("DriverVehicle", fields: [driverId], references: [id], onDelete: Cascade)
+
+  type          VehicleType
+  brand         String
+  model         String
+  year          Int
+  color         String
+
+  plateNumber   String    @unique
+  capacity      Int       @default(4)
+
+  bookings      Booking[] @relation("VehicleBookings")
+
+  // Timestamps
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  @@index([type])
+  @@index([plateNumber])
+}
+
+enum VehicleType {
+  BERLINE      // Standard sedan
+  SUV
+  VAN
+  PREMIUM      // Luxury vehicle
+}
+
+// ============ BOOKING & TRIPS ============
+
+model Booking {
+  id                String    @id @default(cuid())
+
+  // Client info (mutually exclusive with guest fields below)
+  clientId          String?
+  client            User?     @relation("ClientBookings", fields: [clientId], references: [id], onDelete: Cascade)
+
+  // Guest booking fields (mutually exclusive with clientId)
+  guestName         String?
+  guestEmail        String?
+  guestPhone        String?
+  reservationCode   String?   @unique
+
+  // Driver assignment
+  driverId          String?
+  driver            Driver?   @relation("DriverBookings", fields: [driverId], references: [id], onDelete: SetNull)
+
+  vehicleId         String?
+  vehicle           Vehicle?  @relation("VehicleBookings", fields: [vehicleId], references: [id], onDelete: SetNull)
+
+  // Pickup location
+  pickupAddress     String
+  pickupCity        String
+  pickupLat         Float
+  pickupLng         Float
+
+  // Dropoff location
+  dropoffAddress    String
+  dropoffCity       String
+  dropoffLat        Float
+  dropoffLng        Float
+
+  // Trip details
+  distance          Float     // in km
+  estimatedDuration Int      // in minutes
+  passengers        Int       @default(1)
+  luggage           Boolean   @default(false)
+
+  // Pricing
+  basePrice         Float
+  price             Float
+  currency          String    @default("EUR")
+  pricePerKm        Float?
+  surgeMultiplier   Float     @default(1.0)
+  requestedVehicleType VehicleType?
+
+  // Status
+  status            BookingStatus @default(PENDING)
+  scheduledAt       DateTime?
+  confirmedAt       DateTime?
+  pickupAt          DateTime?
+  dropoffAt         DateTime?
+  cancelledAt       DateTime?
+  cancelReason      String?
+
+  // Visibility & Creator tracking
+  isPublic          Boolean       @default(false)
+  createdByDriverId String?       // Track which driver created this booking (if created by driver)
+
+  // CPAM / Healthcare transport
+  isCpam            Boolean       @default(false)
+  cpamVoucher       CpamTransportVoucher?
+
+  // Payment
+  payment           Payment?
+
+  // Notes
+  clientNotes       String?
+  driverNotes       String?
+
+  // Ratings (after completion)
+  driverRating      Float?    // 1-5 stars
+  driverReview      String?
+  clientRating      Float?    // 1-5 stars (driver rates client)
+  clientReview      String?
+
+  // Chat
+  conversation      Conversation?
+
+  // Reviews
+  reviews           Review[]
+
+  // Complaints
+  complaints        Complaint[]
+
+  // Timestamps
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+
+  @@index([clientId])
+  @@index([driverId])
+  @@index([status])
+  @@index([scheduledAt])
+  @@index([createdAt])
+  @@index([reservationCode])
+  @@index([guestEmail])
+}
+
+enum BookingStatus {
+  PENDING          // Waiting for driver to accept
+  CONFIRMED        // Driver accepted
+  DRIVER_ARRIVED   // Driver at pickup location
+  IN_PROGRESS      // Trip started
+  COMPLETED        // Trip finished
+  CANCELLED        // Booking cancelled
+}
+
+// ============ PAYMENTS ============
+
+model Payment {
+  id            String    @id @default(cuid())
+
+  bookingId     String    @unique
+  booking       Booking   @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+
+  userId        String
+  user          User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  amount        Float
+  currency      String    @default("EUR")
+
+  method        PaymentMethod
+  status        PaymentStatus @default(PENDING)
+
+  // Payment gateway
+  stripePaymentIntentId String?
+  stripeSessionId String?
+
+  // Metadata
+  metadata      Json?
+  errorMessage  String?
+
+  // Timestamps
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  processedAt   DateTime?
+
+  @@index([userId])
+  @@index([status])
+}
+
+enum PaymentMethod {
+  CARD
+  WALLET
+  CASH
+}
+
+enum PaymentStatus {
+  PENDING
+  PROCESSING
+  COMPLETED
+  FAILED
+  REFUNDED
+}
+
+// ============ RATINGS & REVIEWS ============
+
+model Review {
+  id          String    @id @default(cuid())
+  bookingId   String
+  booking     Booking   @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+  reviewerId  String
+  reviewer    User      @relation("ReviewsGiven", fields: [reviewerId], references: [id], onDelete: Cascade)
+  revieweeId  String    // user being reviewed
+  reviewee    User      @relation("ReviewsReceived", fields: [revieweeId], references: [id], onDelete: Cascade)
+  role        String    // 'client' | 'driver'
+
+  // Overall
+  overallRating     Int  // 1-5
+
+  // Sub-criteria (1-5, nullable)
+  punctualityRating Int?
+  cleanlinessRating Int?
+  politenessRating  Int?
+  safetyRating      Int?
+
+  comment           String? @db.Text
+
+  // Response from reviewee
+  response          String? @db.Text
+  respondedAt       DateTime?
+  createdAt         DateTime @default(now())
+
+  @@index([revieweeId])
+  @@index([bookingId])
+}
+
+// ============ COMPLAINTS ============
+
+model Complaint {
+  id          String    @id @default(cuid())
+  bookingId   String?
+  booking     Booking?  @relation(fields: [bookingId], references: [id], onDelete: SetNull)
+  complainantId String
+  complainant User      @relation("ComplaintsField", fields: [complainantId], references: [id], onDelete: Cascade)
+  againstId   String?   // user being complained about
+  against     User?     @relation("ComplaintsAgainst", fields: [againstId], references: [id], onDelete: SetNull)
+  category    ComplaintCategory
+  description String    @db.Text
+  status      ComplaintStatus @default(OPEN)
+  adminNotes  String?   @db.Text
+  resolvedAt  DateTime?
+  resolvedBy  String?   // admin userId
+  replies     ComplaintReply[]
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  @@index([status])
+  @@index([category])
+  @@index([complainantId])
+}
+
+model ComplaintReply {
+  id          String    @id @default(cuid())
+  complaintId String
+  complaint   Complaint @relation(fields: [complaintId], references: [id], onDelete: Cascade)
+  authorId    String
+  author      User      @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  content     String    @db.Text
+  createdAt   DateTime  @default(now())
+
+  @@index([complaintId])
+}
+
+enum ComplaintCategory {
+  DRIVER_BEHAVIOR    // Comportement chauffeur
+  VEHICLE_CONDITION  // État du véhicule
+  PRICING_DISPUTE    // Litige tarifaire
+  LATE_PICKUP        // Retard prise en charge
+  ROUTE_DEVIATION    // Déviation de trajet
+  TECHNICAL_ISSUE    // Problème technique
+  OTHER
+}
+
+enum ComplaintStatus {
+  OPEN
+  UNDER_REVIEW
+  RESOLVED
+  DISMISSED
+}
+
+// ============ NOTIFICATIONS ============
+
+model Notification {
+  id          String    @id @default(cuid())
+  userId      String
+  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  type        NotificationType
+  title       String
+  message     String
+  data        Json?     // { bookingId, driverId, etc. }
+  read        Boolean   @default(false)
+  createdAt   DateTime  @default(now())
+
+  @@index([userId, read])
+  @@index([createdAt])
+}
+
+enum NotificationType {
+  BOOKING_CONFIRMED
+  BOOKING_CANCELLED
+  DRIVER_ASSIGNED
+  DRIVER_ARRIVED
+  TRIP_STARTED
+  TRIP_COMPLETED
+  NEW_MESSAGE
+  NEW_RATING
+  SUPPORT_REPLY
+  SYSTEM
+}
+
+// ============ CHAT & MESSAGING ============
+
+model Conversation {
+  id          String    @id @default(cuid())
+  bookingId   String?   @unique   // null = support général
+  booking     Booking?  @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+  type        ConversationType @default(RIDE)
+  messages    Message[]
+  participants ConversationParticipant[]
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  @@index([bookingId])
+}
+
+model ConversationParticipant {
+  id             String    @id @default(cuid())
+  conversationId String
+  conversation   Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+  userId         String
+  user           User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  lastReadAt     DateTime?
+  createdAt      DateTime  @default(now())
+
+  @@unique([conversationId, userId])
+  @@index([userId])
+}
+
+model Message {
+  id             String    @id @default(cuid())
+  conversationId String
+  conversation   Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+  senderId       String
+  sender         User      @relation(fields: [senderId], references: [id], onDelete: Cascade)
+  content        String    @db.Text
+  type           MessageType @default(TEXT)
+  readAt         DateTime?
+  createdAt      DateTime  @default(now())
+
+  @@index([conversationId, createdAt])
+  @@index([senderId])
+}
+
+enum ConversationType {
+  RIDE
+  SUPPORT
+}
+
+enum MessageType {
+  TEXT
+  SYSTEM
+}
+
+// ============ SUPPORT & ISSUES ============
+
+model SupportTicket {
+  id            String    @id @default(cuid())
+
+  bookingId     String?
+  userId        String
+
+  subject       String
+  description   String
+
+  status        TicketStatus @default(OPEN)
+  priority      TicketPriority @default(NORMAL)
+
+  assignedTo    String?
+
+  // Timestamps
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  resolvedAt    DateTime?
+
+  @@index([status])
+  @@index([priority])
+}
+
+enum TicketStatus {
+  OPEN
+  IN_PROGRESS
+  RESOLVED
+  CLOSED
+}
+
+enum TicketPriority {
+  LOW
+  NORMAL
+  HIGH
+  URGENT
+}
+
+// ============ PRICING CONFIGURATION ============
+
+model PricingConfig {
+  id                     String   @id @default(cuid())
+
+  // Base pricing
+  pricePerKm             Float    @default(1.30)  // €/km
+  pickupCharge           Float    @default(4.48)  // € (prise en charge)
+  minimumPrice           Float    @default(8.00)  // € (prix minimum)
+  maximumHourlyRate      Float    @default(42.15) // € (tarif horaire max)
+
+  // Reservation fees
+  reservationImmediateFee Float   @default(4.0)   // € (réservation immédiate)
+  reservationAdvanceFee   Float   @default(7.0)   // € (réservation à l'avance)
+
+  // Timestamps
+  createdAt              DateTime @default(now())
+  updatedAt              DateTime @updatedAt
+}
+
+// ============ CPAM TRANSPORT VOUCHERS ============
+
+model CpamTransportVoucher {
+  id            String    @id @default(cuid())
+
+  bookingId     String    @unique
+  booking       Booking   @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+
+  // Voucher details
+  voucherNumber String    @unique  // Unique reference number
+  prescriptionRef String?          // Medical prescription reference (NIR)
+  patientName   String?            // Patient name from prescription
+  cpamOrganism  String?            // CPAM organism code
+
+  // Trip details (denormalized for audit)
+  pickupAddress String
+  dropoffAddress String
+  distance      Float
+  tripDate      DateTime
+  driverName    String
+  vehiclePlate  String
+  price         Float
+
+  // Document
+  pdfUrl        String?            // URL to stored PDF
+  pdfGenerated  Boolean   @default(false)
+  generatedAt   DateTime?
+
+  // Status
+  status        VoucherStatus @default(PENDING)
+  submittedAt   DateTime?
+  confirmedAt   DateTime?
+  reimbursedAt  DateTime?
+
+  // Timestamps
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  @@index([bookingId])
+  @@index([status])
+  @@index([voucherNumber])
+}
+
+enum VoucherStatus {
+  PENDING       // Créé, PDF non généré
+  GENERATED     // PDF généré
+  SUBMITTED     // Soumis à la CPAM
+  CONFIRMED     // Confirmé par la CPAM
+  REIMBURSED    // Remboursé
+  REJECTED      // Rejeté
+}
+
+// ============ APP CONFIGURATION ============
+
+model AppConfig {
+  id                      String   @id @default(cuid())
+
+  // API Keys
+  googleMapsApiKey        String?  // Google Maps API key
+  stripePublishableKey    String?  // Stripe publishable key
+  stripeSecretKey         String?  // Stripe secret key
+
+  // App Settings
+  appName                 String   @default("Taxi Leblanc")
+  maintenanceMode         Boolean  @default(false)
+  maintenanceMessage      String?
+
+  // Email Templates
+  bookingConfirmationSubject String @default("Confirmation de votre réservation — Taxi Leblanc")
+  bookingConfirmationBody String @default("Bonjour {{clientName}},\n\nVotre réservation a été confirmée.\n\nDépart : {{pickupAddress}}\nArrivée : {{dropoffAddress}}\nPrix : {{price}} €\nDistance : {{distance}} km\nRéférence : #{{bookingId}}\n\nMerci de votre confiance.\n\n{{signature}}")
+  bookingEmailSignature   String @default("— Taxi Leblanc\nnoreply@taxileblanc.fr")
+
+  // Timestamps
+  createdAt               DateTime @default(now())
+  updatedAt               DateTime @updatedAt
+}
+
+// ============ PASSWORD RESET ============
+
+model PasswordResetToken {
+  id        String    @id @default(cuid())
+  tokenHash String    @unique
+  userId    String
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  expiresAt DateTime
+  usedAt    DateTime?
+  createdAt DateTime  @default(now())
+
+  @@index([tokenHash])
+  @@index([userId])
+}
