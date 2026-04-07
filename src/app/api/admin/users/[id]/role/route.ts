@@ -47,12 +47,9 @@ export async function PATCH(
 
     const updatedUser = await updateUserRole(params.id, role);
 
-    // Remove password hash from response
-    const { passwordHash, ...userWithoutPassword } = updatedUser;
-
     return NextResponse.json({
       success: true,
-      user: userWithoutPassword,
+      user: updatedUser,
       message: `User role updated to ${role}`,
     });
   } catch (error) {
