@@ -4,17 +4,6 @@
       "maxDuration": 60
     }
   },
-  "env": [
-    "DATABASE_URL",
-    "DIRECT_URL",
-    "JWT_SECRET",
-    "ADMIN_SECRET",
-    "NEXT_PUBLIC_APP_URL",
-    "NEXT_PUBLIC_BASE_URL",
-    "NEXT_PUBLIC_API_URL",
-    "NEXT_PUBLIC_APP_NAME",
-    "ALLOWED_ORIGINS"
-  ],
   "buildCommand": "npm run build",
   "installCommand": "npm install"
 }
