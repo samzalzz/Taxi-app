@@ -39,7 +39,7 @@ export async function createUser(
   name: string,
   password: string,
   phone?: string,
-  role: 'CLIENT' | 'DRIVER' = 'CLIENT'
+  role: 'CLIENT' | 'DRIVER' | 'ADMIN' = 'CLIENT'
 ) {
   const passwordHash = await bcryptjs.hash(password, 10);
 
