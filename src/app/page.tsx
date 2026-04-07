@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/Button';
 import { Footer } from '@/components/layout/Footer';
 import { StatCounter } from '@/components/features/stats/StatCounter';
+import { GoogleGeminiEffectDemo } from '@/components/features/home/GoogleGeminiEffectDemo';
 import { Car, Stethoscope, Users, Shield, Zap } from 'lucide-react';
 
 export const metadata = {
@@ -29,67 +30,8 @@ export default function HomePage() {
         </div>
       </nav>
 
-      {/* Hero Section */}
-      <section id="accueil" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        {/* Background Elements */}
-        <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent"></div>
-        <div className="absolute inset-0 opacity-20">
-          <div className="absolute inset-0" style={{
-            backgroundImage: 'linear-gradient(90deg, transparent 24%, rgba(212, 175, 55, .1) 25%, rgba(212, 175, 55, .1) 26%, transparent 27%, transparent 74%, rgba(212, 175, 55, .1) 75%, rgba(212, 175, 55, .1) 76%, transparent 77%, transparent), linear-gradient(0deg, transparent 24%, rgba(212, 175, 55, .1) 25%, rgba(212, 175, 55, .1) 26%, transparent 27%, transparent 74%, rgba(212, 175, 55, .1) 75%, rgba(212, 175, 55, .1) 76%, transparent 77%, transparent)',
-            backgroundSize: '50px 50px'
-          }}></div>
-        </div>
-
-        {/* Road Lines Animation */}
-        <div className="absolute inset-0 opacity-30">
-          <div className="absolute top-0 left-1/2 w-1 h-full bg-gradient-to-b from-primary via-primary to-transparent transform -translate-x-1/2" style={{
-            animation: 'roadLines 4s linear infinite'
-          }}></div>
-        </div>
-
-        {/* Content */}
-        <div className="relative z-10 max-w-4xl mx-auto text-center px-4 py-24">
-          {/* Badge */}
-          <div className="inline-block mb-6 px-4 py-2 rounded-full border border-primary/30 bg-primary/10">
-            <span className="text-sm text-primary font-semibold">Disponible 24h/24 · 7j/7</span>
-          </div>
-
-          {/* Title */}
-          <h1 className="text-5xl md:text-7xl font-serif font-bold text-on-surface mb-6">
-            Bienvenue chez<br />
-            <em className="text-primary not-italic">Taxi Leblanc</em>
-          </h1>
-
-          {/* Subtitle */}
-          <p className="text-lg text-on-surface-dim mb-12">
-            Seine-et-Marne 77 · Île-de-France
-          </p>
-
-          {/* Action Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
-            <Link href="/reserver">
-              <Button size="lg" className="flex items-center justify-center gap-2 px-8">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" className="w-5 h-5">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 3h10.5M6.75 3a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 006.75 21h10.5a2.25 2.25 0 002.25-2.25V5.25A2.25 2.25 0 0017.25 3M9 9h6M9 12h6m-6 3h4" />
-                </svg>
-                Réserver maintenant
-              </Button>
-            </Link>
-            <button className="px-8 py-3 rounded-lg border-2 border-primary text-primary hover:bg-primary hover:text-background transition-colors font-semibold flex items-center justify-center gap-2">
-              <span>Découvrir nos services</span>
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" className="w-5 h-5">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-              </svg>
-            </button>
-          </div>
-        </div>
-
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce">
-          <span className="text-sm text-on-surface-dim">Défiler</span>
-          <div className="w-0.5 h-6 bg-gradient-to-b from-primary to-transparent"></div>
-        </div>
-      </section>
+      {/* Hero Section with Google Gemini Effect */}
+      <GoogleGeminiEffectDemo />
 
       {/* Services Section */}
       <section className="py-20 px-4 bg-background">
