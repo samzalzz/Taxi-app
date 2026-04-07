@@ -7,7 +7,7 @@ import { generateCSRFToken } from '@/lib/auth/csrf';
  * Returns a CSRF token for the authenticated user
  * Required for making state-changing API requests (POST, PUT, PATCH, DELETE)
  */
-export async function GET(request: NextRequest): Promise<NextResponse> {
+export async function GET(_request: NextRequest): Promise<NextResponse> {
   try {
     // Check if user is authenticated
     const session = await getSession();
