@@ -18,7 +18,6 @@ export async function POST(request: NextRequest) {
 
     // Check rate limit (max 5 attempts per 15 minutes)
     if (!checkRateLimit(ip, { maxAttempts: 5, windowMs: 15 * 60 * 1000 })) {
-      const remaining = getRemainingAttempts(ip);
       return NextResponse.json(
         {
           error: 'Trop de tentatives de connexion. Veuillez réessayer dans 15 minutes.'
