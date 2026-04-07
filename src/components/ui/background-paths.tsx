@@ -17,7 +17,7 @@ export function BackgroundPaths({
             <div
                 className="absolute inset-0 bg-cover bg-center bg-no-repeat"
                 style={{
-                    backgroundImage: 'url("https://images.unsplash.com/photo-1507152832265-692b0ead067d?w=1200&q=80")',
+                    backgroundImage: 'url("/images/taxi-hero.avif")',
                 }}
             >
                 <div className="absolute inset-0 bg-black/40 backdrop-blur-sm"></div>
