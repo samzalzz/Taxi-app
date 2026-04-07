@@ -98,3 +98,59 @@ export async function changePassword(id: string, newPassword: string) {
     data: { passwordHash },
   });
 }
+
+export async function updateUserRole(id: string, role: 'CLIENT' | 'DRIVER' | 'ADMIN') {
+  return prisma.user.update({
+    where: { id },
+    data: { role },
+    select: {
+      id: true,
+      email: true,
+      name: true,
+      phone: true,
+      avatar: true,
+      role: true,
+      createdAt: true,
+      updatedAt: true,
+    },
+  });
+}
+
+export async function getAllUsers(page: number = 1, limit: number = 20) {
+  const skip = (page - 1) * limit;
+
+  const [users, total] = await Promise.all([
+    prisma.user.findMany({
+      skip,
+      take: limit,
+      select: {
+        id: true,
+        email: true,
+        name: true,
+        phone: true,
+        role: true,
+        createdAt: true,
+        updatedAt: true,
+      },
+      orderBy: { createdAt: 'desc' },
+    }),
+    prisma.user.count(),
+  ]);
+
+  return { users, total };
+}
+
+export async function getUsersByRole(role: 'CLIENT' | 'DRIVER' | 'ADMIN') {
+  return prisma.user.findMany({
+    where: { role },
+    select: {
+      id: true,
+      email: true,
+      name: true,
+      phone: true,
+      role: true,
+      createdAt: true,
+    },
+    orderBy: { createdAt: 'desc' },
+  });
+}
