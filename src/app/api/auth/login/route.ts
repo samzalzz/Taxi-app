@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
 import { getUserByEmail, verifyPassword } from '@/persistence/queries/userQueries';
 import { signToken } from '@/lib/auth/jwt';
-import { checkRateLimit, getRemainingAttempts } from '@/lib/auth/rateLimit';
+import { checkRateLimit } from '@/lib/auth/rateLimit';
 
 const LoginSchema = z.object({
   email: z.string().email('Email invalide'),
