@@ -10,9 +10,13 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "postinstall": "prisma generate",
     "prisma:generate": "prisma generate",
     "prisma:migrate": "prisma migrate dev",
     "prisma:push": "prisma db push"
+  },
+  "engines": {
+    "node": ">=20"
   },
   "dependencies": {
     "@googlemaps/js-api-loader": "^2.0.2",
@@ -31,8 +35,6 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-hook-form": "^7.48.0",
-    "socket.io": "^4.7.2",
-    "socket.io-client": "^4.7.2",
     "tailwind-merge": "^2.2.0",
     "zod": "^3.22.4"
   },
