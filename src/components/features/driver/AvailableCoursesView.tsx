@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import { TripCard } from './TripCard';
 import { RefreshCw, AlertCircle } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
+import { BookingClientDetailsModal } from '../booking/BookingClientDetailsModal';
 
 interface Booking {
   id: string;
@@ -27,6 +28,7 @@ export function AvailableCoursesView() {
   const [error, setError] = useState<string | null>(null);
   const [lastRefresh, setLastRefresh] = useState<Date>(new Date());
   const [refreshCounter, setRefreshCounter] = useState<string>('');
+  const [selectedBookingForDetails, setSelectedBookingForDetails] = useState<Booking | null>(null);
 
   useEffect(() => {
     const fetchBookings = async () => {
@@ -168,6 +170,7 @@ export function AvailableCoursesView() {
               booking={booking}
               mode="pending"
               onAction={handleTripAccepted}
+              onShowDetails={setSelectedBookingForDetails}
             />
           ))}
         </div>
@@ -178,6 +181,16 @@ export function AvailableCoursesView() {
             Les courses apparaîtront ici une fois que des clients placeront des réservations.
           </p>
         </div>
+      )}
+
+      {/* Client Details Modal - Show only useful info for drivers */}
+      {selectedBookingForDetails && (
+        <BookingClientDetailsModal
+          booking={selectedBookingForDetails}
+          isOpen={!!selectedBookingForDetails}
+          isAdmin={false}
+          onClose={() => setSelectedBookingForDetails(null)}
+        />
       )}
     </div>
   );

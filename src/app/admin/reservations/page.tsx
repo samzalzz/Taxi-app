@@ -1,8 +1,9 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { MapPin, Flag, Euro, Eye, EyeOff, Check } from 'lucide-react';
+import { MapPin, Flag, Euro, Eye, EyeOff, Check, Info } from 'lucide-react';
 import { BookingStatus } from '@prisma/client';
+import { BookingClientDetailsModal } from '@/components/features/booking/BookingClientDetailsModal';
 
 interface Booking {
   id: string;
@@ -43,6 +44,7 @@ export default function AdminReservationsPage() {
   const [assignModalBookingId, setAssignModalBookingId] = useState<string | null>(null);
   const [availableDrivers, setAvailableDrivers] = useState<any[]>([]);
   const [loadingDrivers, setLoadingDrivers] = useState(false);
+  const [selectedBookingForDetails, setSelectedBookingForDetails] = useState<Booking | null>(null);
 
   useEffect(() => {
     const fetchBookings = async () => {
@@ -429,6 +431,16 @@ export default function AdminReservationsPage() {
                   )}
 
                   {/* Action Buttons */}
+                  <div className="flex gap-2 flex-wrap">
+                    <button
+                      onClick={() => setSelectedBookingForDetails(booking)}
+                      className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold bg-purple-500/10 text-purple-600 border border-purple-500/20 hover:bg-purple-500/20 transition-colors"
+                    >
+                      <Info className="w-4 h-4" />
+                      Plus d'infos
+                    </button>
+                  </div>
+
                   {booking.status === 'PENDING' && (
                     <div className="flex gap-2 flex-wrap">
                       <button
@@ -499,6 +511,16 @@ export default function AdminReservationsPage() {
           })}
         </div>
         </>
+      )}
+
+      {/* Client Details Modal */}
+      {selectedBookingForDetails && (
+        <BookingClientDetailsModal
+          booking={selectedBookingForDetails}
+          isOpen={!!selectedBookingForDetails}
+          isAdmin={true}
+          onClose={() => setSelectedBookingForDetails(null)}
+        />
       )}
     </div>
   );

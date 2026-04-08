@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { Button } from '@/components/ui/Button';
-import { MapPin, Users, Clock } from 'lucide-react';
+import { MapPin, Users, Clock, Info } from 'lucide-react';
 
 interface Booking {
   id: string;
@@ -22,9 +22,10 @@ interface TripCardProps {
   booking: Booking;
   mode: 'pending' | 'active';
   onAction?: (bookingId: string, action: string) => Promise<void>;
+  onShowDetails?: (booking: Booking) => void;
 }
 
-export function TripCard({ booking, mode, onAction }: TripCardProps) {
+export function TripCard({ booking, mode, onAction, onShowDetails }: TripCardProps) {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -205,18 +206,29 @@ export function TripCard({ booking, mode, onAction }: TripCardProps) {
       )}
 
       {/* Action buttons */}
-      <div className="flex gap-2 pt-4 border-t border-on-surface/10">
-        {mode === 'pending' && booking.status === 'PENDING' && (
-          <Button
-            onClick={() => handleAction('accept')}
-            disabled={isLoading}
-            isLoading={isLoading}
-            className="flex-1"
-            variant="primary"
-          >
-            Accepter la course
-          </Button>
-        )}
+      <div className="flex flex-col gap-2 pt-4 border-t border-on-surface/10">
+        {/* Info Button */}
+        <button
+          onClick={() => onShowDetails?.(booking)}
+          className="flex items-center justify-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold bg-purple-500/10 text-purple-600 border border-purple-500/20 hover:bg-purple-500/20 transition-colors"
+        >
+          <Info className="w-4 h-4" />
+          Plus d'infos
+        </button>
+
+        {/* Main Action Buttons */}
+        <div className="flex gap-2">
+          {mode === 'pending' && booking.status === 'PENDING' && (
+            <Button
+              onClick={() => handleAction('accept')}
+              disabled={isLoading}
+              isLoading={isLoading}
+              className="flex-1"
+              variant="primary"
+            >
+              Accepter la course
+            </Button>
+          )}
 
         {mode === 'active' && ['CONFIRMED', 'DRIVER_ARRIVED', 'IN_PROGRESS'].includes(booking.status) && (
           <>
@@ -242,12 +254,13 @@ export function TripCard({ booking, mode, onAction }: TripCardProps) {
           </>
         )}
 
-        {mode === 'active' && booking.status === 'COMPLETED' && (
-          <div className="w-full text-center py-2 text-success font-medium">
-            ✓ Course terminée
-          </div>
-        )}
-      </div>
+          {mode === 'active' && booking.status === 'COMPLETED' && (
+            <div className="w-full text-center py-2 text-success font-medium">
+              ✓ Course terminée
+            </div>
+          )}
+        </div>
+        </div>
     </div>
   );
 }
