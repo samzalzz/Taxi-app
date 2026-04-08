@@ -1,10 +1,12 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { Calendar, Lock, Globe } from 'lucide-react';
+import { Calendar, Lock, Globe, Info } from 'lucide-react';
+import { BookingClientDetailsModal } from '../booking/BookingClientDetailsModal';
 
 interface UpcomingBooking {
   id: string;
+  clientId: string | null;
   pickupAddress: string;
   dropoffAddress: string;
   distance: number;
@@ -16,12 +18,18 @@ interface UpcomingBooking {
   client?: {
     name: string;
   };
+  guestName?: string | null;
+  guestEmail?: string | null;
+  guestPhone?: string | null;
+  clientNotes?: string | null;
+  driverNotes?: string | null;
 }
 
 export function UpcomingCoursesSection() {
   const [bookings, setBookings] = useState<UpcomingBooking[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [selectedBookingForDetails, setSelectedBookingForDetails] = useState<UpcomingBooking | null>(null);
 
   useEffect(() => {
     const fetchUpcomingBookings = async () => {
@@ -151,7 +159,7 @@ export function UpcomingCoursesSection() {
             </div>
 
             {/* Stats */}
-            <div className="grid grid-cols-3 gap-3 pt-3 border-t border-on-surface/10">
+            <div className="grid grid-cols-3 gap-3 pt-3 border-t border-on-surface/10 mb-3">
               <div>
                 <p className="text-xs text-on-surface-dim mb-1">Distance</p>
                 <p className="text-sm font-semibold text-on-surface">
@@ -171,9 +179,30 @@ export function UpcomingCoursesSection() {
                 </p>
               </div>
             </div>
+
+            {/* Info Button */}
+            {(booking.clientId || booking.guestName) && (
+              <button
+                onClick={() => setSelectedBookingForDetails(booking)}
+                className="w-full flex items-center justify-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold bg-purple-500/10 text-purple-600 border border-purple-500/20 hover:bg-purple-500/20 transition-colors"
+              >
+                <Info className="w-4 h-4" />
+                Plus d'infos
+              </button>
+            )}
           </div>
         ))}
       </div>
+
+      {/* Client Details Modal */}
+      {selectedBookingForDetails && (
+        <BookingClientDetailsModal
+          booking={selectedBookingForDetails}
+          isOpen={!!selectedBookingForDetails}
+          isAdmin={false}
+          onClose={() => setSelectedBookingForDetails(null)}
+        />
+      )}
     </div>
   );
 }
