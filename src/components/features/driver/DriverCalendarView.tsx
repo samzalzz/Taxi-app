@@ -76,12 +76,14 @@ export function DriverCalendarView() {
     setCurrentDate(
       new Date(currentDate.getFullYear(), currentDate.getMonth() - 1, 1)
     );
+    setSelectedDay(null);
   };
 
   const handleNextMonth = () => {
     setCurrentDate(
       new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 1)
     );
+    setSelectedDay(null);
   };
 
   // Handle week navigation
@@ -89,12 +91,14 @@ export function DriverCalendarView() {
     const newDate = new Date(currentDate);
     newDate.setDate(newDate.getDate() - 7);
     setCurrentDate(newDate);
+    setSelectedDay(null);
   };
 
   const handleNextWeek = () => {
     const newDate = new Date(currentDate);
     newDate.setDate(newDate.getDate() + 7);
     setCurrentDate(newDate);
+    setSelectedDay(null);
   };
 
   const renderStatusDot = (status: string) => {
@@ -127,7 +131,7 @@ export function DriverCalendarView() {
         {/* View toggle */}
         <div className="flex gap-2 bg-surface border border-on-surface/10 rounded-lg p-1">
           <button
-            onClick={() => setViewMode('month')}
+            onClick={() => { setViewMode('month'); setSelectedDay(null); }}
             className={`px-4 py-2 rounded transition-colors text-sm font-medium ${
               viewMode === 'month'
                 ? 'bg-primary text-primary-foreground'
@@ -137,7 +141,7 @@ export function DriverCalendarView() {
             Mois
           </button>
           <button
-            onClick={() => setViewMode('week')}
+            onClick={() => { setViewMode('week'); setSelectedDay(null); }}
             className={`px-4 py-2 rounded transition-colors text-sm font-medium ${
               viewMode === 'week'
                 ? 'bg-primary text-primary-foreground'

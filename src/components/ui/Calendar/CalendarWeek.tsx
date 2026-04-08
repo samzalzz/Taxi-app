@@ -14,7 +14,7 @@ interface CalendarWeekProps {
   renderStatusDot: (status: string) => ReactNode;
 }
 
-const HOURS = Array.from({ length: 18 }, (_, i) => i + 6); // 06:00 to 23:00
+const HOURS = Array.from({ length: 24 }, (_, i) => i); // 00:00 to 23:00
 const DAYS_OF_WEEK = ['Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dim'];
 
 function getWeekStart(date: Date): Date {
