@@ -1,42 +1,17 @@
 import Link from 'next/link';
+import { HomeHeader } from '@/components/layout/HomeHeader';
+import { Footer } from '@/components/layout/Footer';
 import { GuestBookingForm } from '@/components/features/booking/GuestBookingForm';
 import { Button } from '@/components/ui/Button';
-import { LogIn, Phone } from 'lucide-react';
 
 export default function ReserverPage() {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background flex flex-col">
       {/* Header */}
-      <header className="border-b border-on-surface/10 bg-surface sticky top-0 z-10">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-          <Link href="/" className="text-2xl font-bold text-primary">
-            Taxi Leblanc
-          </Link>
-
-          <div className="flex items-center gap-4">
-            <a href="tel:+33608550315">
-              <Button variant="ghost" size="sm" className="flex items-center gap-2">
-                <Phone className="w-4 h-4" />
-                Appeler
-              </Button>
-            </a>
-            <Link href="/connexion">
-              <Button variant="ghost" size="sm" className="flex items-center gap-2">
-                <LogIn className="w-4 h-4" />
-                Connexion
-              </Button>
-            </Link>
-            <Link href="/inscription">
-              <Button variant="primary" size="sm">
-                S'inscrire
-              </Button>
-            </Link>
-          </div>
-        </div>
-      </header>
+      <HomeHeader />
 
       {/* Main Content */}
-      <main className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <main className="flex-1 max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 py-12 w-full">
         {/* Page Header */}
         <div className="mb-12">
           <h1 className="text-4xl font-bold text-on-surface mb-3">
@@ -96,6 +71,9 @@ export default function ReserverPage() {
           </p>
         </div>
       </main>
+
+      {/* Footer */}
+      <Footer />
     </div>
   );
 }

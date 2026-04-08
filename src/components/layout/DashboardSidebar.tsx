@@ -2,7 +2,20 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { Menu, X } from 'lucide-react';
+import { usePathname } from 'next/navigation';
+import {
+  Menu,
+  X,
+  Home,
+  Calendar,
+  MessageSquare,
+  User,
+  Plus,
+  Package,
+  BarChart3,
+  Settings,
+  Lock,
+} from 'lucide-react';
 
 interface DashboardSidebarProps {
   session: any;
@@ -10,6 +23,36 @@ interface DashboardSidebarProps {
 
 export function DashboardSidebar({ session }: DashboardSidebarProps) {
   const [isOpen, setIsOpen] = useState(true);
+  const pathname = usePathname();
+
+  const isActive = (href: string) => pathname === href || pathname.startsWith(href + '/');
+
+  const NavLink = ({
+    href,
+    icon: Icon,
+    label,
+    isAdmin = false,
+  }: {
+    href: string;
+    icon: React.ReactNode;
+    label: string;
+    isAdmin?: boolean;
+  }) => {
+    const active = isActive(href);
+    return (
+      <Link
+        href={href}
+        className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200 ${
+          active
+            ? 'bg-primary text-background shadow-lg'
+            : `text-on-surface hover:bg-surface-light ${isAdmin ? 'text-yellow-400 hover:text-yellow-300' : ''}`
+        }`}
+      >
+        <span className="flex-shrink-0">{Icon}</span>
+        <span className="font-medium text-sm">{label}</span>
+      </Link>
+    );
+  };
 
   return (
     <>
@@ -33,99 +76,103 @@ export function DashboardSidebar({ session }: DashboardSidebarProps) {
         }`}
         style={{ paddingTop: '6rem' }}
       >
-        <nav className="space-y-2">
+        <nav className="space-y-1">
           {session?.role !== 'DRIVER' && (
             <>
-              <h3 className="text-xs font-semibold uppercase text-on-surface-dim mb-4">
-                Navigation
-              </h3>
-              <Link
-                href="/dashboard"
-                className="block px-4 py-2 rounded-lg text-on-surface hover:bg-surface-light transition-smooth"
-              >
-                Tableau de bord
-              </Link>
-              <Link
-                href="/dashboard/reserver"
-                className="block px-4 py-2 rounded-lg text-on-surface hover:bg-surface-light transition-smooth"
-              >
-                Réserver un trajet
-              </Link>
-              <Link
-                href="/dashboard/reservations"
-                className="block px-4 py-2 rounded-lg text-on-surface hover:bg-surface-light transition-smooth"
-              >
-                Mes réservations
-              </Link>
+              <div className="mb-2">
+                <p className="text-xs font-semibold uppercase text-on-surface-dim px-4 mb-3">
+                  Client
+                </p>
+                <div className="space-y-1">
+                  <NavLink
+                    href="/dashboard"
+                    icon={<Home className="w-5 h-5" />}
+                    label="Tableau de bord"
+                  />
+                  <NavLink
+                    href="/dashboard/reserver"
+                    icon={<Plus className="w-5 h-5" />}
+                    label="Réserver un trajet"
+                  />
+                  <NavLink
+                    href="/dashboard/reservations"
+                    icon={<Package className="w-5 h-5" />}
+                    label="Mes réservations"
+                  />
+                </div>
+              </div>
             </>
           )}
 
           {session?.role === 'DRIVER' && (
             <>
-              <h3 className="text-xs font-semibold uppercase text-on-surface-dim mb-4">
-                Espace chauffeur
-              </h3>
-              <Link
-                href="/dashboard/chauffeur"
-                className="block px-4 py-2 rounded-lg text-on-surface hover:bg-surface-light transition-smooth"
-              >
-                Vue d'ensemble
-              </Link>
-              <Link
-                href="/dashboard/chauffeur/courses"
-                className="block px-4 py-2 rounded-lg text-on-surface hover:bg-surface-light transition-smooth"
-              >
-                Courses disponibles
-              </Link>
-              <Link
-                href="/dashboard/chauffeur/historique"
-                className="block px-4 py-2 rounded-lg text-on-surface hover:bg-surface-light transition-smooth"
-              >
-                Historique
-              </Link>
-              <Link
-                href="/dashboard/chauffeur/calendrier"
-                className="block px-4 py-2 rounded-lg text-on-surface hover:bg-surface-light transition-smooth"
-              >
-                Calendrier
-              </Link>
-              <Link
-                href="/dashboard/chauffeur/messages"
-                className="block px-4 py-2 rounded-lg text-on-surface hover:bg-surface-light transition-smooth"
-              >
-                Messages
-              </Link>
+              <div className="mb-2">
+                <p className="text-xs font-semibold uppercase text-on-surface-dim px-4 mb-3">
+                  Chauffeur
+                </p>
+                <div className="space-y-1">
+                  <NavLink
+                    href="/dashboard/chauffeur"
+                    icon={<Home className="w-5 h-5" />}
+                    label="Vue d'ensemble"
+                  />
+                  <NavLink
+                    href="/dashboard/chauffeur/courses"
+                    icon={<BarChart3 className="w-5 h-5" />}
+                    label="Courses disponibles"
+                  />
+                  <NavLink
+                    href="/dashboard/chauffeur/historique"
+                    icon={<Calendar className="w-5 h-5" />}
+                    label="Historique"
+                  />
+                  <NavLink
+                    href="/dashboard/chauffeur/calendrier"
+                    icon={<Package className="w-5 h-5" />}
+                    label="Calendrier"
+                  />
+                  <NavLink
+                    href="/dashboard/chauffeur/messages"
+                    icon={<MessageSquare className="w-5 h-5" />}
+                    label="Messages"
+                  />
+                </div>
+              </div>
             </>
           )}
 
           {session?.role !== 'DRIVER' && (
-            <Link
-              href="/dashboard/messages"
-              className="block px-4 py-2 rounded-lg text-on-surface hover:bg-surface-light transition-smooth"
-            >
-              Mes messages
-            </Link>
+            <div className="mb-2">
+              <div className="space-y-1">
+                <NavLink
+                  href="/dashboard/messages"
+                  icon={<MessageSquare className="w-5 h-5" />}
+                  label="Mes messages"
+                />
+              </div>
+            </div>
           )}
 
-          <Link
-            href="/dashboard/profil"
-            className="block px-4 py-2 rounded-lg text-on-surface hover:bg-surface-light transition-smooth"
-          >
-            Mon profil
-          </Link>
+          <div className="border-t border-on-surface/10 pt-3 mt-3">
+            <NavLink
+              href="/dashboard/profil"
+              icon={<User className="w-5 h-5" />}
+              label="Mon profil"
+            />
+          </div>
 
           {session?.role === 'ADMIN' && (
-            <>
-              <h3 className="text-xs font-semibold uppercase text-on-surface-dim mb-4 mt-6">
-                Administration
-              </h3>
-              <Link
+            <div className="border-t border-on-surface/10 pt-3 mt-3">
+              <p className="text-xs font-semibold uppercase text-on-surface-dim px-4 mb-3">
+                Admin
+              </p>
+              <NavLink
                 href="/admin"
-                className="block px-4 py-2 rounded-lg text-on-surface hover:bg-surface-light transition-smooth text-yellow-400"
-              >
-                Panel admin
-              </Link>
-            </>
+                icon={<Lock className="w-5 h-5" />}
+                label="Panel admin"
+                isAdmin={true}
+              />
+            </div>
           )}
         </nav>
       </aside>
