@@ -161,3 +161,24 @@ export async function calculateBookingPrice(
     isCpam: input.isCpam || false,
   };
 }
+
+/**
+ * Get airport fixed rates
+ */
+export async function getAirportPrices(isCpam: boolean = false) {
+  const config = await getPricingConfig();
+
+  if (isCpam) {
+    return {
+      cdg: config.cpamAirportCdgPrice,
+      orly: config.cpamAirportOrlyPrice,
+      beauvais: config.cpamAirportBeauvaisPrice,
+    };
+  }
+
+  return {
+    cdg: config.airportCdgPrice,
+    orly: config.airportOrlyPrice,
+    beauvais: config.airportBeauvaisPrice,
+  };
+}
