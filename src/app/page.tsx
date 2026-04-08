@@ -1,10 +1,10 @@
-import Link from 'next/link';
-import { Button } from '@/components/ui/Button';
 import { Footer } from '@/components/layout/Footer';
 import { StatCounter } from '@/components/features/stats/StatCounter';
 import { BackgroundPathsDemo } from '@/components/features/home/BackgroundPathsDemo';
-import { Logo } from '@/components/ui/Logo';
+import { HomeHeader } from '@/components/layout/HomeHeader';
 import { Car, Stethoscope, Users, Shield, Zap } from 'lucide-react';
+import Link from 'next/link';
+import { Button } from '@/components/ui/Button';
 
 export const metadata = {
   title: 'Taxi Leblanc - Votre Partenaire de Transport',
@@ -14,20 +14,7 @@ export const metadata = {
 export default function HomePage() {
   return (
     <div className="min-h-screen bg-background">
-      {/* Navigation */}
-      <nav className="sticky top-0 z-50 bg-background/80 backdrop-blur-sm border-b border-on-surface/10">
-        <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
-          <Logo href="/" className="h-10 w-auto" />
-          <div className="flex gap-4">
-            <Link href="/connexion">
-              <Button variant="ghost">Connexion</Button>
-            </Link>
-            <Link href="/inscription">
-              <Button>S'inscrire</Button>
-            </Link>
-          </div>
-        </div>
-      </nav>
+      <HomeHeader />
 
       {/* Hero Section with Background Paths */}
       <BackgroundPathsDemo />

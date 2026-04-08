@@ -21,6 +21,7 @@ interface DriverStats {
 
 interface Booking {
   id: string;
+  clientId: string | null;
   pickupAddress: string;
   dropoffAddress: string;
   distance: number;
@@ -30,6 +31,11 @@ interface Booking {
   status: string;
   requestedVehicleType: string;
   createdAt: string;
+  guestName?: string | null;
+  guestEmail?: string | null;
+  guestPhone?: string | null;
+  clientNotes?: string | null;
+  driverNotes?: string | null;
 }
 
 interface DriverDashboardProps {

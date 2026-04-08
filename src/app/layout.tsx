@@ -31,7 +31,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="fr" className={`${notoSerif.variable} ${manrope.variable} dark`} suppressHydrationWarning>
+    <html lang="fr" className={`${notoSerif.variable} ${manrope.variable}`} suppressHydrationWarning>
       <head>
         <meta charSet="utf-8" />
         <meta name="theme-color" content="#d4af37" />

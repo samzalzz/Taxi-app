@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { X, Mail, Phone, Calendar, Star, AlertCircle, MapPin } from 'lucide-react';
+import { X, Mail, Phone, Calendar, Star, AlertCircle } from 'lucide-react';
 
 interface ClientDetails {
   id: string;

@@ -6,6 +6,7 @@ import { MapPin, Users, Clock, Info } from 'lucide-react';
 
 interface Booking {
   id: string;
+  clientId: string | null;
   pickupAddress: string;
   dropoffAddress: string;
   distance: number;
@@ -16,6 +17,11 @@ interface Booking {
   requestedVehicleType: string;
   createdAt: string;
   isCpam?: boolean;
+  guestName?: string | null;
+  guestEmail?: string | null;
+  guestPhone?: string | null;
+  clientNotes?: string | null;
+  driverNotes?: string | null;
 }
 
 interface TripCardProps {

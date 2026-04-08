@@ -3,6 +3,7 @@
 import { Button } from '@/components/ui/Button';
 import { NotificationBell } from '@/components/features/notifications/NotificationBell';
 import { Logo } from '@/components/ui/Logo';
+import { ThemeToggle } from '@/components/ui/ThemeToggle';
 
 interface DashboardHeaderProps {
   logoHref?: string;
@@ -20,6 +21,7 @@ export function DashboardHeader({
       <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
         <Logo href={logoHref} className="h-10 w-auto" />
         <div className="flex items-center gap-4">
+          <ThemeToggle />
           <NotificationBell />
           <form action="/api/auth/logout" method="POST">
             <Button type="submit" variant="ghost" size="sm">
