@@ -10,22 +10,26 @@ if (!JWT_SECRET) {
   );
 }
 
+const SECRET = JWT_SECRET as string;
+
 export interface JWTPayload {
   userId: string;
   email: string;
   role: string;
+  exp?: number;
+  iat?: number;
 }
 
 export function signToken(payload: JWTPayload): string {
-  return jwt.sign(payload, JWT_SECRET, {
-    expiresIn: JWT_EXPIRY,
+  return jwt.sign(payload, SECRET, {
+    expiresIn: JWT_EXPIRY as string,
     algorithm: 'HS256',
-  });
+  } as any);
 }
 
 export function verifyToken(token: string): JWTPayload | null {
   try {
-    const decoded = jwt.verify(token, JWT_SECRET, {
+    const decoded = jwt.verify(token, SECRET, {
       algorithms: ['HS256'],
     });
     return decoded as JWTPayload;

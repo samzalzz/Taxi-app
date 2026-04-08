@@ -82,7 +82,7 @@ export async function getAllUsers(
 
 export interface AdminBooking {
   id: string;
-  clientId: string;
+  clientId: string | null;
   pickupAddress: string;
   dropoffAddress: string;
   distance: number;

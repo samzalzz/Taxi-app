@@ -1,3 +1,7 @@
+'use client';
+
+import { Logo } from '@/components/ui/Logo';
+
 export default function AuthLayout({
   children,
 }: {
@@ -8,8 +12,8 @@ export default function AuthLayout({
       <div className="w-full max-w-md">
         <div className="glass p-8 rounded-2xl">
           <div className="mb-8 text-center">
-            <div className="text-3xl font-serif font-bold text-primary mb-2">
-              Taxi Leblanc
+            <div className="mb-2">
+              <Logo href="/" className="h-16 w-auto mx-auto" />
             </div>
             <p className="text-on-surface-dim text-sm">
               Votre taxi de route en Île-de-France

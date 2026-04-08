@@ -1,11 +1,10 @@
 'use client';
 
-import Link from 'next/link';
 import { Button } from '@/components/ui/Button';
 import { NotificationBell } from '@/components/features/notifications/NotificationBell';
+import { Logo } from '@/components/ui/Logo';
 
 interface DashboardHeaderProps {
-  title?: string;
   logoHref?: string;
 }
 
@@ -14,18 +13,12 @@ interface DashboardHeaderProps {
  * This is a client component to support the interactive bell icon.
  */
 export function DashboardHeader({
-  title = 'Taxi Leblanc',
   logoHref = '/dashboard'
 }: DashboardHeaderProps = {}) {
   return (
     <nav className="sticky top-0 z-50 bg-background/80 backdrop-blur-sm border-b border-on-surface/10">
       <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
-        <Link
-          href={logoHref}
-          className="text-2xl font-serif font-bold text-primary hover:text-primary-light transition-smooth"
-        >
-          {title}
-        </Link>
+        <Logo href={logoHref} className="h-10 w-auto" />
         <div className="flex items-center gap-4">
           <NotificationBell />
           <form action="/api/auth/logout" method="POST">

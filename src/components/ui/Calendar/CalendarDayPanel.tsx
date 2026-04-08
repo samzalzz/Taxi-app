@@ -2,7 +2,6 @@
 
 import { CalendarBooking } from '@/lib/hooks/useCalendarData';
 import { X } from 'lucide-react';
-import { Button } from '../Button';
 
 interface CalendarDayPanelProps {
   date: Date | null;

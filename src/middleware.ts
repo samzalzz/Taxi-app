@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { verifyToken } from '@/lib/auth/jwt';
 
 // Security headers to prevent common attacks
 const SECURITY_HEADERS = {

@@ -2,13 +2,6 @@
 
 import { useEffect, useState } from 'react';
 
-interface User {
-  id: string;
-  email: string;
-  name: string;
-  role: string;
-}
-
 interface SessionData {
   userId: string;
   email: string;

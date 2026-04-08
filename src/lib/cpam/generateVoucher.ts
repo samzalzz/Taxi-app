@@ -1,5 +1,4 @@
 import { prisma } from '@/persistence/client';
-import { Booking } from '@prisma/client';
 
 /**
  * Generate a unique voucher number in format: CPAM-YYYY-MM-XXXXXXXX

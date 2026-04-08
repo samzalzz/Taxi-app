@@ -8,9 +8,6 @@ import { DashboardHeader } from './DashboardHeader';
  */
 export function AdminHeader() {
   return (
-    <DashboardHeader
-      title="Taxi Leblanc — Admin"
-      logoHref="/admin"
-    />
+    <DashboardHeader logoHref="/admin" />
   );
 }

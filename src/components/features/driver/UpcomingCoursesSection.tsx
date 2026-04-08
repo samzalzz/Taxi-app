@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { Calendar, MapPin, Euro, Lock, Globe } from 'lucide-react';
+import { Calendar, Lock, Globe } from 'lucide-react';
 
 interface UpcomingBooking {
   id: string;

@@ -3,7 +3,7 @@
  */
 
 import { NextResponse } from 'next/server';
-import { getCORSHeaders, isCORSPreflightRequest } from './cors';
+import { getCORSHeaders } from './cors';
 
 interface ApiResponseOptions {
   status?: number;

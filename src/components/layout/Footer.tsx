@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { Mail, MapPin, Phone, Clock } from 'lucide-react';
+import { Logo } from '@/components/ui/Logo';
 
 export function Footer() {
   return (
@@ -10,9 +11,9 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
           {/* Brand & Description */}
           <div>
-            <h3 className="text-2xl font-serif font-bold text-primary mb-2">
-              Taxi Leblanc
-            </h3>
+            <div className="mb-2">
+              <Logo href="/" className="h-12 w-auto" />
+            </div>
             <p className="text-sm text-on-surface-dim mb-4">
               Transport pour toutes les occasions
             </p>

@@ -407,7 +407,7 @@ export async function getBookingByReservationCode(
   ) {
     // Remove guestEmail from returned data (don't re-expose PII)
     const { guestEmail, ...bookingWithoutEmail } = booking;
-    return bookingWithoutEmail;
+    return bookingWithoutEmail as any;
   }
 
   return null;
