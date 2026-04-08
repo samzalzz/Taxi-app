@@ -35,12 +35,24 @@ export function GuestBookingForm() {
   const [isScheduled, setIsScheduled] = useState(false);
   const [codeCopied, setCodeCopied] = useState(false);
   const [showConfirmModal, setShowConfirmModal] = useState(false);
+  const [showTooSoonModal, setShowTooSoonModal] = useState(false);
 
-  // Generate min datetime (now + 30 minutes)
+  // Generate min datetime (now + 2 hours)
   const getMinDateTime = () => {
     const now = new Date();
-    now.setMinutes(now.getMinutes() + 30);
+    now.setHours(now.getHours() + 2);
     return now.toISOString().slice(0, 16);
+  };
+
+  // Check if a date is too soon (less than 2 hours from now)
+  const isTooSoon = (date: string | null): boolean => {
+    if (!date) return false; // If no date, it's an immediate booking (which is too soon)
+
+    const selectedDate = new Date(date);
+    const now = new Date();
+    const diffHours = (selectedDate.getTime() - now.getTime()) / (1000 * 60 * 60);
+
+    return diffHours < 2;
   };
 
   const copyCodeToClipboard = () => {
@@ -151,11 +163,60 @@ export function GuestBookingForm() {
 
   const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    // Check if booking is too soon (immediate or within 2 hours)
+    if (!isScheduled || isTooSoon(formState.scheduledAt)) {
+      setShowTooSoonModal(true);
+      return;
+    }
+
     setShowConfirmModal(true);
   };
 
   return (
     <>
+      {/* Too Soon Modal - Less than 2 hours */}
+      {showTooSoonModal && (
+        <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
+          <div className="bg-surface rounded-lg p-8 max-w-md w-full border border-on-surface/10 space-y-6">
+            <div className="flex items-start gap-4">
+              <AlertCircle className="w-6 h-6 text-warning flex-shrink-0 mt-1" />
+              <div>
+                <h3 className="text-lg font-bold text-on-surface mb-2">
+                  Délai trop court
+                </h3>
+                <p className="text-sm text-on-surface-dim">
+                  Les réservations doivent être faites au minimum <strong>2 heures à l'avance</strong>. Pour une réservation immédiate, nous vous conseillons d'appeler directement.
+                </p>
+              </div>
+            </div>
+
+            <div className="bg-primary/10 border border-primary/30 p-4 rounded-lg">
+              <p className="text-sm text-on-surface-dim mb-2">Appelez notre centrale:</p>
+              <a
+                href="tel:+33608550315"
+                className="text-lg font-bold text-primary hover:text-primary-light transition-colors block text-center"
+              >
+                +33 6 08 55 03 15
+              </a>
+              <p className="text-xs text-on-surface-dim text-center mt-2">24h/24 - 7j/7</p>
+            </div>
+
+            <p className="text-xs text-on-surface-dim text-center">
+              Disponible pour les réservations à partir de <strong>2 heures</strong>
+            </p>
+
+            <Button
+              onClick={() => setShowTooSoonModal(false)}
+              variant="primary"
+              className="w-full"
+            >
+              Fermer
+            </Button>
+          </div>
+        </div>
+      )}
+
       {/* Confirmation Modal */}
       {showConfirmModal && (
         <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
@@ -444,6 +505,24 @@ export function GuestBookingForm() {
             variant="secondary"
           >
             ⚠ Choisissez un type de véhicule
+          </Button>
+        ) : isScheduled && isTooSoon(formState.scheduledAt) ? (
+          <Button
+            type="button"
+            disabled={true}
+            className="w-full"
+            variant="secondary"
+          >
+            ⚠ Minimum 2 heures à l'avance requis
+          </Button>
+        ) : !isScheduled ? (
+          <Button
+            type="button"
+            disabled={true}
+            className="w-full"
+            variant="secondary"
+          >
+            ⚠ Planifiez au minimum 2 heures à l'avance
           </Button>
         ) : (
           <Button
