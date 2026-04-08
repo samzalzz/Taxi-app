@@ -3,19 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import {
-  Menu,
-  X,
-  Home,
-  Calendar,
-  MessageSquare,
-  User,
-  Plus,
-  Package,
-  BarChart3,
-  Settings,
-  Lock,
-} from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 
 interface DashboardSidebarProps {
   session: any;
@@ -29,12 +17,10 @@ export function DashboardSidebar({ session }: DashboardSidebarProps) {
 
   const NavLink = ({
     href,
-    icon: Icon,
     label,
     isAdmin = false,
   }: {
     href: string;
-    icon: React.ReactNode;
     label: string;
     isAdmin?: boolean;
   }) => {
@@ -42,14 +28,13 @@ export function DashboardSidebar({ session }: DashboardSidebarProps) {
     return (
       <Link
         href={href}
-        className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200 ${
+        className={`block px-4 py-3 rounded-lg transition-all duration-200 font-medium text-sm ${
           active
             ? 'bg-primary text-background shadow-lg'
             : `text-on-surface hover:bg-surface-light ${isAdmin ? 'text-yellow-400 hover:text-yellow-300' : ''}`
         }`}
       >
-        <span className="flex-shrink-0">{Icon}</span>
-        <span className="font-medium text-sm">{label}</span>
+        {label}
       </Link>
     );
   };
@@ -86,17 +71,14 @@ export function DashboardSidebar({ session }: DashboardSidebarProps) {
                 <div className="space-y-1">
                   <NavLink
                     href="/dashboard"
-                    icon={<Home className="w-5 h-5" />}
                     label="Tableau de bord"
                   />
                   <NavLink
                     href="/dashboard/reserver"
-                    icon={<Plus className="w-5 h-5" />}
                     label="Réserver un trajet"
                   />
                   <NavLink
                     href="/dashboard/reservations"
-                    icon={<Package className="w-5 h-5" />}
                     label="Mes réservations"
                   />
                 </div>
@@ -113,27 +95,22 @@ export function DashboardSidebar({ session }: DashboardSidebarProps) {
                 <div className="space-y-1">
                   <NavLink
                     href="/dashboard/chauffeur"
-                    icon={<Home className="w-5 h-5" />}
                     label="Vue d'ensemble"
                   />
                   <NavLink
                     href="/dashboard/chauffeur/courses"
-                    icon={<BarChart3 className="w-5 h-5" />}
                     label="Courses disponibles"
                   />
                   <NavLink
                     href="/dashboard/chauffeur/historique"
-                    icon={<Calendar className="w-5 h-5" />}
                     label="Historique"
                   />
                   <NavLink
                     href="/dashboard/chauffeur/calendrier"
-                    icon={<Package className="w-5 h-5" />}
                     label="Calendrier"
                   />
                   <NavLink
                     href="/dashboard/chauffeur/messages"
-                    icon={<MessageSquare className="w-5 h-5" />}
                     label="Messages"
                   />
                 </div>
@@ -146,7 +123,6 @@ export function DashboardSidebar({ session }: DashboardSidebarProps) {
               <div className="space-y-1">
                 <NavLink
                   href="/dashboard/messages"
-                  icon={<MessageSquare className="w-5 h-5" />}
                   label="Mes messages"
                 />
               </div>
@@ -156,7 +132,6 @@ export function DashboardSidebar({ session }: DashboardSidebarProps) {
           <div className="border-t border-on-surface/10 pt-3 mt-3">
             <NavLink
               href="/dashboard/profil"
-              icon={<User className="w-5 h-5" />}
               label="Mon profil"
             />
           </div>
@@ -168,7 +143,6 @@ export function DashboardSidebar({ session }: DashboardSidebarProps) {
               </p>
               <NavLink
                 href="/admin"
-                icon={<Lock className="w-5 h-5" />}
                 label="Panel admin"
                 isAdmin={true}
               />
