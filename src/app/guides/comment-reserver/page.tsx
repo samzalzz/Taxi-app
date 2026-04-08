@@ -269,10 +269,10 @@ export default function CommentReserverPage() {
             </div>
 
             <div className="rounded-lg border-l-4 border-primary bg-surface p-6">
-              <h3 className="text-lg font-bold text-on-surface mb-3">Paiement sécurisé</h3>
+              <h3 className="text-lg font-bold text-on-surface mb-3">Confirmation de réservation</h3>
               <p className="text-on-surface-dim text-sm">
-                Vous pouvez payer en ligne, en espèces, ou par carte chez le chauffeur.
-                Tous les paiements sont sécurisés et confidentiels.
+                Après réservation, vous recevrez une confirmation avec tous les détails du trajet et les coordonnées du chauffeur.
+                Aucun paiement en ligne n'est requis — arrangez directement avec le chauffeur lors du trajet.
               </p>
             </div>
           </div>
@@ -311,7 +311,7 @@ export default function CommentReserverPage() {
                 <h4 className="font-semibold text-on-surface">Comment puis-je payer ma réservation?</h4>
               </summary>
               <div className="px-6 pb-6 bg-background border-t border-on-surface/10 text-on-surface-dim text-sm">
-                Vous payez directement au chauffeur le jour du trajet. Espèces, carte bancaire ou virement acceptés.
+                Vous n'avez rien à payer en ligne. Appelez le chauffeur ou arrangez-vous directement avec lui les modalités de paiement et les détails du trajet.
               </div>
             </details>
 
