@@ -4,6 +4,7 @@ import { createUser, getUserByEmail } from '@/persistence/queries/userQueries';
 import { signToken } from '@/lib/auth/jwt';
 import { setSessionCookie } from '@/lib/auth/session';
 import { checkRateLimit } from '@/lib/auth/rateLimit';
+import { logApiCall } from '@/lib/api/logApiCall';
 
 const SignupSchema = z.object({
   email: z.string().email('Email invalide'),
@@ -14,6 +15,9 @@ const SignupSchema = z.object({
 
 export async function POST(request: NextRequest) {
   try {
+    // Log API call
+    logApiCall('/api/auth/signup', 'POST');
+
     // Get client IP for rate limiting
     const ip = request.headers.get('x-forwarded-for') ||
                request.headers.get('x-real-ip') ||

@@ -3,6 +3,7 @@ import { z } from 'zod';
 import { getUserByEmail, verifyPassword } from '@/persistence/queries/userQueries';
 import { signToken } from '@/lib/auth/jwt';
 import { checkRateLimit } from '@/lib/auth/rateLimit';
+import { logApiCall } from '@/lib/api/logApiCall';
 
 const LoginSchema = z.object({
   email: z.string().email('Email invalide'),
@@ -11,6 +12,9 @@ const LoginSchema = z.object({
 
 export async function POST(request: NextRequest) {
   try {
+    // Log API call
+    logApiCall('/api/auth/login', 'POST');
+
     // Get client IP for rate limiting
     const ip = request.headers.get('x-forwarded-for') ||
                request.headers.get('x-real-ip') ||

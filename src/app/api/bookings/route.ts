@@ -6,6 +6,7 @@ import { calculateDistance, calculatePrice, estimateDuration } from '@/lib/utils
 import { getUserById } from '@/persistence/queries/userQueries';
 import { getEmailTemplate } from '@/persistence/queries/appConfigQueries';
 import { sendBookingConfirmationEmail } from '@/lib/email/mailer';
+import { logApiCall } from '@/lib/api/logApiCall';
 import { BookingStatus } from '@prisma/client';
 
 const CoordinateSchema = z.number().min(-180).max(180);
@@ -30,6 +31,8 @@ const CreateBookingSchema = z.object({
 
 export async function POST(request: NextRequest): Promise<NextResponse> {
   try {
+    logApiCall('/api/bookings', 'POST');
+
     const session = await getSession();
     if (!session) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -106,6 +109,8 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
 
 export async function GET(request: NextRequest): Promise<NextResponse> {
   try {
+    logApiCall('/api/bookings', 'GET');
+
     const session = await getSession();
     if (!session) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });

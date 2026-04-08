@@ -106,6 +106,12 @@ export default async function AdminLayout({
             >
               Avis & Évaluations
             </Link>
+            <Link
+              href="/admin/api-usage"
+              className="block px-4 py-2 rounded-lg text-on-surface hover:bg-surface-light transition-smooth"
+            >
+              Utilisation des APIs
+            </Link>
 
             <Link
               href="/dashboard"

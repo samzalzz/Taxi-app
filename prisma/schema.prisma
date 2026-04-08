@@ -600,3 +600,20 @@ model PasswordResetToken {
   @@index([tokenHash])
   @@index([userId])
 }
+
+// ============ API USAGE TRACKING ============
+
+model ApiLog {
+  id        String   @id @default(cuid())
+  endpoint  String
+  method    String
+  month     Int
+  year      Int
+  count     Int      @default(1)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([endpoint, method, month, year])
+  @@index([year, month])
+  @@index([endpoint])
+}
