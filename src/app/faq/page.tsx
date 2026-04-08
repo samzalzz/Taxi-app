@@ -6,51 +6,98 @@ import { ChevronDown } from 'lucide-react';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'FAQ - Questions Fréquentes | Taxi Leblanc',
-  description: 'Trouvez les réponses à toutes vos questions sur nos services de taxi, réservations, tarifs et transports spécialisés.',
-  keywords: ['FAQ', 'questions', 'réservation', 'taxi', 'support'],
+  title: 'FAQ - Questions Fréquentes | Comment réserver? Tarifs? CPAM? | Taxi Leblanc',
+  description: 'Questions fréquentes taxi: comment réserver, tarifs CDG Orly, remboursement CPAM, animaux, PMR. Réponses complètes et conseils.',
+  keywords: [
+    'FAQ taxi',
+    'questions taxi',
+    'comment réserver taxi',
+    'combien coûte taxi',
+    'tarif taxi aéroport',
+    'remboursement CPAM taxi',
+    'taxi PMR',
+    'support taxi',
+  ],
+  openGraph: {
+    title: 'Questions Fréquentes - Taxi Leblanc',
+    description: 'Toutes vos questions sur la réservation, tarifs, CPAM et services spécialisés.',
+    type: 'website',
+    url: 'https://taxileblanc.fr/faq',
+  },
 };
 
 const faqs = [
   {
-    question: 'Comment puis-je réserver un taxi ?',
-    answer: 'Vous pouvez réserver un taxi en ligne sur notre site web en remplissant le formulaire de réservation, ou en nous appelant directement au +33 6 08 55 03 15.',
+    question: 'Comment réserver un taxi en ligne ?',
+    answer: 'Visitez notre page de réservation, entrez votre adresse de départ et destination, sélectionnez l\'heure, et confirmez. Vous recevrez instantanément une confirmation par email et SMS avec tous les détails.',
   },
   {
-    question: 'Quel est le délai minimum pour une réservation ?',
-    answer: 'Le délai minimum est de 2 heures avant votre prise en charge. Pour une prise en charge immédiate, veuillez nous appeler au +33 6 08 55 03 15.',
+    question: 'Comment appeler un taxi chez Taxi Leblanc ?',
+    answer: 'Appelez-nous au +33 6 08 55 03 15 (disponible 24h/24, 7j/7). Notre équipe prendra votre réservation et vous confirmera les détails rapidement.',
   },
   {
-    question: 'Acceptez-vous les réservations pour plusieurs jours ?',
-    answer: 'Oui, nous acceptons les réservations pour plusieurs jours ou trajets. Veuillez contacter notre équipe pour discuter de vos besoins spécifiques.',
+    question: 'Quel est le délai minimum pour réserver ?',
+    answer: 'Le délai minimum est de 2 heures avant votre prise en charge. Pour une demande urgente ou immédiate, appelez-nous directement au +33 6 08 55 03 15.',
+  },
+  {
+    question: 'Combien coûte un taxi vers CDG ?',
+    answer: 'Le tarif forfaitaire depuis n\'importe quel point de Paris vers CDG est de 50€ (tarif légal fixe, 2026). Ce forfait inclut la prise en charge et les bagages.',
+  },
+  {
+    question: 'Quel est le prix d\'un taxi pour Orly ?',
+    answer: 'Le tarif forfaitaire depuis Paris vers Orly est de 36€ (tarif légal fixe). C\'est le moins cher de nos trois aéroports. Bagages et prise en charge inclus.',
+  },
+  {
+    question: 'Combien coûte un taxi aéroport Beauvais ?',
+    answer: 'Le tarif forfaitaire depuis Paris vers Beauvais est de 65€ (tarif légal). Beauvais est plus éloigné (85 km Nord de Paris). Bagages inclus.',
+  },
+  {
+    question: 'Quels sont les tarifs pour les trajets non-aéroport ?',
+    answer: 'Pour les trajets hors aéroport, le tarif dépend de la distance et conditions de circulation. Utilisez notre estimateur de tarif en ligne ou appelez-nous pour un devis.',
   },
   {
     question: 'Comment fonctionne le remboursement CPAM ?',
-    answer: 'Avec une ordonnance médicale valide, la CPAM rembourse directement le transport. Aucun frais initial ne vous est demandé. Vous devez simplement présenter votre ordonnance et votre carte Vitale.',
+    answer: 'Avec une ordonnance médicale, vous payez le taxi directement. Vous envoyez la facture + ordonnance à la CPAM qui vous rembourse 55% ou 100% selon votre situation.',
   },
   {
-    question: 'Vos véhicules sont-ils adaptés aux personnes en fauteuil roulant ?',
-    answer: 'Oui, plusieurs de nos véhicules sont équipés pour accueillir les personnes à mobilité réduite et les fauteuils roulants. Mentionnez-le lors de votre réservation.',
+    question: 'Comment se faire rembourser un taxi par la CPAM ?',
+    answer: 'Étapes: 1) Obtener ordonnance médicale 2) Réserver un taxi agréé CPAM 3) Conserver la facture 4) Envoyer à la CPAM avec carte Vitale. Voir notre guide complet CPAM.',
   },
   {
-    question: 'Puis-je annuler ma réservation ?',
-    answer: 'Vous pouvez annuler votre réservation jusqu\'à 2 heures avant l\'horaire convenu. Les annulations effectuées plus tard peuvent entraîner des frais.',
+    question: 'Remboursement CPAM: 55% ou 100% ?',
+    answer: 'Vous êtes remboursé 55% par défaut. Vous obtenez 100% si vous avez une ALD, un handicap >80%, accident du travail, ou autres situations spéciales (femme enceinte, CMU).',
   },
   {
-    question: 'Quels sont vos tarifs ?',
-    answer: 'Nos tarifs varient selon la distance et le type de service. Pour un devis précis, utilisez notre formulaire de réservation ou appelez-nous au +33 6 08 55 03 15.',
+    question: 'Acceptez-vous les réservations pour plusieurs jours ?',
+    answer: 'Oui, nous acceptons les réservations pour trajets réguliers ou location avec chauffeur à la journée. Contactez-nous pour un devis personnalisé.',
   },
   {
-    question: 'Pouvez-vous transporter des animaux de compagnie ?',
-    answer: 'Oui, nous acceptons les animaux de compagnie à condition qu\'ils soient correctement maintenus. Mentionnez-le lors de votre réservation.',
+    question: 'Vos véhicules sont-ils adaptés PMR (fauteuil roulant) ?',
+    answer: 'Oui, plusieurs véhicules sont équipés pour les personnes à mobilité réduite et acceptent les fauteuils roulants. Mentionnez-le à la réservation.',
   },
   {
-    question: 'Offrez-vous un service de chauffeur pour la journée ?',
-    answer: 'Oui, nous proposons des services de chauffeur pour la journée. Contactez-nous pour discuter de vos besoins et obtenir un tarif.',
+    question: 'Puis-je annuler ma réservation sans frais ?',
+    answer: 'Oui, vous pouvez annuler gratuitement jusqu\'à 2 heures avant votre prise en charge. Les annulations plus tardives peuvent entraîner des frais.',
   },
   {
-    question: 'Vos chauffeurs sont-ils formés aux situations d\'urgence ?',
-    answer: 'Oui, nos chauffeurs sont formés aux premiers secours et connaissent les protocoles de sécurité pour diverses situations.',
+    question: 'Pouvez-vous transporter des animaux domestiques ?',
+    answer: 'Oui, nous acceptons les animaux à condition qu\'ils soient correctement maintenus et sécurisés. Chiens, chats, etc. - mentionnez-le à la réservation.',
+  },
+  {
+    question: 'Proposez-vous un service de chauffeur pour la journée ?',
+    answer: 'Oui, nous proposons des locations avec chauffeur à l\'heure ou à la journée. Contactez-nous au +33 6 08 55 03 15 pour un tarif personnalisé.',
+  },
+  {
+    question: 'Les tarifs aéroport sont-ils fixes ou négociables ?',
+    answer: 'Les tarifs aéroports sont FIXES et légalement réglementés: CDG 50€, Orly 36€, Beauvais 65€. Aucune surprise, aucun supplément caché.',
+  },
+  {
+    question: 'Comment puis-je modifier ma réservation ?',
+    answer: 'Vous pouvez modifier destination ou heure jusqu\'à 2 heures avant le trajet. Contactez-nous via email ou téléphone +33 6 08 55 03 15.',
+  },
+  {
+    question: 'Vos chauffeurs sont-ils formés et professionnels ?',
+    answer: 'Oui, tous nos chauffeurs sont professionnels, expérimentés, courtois, et formés aux premiers secours et protocoles de sécurité.',
   },
 ];
 
