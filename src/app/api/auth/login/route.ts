@@ -78,12 +78,16 @@ export async function POST(request: NextRequest) {
     );
 
     // Set httpOnly cookie directly on response
+    // Only set secure flag if we're accessing via HTTPS
+    const isHttps = request.headers.get('x-forwarded-proto') === 'https' ||
+                    request.url.startsWith('https://');
+
     response.cookies.set('auth-session', token, {
       httpOnly: true,
       sameSite: 'lax',
       maxAge: 7 * 24 * 60 * 60, // 7 days
       path: '/',
-      secure: process.env.NODE_ENV === 'production',
+      secure: isHttps,
     });
 
     return response;

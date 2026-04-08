@@ -95,12 +95,16 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
       { status: 201 }
     );
 
-    // Set cookie
+    // Set cookie (only secure flag if accessing via HTTPS)
+    const isHttps = request.headers.get('x-forwarded-for-proto') === 'https' ||
+                    request.url.startsWith('https://');
+
     response.cookies.set('auth-session', token, {
       httpOnly: true,
       sameSite: 'lax',
       maxAge: 7 * 24 * 60 * 60, // 7 days
       path: '/',
+      secure: isHttps,
     });
 
     return response;
