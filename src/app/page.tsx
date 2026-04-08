@@ -5,10 +5,26 @@ import { HomeHeader } from '@/components/layout/HomeHeader';
 import { Car, Stethoscope, Users, Shield, Zap } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/Button';
+import type { Metadata } from 'next';
 
-export const metadata = {
-  title: 'Taxi Leblanc - Votre Partenaire de Transport',
-  description: 'Service de taxi médical, personnel et professionnel en Île-de-France',
+export const metadata: Metadata = {
+  title: 'Taxi Leblanc - Service de Taxi Premium en Île-de-France | Aéroport, CPAM, Occasions',
+  description: 'Taxi Leblanc : service premium de transport en Île-de-France. Transports aéroport, trajets médicalisés CPAM agréés, occasions personnelles. Réservez 24h/24.',
+  keywords: ['taxi Île-de-France', 'taxi aéroport', 'transport CPAM', 'taxi médical', 'Draveil', 'taxi paris'],
+  openGraph: {
+    title: 'Taxi Leblanc - Service Premium de Transport en Île-de-France',
+    description: 'Réservez votre taxi pour l\'aéroport, transports médicalisés CPAM ou occasions spéciales.',
+    type: 'website',
+    url: 'https://taxileblanc.fr',
+    images: [
+      {
+        url: 'https://taxileblanc.fr/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Taxi Leblanc - Service Premium',
+      },
+    ],
+  },
 };
 
 export default function HomePage() {
