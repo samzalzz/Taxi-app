@@ -35,6 +35,7 @@ model User {
   complaintsAgainst Complaint[] @relation("ComplaintsAgainst")
   complaintReplies ComplaintReply[]
   passwordResetTokens PasswordResetToken[]
+  savedAddresses SavedAddress[]
 
   // Timestamps
   createdAt     DateTime   @default(now())
@@ -48,6 +49,22 @@ enum UserRole {
   CLIENT
   DRIVER
   ADMIN
+}
+
+// ============ SAVED ADDRESSES ============
+
+model SavedAddress {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  label     String   // "Domicile", "Travail", custom
+  address   String
+  city      String
+  lat       Float
+  lng       Float
+  createdAt DateTime @default(now())
+
+  @@index([userId])
 }
 
 // ============ DRIVER MANAGEMENT ============
