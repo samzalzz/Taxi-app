@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { MapPin, Flag, DollarSign, Eye, EyeOff, Check } from 'lucide-react';
+import { MapPin, Flag, Euro, Eye, EyeOff, Check } from 'lucide-react';
 import { BookingStatus } from '@prisma/client';
 
 interface Booking {
@@ -416,7 +416,7 @@ export default function AdminReservationsPage() {
                       </div>
                     </div>
                     <div className="flex items-center gap-2">
-                      <DollarSign className="w-4 h-4 text-primary" />
+                      <Euro className="w-4 h-4 text-primary" />
                       <span className="font-bold text-primary">{formatPrice(booking.price)}</span>
                     </div>
                   </div>

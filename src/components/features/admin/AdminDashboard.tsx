@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { Users, Zap, CheckCircle, TrendingUp, DollarSign, Settings } from 'lucide-react';
+import { Users, Zap, CheckCircle, TrendingUp, Euro, Settings } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/Button';
 
@@ -168,7 +168,7 @@ export function AdminDashboard() {
                   Moyenne: {formatPrice(stats.averagePrice)}
                 </p>
               </div>
-              <DollarSign className="w-8 h-8 text-primary opacity-20" />
+              <Euro className="w-8 h-8 text-primary opacity-20" />
             </div>
           </div>
         </div>
