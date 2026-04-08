@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/Button';
 import { Logo } from '@/components/ui/Logo';
 import { ThemeToggle } from '@/components/ui/ThemeToggle';
+import { Phone } from 'lucide-react';
 
 export function HomeHeader() {
   return (
@@ -12,6 +13,12 @@ export function HomeHeader() {
         <Logo href="/" className="h-10 w-auto" />
         <div className="flex gap-4 items-center">
           <ThemeToggle />
+          <a href="tel:+33608550315">
+            <Button variant="ghost" className="flex items-center gap-2">
+              <Phone className="w-4 h-4" />
+              Appeler
+            </Button>
+          </a>
           <Link href="/connexion">
             <Button variant="ghost">Connexion</Button>
           </Link>

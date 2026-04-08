@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/Button';
 import { NotificationBell } from '@/components/features/notifications/NotificationBell';
 import { Logo } from '@/components/ui/Logo';
 import { ThemeToggle } from '@/components/ui/ThemeToggle';
+import { Phone } from 'lucide-react';
 
 interface DashboardHeaderProps {
   logoHref?: string;
@@ -22,6 +23,12 @@ export function DashboardHeader({
         <Logo href={logoHref} className="h-10 w-auto" />
         <div className="flex items-center gap-4">
           <ThemeToggle />
+          <a href="tel:+33608550315">
+            <Button variant="ghost" size="sm" className="flex items-center gap-2">
+              <Phone className="w-4 h-4" />
+              Appeler
+            </Button>
+          </a>
           <NotificationBell />
           <form action="/api/auth/logout" method="POST">
             <Button type="submit" variant="ghost" size="sm">

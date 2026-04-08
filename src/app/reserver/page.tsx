@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { GuestBookingForm } from '@/components/features/booking/GuestBookingForm';
 import { Button } from '@/components/ui/Button';
-import { LogIn } from 'lucide-react';
+import { LogIn, Phone } from 'lucide-react';
 
 export default function ReserverPage() {
   return (
@@ -14,6 +14,12 @@ export default function ReserverPage() {
           </Link>
 
           <div className="flex items-center gap-4">
+            <a href="tel:+33608550315">
+              <Button variant="ghost" size="sm" className="flex items-center gap-2">
+                <Phone className="w-4 h-4" />
+                Appeler
+              </Button>
+            </a>
             <Link href="/connexion">
               <Button variant="ghost" size="sm" className="flex items-center gap-2">
                 <LogIn className="w-4 h-4" />

@@ -5,7 +5,7 @@ import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { ReservationLookupForm } from '@/components/features/booking/ReservationLookupForm';
 import { Button } from '@/components/ui/Button';
-import { LogIn } from 'lucide-react';
+import { LogIn, Phone } from 'lucide-react';
 
 function SuiviContent() {
   const searchParams = useSearchParams();
@@ -22,6 +22,12 @@ function SuiviContent() {
           </Link>
 
           <div className="flex items-center gap-4">
+            <a href="tel:+33608550315">
+              <Button variant="ghost" size="sm" className="flex items-center gap-2">
+                <Phone className="w-4 h-4" />
+                Appeler
+              </Button>
+            </a>
             <Link href="/connexion">
               <Button variant="ghost" size="sm" className="flex items-center gap-2">
                 <LogIn className="w-4 h-4" />
