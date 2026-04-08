@@ -7,10 +7,28 @@ import { AlertCircle, Check } from 'lucide-react';
 
 interface PricingConfig {
   id: string;
+  // Base pricing
   pricePerKm: number;
   pickupCharge: number;
   minimumPrice: number;
   maximumHourlyRate: number;
+
+  // CPAM pricing
+  cpamPricePerKm: number;
+  cpamPickupCharge: number;
+  cpamMinimumPrice: number;
+
+  // Airport rates
+  airportCdgPrice: number;
+  airportOrlyPrice: number;
+  airportBeauvaisPrice: number;
+
+  // CPAM airport rates
+  cpamAirportCdgPrice: number;
+  cpamAirportOrlyPrice: number;
+  cpamAirportBeauvaisPrice: number;
+
+  // Reservation fees
   reservationImmediateFee: number;
   reservationAdvanceFee: number;
 }
@@ -108,8 +126,8 @@ export function PricingManagement() {
         </div>
       )}
 
-      {/* Pricing Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {/* Pricing Grid - Three columns for better organization */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {/* Base Pricing Section */}
         <div className="bg-surface border border-on-surface/10 rounded-lg p-6 space-y-4">
           <h3 className="font-semibold text-lg text-on-surface">
@@ -195,6 +213,198 @@ export function PricingManagement() {
           </div>
         </div>
 
+        {/* CPAM Pricing Section */}
+        <div className="bg-surface border border-on-surface/10 rounded-lg p-6 space-y-4">
+          <h3 className="font-semibold text-lg text-on-surface">
+            Tarifs CPAM (Conventionnels)
+          </h3>
+
+          <div>
+            <label className="block text-sm font-semibold text-on-surface mb-2">
+              Prix CPAM au kilomètre (€/km)
+            </label>
+            <div className="flex items-center gap-2">
+              <Input
+                type="number"
+                step="0.01"
+                value={formData.cpamPricePerKm || ''}
+                onChange={(e) => handleInputChange('cpamPricePerKm', e.target.value)}
+                placeholder="0.91"
+              />
+              <span className="text-on-surface-dim">€</span>
+            </div>
+            <p className="text-xs text-on-surface-dim mt-1">
+              Tarif actuel: {pricing?.cpamPricePerKm.toFixed(2)}€
+            </p>
+          </div>
+
+          <div>
+            <label className="block text-sm font-semibold text-on-surface mb-2">
+              Prise en charge CPAM (€)
+            </label>
+            <div className="flex items-center gap-2">
+              <Input
+                type="number"
+                step="0.01"
+                value={formData.cpamPickupCharge || ''}
+                onChange={(e) => handleInputChange('cpamPickupCharge', e.target.value)}
+                placeholder="3.10"
+              />
+              <span className="text-on-surface-dim">€</span>
+            </div>
+            <p className="text-xs text-on-surface-dim mt-1">
+              Tarif actuel: {pricing?.cpamPickupCharge.toFixed(2)}€
+            </p>
+          </div>
+
+          <div>
+            <label className="block text-sm font-semibold text-on-surface mb-2">
+              Prix minimum CPAM (€)
+            </label>
+            <div className="flex items-center gap-2">
+              <Input
+                type="number"
+                step="0.01"
+                value={formData.cpamMinimumPrice || ''}
+                onChange={(e) => handleInputChange('cpamMinimumPrice', e.target.value)}
+                placeholder="6.00"
+              />
+              <span className="text-on-surface-dim">€</span>
+            </div>
+            <p className="text-xs text-on-surface-dim mt-1">
+              Tarif actuel: {pricing?.cpamMinimumPrice.toFixed(2)}€
+            </p>
+          </div>
+        </div>
+
+        {/* Airport Rates Section */}
+        <div className="bg-surface border border-on-surface/10 rounded-lg p-6 space-y-4">
+          <h3 className="font-semibold text-lg text-on-surface">
+            Tarifs Aéroport Standard
+          </h3>
+
+          <div>
+            <label className="block text-sm font-semibold text-on-surface mb-2">
+              CDG (€)
+            </label>
+            <div className="flex items-center gap-2">
+              <Input
+                type="number"
+                step="0.01"
+                value={formData.airportCdgPrice || ''}
+                onChange={(e) => handleInputChange('airportCdgPrice', e.target.value)}
+                placeholder="50.00"
+              />
+              <span className="text-on-surface-dim">€</span>
+            </div>
+            <p className="text-xs text-on-surface-dim mt-1">
+              Tarif actuel: {pricing?.airportCdgPrice.toFixed(2)}€
+            </p>
+          </div>
+
+          <div>
+            <label className="block text-sm font-semibold text-on-surface mb-2">
+              Orly (€)
+            </label>
+            <div className="flex items-center gap-2">
+              <Input
+                type="number"
+                step="0.01"
+                value={formData.airportOrlyPrice || ''}
+                onChange={(e) => handleInputChange('airportOrlyPrice', e.target.value)}
+                placeholder="36.00"
+              />
+              <span className="text-on-surface-dim">€</span>
+            </div>
+            <p className="text-xs text-on-surface-dim mt-1">
+              Tarif actuel: {pricing?.airportOrlyPrice.toFixed(2)}€
+            </p>
+          </div>
+
+          <div>
+            <label className="block text-sm font-semibold text-on-surface mb-2">
+              Beauvais (€)
+            </label>
+            <div className="flex items-center gap-2">
+              <Input
+                type="number"
+                step="0.01"
+                value={formData.airportBeauvaisPrice || ''}
+                onChange={(e) => handleInputChange('airportBeauvaisPrice', e.target.value)}
+                placeholder="65.00"
+              />
+              <span className="text-on-surface-dim">€</span>
+            </div>
+            <p className="text-xs text-on-surface-dim mt-1">
+              Tarif actuel: {pricing?.airportBeauvaisPrice.toFixed(2)}€
+            </p>
+          </div>
+        </div>
+
+        {/* CPAM Airport Rates Section */}
+        <div className="bg-surface border border-on-surface/10 rounded-lg p-6 space-y-4">
+          <h3 className="font-semibold text-lg text-on-surface">
+            Tarifs CPAM Aéroport
+          </h3>
+
+          <div>
+            <label className="block text-sm font-semibold text-on-surface mb-2">
+              CDG CPAM (€)
+            </label>
+            <div className="flex items-center gap-2">
+              <Input
+                type="number"
+                step="0.01"
+                value={formData.cpamAirportCdgPrice || ''}
+                onChange={(e) => handleInputChange('cpamAirportCdgPrice', e.target.value)}
+                placeholder="35.00"
+              />
+              <span className="text-on-surface-dim">€</span>
+            </div>
+            <p className="text-xs text-on-surface-dim mt-1">
+              Tarif actuel: {pricing?.cpamAirportCdgPrice.toFixed(2)}€
+            </p>
+          </div>
+
+          <div>
+            <label className="block text-sm font-semibold text-on-surface mb-2">
+              Orly CPAM (€)
+            </label>
+            <div className="flex items-center gap-2">
+              <Input
+                type="number"
+                step="0.01"
+                value={formData.cpamAirportOrlyPrice || ''}
+                onChange={(e) => handleInputChange('cpamAirportOrlyPrice', e.target.value)}
+                placeholder="25.00"
+              />
+              <span className="text-on-surface-dim">€</span>
+            </div>
+            <p className="text-xs text-on-surface-dim mt-1">
+              Tarif actuel: {pricing?.cpamAirportOrlyPrice.toFixed(2)}€
+            </p>
+          </div>
+
+          <div>
+            <label className="block text-sm font-semibold text-on-surface mb-2">
+              Beauvais CPAM (€)
+            </label>
+            <div className="flex items-center gap-2">
+              <Input
+                type="number"
+                step="0.01"
+                value={formData.cpamAirportBeauvaisPrice || ''}
+                onChange={(e) => handleInputChange('cpamAirportBeauvaisPrice', e.target.value)}
+                placeholder="45.00"
+              />
+              <span className="text-on-surface-dim">€</span>
+            </div>
+            <p className="text-xs text-on-surface-dim mt-1">
+              Tarif actuel: {pricing?.cpamAirportBeauvaisPrice.toFixed(2)}€
+            </p>
+          </div>
+        </div>
+
         {/* Reservation Fees Section */}
         <div className="bg-surface border border-on-surface/10 rounded-lg p-6 space-y-4">
           <h3 className="font-semibold text-lg text-on-surface">
@@ -250,10 +460,13 @@ export function PricingManagement() {
             </p>
             <div className="text-on-surface-dim text-xs space-y-1">
               <div>
-                Prix = Prise en charge + (Distance × €/km) + Frais réservation
+                Standard: Prise en charge + (Distance × €/km) + Frais réservation
               </div>
-              <div className="mt-2">
-                Le prix final ne peut pas être inférieur au prix minimum.
+              <div>
+                CPAM: Tarifs réduits + (Distance × €/km CPAM)
+              </div>
+              <div>
+                Aéroports: Forfait fixe (standard ou CPAM)
               </div>
             </div>
           </div>

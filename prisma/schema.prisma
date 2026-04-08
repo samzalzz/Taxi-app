@@ -510,11 +510,26 @@ enum TicketPriority {
 model PricingConfig {
   id                     String   @id @default(cuid())
 
-  // Base pricing
+  // Base pricing (tarifs normaux)
   pricePerKm             Float    @default(1.30)  // €/km
   pickupCharge           Float    @default(4.48)  // € (prise en charge)
   minimumPrice           Float    @default(8.00)  // € (prix minimum)
   maximumHourlyRate      Float    @default(42.15) // € (tarif horaire max)
+
+  // CPAM pricing (tarifs conventionnels)
+  cpamPricePerKm         Float    @default(0.91)  // €/km (tarif conventionnel CPAM)
+  cpamPickupCharge       Float    @default(3.10)  // € (prise en charge CPAM)
+  cpamMinimumPrice       Float    @default(6.00)  // € (prix minimum CPAM)
+
+  // Airport fixed rates (tarifs forfaitaires aéroports)
+  airportCdgPrice        Float    @default(50.0)  // € CDG
+  airportOrlyPrice       Float    @default(36.0)  // € Orly
+  airportBeauvaisPrice   Float    @default(65.0)  // € Beauvais
+
+  // CPAM-specific airport rates (tarifs forfaitaires CPAM aéroports)
+  cpamAirportCdgPrice    Float    @default(35.0)  // € CDG CPAM
+  cpamAirportOrlyPrice   Float    @default(25.0)  // € Orly CPAM
+  cpamAirportBeauvaisPrice Float  @default(45.0)  // € Beauvais CPAM
 
   // Reservation fees
   reservationImmediateFee Float   @default(4.0)   // € (réservation immédiate)

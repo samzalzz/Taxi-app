@@ -4,10 +4,28 @@ import { getPricingConfig, updatePricingConfig, UpdatePricingInput } from '@/per
 import { z } from 'zod';
 
 const updatePricingSchema = z.object({
+  // Base pricing
   pricePerKm: z.number().positive().optional(),
   pickupCharge: z.number().positive().optional(),
   minimumPrice: z.number().positive().optional(),
   maximumHourlyRate: z.number().positive().optional(),
+
+  // CPAM pricing
+  cpamPricePerKm: z.number().positive().optional(),
+  cpamPickupCharge: z.number().positive().optional(),
+  cpamMinimumPrice: z.number().positive().optional(),
+
+  // Airport rates
+  airportCdgPrice: z.number().positive().optional(),
+  airportOrlyPrice: z.number().positive().optional(),
+  airportBeauvaisPrice: z.number().positive().optional(),
+
+  // CPAM airport rates
+  cpamAirportCdgPrice: z.number().positive().optional(),
+  cpamAirportOrlyPrice: z.number().positive().optional(),
+  cpamAirportBeauvaisPrice: z.number().positive().optional(),
+
+  // Reservation fees
   reservationImmediateFee: z.number().nonnegative().optional(),
   reservationAdvanceFee: z.number().nonnegative().optional(),
 });
