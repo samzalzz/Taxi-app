@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/Button';
 import { Footer } from '@/components/layout/Footer';
 import { StatCounter } from '@/components/features/stats/StatCounter';
 import { BackgroundPathsDemo } from '@/components/features/home/BackgroundPathsDemo';
+import { Logo } from '@/components/ui/Logo';
 import { Car, Stethoscope, Users, Shield, Zap } from 'lucide-react';
 
 export const metadata = {
@@ -15,10 +16,8 @@ export default function HomePage() {
     <div className="min-h-screen bg-background">
       {/* Navigation */}
       <nav className="sticky top-0 z-50 bg-background/80 backdrop-blur-sm border-b border-on-surface/10">
-        <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
-          <div className="text-2xl font-serif font-bold text-primary">
-            Taxi Leblanc
-          </div>
+        <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+          <Logo href="/" className="h-10 w-auto" />
           <div className="flex gap-4">
             <Link href="/connexion">
               <Button variant="ghost">Connexion</Button>
