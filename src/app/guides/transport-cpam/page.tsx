@@ -56,10 +56,10 @@ export default function TransportCPAMGuidePage() {
         <div className="max-w-4xl mx-auto">
           <h2 className="text-sm font-bold text-primary uppercase mb-4">Sur cette page</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
-            <a href="#eligibilite" className="text-on-surface hover:text-primary transition">→ Éligibilité</a>
-            <a href="#ordonnance" className="text-on-surface hover:text-primary transition">→ Ordonnance</a>
-            <a href="#remboursement" className="text-on-surface hover:text-primary transition">→ Remboursement</a>
-            <a href="#procedure" className="text-on-surface hover:text-primary transition">→ Procédure</a>
+            <a href="#eligibilite" className="text-on-surface hover:text-primary transition">Éligibilité</a>
+            <a href="#ordonnance" className="text-on-surface hover:text-primary transition">Ordonnance</a>
+            <a href="#remboursement" className="text-on-surface hover:text-primary transition">Remboursement</a>
+            <a href="#procedure" className="text-on-surface hover:text-primary transition">Procédure</a>
           </div>
         </div>
       </section>
