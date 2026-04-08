@@ -32,7 +32,6 @@ export function GuestBookingForm() {
     reset,
   } = useGuestBooking();
 
-  const [isScheduled, setIsScheduled] = useState(false);
   const [codeCopied, setCodeCopied] = useState(false);
   const [showConfirmModal, setShowConfirmModal] = useState(false);
   const [showTooSoonModal, setShowTooSoonModal] = useState(false);
@@ -163,13 +162,6 @@ export function GuestBookingForm() {
 
   const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-    // Check if booking is too soon (immediate or within 2 hours)
-    if (!isScheduled || isTooSoon(formState.scheduledAt)) {
-      setShowTooSoonModal(true);
-      return;
-    }
-
     setShowConfirmModal(true);
   };
 
@@ -329,8 +321,29 @@ export function GuestBookingForm() {
         />
       </div>
 
-      {/* Vehicle Section */}
+      {/* Scheduling Section - NOW MANDATORY & PLACED AFTER ADDRESSES */}
       {formState.pickup && formState.dropoff && (
+        <div className="space-y-4">
+          <h3 className="text-lg font-semibold text-on-surface">Date et heure de départ</h3>
+          <p className="text-sm text-on-surface-dim">
+            Minimum <strong>2 heures à l'avance</strong>. Pour une prise en charge immédiate, appelez-nous au <a href="tel:+33608550315" className="text-primary font-semibold">+33 6 08 55 03 15</a>
+          </p>
+          <input
+            type="datetime-local"
+            value={formState.scheduledAt || ''}
+            onChange={e => setScheduledAt(e.target.value || null)}
+            min={getMinDateTime()}
+            required
+            className="w-full px-4 py-3 rounded-lg bg-surface-light text-on-surface border border-on-surface/10 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+          />
+          {isTooSoon(formState.scheduledAt) && (
+            <p className="text-sm text-error">⚠ Veuillez choisir au minimum 2 heures à l'avance</p>
+          )}
+        </div>
+      )}
+
+      {/* Vehicle Section - AFTER SCHEDULING */}
+      {formState.pickup && formState.dropoff && formState.scheduledAt && !isTooSoon(formState.scheduledAt) && (
         <VehicleSelector
           selected={formState.vehicleType}
           onSelect={setVehicleType}
@@ -424,36 +437,6 @@ export function GuestBookingForm() {
         </div>
       )}
 
-      {/* Scheduling Section */}
-      {formState.vehicleType && (
-        <div className="space-y-4">
-          <label className="flex items-center gap-3">
-            <input
-              type="checkbox"
-              checked={isScheduled}
-              onChange={e => {
-                setIsScheduled(e.target.checked);
-                if (!e.target.checked) setScheduledAt(null);
-              }}
-              className="w-4 h-4 rounded border-on-surface/20 accent-primary"
-            />
-            <span className="text-sm font-medium text-on-surface">
-              Planifier pour plus tard
-            </span>
-          </label>
-
-          {isScheduled && (
-            <input
-              type="datetime-local"
-              value={formState.scheduledAt || ''}
-              onChange={e => setScheduledAt(e.target.value || null)}
-              min={getMinDateTime()}
-              className="w-full px-4 py-2 rounded-lg bg-surface-light text-on-surface border border-on-surface/10 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
-            />
-          )}
-        </div>
-      )}
-
       {/* Error Message */}
       {error && (
         <div className="p-4 bg-error/10 border border-error/20 rounded-lg">
@@ -462,7 +445,7 @@ export function GuestBookingForm() {
       )}
 
       {/* Price Estimate & Submit */}
-      {formState.vehicleType && priceEstimate && (
+      {formState.vehicleType && formState.scheduledAt && !isTooSoon(formState.scheduledAt) && priceEstimate && (
         <>
           <PriceEstimate estimate={priceEstimate} />
         </>
@@ -497,16 +480,16 @@ export function GuestBookingForm() {
           >
             ⚠ Sélectionnez votre destination
           </Button>
-        ) : !formState.vehicleType ? (
+        ) : !formState.scheduledAt ? (
           <Button
             type="button"
             disabled={true}
             className="w-full"
             variant="secondary"
           >
-            ⚠ Choisissez un type de véhicule
+            ⚠ Sélectionnez la date et l'heure
           </Button>
-        ) : isScheduled && isTooSoon(formState.scheduledAt) ? (
+        ) : isTooSoon(formState.scheduledAt) ? (
           <Button
             type="button"
             disabled={true}
@@ -515,14 +498,14 @@ export function GuestBookingForm() {
           >
             ⚠ Minimum 2 heures à l'avance requis
           </Button>
-        ) : !isScheduled ? (
+        ) : !formState.vehicleType ? (
           <Button
             type="button"
             disabled={true}
             className="w-full"
             variant="secondary"
           >
-            ⚠ Planifiez au minimum 2 heures à l'avance
+            ⚠ Choisissez un type de véhicule
           </Button>
         ) : (
           <Button

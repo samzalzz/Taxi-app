@@ -1,12 +1,11 @@
 'use client';
 
-import { useState } from 'react';
 import { useBooking } from '@/lib/hooks/useBooking';
 import { AddressPicker } from './AddressPicker';
 import { VehicleSelector } from './VehicleSelector';
 import { PriceEstimate } from './PriceEstimate';
 import { Button } from '@/components/ui/Button';
-import { MapPin, Flag, Clock, CheckCircle, AlertCircle } from 'lucide-react';
+import { MapPin, Flag, CheckCircle } from 'lucide-react';
 import Link from 'next/link';
 
 interface BookingFormProps {
@@ -31,9 +30,6 @@ export function BookingForm({ onSuccess }: BookingFormProps) {
     submitBooking,
     reset,
   } = useBooking();
-
-  const [isScheduled, setIsScheduled] = useState(false);
-  const [showTooSoonModal, setShowTooSoonModal] = useState(false);
 
   // Generate min datetime (now + 2 hours)
   const getMinDateTime = () => {
@@ -103,59 +99,9 @@ export function BookingForm({ onSuccess }: BookingFormProps) {
   }
 
   return (
-    <>
-      {/* Too Soon Modal - Less than 2 hours */}
-      {showTooSoonModal && (
-        <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
-          <div className="bg-surface rounded-lg p-8 max-w-md w-full border border-on-surface/10 space-y-6">
-            <div className="flex items-start gap-4">
-              <AlertCircle className="w-6 h-6 text-warning flex-shrink-0 mt-1" />
-              <div>
-                <h3 className="text-lg font-bold text-on-surface mb-2">
-                  Délai trop court
-                </h3>
-                <p className="text-sm text-on-surface-dim">
-                  Les réservations doivent être faites au minimum <strong>2 heures à l'avance</strong>. Pour une réservation immédiate, nous vous conseillons d'appeler directement.
-                </p>
-              </div>
-            </div>
-
-            <div className="bg-primary/10 border border-primary/30 p-4 rounded-lg">
-              <p className="text-sm text-on-surface-dim mb-2">Appelez notre centrale:</p>
-              <a
-                href="tel:+33608550315"
-                className="text-lg font-bold text-primary hover:text-primary-light transition-colors block text-center"
-              >
-                +33 6 08 55 03 15
-              </a>
-              <p className="text-xs text-on-surface-dim text-center mt-2">24h/24 - 7j/7</p>
-            </div>
-
-            <p className="text-xs text-on-surface-dim text-center">
-              Disponible pour les réservations à partir de <strong>2 heures</strong>
-            </p>
-
-            <Button
-              onClick={() => setShowTooSoonModal(false)}
-              variant="primary"
-              className="w-full"
-            >
-              Fermer
-            </Button>
-          </div>
-        </div>
-      )}
-
-      <form
+    <form
       onSubmit={async e => {
         e.preventDefault();
-
-        // Check if booking is too soon (immediate or within 2 hours)
-        if (!isScheduled || isTooSoon(formState.scheduledAt)) {
-          setShowTooSoonModal(true);
-          return;
-        }
-
         await submitBooking();
         onSuccess?.(bookingResult?.id);
       }}
@@ -184,8 +130,29 @@ export function BookingForm({ onSuccess }: BookingFormProps) {
         />
       </div>
 
-      {/* Vehicle Section */}
+      {/* Scheduling Section - NOW MANDATORY & PLACED AFTER ADDRESSES */}
       {formState.pickup && formState.dropoff && (
+        <div className="space-y-4">
+          <h3 className="text-lg font-semibold text-on-surface">Date et heure de départ</h3>
+          <p className="text-sm text-on-surface-dim">
+            Minimum <strong>2 heures à l'avance</strong>. Pour une prise en charge immédiate, appelez-nous au <a href="tel:+33608550315" className="text-primary font-semibold">+33 6 08 55 03 15</a>
+          </p>
+          <input
+            type="datetime-local"
+            value={formState.scheduledAt || ''}
+            onChange={e => setScheduledAt(e.target.value || null)}
+            min={getMinDateTime()}
+            required
+            className="w-full px-4 py-3 rounded-lg bg-surface-light text-on-surface border border-on-surface/10 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+          />
+          {isTooSoon(formState.scheduledAt) && (
+            <p className="text-sm text-error">⚠ Veuillez choisir au minimum 2 heures à l'avance</p>
+          )}
+        </div>
+      )}
+
+      {/* Vehicle Section - AFTER SCHEDULING */}
+      {formState.pickup && formState.dropoff && formState.scheduledAt && !isTooSoon(formState.scheduledAt) && (
         <VehicleSelector
           selected={formState.vehicleType}
           onSelect={setVehicleType}
@@ -285,47 +252,8 @@ export function BookingForm({ onSuccess }: BookingFormProps) {
         </div>
       )}
 
-      {/* Schedule Section */}
-      {formState.vehicleType && (
-        <div className="space-y-4">
-          <div className="flex items-center gap-3">
-            <label className="flex items-center gap-2 cursor-pointer flex-1">
-              <input
-                type="checkbox"
-                checked={isScheduled}
-                onChange={e => {
-                  setIsScheduled(e.target.checked);
-                  if (!e.target.checked) setScheduledAt(null);
-                }}
-                className="w-5 h-5 rounded accent-primary"
-              />
-              <span className="text-on-surface font-medium">Planifier pour plus tard</span>
-            </label>
-          </div>
-
-          {isScheduled && (
-            <div className="pl-8">
-              <label className="block text-sm font-medium text-on-surface-dim mb-2 flex items-center gap-2">
-                <Clock className="w-4 h-4" />
-                Date et heure
-              </label>
-              <input
-                type="datetime-local"
-                value={formState.scheduledAt || ''}
-                onChange={e => setScheduledAt(e.target.value || null)}
-                min={getMinDateTime()}
-                className="w-full px-4 py-3 rounded-lg border border-on-surface/10 bg-surface text-on-surface focus:border-primary focus:outline-none transition-colors"
-              />
-              <p className="text-xs text-on-surface-dim mt-1">
-                Minimum 2 heures à l'avance
-              </p>
-            </div>
-          )}
-        </div>
-      )}
-
       {/* Price Estimate & Submit */}
-      {formState.pickup && formState.dropoff && formState.vehicleType && (
+      {formState.pickup && formState.dropoff && formState.scheduledAt && !isTooSoon(formState.scheduledAt) && formState.vehicleType && (
         <div className="space-y-6">
           <PriceEstimate estimate={priceEstimate} />
 
@@ -335,41 +263,18 @@ export function BookingForm({ onSuccess }: BookingFormProps) {
             </div>
           )}
 
-          {!isScheduled ? (
-            <Button
-              type="button"
-              disabled
-              variant="secondary"
-              size="xl"
-              fullWidth
-            >
-              ⚠ Planifiez au minimum 2 heures à l'avance
-            </Button>
-          ) : isTooSoon(formState.scheduledAt) ? (
-            <Button
-              type="button"
-              disabled
-              variant="secondary"
-              size="xl"
-              fullWidth
-            >
-              ⚠ Minimum 2 heures à l'avance requis
-            </Button>
-          ) : (
-            <Button
-              type="submit"
-              variant="primary"
-              size="xl"
-              fullWidth
-              isLoading={isSubmitting}
-              disabled={!priceEstimate || isSubmitting}
-            >
-              {'Planifier la course'}
-            </Button>
-          )}
+          <Button
+            type="submit"
+            variant="primary"
+            size="xl"
+            fullWidth
+            isLoading={isSubmitting}
+            disabled={!priceEstimate || isSubmitting}
+          >
+            {'Planifier la course'}
+          </Button>
         </div>
       )}
     </form>
-    </>
   );
 }
