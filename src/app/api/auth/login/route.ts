@@ -16,8 +16,9 @@ export async function POST(request: NextRequest) {
                request.headers.get('x-real-ip') ||
                'unknown';
 
-    // Check rate limit (max 5 attempts per 15 minutes)
-    if (!checkRateLimit(ip, { maxAttempts: 5, windowMs: 15 * 60 * 1000 })) {
+    // Check rate limit (max 20 attempts per 15 minutes in dev, 5 in production)
+    const maxAttempts = process.env.NODE_ENV === 'production' ? 5 : 20;
+    if (!checkRateLimit(ip, { maxAttempts, windowMs: 15 * 60 * 1000 })) {
       return NextResponse.json(
         {
           error: 'Trop de tentatives de connexion. Veuillez réessayer dans 15 minutes.'
