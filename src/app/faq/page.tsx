@@ -112,9 +112,25 @@ export default function FAQPage() {
           <h1 className="text-5xl md:text-6xl font-serif font-bold text-on-surface mb-6">
             Questions Fréquentes
           </h1>
-          <p className="text-lg text-on-surface-dim">
+          <p className="text-lg text-on-surface-dim mb-8">
             Trouvez les réponses à vos questions sur nos services, réservations et tarifs.
           </p>
+
+          {/* Quick Links to Guides */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <Link href="/guides/comment-reserver" className="p-4 rounded-lg bg-surface hover:bg-surface-light transition border border-primary/20">
+              <p className="font-semibold text-on-surface mb-1">📖 Comment Réserver?</p>
+              <p className="text-sm text-on-surface-dim">Guide complet en 6 étapes</p>
+            </Link>
+            <Link href="/guides/transport-cpam" className="p-4 rounded-lg bg-surface hover:bg-surface-light transition border border-primary/20">
+              <p className="font-semibold text-on-surface mb-1">💰 CPAM & Remboursement</p>
+              <p className="text-sm text-on-surface-dim">Procédure détaillée + FAQ</p>
+            </Link>
+            <Link href="/estimation-tarif" className="p-4 rounded-lg bg-surface hover:bg-surface-light transition border border-primary/20">
+              <p className="font-semibold text-on-surface mb-1">💵 Estimateur Tarifs</p>
+              <p className="text-sm text-on-surface-dim">Prix aéroports 2026</p>
+            </Link>
+          </div>
         </div>
       </section>
 

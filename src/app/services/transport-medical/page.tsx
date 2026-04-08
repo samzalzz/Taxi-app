@@ -92,6 +92,18 @@ export default function TransportMedicalPage() {
               </div>
             </div>
           </div>
+
+          {/* Link to Complete Guide */}
+          <div className="mt-12 rounded-lg border-l-4 border-blue-500 bg-blue-500/5 p-8">
+            <h3 className="text-2xl font-bold text-on-surface mb-3">📚 Guide Complet: Comment Obtenir un Remboursement CPAM?</h3>
+            <p className="text-on-surface-dim mb-4">
+              Vous souhaitez comprendre en détail comment fonctionne le remboursement CPAM? Notre guide complet explique:
+              la procédure étape-par-étape, les documents requis, les conditions ALD, et les délais de remboursement.
+            </p>
+            <Link href="/guides/transport-cpam" className="inline-flex items-center gap-2 text-blue-500 hover:underline font-semibold">
+              📖 Lire le guide complet du transport CPAM →
+            </Link>
+          </div>
         </div>
       </section>
 

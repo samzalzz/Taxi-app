@@ -111,22 +111,43 @@ export default function TransportAeroportPage() {
       <section className="py-20 px-4 bg-surface">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-4xl font-serif font-bold text-on-surface mb-12">Aéroports desservis</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
             <div className="rounded-lg border border-on-surface/10 p-6 bg-background">
               <h3 className="text-2xl font-bold text-primary mb-3">Charles de Gaulle</h3>
               <p className="text-on-surface-dim mb-4">L'aéroport international majeur de l'Île-de-France, accessible via 2-3 routes principales.</p>
-              <p className="font-semibold text-on-surface">À partir de 55€</p>
+              <p className="font-semibold text-on-surface mb-4">À partir de 55€</p>
+              <Link href="/estimation-tarif" className="text-primary hover:underline text-sm font-semibold">
+                → En savoir plus sur les tarifs
+              </Link>
             </div>
             <div className="rounded-lg border border-on-surface/10 p-6 bg-background">
               <h3 className="text-2xl font-bold text-primary mb-3">Orly</h3>
               <p className="text-on-surface-dim mb-4">Deuxième aéroport parisien, plus proche de nombreux quartiers de la capitale.</p>
-              <p className="font-semibold text-on-surface">À partir de 45€</p>
+              <p className="font-semibold text-on-surface mb-4">À partir de 45€</p>
+              <Link href="/estimation-tarif" className="text-primary hover:underline text-sm font-semibold">
+                → En savoir plus sur les tarifs
+              </Link>
             </div>
             <div className="rounded-lg border border-on-surface/10 p-6 bg-background">
               <h3 className="text-2xl font-bold text-primary mb-3">Beauvais</h3>
               <p className="text-on-surface-dim mb-4">Aéroport nord utilisé par de nombreuses compagnies low-cost.</p>
-              <p className="font-semibold text-on-surface">À partir de 65€</p>
+              <p className="font-semibold text-on-surface mb-4">À partir de 65€</p>
+              <Link href="/estimation-tarif" className="text-primary hover:underline text-sm font-semibold">
+                → En savoir plus sur les tarifs
+              </Link>
             </div>
+          </div>
+
+          {/* Pricing Info Section */}
+          <div className="rounded-lg border-l-4 border-primary bg-primary/5 p-8 mb-12">
+            <h3 className="text-2xl font-bold text-on-surface mb-3">💰 Tarifs Forfaitaires Garantis</h3>
+            <p className="text-on-surface-dim mb-4">
+              Les tarifs affichés sont des <strong>forfaits réglementés</strong> établis par la Préfecture de Police de Paris.
+              Ils s'appliquent à tous les taxis parisiens conventionnés — aucune surprise, aucun supplément caché.
+            </p>
+            <Link href="/estimation-tarif" className="inline-flex items-center gap-2 text-primary hover:underline font-semibold">
+              📊 Voir l'estimateur de tarif détaillé →
+            </Link>
           </div>
         </div>
       </section>
