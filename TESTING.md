@@ -289,10 +289,64 @@ Ce document contient tous les tests et vérifications pour les modifications ré
 
 ---
 
+## 🆕 Nouvelles Features (Session actuelle)
+
+### 1️⃣ Calendrier - Modal Fix + Vue 24h
+- [ ] Calendrier: Navigation (prev/next mois) → Modal se ferme ✅
+- [ ] Calendrier: Switch Mois↔Semaine → Modal se ferme ✅
+- [ ] Calendrier Semaine: Affichage 00:00–23:00 (24 heures) ✅
+
+**Commits:**
+- `6a8b557` - Calendar: Fix modal persistence + extend week view to 24h
+
+### 2️⃣ Dark Mode Toggle
+- [ ] Page d'accueil: Toggle Sun/Moon visible en haut à droite
+- [ ] Dashboard: Toggle Sun/Moon visible en header
+- [ ] Admin Panel: Toggle Sun/Moon visible en header
+- [ ] Clic toggle: Mode clair ↔ Sombre fluide
+- [ ] Refresh page: Préférence sauvegardée (localStorage)
+- [ ] Premier visite: Respecte la préférence système (prefers-color-scheme)
+
+**Couleurs Light Mode:**
+- Background: #f8f6f3
+- Surface: #ffffff
+- On-Surface: #1a1a1a
+- On-Surface-Dim: #6b6460
+
+**Couleurs Dark Mode:** (inchangées)
+- Background: #131313
+- Surface: #121212
+- On-Surface: #e5e2e1
+- On-Surface-Dim: #b8b5ae
+
+**Commits:**
+- `15c6ba1` - Dark Mode Toggle with CSS Variables
+
+### 3️⃣ Adresses Favorites
+- [ ] Réservation: Dropdown montre adresses favorites en haut
+- [ ] Clic sur favorite: Remplir formulaire automatiquement
+- [ ] Bouton ⭐ sur résultat: Sauvegarder comme favorite
+- [ ] Modal pour label: "Domicile", "Travail", custom label
+- [ ] Adresse sauvegardée avec: Label, Adresse, Ville, Lat/Lng
+- [ ] Hover sur favorite: Bouton 🗑️ apparaît, suppression confirmée
+
+**Base de données:** SavedAddress model créé (nécessite migration)
+
+**Commits:**
+- `245cf91` - Saved Addresses / Favorite Addresses
+
+**⚠️ Migration Prisma requise (sur serveur Coolify):**
+```bash
+npx prisma db push
+npx prisma generate
+```
+
+---
+
 ## ✅ Checklist Finale
 
 - [ ] Tous les tests manuels validés
 - [ ] Pas d'erreur en console
-- [ ] Déploiement sur Coolify réussi
+- [ ] Déploiement sur Coolify réussi (avec migration Prisma)
 - [ ] Features visibles en production
 - [ ] Users peuvent tester les nouvelles fonctionnalités

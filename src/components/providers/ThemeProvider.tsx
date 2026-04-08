@@ -15,12 +15,10 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   const [theme, setTheme] = useState<Theme>('light');
   const [mounted, setMounted] = useState(false);
 
-  // Initialize theme from localStorage and system preference
+  // Initialize theme from localStorage (dark mode by default)
   useEffect(() => {
     const savedTheme = localStorage.getItem('theme') as Theme | null;
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-    const initialTheme = savedTheme || (prefersDark ? 'dark' : 'light');
+    const initialTheme = savedTheme || 'dark'; // Dark mode is default
     setTheme(initialTheme);
     applyTheme(initialTheme);
     setMounted(true);
@@ -28,10 +26,10 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
 
   const applyTheme = (newTheme: Theme) => {
     const html = document.documentElement;
-    if (newTheme === 'dark') {
-      html.classList.add('dark');
+    if (newTheme === 'light') {
+      html.classList.add('light');
     } else {
-      html.classList.remove('dark');
+      html.classList.remove('light');
     }
     localStorage.setItem('theme', newTheme);
   };
