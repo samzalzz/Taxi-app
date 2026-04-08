@@ -110,6 +110,7 @@ export function useBooking(): UseBookingReturn {
       const response = await fetch('/api/bookings', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
         body: JSON.stringify({
           pickupAddress: formState.pickup.address,
           pickupCity: formState.pickup.city,
@@ -130,7 +131,14 @@ export function useBooking(): UseBookingReturn {
 
       if (!response.ok) {
         const data = await response.json();
-        setError(data.error || 'Erreur lors de la création de la réservation');
+        if (data.details) {
+          const details = Array.isArray(data.details)
+            ? data.details.map((e: any) => e.message).join(', ')
+            : JSON.stringify(data.details);
+          setError(`Erreur: ${details}`);
+        } else {
+          setError(data.error || 'Erreur lors de la création de la réservation');
+        }
         return;
       }
 

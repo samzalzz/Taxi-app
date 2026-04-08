@@ -124,6 +124,7 @@ export function useDriverCreateBooking(): UseDriverCreateBookingReturn {
       const response = await fetch('/api/driver/bookings/create', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
         body: JSON.stringify({
           clientName: formState.clientName,
           clientPhone: formState.clientPhone,
@@ -147,7 +148,14 @@ export function useDriverCreateBooking(): UseDriverCreateBookingReturn {
 
       if (!response.ok) {
         const data = await response.json();
-        setError(data.error || 'Erreur lors de la création de la course');
+        if (data.details) {
+          const details = Array.isArray(data.details)
+            ? data.details.map((e: any) => e.message).join(', ')
+            : JSON.stringify(data.details);
+          setError(`Erreur: ${details}`);
+        } else {
+          setError(data.error || 'Erreur lors de la création de la course');
+        }
         return;
       }
 

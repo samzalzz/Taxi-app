@@ -164,7 +164,14 @@ export function useGuestBooking(): UseGuestBookingReturn {
 
       if (!response.ok) {
         const data = await response.json();
-        setError(data.error || 'Erreur lors de la création de la réservation');
+        if (data.details) {
+          const details = Array.isArray(data.details)
+            ? data.details.map((e: any) => e.message).join(', ')
+            : JSON.stringify(data.details);
+          setError(`Erreur: ${details}`);
+        } else {
+          setError(data.error || 'Erreur lors de la création de la réservation');
+        }
         return;
       }
 

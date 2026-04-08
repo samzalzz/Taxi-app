@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Bell } from 'lucide-react';
 import { NotificationDropdown } from './NotificationDropdown';
+import { useAuthContext } from '@/components/providers/AuthProvider';
 
 interface Notification {
   id: string;
@@ -20,14 +21,20 @@ interface Notification {
  * Uses SSE for real-time updates.
  */
 export function NotificationBell() {
+  const { isAuthenticated } = useAuthContext();
   const [notifications, setNotifications] = useState<Notification[]>([]);
   const [isOpen, setIsOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const eventSourceRef = useRef<EventSource | null>(null);
 
-  // Fetch initial notifications and set up SSE
+  // Fetch initial notifications and set up SSE (only if authenticated)
   useEffect(() => {
+    if (!isAuthenticated) {
+      setIsLoading(false);
+      return;
+    }
+
     const fetchInitial = async () => {
       try {
         const response = await fetch('/api/notifications');
@@ -68,7 +75,7 @@ export function NotificationBell() {
         eventSourceRef.current.close();
       }
     };
-  }, []);
+  }, [isAuthenticated]);
 
   // Close dropdown when clicking outside
   useEffect(() => {
