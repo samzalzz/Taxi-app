@@ -6,6 +6,7 @@ import ErrorBoundary from '@/components/common/ErrorBoundary';
 import { AuthProvider } from '@/components/providers/AuthProvider';
 import { ThemeProvider } from '@/components/providers/ThemeProvider';
 import { CookieConsentBanner } from '@/components/common/CookieConsentBanner';
+import { CGUConsentBanner } from '@/components/common/CGUConsentBanner';
 
 export function ClientProviders({ children }: { children: ReactNode }) {
   return (
@@ -14,7 +15,8 @@ export function ClientProviders({ children }: { children: ReactNode }) {
         <AuthProvider>
           <ToastProvider>
             {children}
-            {/* Cookie consent banner renders at bottom of page globally */}
+            {/* Consent banners render at bottom of page globally (stacked) */}
+            <CGUConsentBanner />
             <CookieConsentBanner />
           </ToastProvider>
         </AuthProvider>
