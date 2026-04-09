@@ -5,7 +5,7 @@ import { HomeHeader } from '@/components/layout/HomeHeader';
 export const metadata: Metadata = {
   title: 'Politique de Confidentialité | Taxi Leblanc',
   description: 'Politique de confidentialité et protection des données personnelles chez Taxi Leblanc',
-  noindex: true,
+  robots: 'noindex',
 };
 
 export default function ConfidentialitePage() {

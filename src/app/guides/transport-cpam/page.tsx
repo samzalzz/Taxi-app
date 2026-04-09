@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { Footer } from '@/components/layout/Footer';
 import { HomeHeader } from '@/components/layout/HomeHeader';
 import { Button } from '@/components/ui/Button';
-import { CheckCircle, Info, AlertCircle, FileText, Clock, Users } from 'lucide-react';
+import { CheckCircle, Info, FileText, Clock, Users } from 'lucide-react';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
@@ -105,8 +105,8 @@ export default function TransportCPAMGuidePage() {
                   <p className="text-on-surface-dim text-sm mb-4">Vous êtes remboursé à 100% si:</p>
                   <ul className="space-y-2 text-on-surface-dim text-sm">
                     <li>✓ Vous avez une <strong>ALD</strong> (Affection Longue Durée)</li>
-                    <li>✓ Personne âgée (>65 ans) en situation de dépendance</li>
-                    <li>✓ Handicap reconnu (>80% d'incapacité)</li>
+                    <li>✓ Personne âgée (&gt;65 ans) en situation de dépendance</li>
+                    <li>✓ Handicap reconnu (&gt;80% d&apos;incapacité)</li>
                     <li>✓ Accident du travail (AT)</li>
                     <li>✓ Maladie professionnelle (MP)</li>
                     <li>✓ Femme enceinte (6e au 12e mois)</li>

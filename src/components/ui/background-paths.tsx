@@ -50,8 +50,8 @@ export function BackgroundPaths({
                                             damping: 25,
                                         }}
                                         className="inline-block text-transparent bg-clip-text
-                                        bg-gradient-to-r from-primary via-primary to-primary/80
-                                        dark:from-primary dark:via-primary dark:to-primary/80"
+                                        bg-gradient-to-r from-primary via-primary-light to-primary
+                                        dark:from-primary dark:via-primary-light dark:to-primary"
                                     >
                                         {letter}
                                     </motion.span>

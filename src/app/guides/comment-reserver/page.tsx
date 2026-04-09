@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { Footer } from '@/components/layout/Footer';
 import { HomeHeader } from '@/components/layout/HomeHeader';
 import { Button } from '@/components/ui/Button';
-import { CheckCircle, Clock, MapPin, CreditCard, Smartphone } from 'lucide-react';
+import { CheckCircle, MapPin, CreditCard, Smartphone } from 'lucide-react';
 import Link from 'next/link';
 
 export const metadata: Metadata = {

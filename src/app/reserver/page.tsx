@@ -2,7 +2,6 @@ import Link from 'next/link';
 import { HomeHeader } from '@/components/layout/HomeHeader';
 import { Footer } from '@/components/layout/Footer';
 import { GuestBookingForm } from '@/components/features/booking/GuestBookingForm';
-import { Button } from '@/components/ui/Button';
 
 export default function ReserverPage() {
   return (

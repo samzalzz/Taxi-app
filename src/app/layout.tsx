@@ -37,7 +37,7 @@ export default function RootLayout({
         <meta name="theme-color" content="#d4af37" />
         <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='75' font-size='75' fill='%23f5c518'>🚕</text></svg>" />
       </head>
-      <body className="bg-background text-on-surface antialiased">
+      <body className="bg-background text-on-surface antialiased bg-cloth">
         <ClientProviders>
           {children}
         </ClientProviders>

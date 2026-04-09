@@ -5,7 +5,7 @@ import { HomeHeader } from '@/components/layout/HomeHeader';
 export const metadata: Metadata = {
   title: 'Conditions d\'Utilisation | Taxi Leblanc',
   description: 'Conditions générales d\'utilisation du service Taxi Leblanc',
-  noindex: true,
+  robots: 'noindex',
 };
 
 export default function ConditionsPage() {
