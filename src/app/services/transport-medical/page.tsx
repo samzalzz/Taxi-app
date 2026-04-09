@@ -23,16 +23,16 @@ export default function TransportMedicalPage() {
       <HomeHeader />
 
       {/* Hero Section */}
-      <section className="py-20 px-4 bg-gradient-to-br from-blue-500/10 via-background to-background">
+      <section className="py-20 px-4 bg-gradient-to-br from-primary/10 via-background to-background">
         <div className="max-w-4xl mx-auto">
           <div className="flex items-center gap-4 mb-6">
-            <div className="w-12 h-12 rounded-lg bg-blue-500/20 flex items-center justify-center">
-              <Heart className="w-6 h-6 text-blue-500" />
+            <div className="w-12 h-12 rounded-lg bg-primary/20 flex items-center justify-center">
+              <Heart className="w-6 h-6 text-primary" />
             </div>
-            <span className="text-sm font-semibold text-blue-500 uppercase">CPAM AGRÉÉ</span>
+            <span className="text-sm font-semibold text-primary uppercase">CPAM AGRÉÉ</span>
           </div>
           <h1 className="text-5xl md:text-6xl font-serif font-bold text-on-surface mb-6">
-            Transport Médical <em className="text-blue-500 not-italic">Remboursé par l'Assurance Maladie</em>
+            Transport Médical <em className="text-primary not-italic">Remboursé par l'Assurance Maladie</em>
           </h1>
           <p className="text-lg text-on-surface-dim mb-8 leading-relaxed">
             Service spécialisé agréé CPAM pour tous vos trajets de santé. Chauffeurs formés, véhicules adaptés aux personnes à mobilité réduite, confort et sécurité garantis.
@@ -49,7 +49,7 @@ export default function TransportMedicalPage() {
       </section>
 
       {/* CPAM Information */}
-      <section className="py-20 px-4 bg-blue-500/5">
+      <section className="py-20 px-4 bg-primary/5">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-4xl font-serif font-bold text-on-surface mb-8">
             Comment fonctionne le remboursement CPAM ?
@@ -57,21 +57,21 @@ export default function TransportMedicalPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div>
               <div className="flex items-start gap-4 mb-6">
-                <CheckCircle className="w-6 h-6 text-blue-500 flex-shrink-0 mt-1" />
+                <CheckCircle className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
                 <div>
                   <h3 className="text-xl font-semibold text-on-surface mb-2">Ordonnance médicale requise</h3>
                   <p className="text-on-surface-dim">Votre médecin doit établir une ordonnance pour un transport de santé.</p>
                 </div>
               </div>
               <div className="flex items-start gap-4 mb-6">
-                <CheckCircle className="w-6 h-6 text-blue-500 flex-shrink-0 mt-1" />
+                <CheckCircle className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
                 <div>
                   <h3 className="text-xl font-semibold text-on-surface mb-2">Transport avec taxi agréé</h3>
                   <p className="text-on-surface-dim">Réservez avec Taxi Leblanc, agréé CPAM en Île-de-France.</p>
                 </div>
               </div>
               <div className="flex items-start gap-4">
-                <CheckCircle className="w-6 h-6 text-blue-500 flex-shrink-0 mt-1" />
+                <CheckCircle className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
                 <div>
                   <h3 className="text-xl font-semibold text-on-surface mb-2">Remboursement automatique</h3>
                   <p className="text-on-surface-dim">La CPAM rembourse directement le transport sans frais pour vous.</p>
@@ -79,8 +79,8 @@ export default function TransportMedicalPage() {
               </div>
             </div>
             <div>
-              <div className="rounded-lg border border-blue-500/20 bg-blue-500/5 p-6">
-                <h3 className="text-xl font-bold text-blue-500 mb-4">Trajets médicaux couverts :</h3>
+              <div className="rounded-lg border border-primary/20 bg-primary/5 p-6">
+                <h3 className="text-xl font-bold text-primary mb-4">Trajets médicaux couverts :</h3>
                 <ul className="space-y-2 text-on-surface-dim">
                   <li>✓ Consultations médicales et spécialisées</li>
                   <li>✓ Examens biologiques et radiologiques</li>
@@ -94,13 +94,13 @@ export default function TransportMedicalPage() {
           </div>
 
           {/* Link to Complete Guide */}
-          <div className="mt-12 rounded-lg border-l-4 border-blue-500 bg-blue-500/5 p-8">
+          <div className="mt-12 rounded-lg border-l-4 border-primary bg-primary/5 p-8">
             <h3 className="text-2xl font-bold text-on-surface mb-3">📚 Guide Complet: Comment Obtenir un Remboursement CPAM?</h3>
             <p className="text-on-surface-dim mb-4">
               Vous souhaitez comprendre en détail comment fonctionne le remboursement CPAM? Notre guide complet explique:
               la procédure étape-par-étape, les documents requis, les conditions ALD, et les délais de remboursement.
             </p>
-            <Link href="/guides/transport-cpam" className="inline-flex items-center gap-2 text-blue-500 hover:underline font-semibold">
+            <Link href="/guides/transport-cpam" className="inline-flex items-center gap-2 text-primary hover:underline font-semibold">
               📖 Lire le guide complet du transport CPAM →
             </Link>
           </div>
@@ -115,7 +115,7 @@ export default function TransportMedicalPage() {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="flex gap-4">
-              <Accessibility className="w-6 h-6 text-blue-500 flex-shrink-0 mt-1" />
+              <Accessibility className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
               <div>
                 <h3 className="text-xl font-semibold text-on-surface mb-2">Véhicules adaptés</h3>
                 <p className="text-on-surface-dim">Accès facile pour les personnes à mobilité réduite, fauteuils roulants acceptés.</p>
@@ -123,7 +123,7 @@ export default function TransportMedicalPage() {
             </div>
 
             <div className="flex gap-4">
-              <Users className="w-6 h-6 text-blue-500 flex-shrink-0 mt-1" />
+              <Users className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
               <div>
                 <h3 className="text-xl font-semibold text-on-surface mb-2">Chauffeurs formés</h3>
                 <p className="text-on-surface-dim">Formation en gestion des personnes âgées et en premiers secours.</p>
@@ -131,7 +131,7 @@ export default function TransportMedicalPage() {
             </div>
 
             <div className="flex gap-4">
-              <Heart className="w-6 h-6 text-blue-500 flex-shrink-0 mt-1" />
+              <Heart className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
               <div>
                 <h3 className="text-xl font-semibold text-on-surface mb-2">Confort maximum</h3>
                 <p className="text-on-surface-dim">Trajets à faible vitesse, pas de braquages brusques, trajet en douceur.</p>
@@ -139,7 +139,7 @@ export default function TransportMedicalPage() {
             </div>
 
             <div className="flex gap-4">
-              <Shield className="w-6 h-6 text-blue-500 flex-shrink-0 mt-1" />
+              <Shield className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
               <div>
                 <h3 className="text-xl font-semibold text-on-surface mb-2">Confidentiel et sûr</h3>
                 <p className="text-on-surface-dim">Respect de la confidentialité médicale, assurance complète.</p>
@@ -147,7 +147,7 @@ export default function TransportMedicalPage() {
             </div>
 
             <div className="flex gap-4">
-              <Clock className="w-6 h-6 text-blue-500 flex-shrink-0 mt-1" />
+              <Clock className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
               <div>
                 <h3 className="text-xl font-semibold text-on-surface mb-2">Disponibilité 24h/24</h3>
                 <p className="text-on-surface-dim">Services disponibles jour et nuit, 7 jours sur 7.</p>
@@ -155,7 +155,7 @@ export default function TransportMedicalPage() {
             </div>
 
             <div className="flex gap-4">
-              <CheckCircle className="w-6 h-6 text-blue-500 flex-shrink-0 mt-1" />
+              <CheckCircle className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
               <div>
                 <h3 className="text-xl font-semibold text-on-surface mb-2">Assistance compagnon</h3>
                 <p className="text-on-surface-dim">Accompagnement possible d'une personne de confiance sans frais.</p>

@@ -82,7 +82,7 @@ function SuiviContent() {
                 d'un chauffeur
               </li>
               <li>
-                <span className="font-semibold text-blue-500">Confirmée</span> — Un chauffeur
+                <span className="font-semibold text-primary">Confirmée</span> — Un chauffeur
                 a accepté votre course
               </li>
               <li>

@@ -34,16 +34,16 @@ export default function TransportCPAMGuidePage() {
       <HomeHeader />
 
       {/* Hero Section */}
-      <section className="py-20 px-4 bg-gradient-to-br from-blue-500/10 via-background to-background">
+      <section className="py-20 px-4 bg-gradient-to-br from-primary/10 via-background to-background">
         <div className="max-w-4xl mx-auto">
           <h1 className="text-5xl md:text-6xl font-serif font-bold text-on-surface mb-6">
-            Transport Médical CPAM <em className="text-blue-500 not-italic">Guide Complet</em>
+            Transport Médical CPAM <em className="text-primary not-italic">Guide Complet</em>
           </h1>
           <p className="text-lg text-on-surface-dim mb-6 leading-relaxed">
             Comment vous faire rembourser vos trajets de santé par la CPAM? Ce guide explique tout: ordonnance, documents requis,
             taux de remboursement, et procédure étape par étape.
           </p>
-          <div className="bg-blue-500/10 border border-blue-500/20 rounded-lg p-4 mb-6">
+          <div className="bg-primary/10 border border-primary/20 rounded-lg p-4 mb-6">
             <p className="text-sm text-on-surface-dim">
               <strong>✓ Taxi agréé CPAM</strong> • <strong>✓ Remboursement 55% ou 100%</strong> • <strong>✓ Véhicules adaptés</strong>
             </p>
@@ -71,7 +71,7 @@ export default function TransportCPAMGuidePage() {
           {/* Section 1: Eligibilité */}
           <div id="eligibilite">
             <div className="flex items-center gap-3 mb-6">
-              <Users className="w-8 h-8 text-blue-500" />
+              <Users className="w-8 h-8 text-primary" />
               <h2 className="text-4xl font-serif font-bold text-on-surface">1. Qui peut bénéficier?</h2>
             </div>
 
@@ -83,8 +83,8 @@ export default function TransportCPAMGuidePage() {
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
                 {/* 55% Remboursement */}
-                <div className="rounded-lg border border-blue-500/20 bg-blue-500/5 p-6">
-                  <h3 className="text-xl font-bold text-blue-500 mb-4">55% de remboursement</h3>
+                <div className="rounded-lg border border-primary/20 bg-primary/5 p-6">
+                  <h3 className="text-xl font-bold text-primary mb-4">55% de remboursement</h3>
                   <p className="text-on-surface-dim text-sm mb-4">Vous êtes remboursé à 55% si:</p>
                   <ul className="space-y-2 text-on-surface-dim text-sm">
                     <li>✓ Consultation médicale nécessaire</li>
@@ -121,9 +121,9 @@ export default function TransportCPAMGuidePage() {
           </div>
 
           {/* Section 2: ALD */}
-          <div className="rounded-lg border border-blue-500/20 bg-blue-500/5 p-8">
+          <div className="rounded-lg border border-primary/20 bg-primary/5 p-8">
             <div className="flex items-start gap-4">
-              <Info className="w-6 h-6 text-blue-500 flex-shrink-0 mt-1" />
+              <Info className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
               <div>
                 <h3 className="text-2xl font-bold text-on-surface mb-4">Qu'est-ce qu'une ALD?</h3>
                 <p className="text-on-surface-dim mb-4">
@@ -141,7 +141,7 @@ export default function TransportCPAMGuidePage() {
           {/* Section 3: Ordonnance */}
           <div id="ordonnance">
             <div className="flex items-center gap-3 mb-6">
-              <FileText className="w-8 h-8 text-blue-500" />
+              <FileText className="w-8 h-8 text-primary" />
               <h2 className="text-4xl font-serif font-bold text-on-surface">2. L'Ordonnance de Transport</h2>
             </div>
 
@@ -181,7 +181,7 @@ export default function TransportCPAMGuidePage() {
           {/* Section 4: Documents Requis */}
           <div id="remboursement">
             <div className="flex items-center gap-3 mb-6">
-              <CheckCircle className="w-8 h-8 text-blue-500" />
+              <CheckCircle className="w-8 h-8 text-primary" />
               <h2 className="text-4xl font-serif font-bold text-on-surface">3. Documents à Préparer</h2>
             </div>
 
@@ -237,7 +237,7 @@ export default function TransportCPAMGuidePage() {
           {/* Section 5: Procédure */}
           <div id="procedure">
             <div className="flex items-center gap-3 mb-6">
-              <Clock className="w-8 h-8 text-blue-500" />
+              <Clock className="w-8 h-8 text-primary" />
               <h2 className="text-4xl font-serif font-bold text-on-surface">4. Procédure de Remboursement — Étape par Étape</h2>
             </div>
 
@@ -306,7 +306,7 @@ export default function TransportCPAMGuidePage() {
             <h2 className="text-4xl font-serif font-bold text-on-surface mb-8">Questions Fréquentes sur CPAM</h2>
 
             <div className="space-y-4">
-              <details className="group border border-on-surface/10 rounded-lg overflow-hidden hover:border-blue-500/30 transition-colors">
+              <details className="group border border-on-surface/10 rounded-lg overflow-hidden hover:border-primary/30 transition-colors">
                 <summary className="flex items-center justify-between cursor-pointer p-6 bg-surface hover:bg-surface-light transition-colors">
                   <h4 className="font-semibold text-on-surface">Quel est le tarif conventionnel CPAM pour un taxi?</h4>
                 </summary>
@@ -316,7 +316,7 @@ export default function TransportCPAMGuidePage() {
                 </div>
               </details>
 
-              <details className="group border border-on-surface/10 rounded-lg overflow-hidden hover:border-blue-500/30 transition-colors">
+              <details className="group border border-on-surface/10 rounded-lg overflow-hidden hover:border-primary/30 transition-colors">
                 <summary className="flex items-center justify-between cursor-pointer p-6 bg-surface hover:bg-surface-light transition-colors">
                   <h4 className="font-semibold text-on-surface">Puis-je me faire rembourser a posteriori?</h4>
                 </summary>
@@ -327,7 +327,7 @@ export default function TransportCPAMGuidePage() {
                 </div>
               </details>
 
-              <details className="group border border-on-surface/10 rounded-lg overflow-hidden hover:border-blue-500/30 transition-colors">
+              <details className="group border border-on-surface/10 rounded-lg overflow-hidden hover:border-primary/30 transition-colors">
                 <summary className="flex items-center justify-between cursor-pointer p-6 bg-surface hover:bg-surface-light transition-colors">
                   <h4 className="font-semibold text-on-surface">Mon taxi n'est pas agréé CPAM, puis-je être remboursé?</h4>
                 </summary>
@@ -337,7 +337,7 @@ export default function TransportCPAMGuidePage() {
                 </div>
               </details>
 
-              <details className="group border border-on-surface/10 rounded-lg overflow-hidden hover:border-blue-500/30 transition-colors">
+              <details className="group border border-on-surface/10 rounded-lg overflow-hidden hover:border-primary/30 transition-colors">
                 <summary className="flex items-center justify-between cursor-pointer p-6 bg-surface hover:bg-surface-light transition-colors">
                   <h4 className="font-semibold text-on-surface">Combien de temps pour obtenir le remboursement?</h4>
                 </summary>
@@ -347,7 +347,7 @@ export default function TransportCPAMGuidePage() {
                 </div>
               </details>
 
-              <details className="group border border-on-surface/10 rounded-lg overflow-hidden hover:border-blue-500/30 transition-colors">
+              <details className="group border border-on-surface/10 rounded-lg overflow-hidden hover:border-primary/30 transition-colors">
                 <summary className="flex items-center justify-between cursor-pointer p-6 bg-surface hover:bg-surface-light transition-colors">
                   <h4 className="font-semibold text-on-surface">Dois-je avancer les frais ou la CPAM paie directement?</h4>
                 </summary>

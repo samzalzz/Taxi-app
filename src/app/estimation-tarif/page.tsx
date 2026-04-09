@@ -177,16 +177,16 @@ export default function EstimationTarifPage() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="rounded-lg bg-blue-500/10 border border-blue-500/20 p-4">
-                <p className="font-semibold text-blue-500 mb-2">🛫 CDG (50€)</p>
+              <div className="rounded-lg bg-primary/10 border border-primary/20 p-4">
+                <p className="font-semibold text-primary mb-2">🛫 CDG (50€)</p>
                 <p className="text-sm text-on-surface-dim">Direction Nord de Paris, zone d'exploitation la plus importante</p>
               </div>
-              <div className="rounded-lg bg-blue-500/10 border border-blue-500/20 p-4">
-                <p className="font-semibold text-blue-500 mb-2">🛫 Orly (36€)</p>
+              <div className="rounded-lg bg-primary/10 border border-primary/20 p-4">
+                <p className="font-semibold text-primary mb-2">🛫 Orly (36€)</p>
                 <p className="text-sm text-on-surface-dim">Direction Sud de Paris, accès rapide depuis Rive Gauche</p>
               </div>
-              <div className="rounded-lg bg-blue-500/10 border border-blue-500/20 p-4">
-                <p className="font-semibold text-blue-500 mb-2">🛫 Beauvais (65€)</p>
+              <div className="rounded-lg bg-primary/10 border border-primary/20 p-4">
+                <p className="font-semibold text-primary mb-2">🛫 Beauvais (65€)</p>
                 <p className="text-sm text-on-surface-dim">Direction Nord-Est, distance plus importante, compagnies low-cost</p>
               </div>
             </div>

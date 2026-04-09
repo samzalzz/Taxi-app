@@ -23,7 +23,7 @@ interface Booking {
 
 const statusConfig: Record<BookingStatus, { label: string; color: string; bgColor: string }> = {
   PENDING: { label: 'En attente', color: 'text-yellow-400', bgColor: 'bg-yellow-500/10' },
-  CONFIRMED: { label: 'Confirmée', color: 'text-blue-400', bgColor: 'bg-blue-500/10' },
+  CONFIRMED: { label: 'Confirmée', color: 'text-primary', bgColor: 'bg-primary/10' },
   DRIVER_ARRIVED: { label: 'Chauffeur arrivé', color: 'text-purple-400', bgColor: 'bg-purple-500/10' },
   IN_PROGRESS: { label: 'En cours', color: 'text-orange-400', bgColor: 'bg-orange-500/10' },
   COMPLETED: { label: 'Terminée', color: 'text-green-400', bgColor: 'bg-green-500/10' },
@@ -361,7 +361,7 @@ export default function AdminReservationsPage() {
                       {config.label}
                     </div>
                     {booking.isCpam && (
-                      <span className="px-2 py-1 text-xs bg-blue-500/10 text-blue-400 rounded-full font-semibold border border-blue-500/20">
+                      <span className="px-2 py-1 text-xs bg-primary/10 text-primary rounded-full font-semibold border border-primary/20">
                         CPAM
                       </span>
                     )}
@@ -446,7 +446,7 @@ export default function AdminReservationsPage() {
                       <button
                         onClick={() => openAssignModal(booking.id)}
                         disabled={updatingId === booking.id || loadingDrivers}
-                        className="px-4 py-2 rounded-lg text-sm font-semibold bg-blue-500/10 text-blue-600 border border-blue-500/20 hover:bg-blue-500/20 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                        className="px-4 py-2 rounded-lg text-sm font-semibold bg-primary/10 text-blue-600 border border-primary/20 hover:bg-primary/20 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                       >
                         👤 Attribuer chauffeur
                       </button>
@@ -490,7 +490,7 @@ export default function AdminReservationsPage() {
                     <button
                       onClick={() => changeBookingStatus(booking.id, 'IN_PROGRESS')}
                       disabled={statusChangeId === booking.id}
-                      className="px-4 py-2 rounded-lg text-sm font-semibold bg-blue-500/10 text-blue-600 border border-blue-500/20 hover:bg-blue-500/20 disabled:opacity-50 disabled:cursor-not-allowed transition-colors w-full"
+                      className="px-4 py-2 rounded-lg text-sm font-semibold bg-primary/10 text-blue-600 border border-primary/20 hover:bg-primary/20 disabled:opacity-50 disabled:cursor-not-allowed transition-colors w-full"
                     >
                       {statusChangeId === booking.id ? 'Démarrage...' : '▶ Démarrer le trajet'}
                     </button>

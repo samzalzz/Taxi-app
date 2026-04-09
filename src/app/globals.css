@@ -130,6 +130,55 @@ body {
   @apply transition-all duration-200 ease-out;
 }
 
+/* Component Utilities */
+
+/* Standard section padding */
+.section-padding {
+  @apply py-20 px-4;
+}
+
+.section-padding-sm {
+  @apply py-12 px-4;
+}
+
+.section-padding-lg {
+  @apply py-24 px-4;
+}
+
+/* Standard card styling */
+.card-default {
+  @apply bg-surface border border-on-surface/10 rounded-lg p-6;
+}
+
+.card-elevated {
+  @apply bg-surface border border-on-surface/10 rounded-lg p-6 shadow-lg;
+}
+
+.card-primary {
+  @apply bg-surface border-2 border-primary rounded-lg p-6;
+}
+
+.card-accent {
+  @apply bg-surface border border-l-4 border-l-primary rounded-lg p-6;
+}
+
+/* Standard container widths */
+.container-full {
+  @apply max-w-7xl mx-auto;
+}
+
+.container-wide {
+  @apply max-w-6xl mx-auto;
+}
+
+.container-standard {
+  @apply max-w-4xl mx-auto;
+}
+
+.container-narrow {
+  @apply max-w-3xl mx-auto;
+}
+
 /* Focus states */
 .focus-ring {
   @apply focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background;
