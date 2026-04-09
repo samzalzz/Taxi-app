@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { Mail, MapPin, Phone, Clock } from 'lucide-react';
 import { Logo } from '@/components/ui/Logo';
+import { CookieSettingsButton } from '@/components/common/CookieSettingsButton';
 
 export function Footer() {
   return (
@@ -134,14 +135,20 @@ export function Footer() {
         {/* Divider */}
         <div className="border-t border-on-surface/10 pt-6" />
 
-        {/* Bottom bar: Copyright + Tagline */}
+        {/* Bottom bar: Copyright + Legal links + Cookie settings */}
         <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-on-surface-dim">
           <p>
             © 2026 Taxi Leblanc. Tous droits réservés.
           </p>
-          <p>
-            Service de transport médical, personnel et professionnel en Île-de-France.
-          </p>
+          <div className="flex items-center gap-4 flex-wrap justify-center">
+            <Link href="/legal/confidentialite" className="hover:text-primary transition-colors underline underline-offset-2">
+              Politique de confidentialité
+            </Link>
+            <Link href="/legal/conditions" className="hover:text-primary transition-colors underline underline-offset-2">
+              CGU
+            </Link>
+            <CookieSettingsButton />
+          </div>
         </div>
       </div>
     </footer>

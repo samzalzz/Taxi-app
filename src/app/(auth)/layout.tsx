@@ -1,6 +1,7 @@
 import { HomeHeader } from '@/components/layout/HomeHeader';
 import { Footer } from '@/components/layout/Footer';
 import { Logo } from '@/components/ui/Logo';
+import { CookieConsentGate } from '@/components/common/CookieConsentGate';
 
 export default function AuthLayout({
   children,
@@ -25,7 +26,9 @@ export default function AuthLayout({
               </p>
             </div>
 
-            {children}
+            <CookieConsentGate pageLabel="Espace membre">
+              {children}
+            </CookieConsentGate>
           </div>
         </div>
       </main>
