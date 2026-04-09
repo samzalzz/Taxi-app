@@ -223,15 +223,6 @@ body {
   }
 }
 
-@keyframes roadLines {
-  0% {
-    transform: translateY(-100%);
-  }
-  100% {
-    transform: translateY(100%);
-  }
-}
-
 .animate-shimmer {
   background: linear-gradient(
     90deg,
