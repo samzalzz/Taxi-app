@@ -129,7 +129,7 @@ export default function HomePage() {
             {/* Years of Experience */}
             <div>
               <div className="text-7xl md:text-8xl font-serif font-bold text-primary mb-4 font-light">
-                <StatCounter end={5} />
+                <StatCounter end={6} />
               </div>
               <p className="text-sm font-semibold text-on-surface-dim uppercase tracking-widest">Années d'expérience</p>
             </div>
@@ -137,7 +137,7 @@ export default function HomePage() {
             {/* Vehicles */}
             <div>
               <div className="text-7xl md:text-8xl font-serif font-bold text-primary mb-4 font-light">
-                <StatCounter end={2} />
+                <StatCounter end={5} />
               </div>
               <p className="text-sm font-semibold text-on-surface-dim uppercase tracking-widest">Véhicules</p>
             </div>
@@ -145,7 +145,7 @@ export default function HomePage() {
             {/* Passengers */}
             <div>
               <div className="text-7xl md:text-8xl font-serif font-bold text-primary mb-4 font-light">
-                <StatCounter end={40000} format="+" />
+                <StatCounter end={60000} format="+" />
               </div>
               <p className="text-sm font-semibold text-on-surface-dim uppercase tracking-widest">Passagers transportés</p>
             </div>
