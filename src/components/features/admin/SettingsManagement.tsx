@@ -110,6 +110,11 @@ export function SettingsManagement() {
     );
   }
 
+  const handleFormSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    handleSave();
+  };
+
   return (
     <div className="space-y-6">
       {/* Alerts */}
@@ -127,7 +132,8 @@ export function SettingsManagement() {
         </div>
       )}
 
-      {/* API Keys Section */}
+      <form onSubmit={handleFormSubmit} className="space-y-6">
+        {/* API Keys Section */}
       <div className="bg-surface border border-on-surface/10 rounded-lg p-6 space-y-4">
         <h3 className="font-semibold text-lg text-on-surface">Clés API</h3>
 
@@ -242,16 +248,17 @@ export function SettingsManagement() {
         )}
       </div>
 
-      {/* Save Button */}
-      <div className="flex justify-end">
-        <Button
-          onClick={handleSave}
-          isLoading={isSaving}
-          size="lg"
-        >
-          Enregistrer les paramètres
-        </Button>
-      </div>
+        {/* Save Button */}
+        <div className="flex justify-end">
+          <Button
+            type="submit"
+            isLoading={isSaving}
+            size="lg"
+          >
+            Enregistrer les paramètres
+          </Button>
+        </div>
+      </form>
 
       {/* Info Box */}
       <div className="bg-primary/5 border border-primary/10 rounded-lg p-4">
