@@ -26,11 +26,11 @@ export function ConsentBanner() {
   return (
     <>
       {/* Backdrop overlay — blocks interaction with content behind */}
-      <div className="fixed inset-0 z-40 bg-black/40 backdrop-blur-sm" aria-hidden="true" />
+      <div className="fixed inset-0 z-30 bg-black/40 backdrop-blur-sm" aria-hidden="true" />
 
-      {/* Modal panel — anchored to bottom, always visible */}
+      {/* Modal panel — anchored to bottom, always visible (below navbar) */}
       <div
-        className="fixed bottom-0 left-0 right-0 z-50 bg-surface shadow-2xl border-t-2 border-primary"
+        className="fixed bottom-0 left-0 right-0 z-40 bg-surface shadow-2xl border-t-2 border-primary"
         role="dialog"
         aria-modal="true"
         aria-labelledby="consent-title"
