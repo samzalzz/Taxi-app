@@ -147,11 +147,13 @@ body {
 
 /* Standard card styling */
 .card-default {
-  @apply bg-surface border border-on-surface/10 rounded-lg p-6;
+  @apply bg-surface border rounded-lg p-6;
+  border-color: rgba(229, 226, 225, 0.1);
 }
 
 .card-elevated {
-  @apply bg-surface border border-on-surface/10 rounded-lg p-6 shadow-lg;
+  @apply bg-surface border rounded-lg p-6 shadow-lg;
+  border-color: rgba(229, 226, 225, 0.1);
 }
 
 .card-primary {
@@ -159,7 +161,8 @@ body {
 }
 
 .card-accent {
-  @apply bg-surface border border-l-4 border-l-primary rounded-lg p-6;
+  @apply bg-surface rounded-lg p-6;
+  border-left: 4px solid var(--color-primary);
 }
 
 /* Standard container widths */
