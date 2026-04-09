@@ -366,53 +366,484 @@ label {
 
 /* ============ BACKGROUND TEXTURES ============ */
 
-/* Subtle noise texture */
+/*
+  TEXTURE SYSTEM — Taxi Leblanc
+  ─────────────────────────────────────────────────────────────────
+  Layering philosophy:
+    1. Base color   — the element's own bg-background / bg-surface
+    2. Depth layer  — a radial or directional gradient that gives
+                      the surface a sense of light source / volume
+    3. Texture layer — very low-opacity pattern rendered via
+                       CSS-only SVG data URIs or repeating gradients
+    4. Vignette     — optional edge darkening on large canvases
+
+  All textures are pure CSS (no external images), use ::before /
+  ::after pseudo-elements, and are pointer-events: none so they
+  never interfere with clicks.  Every class requires position:
+  relative on the host element — the helper base class handles this.
+
+  OPACITY GUIDE (dark backgrounds, WCAG AA body text at ≥4.5:1)
+    Noise / grain        0.035 – 0.055   (subtle grain)
+    Weave / cloth        0.025 – 0.040   (fabric feel)
+    Dot / halftone       0.030 – 0.050   (refined grid)
+    Fine grid            0.025 – 0.040   (structural)
+    Gold tint gradient   0.04  – 0.08    (warmth layer)
+    Radial depth         0.15  – 0.30    (volume / light)
+    Vignette             0.35  – 0.55    (edge darkening)
+
+  USAGE MAP
+    .bg-noise-grain      → body / large page sections (replaces old .bg-textured)
+    .bg-weave            → footer, sidebar, nav bar
+    .bg-dot-field        → stats strip, CTA band
+    .bg-fine-grid        → dashboard panels, data tables
+    .bg-depth-radial     → cards, modals (adds center-lit feel)
+    .bg-depth-vignette   → hero sections (edge darkening over images)
+    .bg-gold-warmth      → surface-level sections needing gold warmth
+    .bg-hero-overlay     → hero background-image overlays
+    .bg-card-premium     → high-emphasis cards / pricing cards
+  ─────────────────────────────────────────────────────────────────
+*/
+
+/* ── Shared base — every texture host needs this ─────────────── */
+.bg-noise-grain,
+.bg-weave,
+.bg-dot-field,
+.bg-fine-grid,
+.bg-depth-radial,
+.bg-depth-vignette,
+.bg-gold-warmth,
+.bg-hero-overlay,
+.bg-card-premium {
+  position: relative;
+  /* overflow: hidden is NOT forced here so callers can opt in
+     with overflow-hidden when they need it */
+}
+
+/* ── 1. NOISE GRAIN ──────────────────────────────────────────── */
+/*
+  Fine photographic grain rendered via SVG feTurbulence.
+  Gives #131313 the organic feel of matte premium paper.
+  Best for: full-page sections, bg-background areas.
+  Opacity: 0.045 — visible up close, invisible in periphery.
+*/
+.bg-noise-grain::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.045;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' seed='8' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23g)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 300px 300px;
+}
+
+/* Make sure content layers above the texture */
+.bg-noise-grain > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ── 2. WEAVE / CLOTH ────────────────────────────────────────── */
+/*
+  Tight woven textile pattern — finer and more directional than
+  the old .bg-cloth (which was at 1.5%).  Two interlocked
+  repeating-linear-gradient passes simulate warp and weft threads.
+  Best for: footer, sticky nav, sidebars.
+  Opacity: 0.035 — adds tactile warmth without pattern visibility.
+*/
+.bg-weave::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.035;
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 1px,
+      rgba(229, 226, 225, 0.12) 1px,
+      rgba(229, 226, 225, 0.12) 2px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 1px,
+      rgba(229, 226, 225, 0.06) 1px,
+      rgba(229, 226, 225, 0.06) 2px
+    );
+  background-size: 3px 3px;
+}
+
+.bg-weave > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ── 3. DOT FIELD / HALFTONE ─────────────────────────────────── */
+/*
+  Radial-gradient dot grid — classic premium print aesthetic.
+  The dots are warm-white so they stay neutral against dark surfaces
+  and pick up a hint of warmth near gold UI elements.
+  Best for: stats strips, CTA bands, section dividers.
+  Opacity: 0.04 on the dots themselves (extra multiply from the
+  radial-gradient falloff).
+*/
+.bg-dot-field::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image: radial-gradient(
+    circle,
+    rgba(229, 226, 225, 0.18) 1px,
+    transparent 1px
+  );
+  background-size: 24px 24px;
+  opacity: 0.04;
+}
+
+.bg-dot-field > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ── 4. FINE GRID ────────────────────────────────────────────── */
+/*
+  Hairline orthogonal grid.  One-pixel lines at very low opacity
+  evoke engineering drawings and high-end dashboard UI.
+  Uses a gold tint (rgba of #d4af37) so the grid is warm, not cold.
+  Best for: dashboard panels, admin tables, map overlays.
+  Opacity: 0.028 on the lines.
+*/
+.bg-fine-grid::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image:
+    linear-gradient(
+      rgba(212, 175, 55, 0.12) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(212, 175, 55, 0.12) 1px,
+      transparent 1px
+    );
+  background-size: 40px 40px;
+  opacity: 0.028;
+}
+
+.bg-fine-grid > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ── 5. DEPTH RADIAL (center-lit surface) ────────────────────── */
+/*
+  A centered radial gradient that makes the surface appear lit from
+  above — like an overhead studio light on dark fabric.  Produces
+  visual depth without any actual texture.
+  Layer order: goes on ::after so it sits above the grain if both
+  classes are combined (.bg-noise-grain.bg-depth-radial).
+  Best for: cards, modals, info panels.
+  Opacity: 0.22.
+*/
+.bg-depth-radial::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background: radial-gradient(
+    ellipse 80% 60% at 50% 0%,
+    rgba(255, 255, 255, 0.055) 0%,
+    transparent 70%
+  );
+  border-radius: inherit;
+}
+
+/* ── 6. VIGNETTE (edge darkening) ────────────────────────────── */
+/*
+  Classic photography vignette — darkens the edges and corners,
+  pushing attention toward center content.  Pairs perfectly with
+  the hero section which already has a photo + black/40 overlay.
+  Best for: hero sections, full-bleed banners.
+  Opacity: 1 (the gradient itself controls falloff).
+*/
+.bg-depth-vignette::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background: radial-gradient(
+    ellipse 120% 100% at 50% 50%,
+    transparent 40%,
+    rgba(0, 0, 0, 0.45) 100%
+  );
+}
+
+/* ── 7. GOLD WARMTH GRADIENT ─────────────────────────────────── */
+/*
+  A very subtle top-edge glow in the brand gold.  Gives dark
+  sections a warm, premium temperature — like candlelight reflecting
+  off dark wood.  Works on both #131313 and #121212 surfaces.
+  Best for: sections that sit directly below a gold-accented header,
+  the stats strip, the contact section.
+  Opacity: 0.07.
+*/
+.bg-gold-warmth::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(212, 175, 55, 0.07) 0%,
+      transparent 35%
+    ),
+    linear-gradient(
+      135deg,
+      rgba(212, 175, 55, 0.04) 0%,
+      transparent 50%
+    );
+}
+
+.bg-gold-warmth > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ── 8. HERO OVERLAY (layered depth for photo backgrounds) ───── */
+/*
+  Designed to be added to the inner overlay div inside
+  BackgroundPaths — the element that currently has bg-black/40.
+  Replaces the flat black overlay with a multi-stop gradient that:
+    • Is darkest at top and bottom (anchoring the nav and CTA)
+    • Has a lighter mid-section so the photo reads through more
+    • Adds a faint warm gold cast at the very bottom edge
+  Best for: background-image hero sections only.
+*/
+.bg-hero-overlay {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.65) 0%,
+      rgba(0, 0, 0, 0.25) 40%,
+      rgba(0, 0, 0, 0.35) 70%,
+      rgba(10, 6, 0, 0.70) 100%
+    ),
+    linear-gradient(
+      135deg,
+      rgba(212, 175, 55, 0.06) 0%,
+      transparent 60%
+    ) !important;
+  /* The !important overrides the inline bg-black/40 + backdrop-blur
+     only if this class is applied; remove it if you refactor the
+     inline style in background-paths.tsx to use a className instead */
+}
+
+/* ── 9. PREMIUM CARD SURFACE ─────────────────────────────────── */
+/*
+  Combines noise grain + depth radial + a fine inner border glow
+  in a single compound class designed for high-emphasis cards
+  (pricing cards, CTA cards, the booking contact card).
+  Uses both ::before (grain) and ::after (radial + border).
+*/
+.bg-card-premium {
+  background-color: var(--color-surface);
+  isolation: isolate;
+}
+
+.bg-card-premium::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  border-radius: inherit;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' seed='5' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23g)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 200px 200px;
+}
+
+.bg-card-premium::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    ellipse 90% 55% at 50% 0%,
+    rgba(255, 255, 255, 0.045) 0%,
+    transparent 65%
+  );
+  box-shadow: inset 0 1px 0 rgba(212, 175, 55, 0.12),
+              inset 0 -1px 0 rgba(0, 0, 0, 0.3);
+}
+
+.bg-card-premium > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ── 10. LEGACY ALIASES (backwards compat with old .bg-cloth etc.) */
+/*
+  The old .bg-textured, .bg-grid, .bg-cloth classes are kept but
+  their pseudo-elements are upgraded to match the new system.
+*/
+
+/* Upgraded noise (was 0.03 opacity — now 0.045 with better SVG) */
 .bg-textured::before {
   content: '';
   position: absolute;
   inset: 0;
   pointer-events: none;
-  opacity: 0.03;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' seed='2' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  z-index: 0;
+  opacity: 0.045;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' seed='8' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23g)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 300px 300px;
 }
 
 .bg-textured {
   position: relative;
-  overflow: hidden;
 }
 
-/* Grid texture */
+.bg-textured > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Upgraded grid (was opacity: 0.02 — now warm gold at 0.028) */
 .bg-grid::before {
   content: '';
   position: absolute;
   inset: 0;
   pointer-events: none;
-  opacity: 0.02;
+  z-index: 0;
+  opacity: 0.028;
   background-image:
-    linear-gradient(0deg, transparent 24%, rgba(212, 175, 55, 0.05) 25%, rgba(212, 175, 55, 0.05) 26%, transparent 27%, transparent 74%, rgba(212, 175, 55, 0.05) 75%, rgba(212, 175, 55, 0.05) 76%, transparent 77%, transparent),
-    linear-gradient(90deg, transparent 24%, rgba(212, 175, 55, 0.05) 25%, rgba(212, 175, 55, 0.05) 26%, transparent 27%, transparent 74%, rgba(212, 175, 55, 0.05) 75%, rgba(212, 175, 55, 0.05) 76%, transparent 77%, transparent);
-  background-size: 50px 50px;
+    linear-gradient(rgba(212, 175, 55, 0.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(212, 175, 55, 0.12) 1px, transparent 1px);
+  background-size: 40px 40px;
 }
 
 .bg-grid {
   position: relative;
-  overflow: hidden;
 }
 
-/* Cloth/linen texture */
+.bg-grid > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Upgraded cloth (was opacity: 0.015 — now 0.035 with tighter weave) */
 .bg-cloth::before {
   content: '';
   position: absolute;
   inset: 0;
   pointer-events: none;
-  opacity: 0.015;
+  z-index: 0;
+  opacity: 0.035;
   background-image:
-    repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(0,0,0,.05) 2px, rgba(0,0,0,.05) 4px),
-    repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,.05) 2px, rgba(0,0,0,.05) 4px);
-  background-size: 4px 4px;
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 1px,
+      rgba(229, 226, 225, 0.12) 1px,
+      rgba(229, 226, 225, 0.12) 2px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 1px,
+      rgba(229, 226, 225, 0.06) 1px,
+      rgba(229, 226, 225, 0.06) 2px
+    );
+  background-size: 3px 3px;
 }
 
 .bg-cloth {
   position: relative;
-  overflow: hidden;
+}
+
+.bg-cloth > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ── SURFACE DIVIDER — gold hairline with fade ───────────────── */
+/*
+  A utility for section breaks that adds a subtle gold divider
+  which fades at both edges.  Drop this on any <hr>-like element
+  or as a border-top replacement.
+  Usage: <div class="surface-divider" />
+*/
+.surface-divider {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(212, 175, 55, 0.35) 20%,
+    rgba(212, 175, 55, 0.55) 50%,
+    rgba(212, 175, 55, 0.35) 80%,
+    transparent 100%
+  );
+  border: none;
+  margin: 0;
+}
+
+/* ── SHIMMER GOLD BORDER ─────────────────────────────────────── */
+/*
+  Animated gold border for call-to-action cards and active states.
+  Wraps the element in a rotating conic gradient that simulates
+  light traveling around the perimeter.
+  Usage: add .border-shimmer-gold to any card/button wrapper.
+  Requires position: relative + overflow: hidden on the host.
+*/
+@keyframes border-rotate {
+  from { --border-angle: 0turn; }
+  to   { --border-angle: 1turn; }
+}
+
+@property --border-angle {
+  syntax: '<angle>';
+  initial-value: 0turn;
+  inherits: false;
+}
+
+.border-shimmer-gold {
+  --border-angle: 0turn;
+  border: 1px solid transparent;
+  background:
+    linear-gradient(var(--color-surface), var(--color-surface)) padding-box,
+    conic-gradient(
+      from var(--border-angle),
+      rgba(212, 175, 55, 0.08) 0%,
+      rgba(212, 175, 55, 0.6) 25%,
+      rgba(232, 200, 80, 0.8) 50%,
+      rgba(212, 175, 55, 0.6) 75%,
+      rgba(212, 175, 55, 0.08) 100%
+    ) border-box;
+  animation: border-rotate 4s linear infinite;
+}
+
+/* Disable animation when user prefers reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .border-shimmer-gold {
+    animation: none;
+    border-color: rgba(212, 175, 55, 0.3);
+    background: var(--color-surface);
+  }
 }
