@@ -4,7 +4,7 @@ import { Logo } from '@/components/ui/Logo';
 
 export function Footer() {
   return (
-    <footer className="bg-surface bg-weave border-t border-on-surface/10">
+    <footer className="bg-surface border-t border-on-surface/10">
       {/* Main content */}
       <div className="max-w-7xl mx-auto px-4 py-16">
         {/* Top section: Brand + Navigation Columns + Contact */}

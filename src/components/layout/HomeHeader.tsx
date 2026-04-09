@@ -8,7 +8,7 @@ import { Phone } from 'lucide-react';
 
 export function HomeHeader() {
   return (
-    <nav className="sticky top-0 z-50 bg-background/80 bg-weave backdrop-blur-sm border-b border-on-surface/10">
+    <nav className="sticky top-0 z-50 bg-background/80 backdrop-blur-sm border-b border-on-surface/10">
       <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
         <Logo href="/" className="h-10 w-auto" />
         <div className="flex gap-4 items-center">

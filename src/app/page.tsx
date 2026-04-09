@@ -37,7 +37,7 @@ export default function HomePage() {
       <BackgroundPathsDemo />
 
       {/* Services Section */}
-      <section className="py-20 px-4 bg-background bg-noise-grain">
+      <section className="py-20 px-4 bg-background">
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
             {/* Left Column */}
@@ -224,7 +224,7 @@ export default function HomePage() {
       </section>
 
       {/* Contact Section */}
-      <section className="py-24 px-4 bg-background bg-gold-warmth bg-noise-grain">
+      <section className="py-24 px-4 bg-background">
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Left Column - Contact Info */}
@@ -289,7 +289,7 @@ export default function HomePage() {
             </div>
 
             {/* Right Column - CTA */}
-            <div className="rounded-2xl border border-primary/20 bg-card-premium backdrop-blur p-8 lg:p-12 flex flex-col justify-center">
+            <div className="rounded-2xl border border-primary/20 bg-surface/50 backdrop-blur p-8 lg:p-12 flex flex-col justify-center">
               <h3 className="text-3xl md:text-4xl font-serif font-bold text-on-surface mb-4">
                 Réservez votre taxi dès maintenant
               </h3>
