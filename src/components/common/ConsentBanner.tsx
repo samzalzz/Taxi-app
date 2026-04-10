@@ -26,12 +26,12 @@ export function ConsentBanner() {
   return (
     <>
       {/* Backdrop overlay — dark & blurred, prevents interaction */}
-      <div className="fixed inset-0 z-30 bg-black/60 backdrop-blur-md" aria-hidden="true" />
+      <div className="fixed inset-0 z-[100] bg-black/70 backdrop-blur-md" aria-hidden="true" />
 
-      {/* Modal Dialog positioned at top/hero level */}
-      <div className="fixed top-0 left-0 right-0 z-40 flex items-start justify-center p-4 pt-24 md:pt-28">
+      {/* Modal Dialog centered on viewport */}
+      <div className="fixed inset-0 z-[101] flex items-center justify-center overflow-y-auto p-4">
         <div
-          className="w-full max-w-2xl bg-surface rounded-3xl shadow-2xl border-2 border-primary overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-300"
+          className="w-full max-w-2xl bg-surface rounded-3xl shadow-2xl border-2 border-primary overflow-hidden animate-in fade-in zoom-in-95 duration-300 my-auto"
           role="dialog"
           aria-modal="true"
           aria-labelledby="consent-title"
