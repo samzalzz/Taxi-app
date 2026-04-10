@@ -1,9 +1,0 @@
-{
-  "functions": {
-    "src/app/api/notifications/stream/route.ts": {
-      "maxDuration": 60
-    }
-  },
-  "buildCommand": "npm run build",
-  "installCommand": "npm install"
-}
