@@ -7,10 +7,8 @@ const AssignBookingSchema = z.object({
   driverId: z.string().min(1, 'Driver ID required'),
 });
 
-export async function PATCH(
-  request: NextRequest,
-  { params }: { params: { id: string } }
-): Promise<NextResponse> {
+export async function PATCH(request: NextRequest, props: { params: Promise<{ id: string }> }): Promise<NextResponse> {
+  const params = await props.params;
   try {
     const session = await getSession();
     if (!session) {

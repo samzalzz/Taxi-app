@@ -5,10 +5,8 @@ import { prisma } from '@/persistence/client';
  * GET /api/drivers/[id]
  * Fetch public driver information
  */
-export async function GET(
-  _req: NextRequest,
-  { params }: { params: { id: string } }
-) {
+export async function GET(_req: NextRequest, props: { params: Promise<{ id: string }> }) {
+  const params = await props.params;
   try {
     const driver = await prisma.driver.findUnique({
       where: { id: params.id },

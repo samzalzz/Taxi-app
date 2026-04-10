@@ -7,10 +7,8 @@ import { prisma } from '@/persistence/client';
  * Get or create a conversation for a booking.
  * Used when a client or driver wants to chat about a specific trip.
  */
-export async function POST(
-  __request: NextRequest,
-  { params }: { params: { id: string } }
-) {
+export async function POST(__request: NextRequest, props: { params: Promise<{ id: string }> }) {
+  const params = await props.params;
   try {
     const session = await getSession();
     if (!session || !session.userId) {

@@ -7,10 +7,8 @@ import { generateVoucherPDF } from '@/lib/cpam/generateVoucher';
  * GET /api/bookings/[id]/cpam-voucher/download
  * Download CPAM voucher as HTML/PDF
  */
-export async function GET(
-  __request: NextRequest,
-  { params }: { params: { id: string } }
-) {
+export async function GET(__request: NextRequest, props: { params: Promise<{ id: string }> }) {
+  const params = await props.params;
   try {
     const session = await getSession();
     if (!session || !session.userId) {

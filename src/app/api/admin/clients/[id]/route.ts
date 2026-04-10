@@ -2,10 +2,8 @@ import { NextResponse, NextRequest } from 'next/server';
 import { getSession } from '@/lib/auth/session';
 import { prisma } from '@/persistence/client';
 
-export async function GET(
-  _request: NextRequest,
-  { params }: { params: { id: string } }
-) {
+export async function GET(_request: NextRequest, props: { params: Promise<{ id: string }> }) {
+  const params = await props.params;
   try {
     const session = await getSession();
 

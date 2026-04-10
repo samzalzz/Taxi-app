@@ -11,10 +11,8 @@ const RespondSchema = z.object({
  * POST /api/reviews/[id]/respond
  * Respond to a review as the reviewee.
  */
-export async function POST(
-  request: NextRequest,
-  { params }: { params: { id: string } }
-) {
+export async function POST(request: NextRequest, props: { params: Promise<{ id: string }> }) {
+  const params = await props.params;
   try {
     const session = await getSession();
     if (!session || !session.userId) {

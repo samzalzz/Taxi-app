@@ -12,10 +12,8 @@ const UpdateComplaintSchema = z.object({
  * PATCH /api/complaints/[id]
  * Update complaint status (admin only).
  */
-export async function PATCH(
-  request: NextRequest,
-  { params }: { params: { id: string } }
-) {
+export async function PATCH(request: NextRequest, props: { params: Promise<{ id: string }> }) {
+  const params = await props.params;
   try {
     const session = await getSession();
     if (!session || session.role !== 'ADMIN') {
@@ -90,10 +88,8 @@ export async function PATCH(
  * GET /api/complaints/[id]
  * Get a specific complaint with all replies.
  */
-export async function GET(
-  _request: NextRequest,
-  { params }: { params: { id: string } }
-) {
+export async function GET(_request: NextRequest, props: { params: Promise<{ id: string }> }) {
+  const params = await props.params;
   try {
     const session = await getSession();
     if (!session) {

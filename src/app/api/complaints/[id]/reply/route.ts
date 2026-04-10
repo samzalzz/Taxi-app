@@ -11,10 +11,8 @@ const ReplySchema = z.object({
  * POST /api/complaints/[id]/reply
  * Add a reply to a complaint.
  */
-export async function POST(
-  request: NextRequest,
-  { params }: { params: { id: string } }
-) {
+export async function POST(request: NextRequest, props: { params: Promise<{ id: string }> }) {
+  const params = await props.params;
   try {
     const session = await getSession();
     if (!session || !session.userId) {

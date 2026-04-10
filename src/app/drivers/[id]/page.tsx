@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, use } from 'react';
 import { DriverRatingCard } from '@/components/features/driver/DriverRatingCard';
 import { Phone, Award } from 'lucide-react';
 
@@ -19,11 +19,12 @@ interface Driver {
   };
 }
 
-export default function DriverProfilePage({
-  params,
-}: {
-  params: { id: string };
-}) {
+export default function DriverProfilePage(
+  props: {
+    params: Promise<{ id: string }>;
+  }
+) {
+  const params = use(props.params);
   const [driver, setDriver] = useState<Driver | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);

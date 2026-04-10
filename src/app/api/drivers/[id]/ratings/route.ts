@@ -5,10 +5,8 @@ import { prisma } from '@/persistence/client';
  * GET /api/drivers/[id]/ratings
  * Fetch driver's rating summary and recent reviews
  */
-export async function GET(
-  _req: NextRequest,
-  { params }: { params: { id: string } }
-) {
+export async function GET(_req: NextRequest, props: { params: Promise<{ id: string }> }) {
+  const params = await props.params;
   try {
     // Get driver's overall rating
     const driver = await prisma.driver.findUnique({

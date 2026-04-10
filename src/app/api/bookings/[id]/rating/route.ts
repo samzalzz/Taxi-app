@@ -7,10 +7,8 @@ import { verifyToken } from '@/lib/auth/jwt';
  * POST /api/bookings/[id]/rating
  * Client or Driver submits a rating for a completed booking
  */
-export async function POST(
-  req: NextRequest,
-  { params }: { params: { id: string } }
-) {
+export async function POST(req: NextRequest, props: { params: Promise<{ id: string }> }) {
+  const params = await props.params;
   try {
     const token = req.cookies.get('auth-session')?.value;
     if (!token) {

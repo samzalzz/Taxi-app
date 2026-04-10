@@ -7,10 +7,8 @@ import { createCpamVoucher } from '@/lib/cpam/generateVoucher';
  * GET /api/bookings/[id]/cpam-voucher
  * Get CPAM voucher for a booking
  */
-export async function GET(
-  _request: NextRequest,
-  { params }: { params: { id: string } }
-) {
+export async function GET(_request: NextRequest, props: { params: Promise<{ id: string }> }) {
+  const params = await props.params;
   try {
     const session = await getSession();
     if (!session || !session.userId) {
@@ -66,10 +64,8 @@ export async function GET(
  * POST /api/bookings/[id]/cpam-voucher
  * Create CPAM voucher for a booking
  */
-export async function POST(
-  request: NextRequest,
-  { params }: { params: { id: string } }
-) {
+export async function POST(request: NextRequest, props: { params: Promise<{ id: string }> }) {
+  const params = await props.params;
   try {
     const session = await getSession();
     if (!session || !session.userId) {
@@ -155,10 +151,8 @@ export async function POST(
  * PATCH /api/bookings/[id]/cpam-voucher
  * Update CPAM voucher details
  */
-export async function PATCH(
-  request: NextRequest,
-  { params }: { params: { id: string } }
-) {
+export async function PATCH(request: NextRequest, props: { params: Promise<{ id: string }> }) {
+  const params = await props.params;
   try {
     const session = await getSession();
     if (!session || !session.userId) {

@@ -3,10 +3,8 @@ import { getSession } from '@/lib/auth/session';
 import { createNotification } from '@/lib/notifications/createNotification';
 import { prisma } from '@/persistence/client';
 
-export async function POST(
-  _: unknown,
-  { params }: { params: { id: string } }
-): Promise<NextResponse> {
+export async function POST(_: unknown, props: { params: Promise<{ id: string }> }): Promise<NextResponse> {
+  const params = await props.params;
   try {
     const session = await getSession();
     if (!session) {

@@ -14,10 +14,8 @@ const QuerySchema = z.object({
  * Get messages from a conversation with pagination.
  * Optional `since` parameter for polling new messages since a timestamp.
  */
-export async function GET(
-  request: NextRequest,
-  { params }: { params: { id: string } }
-) {
+export async function GET(request: NextRequest, props: { params: Promise<{ id: string }> }) {
+  const params = await props.params;
   try {
     const session = await getSession();
     if (!session || !session.userId) {
@@ -112,10 +110,8 @@ const SendMessageSchema = z.object({
  * POST /api/conversations/[id]/messages
  * Send a message to a conversation.
  */
-export async function POST(
-  request: NextRequest,
-  { params }: { params: { id: string } }
-) {
+export async function POST(request: NextRequest, props: { params: Promise<{ id: string }> }) {
+  const params = await props.params;
   try {
     const session = await getSession();
     if (!session || !session.userId) {

@@ -7,10 +7,8 @@ const UpdateRoleSchema = z.object({
   role: z.enum(['CLIENT', 'DRIVER', 'ADMIN']),
 });
 
-export async function PATCH(
-  request: NextRequest,
-  { params }: { params: { id: string } }
-): Promise<NextResponse> {
+export async function PATCH(request: NextRequest, props: { params: Promise<{ id: string }> }): Promise<NextResponse> {
+  const params = await props.params;
   try {
     // Check admin auth
     const session = await getSession();
@@ -68,10 +66,8 @@ export async function PATCH(
   }
 }
 
-export async function GET(
-  _request: NextRequest,
-  { params }: { params: { id: string } }
-): Promise<NextResponse> {
+export async function GET(_request: NextRequest, props: { params: Promise<{ id: string }> }): Promise<NextResponse> {
+  const params = await props.params;
   try {
     // Check admin auth
     const session = await getSession();

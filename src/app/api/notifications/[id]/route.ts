@@ -6,10 +6,8 @@ import { prisma } from '@/persistence/client';
  * POST /api/notifications/[id]/read
  * Mark a specific notification as read.
  */
-export async function POST(
-  __request: NextRequest,
-  { params }: { params: { id: string } }
-) {
+export async function POST(__request: NextRequest, props: { params: Promise<{ id: string }> }) {
+  const params = await props.params;
   try {
     const session = await getSession();
     if (!session || !session.userId) {

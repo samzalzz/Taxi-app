@@ -11,10 +11,8 @@ const UpdateStatusSchema = z.object({
   status: z.enum(['DRIVER_ARRIVED', 'IN_PROGRESS', 'COMPLETED'] as const),
 });
 
-export async function PATCH(
-  request: NextRequest,
-  { params }: { params: { id: string } }
-): Promise<NextResponse> {
+export async function PATCH(request: NextRequest, props: { params: Promise<{ id: string }> }): Promise<NextResponse> {
+  const params = await props.params;
   try {
     const session = await getSession();
     if (!session || session.role !== 'DRIVER') {

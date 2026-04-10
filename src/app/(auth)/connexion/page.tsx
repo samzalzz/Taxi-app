@@ -6,11 +6,12 @@ export const metadata = {
   description: 'Se connecter à votre compte Taxi Leblanc',
 };
 
-export default function LoginPage({
-  searchParams,
-}: {
-  searchParams?: { reset?: string };
-}) {
+export default async function LoginPage(
+  props: {
+    searchParams?: Promise<{ reset?: string }>;
+  }
+) {
+  const searchParams = await props.searchParams;
   return (
     <div className="space-y-6">
       <div>

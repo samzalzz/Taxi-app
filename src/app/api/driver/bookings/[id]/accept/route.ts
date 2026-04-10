@@ -4,10 +4,8 @@ import { getDriverByUserId, updateDriverStatus } from '@/persistence/queries/dri
 import { assignDriverToBooking } from '@/persistence/queries/bookingQueries';
 import { createNotification } from '@/lib/notifications/createNotification';
 
-export async function POST(
-  _: unknown,
-  { params }: { params: { id: string } }
-): Promise<NextResponse> {
+export async function POST(_: unknown, props: { params: Promise<{ id: string }> }): Promise<NextResponse> {
+  const params = await props.params;
   try {
     const session = await getSession();
     if (!session || session.role !== 'DRIVER') {

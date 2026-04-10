@@ -7,10 +7,8 @@ interface ReassignRequest {
   newDriverId: string;
 }
 
-export async function PATCH(
-  request: Request,
-  { params }: { params: { id: string } }
-): Promise<NextResponse> {
+export async function PATCH(request: Request, props: { params: Promise<{ id: string }> }): Promise<NextResponse> {
+  const params = await props.params;
   try {
     const session = await getSession();
     if (!session || session.role !== 'DRIVER') {

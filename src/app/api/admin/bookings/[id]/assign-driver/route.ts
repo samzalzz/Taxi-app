@@ -8,10 +8,8 @@ const assignDriverSchema = z.object({
   driverId: z.string().min(1, 'Driver ID required'),
 });
 
-export async function PATCH(
-  request: Request,
-  { params }: { params: { id: string } }
-): Promise<NextResponse> {
+export async function PATCH(request: Request, props: { params: Promise<{ id: string }> }): Promise<NextResponse> {
+  const params = await props.params;
   try {
     const session = await getSession();
     if (!session || session.role !== 'ADMIN') {

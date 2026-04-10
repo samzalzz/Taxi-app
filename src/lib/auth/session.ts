@@ -10,12 +10,12 @@ const SESSION_COOKIE_OPTIONS = {
 };
 
 export async function setSessionCookie(token: string): Promise<void> {
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   cookieStore.set(SESSION_COOKIE_NAME, token, SESSION_COOKIE_OPTIONS);
 }
 
 export async function getSessionToken(): Promise<string | null> {
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   return cookieStore.get(SESSION_COOKIE_NAME)?.value || null;
 }
 
@@ -28,7 +28,7 @@ export async function getSession(): Promise<JWTPayload | null> {
 }
 
 export async function clearSession(): Promise<void> {
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   cookieStore.delete(SESSION_COOKIE_NAME);
 }
 
