@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { MapPin, Flag, Euro, Eye, EyeOff, Check, Info } from 'lucide-react';
-import { BookingStatus } from '@prisma/client';
+import { BookingStatus } from '@/generated/prisma/client';
 import { BookingClientDetailsModal } from '@/components/features/booking/BookingClientDetailsModal';
 
 interface Booking {

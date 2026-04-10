@@ -90,7 +90,7 @@ export async function GET(request: NextRequest, props: { params: Promise<{ id: s
   } catch (error) {
     if (error instanceof z.ZodError) {
       return NextResponse.json(
-        { error: 'Invalid query parameters', details: error.errors },
+        { error: 'Invalid query parameters', details: error.issues },
         { status: 400 }
       );
     }
@@ -202,7 +202,7 @@ export async function POST(request: NextRequest, props: { params: Promise<{ id: 
   } catch (error) {
     if (error instanceof z.ZodError) {
       return NextResponse.json(
-        { error: 'Validation error', details: error.errors },
+        { error: 'Validation error', details: error.issues },
         { status: 400 }
       );
     }

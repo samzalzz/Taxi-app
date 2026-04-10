@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
 import { getSession } from '@/lib/auth/session';
 import { getDriverByUserId, updateDriverStatus } from '@/persistence/queries/driverQueries';
-import { DriverStatus } from '@prisma/client';
+import { DriverStatus } from '@/generated/prisma/client';
 
 const UpdateStatusSchema = z.object({
   status: z.enum(['OFFLINE', 'AVAILABLE', 'BUSY', 'ON_BREAK'] as const),
@@ -28,7 +28,7 @@ export async function PATCH(request: NextRequest): Promise<NextResponse> {
   } catch (error) {
     if (error instanceof z.ZodError) {
       return NextResponse.json(
-        { error: 'Validation error', details: error.errors },
+        { error: 'Validation error', details: error.issues },
         { status: 400 }
       );
     }

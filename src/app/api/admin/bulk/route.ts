@@ -13,7 +13,7 @@ const BulkActionSchema = z.object({
     'delete-complaints',
   ]),
   ids: z.array(z.string()).min(1),
-  data: z.record(z.any()).optional(),
+  data: z.record(z.string(), z.any()).optional(),
 });
 
 /**
@@ -108,7 +108,7 @@ export async function POST(request: NextRequest) {
   } catch (error) {
     if (error instanceof z.ZodError) {
       return NextResponse.json(
-        { error: 'Validation error', details: error.errors },
+        { error: 'Validation error', details: error.issues },
         { status: 400 }
       );
     }

@@ -3,7 +3,7 @@ import { z } from 'zod';
 import { createUser, getUserByEmail } from '@/persistence/queries/userQueries';
 import { createDriver, createVehicle } from '@/persistence/queries/driverQueries';
 import { signToken } from '@/lib/auth/jwt';
-import { VehicleType } from '@prisma/client';
+import { VehicleType } from '@/generated/prisma/client';
 
 const DriverSignupSchema = z.object({
   // Personal info
@@ -111,7 +111,7 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
   } catch (error) {
     if (error instanceof z.ZodError) {
       return NextResponse.json(
-        { error: 'Validation error', details: error.errors },
+        { error: 'Validation error', details: error.issues },
         { status: 400 }
       );
     }

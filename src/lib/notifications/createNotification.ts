@@ -1,5 +1,5 @@
 import { prisma } from '@/persistence/client';
-import { NotificationType } from '@prisma/client';
+import { NotificationType } from '@/generated/prisma/client';
 
 interface CreateNotificationInput {
   userId: string;

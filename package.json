@@ -2,9 +2,6 @@
   "name": "taxi-leblanc",
   "version": "0.1.0",
   "private": true,
-  "prisma": {
-    "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
-  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -20,8 +17,9 @@
   },
   "dependencies": {
     "@googlemaps/js-api-loader": "^2.0.2",
-    "@hookform/resolvers": "^3.3.4",
-    "@prisma/client": "^5.22.0",
+    "@hookform/resolvers": "^5.2.2",
+    "@prisma/adapter-pg": "^7.7.0",
+    "@prisma/client": "^7.7.0",
     "@tailwindcss/forms": "^0.5.11",
     "@tanstack/react-query": "^5.97.0",
     "@types/nodemailer": "^8.0.0",
@@ -32,23 +30,25 @@
     "lucide-react": "^1.8.0",
     "next": "^15.5.15",
     "nodemailer": "^8.0.4",
+    "pg": "^8.20.0",
     "react": "^19.2.5",
     "react-dom": "^19.2.5",
     "react-hook-form": "^7.48.0",
     "tailwind-merge": "^2.2.0",
-    "zod": "^3.22.4"
+    "zod": "^4.3.6"
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.6",
     "@types/jsonwebtoken": "^9.0.7",
     "@types/node": "^20.19.39",
+    "@types/pg": "^8.20.0",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "autoprefixer": "^10.4.16",
     "eslint": "^8.56.0",
     "eslint-config-next": "^15.5.15",
     "postcss": "^8.4.32",
-    "prisma": "^5.22.0",
+    "prisma": "^7.7.0",
     "tailwindcss": "^3.4.1",
     "ts-node": "^10.9.2",
     "typescript": "^5.3.3"

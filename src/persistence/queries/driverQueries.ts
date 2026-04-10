@@ -1,5 +1,5 @@
 import { prisma } from '@/persistence/client';
-import { Driver, DriverStatus, Vehicle, VehicleType } from '@prisma/client';
+import { Driver, DriverStatus, Vehicle, VehicleType } from '@/generated/prisma/client';
 
 /**
  * Get a driver by their user ID

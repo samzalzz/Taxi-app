@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { BookingStatus } from '@prisma/client';
+import { BookingStatus } from '@/generated/prisma/client';
 import { BookingCard } from '@/components/features/booking/BookingCard';
 import { CpamVoucherModal } from '@/components/features/cpam/CpamVoucherModal';
 import Link from 'next/link';

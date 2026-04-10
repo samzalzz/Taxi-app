@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import { getSession } from '@/lib/auth/session';
 import { prisma } from '@/persistence/client';
 import { z } from 'zod';
-import { BookingStatus } from '@prisma/client';
+import { BookingStatus } from '@/generated/prisma/client';
 
 const confirmSchema = z.object({
   status: z.enum(['PENDING', 'CONFIRMED', 'DRIVER_ARRIVED', 'IN_PROGRESS', 'COMPLETED', 'CANCELLED'] as const),
@@ -78,7 +78,7 @@ export async function PATCH(request: Request, props: { params: Promise<{ id: str
   } catch (error) {
     if (error instanceof z.ZodError) {
       return NextResponse.json(
-        { error: 'Validation error', details: error.errors },
+        { error: 'Validation error', details: error.issues },
         { status: 400 }
       );
     }

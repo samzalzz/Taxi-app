@@ -53,7 +53,7 @@ export async function PATCH(request: NextRequest, props: { params: Promise<{ id:
   } catch (error) {
     if (error instanceof z.ZodError) {
       return NextResponse.json(
-        { error: error.errors[0].message },
+        { error: error.issues[0].message },
         { status: 400 }
       );
     }

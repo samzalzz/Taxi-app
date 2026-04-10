@@ -1,5 +1,5 @@
 import { prisma } from '@/persistence/client';
-import { PricingConfig } from '@prisma/client';
+import { PricingConfig } from '@/generated/prisma/client';
 
 export interface UpdatePricingInput {
   // Base pricing

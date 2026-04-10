@@ -5,9 +5,7 @@ import { createBooking } from '@/persistence/queries/bookingQueries';
 import { createUser } from '@/persistence/queries/userQueries';
 import { getPricingConfig } from '@/persistence/queries/pricingQueries';
 import { calculateDistance, calculateDynamicPrice, estimateDuration } from '@/lib/utils/pricing';
-import { PrismaClient } from '@prisma/client';
-
-const prisma = new PrismaClient();
+import { prisma } from '@/persistence/client';
 
 const CreateDriverBookingSchema = z.object({
   clientName: z.string().min(2, 'Le nom doit contenir au moins 2 caractères'),
@@ -129,7 +127,7 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
   } catch (error) {
     if (error instanceof z.ZodError) {
       return NextResponse.json(
-        { error: 'Validation error', details: error.errors },
+        { error: 'Validation error', details: error.issues },
         { status: 400 }
       );
     }

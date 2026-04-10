@@ -1,5 +1,5 @@
 import { prisma } from '@/persistence/client';
-import { Booking, BookingStatus, VehicleType } from '@prisma/client';
+import { Booking, BookingStatus, VehicleType } from '@/generated/prisma/client';
 import { randomBytes } from 'crypto';
 
 export interface CreateBookingInput {

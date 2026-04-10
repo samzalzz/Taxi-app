@@ -1,5 +1,5 @@
 import { prisma } from '@/persistence/client';
-import { BookingStatus } from '@prisma/client';
+import { BookingStatus } from '@/generated/prisma/client';
 
 export interface AdminStats {
   totalUsers: number;

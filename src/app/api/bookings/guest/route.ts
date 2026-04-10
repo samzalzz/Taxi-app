@@ -3,7 +3,7 @@ import { z } from 'zod';
 import { createBooking } from '@/persistence/queries/bookingQueries';
 import { calculateDistance, calculatePrice, estimateDuration } from '@/lib/utils/pricing';
 import { sendGuestBookingConfirmationEmail } from '@/lib/email/mailer';
-import { VehicleType } from '@prisma/client';
+import { VehicleType } from '@/generated/prisma/client';
 
 const CoordinateSchema = z.number().min(-180).max(180).finite();
 const LatitudeSchema = z.number().min(-90).max(90).finite();
@@ -112,7 +112,7 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
   } catch (error) {
     if (error instanceof z.ZodError) {
       return NextResponse.json(
-        { error: 'Validation error', details: error.errors },
+        { error: 'Validation error', details: error.issues },
         { status: 400 }
       );
     }

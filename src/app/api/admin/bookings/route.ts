@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getSession } from '@/lib/auth/session';
 import { getAllBookings } from '@/persistence/queries/adminQueries';
-import { BookingStatus } from '@prisma/client';
+import { BookingStatus } from '@/generated/prisma/client';
 
 export async function GET(request: NextRequest): Promise<NextResponse> {
   try {

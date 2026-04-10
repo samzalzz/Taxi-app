@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { AdminCalendarView } from '@/components/features/admin/AdminCalendarView';
-import { BookingStatus } from '@prisma/client';
+import { BookingStatus } from '@/generated/prisma/client';
 
 export default function AdminCalendarPage() {
   const [selectedStatus, setSelectedStatus] = useState<BookingStatus | undefined>();

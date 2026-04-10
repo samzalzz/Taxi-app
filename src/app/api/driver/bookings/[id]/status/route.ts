@@ -5,7 +5,7 @@ import { getDriverByUserId, updateDriverStatus } from '@/persistence/queries/dri
 import { updateBookingStatusByDriver } from '@/persistence/queries/bookingQueries';
 import { createNotification } from '@/lib/notifications/createNotification';
 import { prisma } from '@/persistence/client';
-import { BookingStatus } from '@prisma/client';
+import { BookingStatus } from '@/generated/prisma/client';
 
 const UpdateStatusSchema = z.object({
   status: z.enum(['DRIVER_ARRIVED', 'IN_PROGRESS', 'COMPLETED'] as const),

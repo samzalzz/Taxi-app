@@ -5,7 +5,7 @@ import { CalendarMonth } from '@/components/ui/Calendar/CalendarMonth';
 import { CalendarWeek } from '@/components/ui/Calendar/CalendarWeek';
 import { CalendarDayPanel } from '@/components/ui/Calendar/CalendarDayPanel';
 import { useCalendarData } from '@/lib/hooks/useCalendarData';
-import { BookingStatus } from '@prisma/client';
+import { BookingStatus } from '@/generated/prisma/client';
 
 type ViewMode = 'month' | 'week';
 

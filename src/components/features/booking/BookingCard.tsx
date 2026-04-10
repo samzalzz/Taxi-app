@@ -1,6 +1,6 @@
 'use client';
 
-import { BookingStatus } from '@prisma/client';
+import { BookingStatus } from '@/generated/prisma/client';
 import { Button } from '@/components/ui/Button';
 import { MapPin, Flag, Calendar, Users, Euro, AlertCircle, Star } from 'lucide-react';
 import { useState } from 'react';

@@ -1,7 +1,5 @@
-import { PrismaClient } from '@prisma/client';
 import bcryptjs from 'bcryptjs';
-
-const prisma = new PrismaClient();
+import { prisma } from '@/persistence/client';
 
 export async function getUserById(id: string) {
   return prisma.user.findUnique({

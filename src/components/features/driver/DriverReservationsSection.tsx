@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { MapPin, Flag, Filter, ArrowUpDown } from 'lucide-react';
-import { BookingStatus } from '@prisma/client';
+import { BookingStatus } from '@/generated/prisma/client';
 
 interface Booking {
   id: string;

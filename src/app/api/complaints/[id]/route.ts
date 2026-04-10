@@ -72,7 +72,7 @@ export async function PATCH(request: NextRequest, props: { params: Promise<{ id:
   } catch (error) {
     if (error instanceof z.ZodError) {
       return NextResponse.json(
-        { error: 'Validation error', details: error.errors },
+        { error: 'Validation error', details: error.issues },
         { status: 400 }
       );
     }

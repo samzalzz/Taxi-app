@@ -7,7 +7,7 @@ import { getUserById } from '@/persistence/queries/userQueries';
 import { getEmailTemplate } from '@/persistence/queries/appConfigQueries';
 import { sendBookingConfirmationEmail } from '@/lib/email/mailer';
 import { logApiCall } from '@/lib/api/logApiCall';
-import { BookingStatus } from '@prisma/client';
+import { BookingStatus } from '@/generated/prisma/client';
 
 const CoordinateSchema = z.number().min(-180).max(180);
 const LatitudeSchema = z.number().min(-90).max(90);
@@ -97,7 +97,7 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
   } catch (error) {
     if (error instanceof z.ZodError) {
       return NextResponse.json(
-        { error: 'Validation error', details: error.errors },
+        { error: 'Validation error', details: error.issues },
         { status: 400 }
       );
     }

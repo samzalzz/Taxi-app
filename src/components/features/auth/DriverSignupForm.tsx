@@ -25,7 +25,7 @@ const driverSignupSchema = z.object({
 
   // Step 3: Vehicle
   vehicleType: z.enum(['BERLINE', 'SUV', 'VAN', 'PREMIUM'], {
-    errorMap: () => ({ message: 'Veuillez sélectionner un type de véhicule' }),
+    error: 'Veuillez sélectionner un type de véhicule',
   }),
   brand: z.string().min(2, 'La marque est requise'),
   model: z.string().min(2, 'Le modèle est requis'),
