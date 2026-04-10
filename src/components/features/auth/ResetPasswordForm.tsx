@@ -57,7 +57,7 @@ export function ResetPasswordForm() {
         return;
       }
       router.push('/connexion?reset=success');
-    } catch (err) {
+    } catch (_err) {
       setApiError('Une erreur est survenue');
     } finally {
       setIsLoading(false);

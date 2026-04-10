@@ -406,7 +406,7 @@ export async function getBookingByReservationCode(
     booking.guestEmail.toLowerCase() === email.toLowerCase()
   ) {
     // Remove guestEmail from returned data (don't re-expose PII)
-    const { guestEmail, ...bookingWithoutEmail } = booking;
+    const { guestEmail: _guestEmail, ...bookingWithoutEmail } = booking;
     return bookingWithoutEmail as any;
   }
 

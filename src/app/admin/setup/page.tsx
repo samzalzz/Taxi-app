@@ -66,7 +66,7 @@ export default function AdminSetupPage() {
       } else {
         showError(data.error || 'Erreur lors de la création');
       }
-    } catch (error) {
+    } catch (_error) {
       showError('Erreur lors de la création de l\'admin');
     } finally {
       setLoading(false);

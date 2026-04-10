@@ -37,7 +37,7 @@ export function ForgotPasswordForm() {
         return;
       }
       setSubmitted(true);
-    } catch (err) {
+    } catch (_err) {
       setApiError('Une erreur est survenue');
     } finally {
       setIsLoading(false);

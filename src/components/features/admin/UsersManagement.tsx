@@ -50,7 +50,7 @@ export default function UsersManagement() {
       } else {
         showError(data.error || 'Failed to fetch users');
       }
-    } catch (error) {
+    } catch (_error) {
       showError('Error fetching users');
     } finally {
       setLoading(false);
@@ -74,7 +74,7 @@ export default function UsersManagement() {
       } else {
         showError(data.error || 'Failed to update role');
       }
-    } catch (error) {
+    } catch (_error) {
       showError('Error updating user role');
     } finally {
       setUpdatingId(null);

@@ -69,7 +69,7 @@ export async function POST(request: NextRequest) {
     });
 
     // Return user without passwordHash
-    const { passwordHash, ...userWithoutPassword } = user;
+    const { passwordHash: _passwordHash, ...userWithoutPassword } = user;
 
     // Create response with JSON body
     const response = NextResponse.json(

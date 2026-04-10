@@ -33,7 +33,7 @@ export function verifyToken(token: string): JWTPayload | null {
       algorithms: ['HS256'],
     });
     return decoded as JWTPayload;
-  } catch (error) {
+  } catch (_error) {
     return null;
   }
 }
@@ -42,7 +42,7 @@ export function decodeToken(token: string): JWTPayload | null {
   try {
     const decoded = jwt.decode(token) as JWTPayload | null;
     return decoded;
-  } catch (error) {
+  } catch (_error) {
     return null;
   }
 }
