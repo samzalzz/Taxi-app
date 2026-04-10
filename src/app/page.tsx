@@ -1,9 +1,10 @@
 import { Footer } from '@/components/layout/Footer';
 import { StatCounter } from '@/components/features/stats/StatCounter';
 import { BackgroundPathsDemo } from '@/components/features/home/BackgroundPathsDemo';
+import { ServicesEditorial } from '@/components/features/home/ServicesEditorial';
+import { CharacteristicsEditorial } from '@/components/features/home/CharacteristicsEditorial';
 import { HomeHeader } from '@/components/layout/HomeHeader';
 import { CheckmarkIcon } from '@/components/ui/CheckmarkIcon';
-import { Car, Stethoscope, Users, Shield, Zap } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/Button';
 import type { Metadata } from 'next';
@@ -155,75 +156,9 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Services Section */}
-      <section className="py-20 px-4 bg-surface">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-4xl font-serif font-bold text-center text-on-surface mb-12">
-            Nos Services
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-background rounded-lg p-8 border border-on-surface/10">
-              <Car className="w-10 h-10 text-primary mb-4" />
-              <h3 className="text-xl font-semibold text-on-surface mb-2">Transferts Aéroport</h3>
-              <p className="text-on-surface-dim">
-                Transport fiable vers et depuis les aéroports d&apos;Île-de-France
-              </p>
-            </div>
-            <div className="bg-background rounded-lg p-8 border border-on-surface/10">
-              <Stethoscope className="w-10 h-10 text-primary mb-4" />
-              <h3 className="text-xl font-semibold text-on-surface mb-2">Transport Médical</h3>
-              <p className="text-on-surface-dim">
-                Service spécialisé avec prise en charge CPAM
-              </p>
-            </div>
-            <div className="bg-background rounded-lg p-8 border border-on-surface/10">
-              <Users className="w-10 h-10 text-primary mb-4" />
-              <h3 className="text-xl font-semibold text-on-surface mb-2">Occasions Personnelles</h3>
-              <p className="text-on-surface-dim">
-                Événements, rendez-vous professionnels et trajets du quotidien
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+      <ServicesEditorial />
 
-      {/* Characteristics Section */}
-      <section className="py-20 px-4">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-4xl font-serif font-bold text-center text-on-surface mb-12">
-            Nos Caractéristiques
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="text-center">
-              <div className="flex justify-center mb-4">
-                <Users className="w-12 h-12 text-primary" />
-              </div>
-              <h3 className="text-xl font-semibold text-on-surface mb-2">Personnel</h3>
-              <p className="text-on-surface-dim">
-                Service attentif et courtois adapté à vos besoins
-              </p>
-            </div>
-            <div className="text-center">
-              <div className="flex justify-center mb-4">
-                <Shield className="w-12 h-12 text-primary" />
-              </div>
-              <h3 className="text-xl font-semibold text-on-surface mb-2">Professionnel</h3>
-              <p className="text-on-surface-dim">
-                Chauffeurs expérimentés et véhicules de qualité
-              </p>
-            </div>
-            <div className="text-center">
-              <div className="flex justify-center mb-4">
-                <Zap className="w-12 h-12 text-primary" />
-              </div>
-              <h3 className="text-xl font-semibold text-on-surface mb-2">Médical</h3>
-              <p className="text-on-surface-dim">
-                Formation spécialisée et protocoles de sécurité
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+      <CharacteristicsEditorial />
 
       {/* Contact Section */}
       <section className="py-24 px-4 bg-background">
