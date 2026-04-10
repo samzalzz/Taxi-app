@@ -133,50 +133,57 @@ export default function EstimationTarifPage() {
           <div className="bg-surface rounded-xl border border-on-surface/10 p-8 mb-12">
             <h3 className="text-2xl font-bold text-on-surface mb-6">Zones de Couverture des Forfaits</h3>
 
-            {/* ASCII Map-like visualization */}
-            <div className="bg-background rounded-lg p-6 overflow-auto mb-6 text-xs md:text-sm font-mono text-on-surface-dim leading-relaxed">
-              <pre className="text-on-surface-dim">{`
-                                   ╔════════════════════════════════════════╗
-                                   ║  AÉROPORTS DE PARIS - ZONES FORFAIT    ║
-                                   ╚════════════════════════════════════════╝
-
-                        ┌─────────────────────────────────────────┐
-                        │                                         │
-                        │        🛫 CHARLES DE GAULLE (CDG)       │
-                        │           50€ depuis Paris             │
-                        │           (~35-40 km Nord)             │
-                        │                                         │
-                        └──────────────┬──────────────────────────┘
-                                      │
-                                      │ 35-40 km
-                                      │
-                        ╔═════════════════════════════════════════╗
-                        ║                                         ║
-                        ║          ★ PARIS CENTRE ★              ║
-                        ║                                         ║
-                        ║  Point de départ des forfaits           ║
-                        ║  (Rive Droite / Rive Gauche)           ║
-                        ║                                         ║
-                        ║  Taxis conventionnés présents 24h/24   ║
-                        ║  Zones couvertes: Île-de-France        ║
-                        ║                                         ║
-                        ╚═════════════════════════════════════════╝
-                                      │
-                        ┌─────────────┴─────────────┐
-                        │                           │
-              ┌─────────▼──────────┐   ┌──────────▼──────────┐
-              │  🛫 ORLY (ORY)     │   │ 🛫 BEAUVAIS (BVA)  │
-              │  36€ depuis Paris  │   │ 65€ depuis Paris   │
-              │  (~15 km Sud)      │   │ (~85 km Nord)      │
-              └────────────────────┘   └────────────────────┘
-
-              ═══════════════════════════════════════════════════════════════
-              FORFAITS VALABLES: Aller ou Retour | Bagages Inclus
-              BASE LÉGALE: Arrêté Préfecture de Police Paris 2026
-              ═══════════════════════════════════════════════════════════════
-              `}</pre>
+            {/* Graphical SVG Schema */}
+            <div className="bg-background rounded-lg p-4 md:p-6 mb-6">
+              <svg viewBox="0 0 800 620" className="w-full h-auto" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Schéma des zones de couverture des forfaits">
+                <defs>
+                  <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                    <path d="M0,0 L10,5 L0,10 z" className="fill-primary" />
+                  </marker>
+                  <linearGradient id="parisGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stopColor="currentColor" stopOpacity="0.18" />
+                    <stop offset="100%" stopColor="currentColor" stopOpacity="0.05" />
+                  </linearGradient>
+                </defs>
+                <line x1="400" y1="120" x2="400" y2="220" className="stroke-primary" strokeWidth="2" strokeDasharray="6 4" markerEnd="url(#arrow)" />
+                <line x1="320" y1="420" x2="200" y2="490" className="stroke-primary" strokeWidth="2" strokeDasharray="6 4" markerEnd="url(#arrow)" />
+                <line x1="480" y1="420" x2="600" y2="490" className="stroke-primary" strokeWidth="2" strokeDasharray="6 4" markerEnd="url(#arrow)" />
+                <text x="415" y="175" className="fill-on-surface-dim" fontSize="13">35-40 km</text>
+                <text x="220" y="462" className="fill-on-surface-dim" fontSize="13">~15 km</text>
+                <text x="545" y="462" className="fill-on-surface-dim" fontSize="13">~85 km</text>
+                <g>
+                  <rect x="270" y="30" width="260" height="90" rx="12" className="fill-surface stroke-primary" strokeWidth="2" />
+                  <text x="400" y="60" textAnchor="middle" className="fill-on-surface" fontWeight="700" fontSize="16">✈ Charles de Gaulle (CDG)</text>
+                  <text x="400" y="88" textAnchor="middle" className="fill-primary" fontWeight="700" fontSize="22">50 €</text>
+                  <text x="400" y="108" textAnchor="middle" className="fill-on-surface-dim" fontSize="12">~35-40 km Nord</text>
+                </g>
+                <g className="text-primary">
+                  <rect x="230" y="220" width="340" height="200" rx="16" fill="url(#parisGradient)" className="stroke-primary" strokeWidth="3" />
+                  <text x="400" y="260" textAnchor="middle" className="fill-on-surface" fontWeight="700" fontSize="22">★ PARIS CENTRE ★</text>
+                  <text x="400" y="295" textAnchor="middle" className="fill-on-surface-dim" fontSize="13">Point de départ des forfaits</text>
+                  <text x="400" y="315" textAnchor="middle" className="fill-on-surface-dim" fontSize="13">(Rive Droite / Rive Gauche)</text>
+                  <line x1="290" y1="335" x2="510" y2="335" className="stroke-primary" strokeWidth="1" strokeOpacity="0.3" />
+                  <text x="400" y="362" textAnchor="middle" className="fill-on-surface" fontSize="13">Taxis conventionnés 24h/24</text>
+                  <text x="400" y="388" textAnchor="middle" className="fill-on-surface" fontSize="13">Zones couvertes : Île-de-France</text>
+                </g>
+                <g>
+                  <rect x="60" y="490" width="260" height="90" rx="12" className="fill-surface stroke-primary" strokeWidth="2" />
+                  <text x="190" y="520" textAnchor="middle" className="fill-on-surface" fontWeight="700" fontSize="16">✈ Orly (ORY)</text>
+                  <text x="190" y="548" textAnchor="middle" className="fill-primary" fontWeight="700" fontSize="22">36 €</text>
+                  <text x="190" y="568" textAnchor="middle" className="fill-on-surface-dim" fontSize="12">~15 km Sud</text>
+                </g>
+                <g>
+                  <rect x="480" y="490" width="260" height="90" rx="12" className="fill-surface stroke-primary" strokeWidth="2" />
+                  <text x="610" y="520" textAnchor="middle" className="fill-on-surface" fontWeight="700" fontSize="16">✈ Beauvais (BVA)</text>
+                  <text x="610" y="548" textAnchor="middle" className="fill-primary" fontWeight="700" fontSize="22">65 €</text>
+                  <text x="610" y="568" textAnchor="middle" className="fill-on-surface-dim" fontSize="12">~85 km Nord</text>
+                </g>
+              </svg>
+              <div className="mt-4 pt-4 border-t border-on-surface/10 text-center text-xs md:text-sm text-on-surface-dim space-y-1">
+                <p><strong className="text-on-surface">Forfaits valables :</strong> Aller ou Retour · Bagages inclus</p>
+                <p><strong className="text-on-surface">Base légale :</strong> Arrêté Préfecture de Police Paris 2026</p>
+              </div>
             </div>
-
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="rounded-lg bg-primary/10 border border-primary/20 p-4">
                 <p className="font-semibold text-primary mb-2">🛫 CDG (50€)</p>
