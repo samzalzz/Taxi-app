@@ -15,7 +15,7 @@ type Entry = {
 const ENTRIES: Entry[] = [
   {
     numeral: 'I',
-    kicker: 'La maison',
+    kicker: 'Leblanc',
     title: 'Adresse',
     lines: ['30 Allée des Bergeries', 'Draveil · 91210 · France'],
   },
@@ -242,7 +242,7 @@ export function ContactEditorial() {
             {/* Bottom monogram */}
             <div className="mt-12 flex items-center justify-between">
               <span className="text-[10px] font-sans font-semibold uppercase tracking-[0.3em] text-on-surface-dim/60">
-                Maison Leblanc
+                Leblanc
               </span>
               <span className="font-serif text-sm italic text-primary/60">TL</span>
             </div>

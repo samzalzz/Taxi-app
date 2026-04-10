@@ -57,7 +57,7 @@ export function CharacteristicsEditorial() {
       <div className="pointer-events-none absolute right-4 top-0 bottom-0 hidden lg:flex items-center">
         <div className="origin-right rotate-90 whitespace-nowrap -translate-x-3">
           <span className="text-[11px] font-sans font-semibold uppercase tracking-[0.45em] text-primary/60">
-            La&nbsp;maison &nbsp;·&nbsp; Taxi&nbsp;Leblanc
+            Leblanc &nbsp;·&nbsp; Taxi&nbsp;Leblanc
           </span>
         </div>
       </div>
@@ -146,7 +146,7 @@ export function CharacteristicsEditorial() {
                 </p>
                 <div className="mt-8 flex items-center justify-between">
                   <span className="text-[10px] font-sans font-semibold uppercase tracking-[0.3em] text-on-surface-dim/60">
-                    — Maison Leblanc
+                    — Leblanc
                   </span>
                   <span className="font-serif text-xs italic text-primary/60">TL</span>
                 </div>

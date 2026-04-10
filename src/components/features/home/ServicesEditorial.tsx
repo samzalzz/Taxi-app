@@ -62,7 +62,7 @@ export function ServicesEditorial() {
       <div className="pointer-events-none absolute left-4 top-0 bottom-0 hidden lg:flex items-center">
         <div className="origin-left -rotate-90 whitespace-nowrap translate-x-3">
           <span className="text-[11px] font-sans font-semibold uppercase tracking-[0.45em] text-primary/60">
-            Nos&nbsp;services  · &nbsp; Depuis&nbsp;2010
+            Nos&nbsp;services  · &nbsp; Depuis&nbsp;2020
           </span>
         </div>
       </div>
