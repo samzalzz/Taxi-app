@@ -25,10 +25,10 @@ export function ConsentBanner() {
 
   return (
     <>
-      {/* Backdrop overlay — dark & blurred, prevents interaction */}
+      {/* Backdrop overlay — covers everything (navbar included) for RGPD compliance */}
       <div className="fixed inset-0 z-[100] bg-black/70 backdrop-blur-md" aria-hidden="true" />
 
-      {/* Modal Dialog centered on viewport */}
+      {/* Modal Dialog centered on viewport, above the navbar */}
       <div className="fixed inset-0 z-[101] flex items-center justify-center overflow-y-auto p-4">
         <div
           className="w-full max-w-2xl bg-surface rounded-3xl shadow-2xl border-2 border-primary overflow-hidden animate-in fade-in zoom-in-95 duration-300 my-auto"

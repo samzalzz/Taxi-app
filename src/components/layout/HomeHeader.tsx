@@ -11,9 +11,9 @@ export function HomeHeader() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <div className="relative">
+    <>
       <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-sm border-b border-on-surface/10">
-        <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between h-16">
           <Logo href="/" className="h-10 w-auto" />
           <div className="flex gap-4 items-center">
             <ThemeToggle />
@@ -48,9 +48,9 @@ export function HomeHeader() {
         </div>
       </nav>
 
-      {/* Mobile dropdown menu */}
+      {/* Mobile dropdown menu — fixed under navbar so it follows scroll */}
       {isMenuOpen && (
-        <div className="absolute top-full left-0 right-0 bg-background border-b border-on-surface/10 md:hidden z-50">
+        <div className="fixed top-16 left-0 right-0 z-40 bg-background border-b border-on-surface/10 md:hidden">
           <div className="max-w-7xl mx-auto px-4 py-3 flex flex-col gap-2">
             <Link href="/connexion" onClick={() => setIsMenuOpen(false)} className="w-full">
               <Button variant="ghost" className="w-full justify-start">
@@ -65,6 +65,6 @@ export function HomeHeader() {
           </div>
         </div>
       )}
-    </div>
+    </>
   );
 }
