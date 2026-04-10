@@ -91,12 +91,6 @@ export function HeroEditorial() {
             <HeroLine delay={0.82}>
               <em className="text-primary">course,</em>
             </HeroLine>
-            <HeroLine delay={0.94}>
-              <span className="not-italic text-on-surface/60">comme</span>
-            </HeroLine>
-            <HeroLine delay={1.06}>
-              <em>une lettre.</em>
-            </HeroLine>
           </h1>
 
           <motion.div
