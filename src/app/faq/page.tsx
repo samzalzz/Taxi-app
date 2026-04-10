@@ -160,7 +160,7 @@ export default function FAQPage() {
       <section className="py-20 px-4 bg-surface">
         <div className="max-w-2xl mx-auto text-center">
           <h2 className="text-4xl font-serif font-bold text-on-surface mb-6">
-            Besoin d'aide ?
+            Besoin d&apos;aide ?
           </h2>
           <p className="text-on-surface-dim text-lg mb-8">
             Si vous ne trouvez pas votre réponse, contactez-nous directement.

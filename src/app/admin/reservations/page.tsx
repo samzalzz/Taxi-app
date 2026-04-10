@@ -428,7 +428,7 @@ export default function AdminReservationsPage() {
                       className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold bg-purple-500/10 text-purple-600 border border-purple-500/20 hover:bg-purple-500/20 transition-colors"
                     >
                       <Info className="w-4 h-4" />
-                      Plus d'infos
+                      Plus d&apos;infos
                     </button>
                   </div>
 

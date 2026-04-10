@@ -11,7 +11,7 @@ export default function SignupPage() {
     <div className="space-y-6">
       <div>
         <h1 className="text-2xl font-serif font-bold text-on-surface mb-2">
-          S'inscrire
+          S&apos;inscrire
         </h1>
         <p className="text-on-surface-dim text-sm">
           Créez un compte pour réserver vos trajets
@@ -46,7 +46,7 @@ export default function SignupPage() {
           href="/"
           className="text-primary hover:text-primary-light text-sm transition-smooth flex items-center justify-center gap-2"
         >
-          ← Retour à l'accueil
+          ← Retour à l&apos;accueil
         </Link>
       </div>
     </div>

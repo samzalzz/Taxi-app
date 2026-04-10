@@ -179,12 +179,12 @@ export function SettingsManagement() {
       {/* App Settings Section */}
       <div className="bg-surface border border-on-surface/10 rounded-lg p-6 space-y-4">
         <h3 className="font-semibold text-lg text-on-surface">
-          Paramètres de l'application
+          Paramètres de l&apos;application
         </h3>
 
         <div>
           <label className="block text-sm font-semibold text-on-surface mb-2">
-            Nom de l'application
+            Nom de l&apos;application
           </label>
           <Input
             type="text"
@@ -202,7 +202,7 @@ export function SettingsManagement() {
                 Mode maintenance
               </label>
               <p className="text-xs text-on-surface-dim">
-                Désactiver l'application pour la maintenance
+                Désactiver l&apos;application pour la maintenance
               </p>
             </div>
             <button

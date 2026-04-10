@@ -164,11 +164,11 @@ export default function TarifsPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div>
               <h3 className="text-xl font-bold text-on-surface mb-3">Les tarifs incluent-ils la prise en charge ?</h3>
-              <p className="text-on-surface-dim">Oui, tous nos tarifs incluent la prise en charge de 2,50€. Aucun frais supplémentaire n'est facturé.</p>
+              <p className="text-on-surface-dim">Oui, tous nos tarifs incluent la prise en charge de 2,50€. Aucun frais supplémentaire n&apos;est facturé.</p>
             </div>
             <div>
               <h3 className="text-xl font-bold text-on-surface mb-3">Puis-je modifier mon trajet après la réservation ?</h3>
-              <p className="text-on-surface-dim">Oui, vous pouvez modifier votre destination ou heure jusqu'à 2 heures avant le trajet sans frais supplémentaires.</p>
+              <p className="text-on-surface-dim">Oui, vous pouvez modifier votre destination ou heure jusqu&apos;à 2 heures avant le trajet sans frais supplémentaires.</p>
             </div>
             <div>
               <h3 className="text-xl font-bold text-on-surface mb-3">Y a-t-il des frais de nuit ou week-end ?</h3>
@@ -176,7 +176,7 @@ export default function TarifsPage() {
             </div>
             <div>
               <h3 className="text-xl font-bold text-on-surface mb-3">Comment sont calculés les tarifs CPAM ?</h3>
-              <p className="text-on-surface-dim">La tarification CPAM suit les barèmes officiels de l'Assurance Maladie. Vous n'avez rien à payer directement.</p>
+              <p className="text-on-surface-dim">La tarification CPAM suit les barèmes officiels de l&apos;Assurance Maladie. Vous n&apos;avez rien à payer directement.</p>
             </div>
             <div>
               <h3 className="text-xl font-bold text-on-surface mb-3">Acceptez-vous les cartes bancaires ?</h3>

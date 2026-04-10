@@ -10,7 +10,7 @@ export default function AdminPage() {
           Tableau de bord admin
         </h1>
         <p className="text-lg text-on-surface-dim">
-          Vue d'ensemble et gestion de la plateforme
+          Vue d&apos;ensemble et gestion de la plateforme
         </p>
       </div>
 

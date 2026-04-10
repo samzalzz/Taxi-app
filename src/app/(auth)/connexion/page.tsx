@@ -33,12 +33,12 @@ export default async function LoginPage(
 
       <div className="text-center">
         <p className="text-on-surface-dim text-sm">
-          Vous n'avez pas de compte?{' '}
+          Vous n&apos;avez pas de compte?{' '}
           <Link
             href="/inscription"
             className="text-primary hover:text-primary-light transition-smooth"
           >
-            S'inscrire
+            S&apos;inscrire
           </Link>
         </p>
       </div>
@@ -48,7 +48,7 @@ export default async function LoginPage(
           href="/"
           className="text-primary hover:text-primary-light text-sm transition-smooth flex items-center justify-center gap-2"
         >
-          ← Retour à l'accueil
+          ← Retour à l&apos;accueil
         </Link>
       </div>
     </div>

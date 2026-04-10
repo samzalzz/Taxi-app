@@ -17,7 +17,7 @@ export default async function AvailableCoursesPage() {
     <div className="max-w-6xl mx-auto space-y-8">
       <div>
         <h1 className="text-4xl font-bold text-on-surface mb-2">Courses disponibles</h1>
-        <p className="text-on-surface-dim">Consultez les courses en attente d'assignation</p>
+        <p className="text-on-surface-dim">Consultez les courses en attente d&apos;assignation</p>
       </div>
 
       <AvailableCoursesView />

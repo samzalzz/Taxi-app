@@ -135,7 +135,7 @@ export function BookingForm({ onSuccess }: BookingFormProps) {
         <div className="space-y-4">
           <h3 className="text-lg font-semibold text-on-surface">Date et heure de départ</h3>
           <p className="text-sm text-on-surface-dim">
-            Minimum <strong>2 heures à l'avance</strong>. Pour une prise en charge immédiate, appelez-nous au <a href="tel:+33608550315" className="text-primary font-semibold">+33 6 08 55 03 15</a>
+            Minimum <strong>2 heures à l&apos;avance</strong>. Pour une prise en charge immédiate, appelez-nous au <a href="tel:+33608550315" className="text-primary font-semibold">+33 6 08 55 03 15</a>
           </p>
           <input
             type="datetime-local"
@@ -146,7 +146,7 @@ export function BookingForm({ onSuccess }: BookingFormProps) {
             className="w-full px-4 py-3 rounded-lg bg-surface-light text-on-surface border border-on-surface/10 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
           />
           {isTooSoon(formState.scheduledAt) && (
-            <p className="text-sm text-error">⚠ Veuillez choisir au minimum 2 heures à l'avance</p>
+            <p className="text-sm text-error">⚠ Veuillez choisir au minimum 2 heures à l&apos;avance</p>
           )}
         </div>
       )}
@@ -230,7 +230,7 @@ export function BookingForm({ onSuccess }: BookingFormProps) {
               onChange={e => setIsCpam(e.target.checked)}
               className="w-5 h-5 rounded accent-primary"
             />
-            <span className="text-on-surface">Transport CPAM (remboursé par l'Assurance Maladie)</span>
+            <span className="text-on-surface">Transport CPAM (remboursé par l&apos;Assurance Maladie)</span>
             <span className="px-2 py-0.5 text-xs bg-blue-500/10 text-blue-400 rounded-full font-semibold border border-blue-500/20">
               CPAM
             </span>

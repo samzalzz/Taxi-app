@@ -201,7 +201,7 @@ export function DriverDashboard({ userId: _userId }: DriverDashboardProps) {
                 {driverStatus === 'ON_BREAK' && 'Vous êtes en pause. Reprenez votre service pour voir les courses disponibles.'}
               </p>
               <p className="text-sm text-on-surface-dim">
-                Utilisez le sélecteur d'état ci-dessus pour vous mettre disponible.
+                Utilisez le sélecteur d&apos;état ci-dessus pour vous mettre disponible.
               </p>
             </>
           )}

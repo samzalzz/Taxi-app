@@ -49,7 +49,7 @@ export function ConsentBanner() {
                     Votre consentement est requis
                   </h2>
                   <p className="text-sm md:text-base text-on-surface-dim leading-relaxed">
-                    Avant de continuer, veuillez accepter nos Conditions d'Utilisation et nos politiques de cookies.
+                    Avant de continuer, veuillez accepter nos Conditions d&apos;Utilisation et nos politiques de cookies.
                   </p>
                 </div>
               </div>
@@ -79,9 +79,9 @@ export function ConsentBanner() {
                   <div className="flex gap-4">
                     <FileText className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
                     <div className="flex-1">
-                      <h3 className="font-bold text-on-surface mb-2 text-lg">📋 Conditions Générales d'Utilisation</h3>
+                      <h3 className="font-bold text-on-surface mb-2 text-lg">📋 Conditions Générales d&apos;Utilisation</h3>
                       <p className="text-sm text-on-surface-dim mb-3 leading-relaxed">
-                        Vous devez accepter nos CGU pour utiliser notre service. Elles définissent les règles d'utilisation et vos droits.
+                        Vous devez accepter nos CGU pour utiliser notre service. Elles définissent les règles d&apos;utilisation et vos droits.
                       </p>
                       <Link href="/legal/conditions" className="text-primary hover:text-primary-light font-semibold underline text-sm inline-flex items-center gap-1" target="_blank">
                         Consulter les CGU complètes →
@@ -118,7 +118,7 @@ export function ConsentBanner() {
                 onClick={acceptCGU}
                 className="px-8 py-3.5 bg-primary text-background font-bold rounded-xl hover:bg-primary-dark transition-all duration-200 hover:shadow-xl text-base"
               >
-                J'accepte les CGU
+                J&apos;accepte les CGU
               </button>
             ) : cguResponded && !cookiesResponded ? (
               <>
@@ -147,7 +147,7 @@ export function ConsentBanner() {
                   onClick={handleAcceptAll}
                   className="px-8 py-3.5 bg-primary text-background font-bold rounded-xl hover:bg-primary-dark transition-all duration-200 hover:shadow-xl text-base"
                 >
-                  J'accepte tout
+                  J&apos;accepte tout
                 </button>
               </>
             )}

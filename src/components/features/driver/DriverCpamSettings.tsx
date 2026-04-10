@@ -79,7 +79,7 @@ export function DriverCpamSettings() {
               Transport CPAM
             </h3>
             <p className="text-sm text-on-surface-dim mb-4">
-              Activez cette option si vous êtes agréé CPAM (Caisse Primaire d'Assurance Maladie) et acceptez les transports médicaux conventionnés.
+              Activez cette option si vous êtes agréé CPAM (Caisse Primaire d&apos;Assurance Maladie) et acceptez les transports médicaux conventionnés.
             </p>
 
             {isCpamApproved && (

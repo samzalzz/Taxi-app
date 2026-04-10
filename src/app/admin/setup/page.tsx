@@ -147,7 +147,7 @@ export default function AdminSetupPage() {
 
             <div className="bg-blue-900/20 border border-blue-700/30 rounded p-4">
               <p className="text-sm text-blue-300 mb-2">
-                <strong>Admin Secret:</strong> Demandez la clé secrète d'administration à votre responsable système
+                <strong>Admin Secret:</strong> Demandez la clé secrète d&apos;administration à votre responsable système
               </p>
               <Input
                 type="password"
@@ -174,9 +174,9 @@ export default function AdminSetupPage() {
             <ol className="list-decimal list-inside space-y-1 text-xs">
               <li>Demandez le ADMIN_SECRET à votre administrateur système</li>
               <li>Remplissez tous les champs du formulaire</li>
-              <li>Cliquez sur "Créer l'administrateur"</li>
+              <li>Cliquez sur &quot;Créer l&apos;administrateur&quot;</li>
               <li>Connectez-vous avec vos identifiants</li>
-              <li>Allez dans Admin → Utilisateurs pour créer d'autres admins</li>
+              <li>Allez dans Admin → Utilisateurs pour créer d&apos;autres admins</li>
             </ol>
           </div>
         </div>

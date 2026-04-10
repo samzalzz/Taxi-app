@@ -58,7 +58,7 @@ export default function EstimationTarifPage() {
             </div>
             <p className="text-on-surface-dim text-lg mb-6 leading-relaxed">
               Les tarifs affichés ci-dessous sont des <strong>forfaits réglementaires</strong> établis par la Préfecture de Police de Paris
-              en accord avec la loi française. Ces forfaits s'appliquent à tous les taxis parisiens autorisés et représentent le tarif maximum
+              en accord avec la loi française. Ces forfaits s&apos;appliquent à tous les taxis parisiens autorisés et représentent le tarif maximum
               que vous devez payer pour ces trajets.
             </p>
 
@@ -187,7 +187,7 @@ export default function EstimationTarifPage() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="rounded-lg bg-primary/10 border border-primary/20 p-4">
                 <p className="font-semibold text-primary mb-2">🛫 CDG (50€)</p>
-                <p className="text-sm text-on-surface-dim">Direction Nord de Paris, zone d'exploitation la plus importante</p>
+                <p className="text-sm text-on-surface-dim">Direction Nord de Paris, zone d&apos;exploitation la plus importante</p>
               </div>
               <div className="rounded-lg bg-primary/10 border border-primary/20 p-4">
                 <p className="font-semibold text-primary mb-2">🛫 Orly (36€)</p>
@@ -214,12 +214,12 @@ export default function EstimationTarifPage() {
               <div className="flex items-start gap-4 mb-4">
                 <CheckCircle className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
                 <div>
-                  <h3 className="text-2xl font-bold text-on-surface mb-3">Qu'est-ce qu'un forfait?</h3>
+                  <h3 className="text-2xl font-bold text-on-surface mb-3">Qu&apos;est-ce qu&apos;un forfait?</h3>
                   <p className="text-on-surface-dim leading-relaxed">
                     Un forfait est un <strong>tarif fixe réglementé</strong> établi par la Préfecture de Police de Paris.
-                    Il s'applique à <strong>tous les taxis parisiens conventionnés</strong> pour les trajets entre Paris et les aéroports.
+                    Il s&apos;applique à <strong>tous les taxis parisiens conventionnés</strong> pour les trajets entre Paris et les aéroports.
                     Contrairement aux tarifs au compteur (basés sur la distance et le temps), le forfait garantit un prix
-                    <strong>maximum connu à l'avance</strong>, sans surprise.
+                    <strong>maximum connu à l&apos;avance</strong>, sans surprise.
                   </p>
                 </div>
               </div>
@@ -232,8 +232,8 @@ export default function EstimationTarifPage() {
                   <h3 className="text-2xl font-bold text-on-surface mb-3">Pourquoi des forfaits pour les aéroports?</h3>
                   <p className="text-on-surface-dim leading-relaxed">
                     Les forfaits aéroports sont <strong>légalement imposés</strong> pour protéger les passagers contre les surcharges.
-                    Ils prennent en compte la distance élevée (35-85 km) et l'exploitation importante des routes aéroports.
-                    Le tarif unifié garantit l'équité pour tous les clients, peu importe le moment du jour ou les conditions
+                    Ils prennent en compte la distance élevée (35-85 km) et l&apos;exploitation importante des routes aéroports.
+                    Le tarif unifié garantit l&apos;équité pour tous les clients, peu importe le moment du jour ou les conditions
                     de circulation.
                   </p>
                 </div>
@@ -244,13 +244,13 @@ export default function EstimationTarifPage() {
               <div className="flex items-start gap-4 mb-4">
                 <CheckCircle className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
                 <div>
-                  <h3 className="text-2xl font-bold text-on-surface mb-3">Qu'inclut le forfait?</h3>
+                  <h3 className="text-2xl font-bold text-on-surface mb-3">Qu&apos;inclut le forfait?</h3>
                   <ul className="space-y-2 text-on-surface-dim">
                     <li>✓ <strong>Prise en charge:</strong> Les 2,50€ initiaux inclus dans le forfait</li>
-                    <li>✓ <strong>Trajet complet:</strong> Du point de départ à l'aéroport (terminal)</li>
+                    <li>✓ <strong>Trajet complet:</strong> Du point de départ à l&apos;aéroport (terminal)</li>
                     <li>✓ <strong>Bagages:</strong> Tous les bagages sont inclus, pas de frais supplémentaires</li>
                     <li>✓ <strong>Véhicule confortable:</strong> Voiture de tourisme standard (4-5 passagers)</li>
-                    <li>✓ <strong>Trajet retour:</strong> Le forfait s'applique aussi au retour de l'aéroport</li>
+                    <li>✓ <strong>Trajet retour:</strong> Le forfait s&apos;applique aussi au retour de l&apos;aéroport</li>
                   </ul>
                 </div>
               </div>
@@ -266,7 +266,7 @@ export default function EstimationTarifPage() {
                   </p>
                   <ul className="space-y-2 text-on-surface-dim ml-4">
                     <li>• <strong>Passager supplémentaire:</strong> À partir du 5e passager (+5,50€)</li>
-                    <li>• <strong>Attente:</strong> Si vous demandez attente à l'aéroport</li>
+                    <li>• <strong>Attente:</strong> Si vous demandez attente à l&apos;aéroport</li>
                     <li>• <strong>Trajet spécial:</strong> Départ après 22h ou avant 6h (petit supplément possible)</li>
                   </ul>
                 </div>
@@ -305,9 +305,9 @@ export default function EstimationTarifPage() {
                 </h3>
               </summary>
               <div className="px-6 pb-6 bg-background text-on-surface-dim leading-relaxed">
-                Le forfait est le même depuis n'importe quel point de Paris: <strong>50€ pour CDG</strong>.
-                Que vous partiez de la Rive Gauche, Rive Droite, ou d'un arrondissement excentré, le tarif reste identique.
-                C'est l'avantage du forfait!
+                Le forfait est le même depuis n&apos;importe quel point de Paris: <strong>50€ pour CDG</strong>.
+                Que vous partiez de la Rive Gauche, Rive Droite, ou d&apos;un arrondissement excentré, le tarif reste identique.
+                C&apos;est l&apos;avantage du forfait!
               </div>
             </details>
 
@@ -318,7 +318,7 @@ export default function EstimationTarifPage() {
                 </h3>
               </summary>
               <div className="px-6 pb-6 bg-background text-on-surface-dim leading-relaxed">
-                Les taxis parisiens sont équipés d'un <strong>taximètre homologué</strong> qui reconnaît automatiquement
+                Les taxis parisiens sont équipés d&apos;un <strong>taximètre homologué</strong> qui reconnaît automatiquement
                 le forfait aéroport selon votre destination. Vous pouvez voir le tarif afficher sur le compteur avant de partir.
               </div>
             </details>
@@ -330,7 +330,7 @@ export default function EstimationTarifPage() {
                 </h3>
               </summary>
               <div className="px-6 pb-6 bg-background text-on-surface-dim leading-relaxed">
-                <strong>Non, les forfaits s'appliquent à tous.</strong> Les VTC (services de transport avec chauffeur) ne sont
+                <strong>Non, les forfaits s&apos;appliquent à tous.</strong> Les VTC (services de transport avec chauffeur) ne sont
                 <strong>pas soumis</strong> à ces forfaits et peuvent pratiquer des tarifs différents. Les taxis parisiens conventionnés
                 sont obligés de respecter les forfaits. Avec Taxi Leblanc, vous obtenez le tarif légal maximum garanti.
               </div>
@@ -356,7 +356,7 @@ export default function EstimationTarifPage() {
               </summary>
               <div className="px-6 pb-6 bg-background text-on-surface-dim leading-relaxed">
                 Les forfaits aéroports couvrent <strong>tous les terminaux</strong> de CDG, Orly et Beauvais. Peu importe le terminal,
-                le prix reste le même. Si le trajet intra-aéroport est demandé, des frais supplémentaires minimes peuvent s'ajouter.
+                le prix reste le même. Si le trajet intra-aéroport est demandé, des frais supplémentaires minimes peuvent s&apos;ajouter.
               </div>
             </details>
           </div>

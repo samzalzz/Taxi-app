@@ -11,7 +11,7 @@ export default function SettingsPage() {
           Paramètres
         </h1>
         <p className="text-on-surface-dim">
-          Gérez les paramètres de l'application, les clés API et les emails
+          Gérez les paramètres de l&apos;application, les clés API et les emails
         </p>
       </div>
 

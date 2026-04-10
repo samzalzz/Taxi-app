@@ -178,7 +178,7 @@ export function GuestBookingForm() {
                   Délai trop court
                 </h3>
                 <p className="text-sm text-on-surface-dim">
-                  Les réservations doivent être faites au minimum <strong>2 heures à l'avance</strong>. Pour une réservation immédiate, nous vous conseillons d'appeler directement.
+                  Les réservations doivent être faites au minimum <strong>2 heures à l&apos;avance</strong>. Pour une réservation immédiate, nous vous conseillons d&apos;appeler directement.
                 </p>
               </div>
             </div>
@@ -217,16 +217,16 @@ export function GuestBookingForm() {
               <AlertCircle className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
               <div>
                 <h3 className="text-lg font-bold text-on-surface mb-2">
-                  Continuer en tant qu'invité?
+                  Continuer en tant qu&apos;invité?
                 </h3>
                 <p className="text-sm text-on-surface-dim">
-                  Vous pouvez créer un compte maintenant pour faciliter le suivi de vos réservations et bénéficier d'avantages exclusifs.
+                  Vous pouvez créer un compte maintenant pour faciliter le suivi de vos réservations et bénéficier d&apos;avantages exclusifs.
                 </p>
               </div>
             </div>
 
             <div className="bg-surface-light p-4 rounded-lg space-y-2">
-              <p className="text-sm font-medium text-on-surface">Avantages d'un compte:</p>
+              <p className="text-sm font-medium text-on-surface">Avantages d&apos;un compte:</p>
               <ul className="text-sm text-on-surface-dim space-y-1">
                 <li>✓ Historique de vos réservations</li>
                 <li>✓ Suivi en temps réel</li>
@@ -249,7 +249,7 @@ export function GuestBookingForm() {
                 variant="secondary"
                 className="w-full"
               >
-                Continuer en tant qu'invité
+                Continuer en tant qu&apos;invité
               </Button>
               <Button
                 onClick={() => setShowConfirmModal(false)}
@@ -326,7 +326,7 @@ export function GuestBookingForm() {
         <div className="space-y-4">
           <h3 className="text-lg font-semibold text-on-surface">Date et heure de départ</h3>
           <p className="text-sm text-on-surface-dim">
-            Minimum <strong>2 heures à l'avance</strong>. Pour une prise en charge immédiate, appelez-nous au <a href="tel:+33608550315" className="text-primary font-semibold">+33 6 08 55 03 15</a>
+            Minimum <strong>2 heures à l&apos;avance</strong>. Pour une prise en charge immédiate, appelez-nous au <a href="tel:+33608550315" className="text-primary font-semibold">+33 6 08 55 03 15</a>
           </p>
           <input
             type="datetime-local"
@@ -337,7 +337,7 @@ export function GuestBookingForm() {
             className="w-full px-4 py-3 rounded-lg bg-surface-light text-on-surface border border-on-surface/10 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
           />
           {isTooSoon(formState.scheduledAt) && (
-            <p className="text-sm text-error">⚠ Veuillez choisir au minimum 2 heures à l'avance</p>
+            <p className="text-sm text-error">⚠ Veuillez choisir au minimum 2 heures à l&apos;avance</p>
           )}
         </div>
       )}
@@ -409,7 +409,7 @@ export function GuestBookingForm() {
                 className="w-4 h-4 rounded border-on-surface/20 accent-primary"
               />
               <span className="text-sm font-medium text-on-surface">
-                Transport CPAM (remboursé par l'Assurance Maladie)
+                Transport CPAM (remboursé par l&apos;Assurance Maladie)
               </span>
               <span className="px-2 py-0.5 text-xs bg-blue-500/10 text-blue-400 rounded-full font-semibold border border-blue-500/20">
                 CPAM
@@ -487,7 +487,7 @@ export function GuestBookingForm() {
             className="w-full"
             variant="secondary"
           >
-            ⚠ Sélectionnez la date et l'heure
+            ⚠ Sélectionnez la date et l&apos;heure
           </Button>
         ) : isTooSoon(formState.scheduledAt) ? (
           <Button
@@ -496,7 +496,7 @@ export function GuestBookingForm() {
             className="w-full"
             variant="secondary"
           >
-            ⚠ Minimum 2 heures à l'avance requis
+            ⚠ Minimum 2 heures à l&apos;avance requis
           </Button>
         ) : !formState.vehicleType ? (
           <Button

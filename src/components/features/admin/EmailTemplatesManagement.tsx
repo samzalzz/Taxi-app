@@ -129,7 +129,7 @@ export function EmailTemplatesManagement() {
       <div className="space-y-4">
         <div>
           <label className="block text-sm font-semibold text-on-surface mb-2">
-            Objet de l'email
+            Objet de l&apos;email
           </label>
           <input
             type="text"
@@ -144,7 +144,7 @@ export function EmailTemplatesManagement() {
 
         <div>
           <label className="block text-sm font-semibold text-on-surface mb-2">
-            Corps de l'email
+            Corps de l&apos;email
           </label>
           <textarea
             value={formData.bookingConfirmationBody}

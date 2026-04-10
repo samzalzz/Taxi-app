@@ -50,7 +50,7 @@ export default function MaintenancePage() {
           {/* Contact Info */}
           <div className="space-y-4">
             <p className="text-on-surface-dim">
-              Vous avez besoin d'aide ? Contactez-nous :
+              Vous avez besoin d&apos;aide ? Contactez-nous :
             </p>
             <div className="space-y-2">
               <a

@@ -96,7 +96,7 @@ export default function ReservationsPage() {
         </div>
       ) : bookings.length === 0 ? (
         <div className="text-center py-12">
-          <p className="text-on-surface-dim mb-4">Vous n'avez pas encore de réservation</p>
+          <p className="text-on-surface-dim mb-4">Vous n&apos;avez pas encore de réservation</p>
           <Link href="/dashboard/reserver">
             <Button>Réserver maintenant</Button>
           </Link>

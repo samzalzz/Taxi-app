@@ -103,7 +103,7 @@ export function SignupForm() {
       />
 
       <Button type="submit" fullWidth size="lg" isLoading={isLoading}>
-        S'inscrire
+        S&apos;inscrire
       </Button>
     </form>
   );

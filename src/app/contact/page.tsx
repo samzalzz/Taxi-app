@@ -24,7 +24,7 @@ export default function ContactPage() {
             Nous contacter
           </h1>
           <p className="text-lg text-on-surface-dim">
-            Une question ? Besoin d'aide ? Contactez-nous 24h/24, 7j/7.
+            Une question ? Besoin d&apos;aide ? Contactez-nous 24h/24, 7j/7.
           </p>
         </div>
       </section>
@@ -124,7 +124,7 @@ export default function ContactPage() {
                     <span className="font-semibold">00:00 - 23:59</span>
                   </div>
                   <p className="pt-3 border-t border-on-surface/10 text-sm">
-                    Disponible 24h/24, 7j/7 pour les appels d'urgence
+                    Disponible 24h/24, 7j/7 pour les appels d&apos;urgence
                   </p>
                 </div>
               </div>

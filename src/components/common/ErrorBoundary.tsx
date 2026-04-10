@@ -48,7 +48,7 @@ export default class ErrorBoundary extends Component<Props, State> {
                 Erreur Application
               </h2>
               <p className="text-gray-300 text-sm">
-                Une erreur inattendue s'est produite. Veuillez réessayer.
+                Une erreur inattendue s&apos;est produite. Veuillez réessayer.
               </p>
             </div>
 

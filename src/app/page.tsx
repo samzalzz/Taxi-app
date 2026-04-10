@@ -52,7 +52,7 @@ export default function HomePage() {
 
               <div className="border-t border-primary/30 mb-8 pt-8">
                 <p className="text-on-surface-dim text-lg leading-relaxed mb-8">
-                  Que vous ayez besoin de vous rendre à l'aéroport, de bénéficier d'un transport médicalisé ou de voyager pour une occasion spéciale, Taxi Leblanc est la solution idéale. Un service personnalisé, sûr et confortable pour répondre à tous vos besoins de transport.
+                  Que vous ayez besoin de vous rendre à l&apos;aéroport, de bénéficier d&apos;un transport médicalisé ou de voyager pour une occasion spéciale, Taxi Leblanc est la solution idéale. Un service personnalisé, sûr et confortable pour répondre à tous vos besoins de transport.
                 </p>
               </div>
 
@@ -84,7 +84,7 @@ export default function HomePage() {
                   </div>
                   <div>
                     <h3 className="text-lg font-bold text-on-surface">Service personnalisé</h3>
-                    <p className="text-on-surface-dim text-sm">Taxi Leblanc s'adapte à vos besoins spécifiques, quelles que soient les circonstances.</p>
+                    <p className="text-on-surface-dim text-sm">Taxi Leblanc s&apos;adapte à vos besoins spécifiques, quelles que soient les circonstances.</p>
                   </div>
                 </div>
 
@@ -105,7 +105,7 @@ export default function HomePage() {
               {/* Transport Aéroport */}
               <div className="border-l-4 border-primary pl-6">
                 <h3 className="text-2xl font-serif font-bold text-on-surface mb-3">Transport aéroport</h3>
-                <p className="text-on-surface-dim">Prise en charge ponctuelle et transport direct vers votre terminal. Fini les soucis de stationnement ou d'attente dans les transports en commun. Service porte-à-porte, bagages inclus.</p>
+                <p className="text-on-surface-dim">Prise en charge ponctuelle et transport direct vers votre terminal. Fini les soucis de stationnement ou d&apos;attente dans les transports en commun. Service porte-à-porte, bagages inclus.</p>
               </div>
 
               {/* Transport Médicalisé CPAM */}
@@ -133,7 +133,7 @@ export default function HomePage() {
               <div className="text-7xl md:text-8xl font-serif font-bold text-primary mb-4 font-light">
                 <StatCounter end={6} />
               </div>
-              <p className="text-sm font-semibold text-on-surface-dim uppercase tracking-widest">Années d'expérience</p>
+              <p className="text-sm font-semibold text-on-surface-dim uppercase tracking-widest">Années d&apos;expérience</p>
             </div>
 
             {/* Vehicles */}
@@ -166,7 +166,7 @@ export default function HomePage() {
               <Car className="w-10 h-10 text-primary mb-4" />
               <h3 className="text-xl font-semibold text-on-surface mb-2">Transferts Aéroport</h3>
               <p className="text-on-surface-dim">
-                Transport fiable vers et depuis les aéroports d'Île-de-France
+                Transport fiable vers et depuis les aéroports d&apos;Île-de-France
               </p>
             </div>
             <div className="bg-background rounded-lg p-8 border border-on-surface/10">
@@ -267,7 +267,7 @@ export default function HomePage() {
                   </div>
                 </div>
                 <div>
-                  <p className="text-xs font-bold text-primary uppercase">Horaires d'ouverture</p>
+                  <p className="text-xs font-bold text-primary uppercase">Horaires d&apos;ouverture</p>
                   <p className="text-on-surface">Lundi — Dimanche</p>
                   <p className="text-on-surface-dim">00:00 — 00:00 (24h/24)</p>
                 </div>
@@ -296,7 +296,7 @@ export default function HomePage() {
                 Réservez votre taxi dès maintenant
               </h3>
               <p className="text-on-surface-dim mb-8">
-                Indiquez le lieu et l'heure de prise en charge, ainsi que votre destination. Nous vous répondrons dans les plus brefs délais.
+                Indiquez le lieu et l&apos;heure de prise en charge, ainsi que votre destination. Nous vous répondrons dans les plus brefs délais.
               </p>
 
               <div className="flex flex-col gap-4">

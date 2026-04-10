@@ -132,9 +132,9 @@ export function AvailableCoursesView() {
         <div className="bg-warning/10 border border-warning rounded-lg p-4 flex items-start gap-3">
           <AlertCircle className="w-5 h-5 text-warning flex-shrink-0 mt-0.5" />
           <div>
-            <p className="font-semibold text-warning mb-1">Vous n'êtes pas disponible</p>
+            <p className="font-semibold text-warning mb-1">Vous n&apos;êtes pas disponible</p>
             <p className="text-sm text-on-surface-dim">
-              Activez votre statut "Disponible" dans le tableau de bord pour accepter des courses.
+              Activez votre statut &quot;Disponible&quot; dans le tableau de bord pour accepter des courses.
             </p>
           </div>
         </div>

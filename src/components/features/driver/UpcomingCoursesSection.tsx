@@ -87,7 +87,7 @@ export function UpcomingCoursesSection() {
         <Calendar className="w-12 h-12 text-on-surface-dim mx-auto mb-4 opacity-50" />
         <p className="text-on-surface mb-2">Aucune course planifiée</p>
         <p className="text-sm text-on-surface-dim">
-          Vous n'avez pas de courses planifiées pour les 7 prochains jours
+          Vous n&apos;avez pas de courses planifiées pour les 7 prochains jours
         </p>
       </div>
     );
@@ -179,7 +179,7 @@ export function UpcomingCoursesSection() {
                 className="w-full flex items-center justify-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold bg-purple-500/10 text-purple-600 border border-purple-500/20 hover:bg-purple-500/20 transition-colors"
               >
                 <Info className="w-4 h-4" />
-                Plus d'infos
+                Plus d&apos;infos
               </button>
             )}
           </div>

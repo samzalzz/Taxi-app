@@ -187,7 +187,7 @@ export function DriverCreateTripForm() {
                   className="rounded border-on-surface/20"
                 />
                 <span className="text-sm font-medium text-on-surface">
-                  Transport CPAM (remboursé par l'Assurance Maladie)
+                  Transport CPAM (remboursé par l&apos;Assurance Maladie)
                 </span>
                 <span className="px-2 py-0.5 text-xs bg-blue-500/10 text-blue-400 rounded-full font-semibold border border-blue-500/20">
                   CPAM
@@ -238,7 +238,7 @@ export function DriverCreateTripForm() {
               </>
             ) : (
               <>
-                <p className="text-sm">La course est <strong>privée</strong>. Vous pouvez l'assigner à un conducteur.</p>
+                <p className="text-sm">La course est <strong>privée</strong>. Vous pouvez l&apos;assigner à un conducteur.</p>
                 <button
                   type="button"
                   onClick={() => setShowAssignModal(true)}

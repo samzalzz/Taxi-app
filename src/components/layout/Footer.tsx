@@ -88,7 +88,7 @@ export function Footer() {
               </div>
               <div>
                 <Link href="/inscription" className="text-on-surface-dim hover:text-primary transition-colors">
-                  S'inscrire
+                  S&apos;inscrire
                 </Link>
               </div>
             </nav>

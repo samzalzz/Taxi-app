@@ -28,7 +28,7 @@ export default function Error({
           <div>
             <h1 className="text-5xl font-bold text-primary mb-4">⚠️</h1>
             <p className="text-4xl font-bold text-on-surface mb-4">
-              Une erreur s'est produite
+              Une erreur s&apos;est produite
             </p>
             <p className="text-lg text-on-surface-dim mb-8">
               {error.message || 'Une erreur inattendue. Veuillez réessayer.'}
@@ -50,7 +50,7 @@ export default function Error({
             </button>
             <Link href="/">
               <button className="px-8 py-3 border-2 border-primary text-primary rounded-lg font-semibold hover:bg-primary/10 transition-colors">
-                Retour à l'accueil
+                Retour à l&apos;accueil
               </button>
             </Link>
           </div>

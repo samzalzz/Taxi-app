@@ -92,7 +92,7 @@ export default function TransportCPAMGuidePage() {
                     <li>✓ Hospitalisation</li>
                     <li>✓ Dialyse régulière</li>
                     <li>✓ Rééducation kinésithérapie</li>
-                    <li>✓ Vous n'avez pas d'ALD</li>
+                    <li>✓ Vous n&apos;avez pas d&apos;ALD</li>
                   </ul>
                   <p className="text-xs text-on-surface-dim mt-4 font-semibold">
                     Base: tarif conventionnel CPAM
@@ -125,14 +125,14 @@ export default function TransportCPAMGuidePage() {
             <div className="flex items-start gap-4">
               <Info className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
               <div>
-                <h3 className="text-2xl font-bold text-on-surface mb-4">Qu'est-ce qu'une ALD?</h3>
+                <h3 className="text-2xl font-bold text-on-surface mb-4">Qu&apos;est-ce qu&apos;une ALD?</h3>
                 <p className="text-on-surface-dim mb-4">
                   <strong>ALD = Affection Longue Durée.</strong> Ce sont des maladies chroniques nécessitant un traitement prolongé
                   et des dépenses coûteuses. Si vous avez une ALD reconnue par la CPAM, vous bénéficiez du remboursement
                   à 100% pour les transports sanitaires liés à votre traitement.
                 </p>
                 <p className="text-on-surface-dim text-sm font-semibold">
-                  Exemples d'ALD: diabète, cancer, maladies cardiaques, asthme sévère, sclérose en plaques, VIH, etc.
+                  Exemples d&apos;ALD: diabète, cancer, maladies cardiaques, asthme sévère, sclérose en plaques, VIH, etc.
                 </p>
               </div>
             </div>
@@ -142,17 +142,17 @@ export default function TransportCPAMGuidePage() {
           <div id="ordonnance">
             <div className="flex items-center gap-3 mb-6">
               <FileText className="w-8 h-8 text-primary" />
-              <h2 className="text-4xl font-serif font-bold text-on-surface">2. L'Ordonnance de Transport</h2>
+              <h2 className="text-4xl font-serif font-bold text-on-surface">2. L&apos;Ordonnance de Transport</h2>
             </div>
 
             <div className="space-y-4">
               <p className="text-on-surface-dim leading-relaxed">
-                <strong>ESSENTIEL:</strong> Vous devez disposer d'une <strong>ordonnance médicale de transport</strong>
+                <strong>ESSENTIEL:</strong> Vous devez disposer d&apos;une <strong>ordonnance médicale de transport</strong>
                 pour que la CPAM rembourse votre trajet en taxi.
               </p>
 
               <div className="rounded-lg border border-on-surface/10 bg-surface p-6 space-y-4">
-                <h3 className="font-bold text-on-surface">Qui établit l'ordonnance?</h3>
+                <h3 className="font-bold text-on-surface">Qui établit l&apos;ordonnance?</h3>
                 <p className="text-on-surface-dim">
                   Votre <strong>médecin traitant ou médecin spécialiste</strong> peut établir une ordonnance de transport
                   si le trajet est justifié médicalement. Le médecin décide du mode de transport (taxi, ambulance, VSL).
@@ -244,7 +244,7 @@ export default function TransportCPAMGuidePage() {
             <div className="space-y-6">
               <div className="space-y-4">
                 <div className="rounded-lg border-l-4 border-primary bg-surface p-6">
-                  <h4 className="text-lg font-bold text-on-surface mb-2">📋 Étape 1 : Obtenez l'ordonnance</h4>
+                  <h4 className="text-lg font-bold text-on-surface mb-2">📋 Étape 1 : Obtenez l&apos;ordonnance</h4>
                   <p className="text-on-surface-dim text-sm">
                     Rendez-vous chez votre médecin et demandez explicitement une <strong>ordonnance de transport sanitaire</strong>.
                     Le médecin doit justifier médicalement le trajet.
@@ -263,7 +263,7 @@ export default function TransportCPAMGuidePage() {
                   <h4 className="text-lg font-bold text-on-surface mb-2">💳 Étape 3 : Payez le trajet</h4>
                   <p className="text-on-surface-dim text-sm">
                     <strong>Vous payez directement</strong> le chauffeur le tarif conventionnel CPAM au moment du trajet.
-                    Demandez une <strong>facture ou reçu détaillé</strong> indiquant le trajet, la date et l'heure.
+                    Demandez une <strong>facture ou reçu détaillé</strong> indiquant le trajet, la date et l&apos;heure.
                   </p>
                 </div>
 
@@ -321,7 +321,7 @@ export default function TransportCPAMGuidePage() {
                   <h4 className="font-semibold text-on-surface">Puis-je me faire rembourser a posteriori?</h4>
                 </summary>
                 <div className="px-6 pb-6 bg-background text-on-surface-dim text-sm leading-relaxed">
-                  <strong>Oui</strong>, mais vous devez avoir l'ordonnance AVANT le trajet. Si vous n'avez pas d'ordonnance au moment du
+                  <strong>Oui</strong>, mais vous devez avoir l&apos;ordonnance AVANT le trajet. Si vous n&apos;avez pas d&apos;ordonnance au moment du
                   trajet, vous ne pourrez pas vous faire rembourser rétroactivement. Demandez toujours à votre médecin AVANT votre
                   déplacement médical.
                 </div>
@@ -329,7 +329,7 @@ export default function TransportCPAMGuidePage() {
 
               <details className="group border border-on-surface/10 rounded-lg overflow-hidden hover:border-primary/30 transition-colors">
                 <summary className="flex items-center justify-between cursor-pointer p-6 bg-surface hover:bg-surface-light transition-colors">
-                  <h4 className="font-semibold text-on-surface">Mon taxi n'est pas agréé CPAM, puis-je être remboursé?</h4>
+                  <h4 className="font-semibold text-on-surface">Mon taxi n&apos;est pas agréé CPAM, puis-je être remboursé?</h4>
                 </summary>
                 <div className="px-6 pb-6 bg-background text-on-surface-dim text-sm leading-relaxed">
                   <strong>Oui, mais partiellement.</strong> Vous devez utiliser un taxi agréé CPAM pour bénéficier du tarif conventionnel
@@ -353,7 +353,7 @@ export default function TransportCPAMGuidePage() {
                 </summary>
                 <div className="px-6 pb-6 bg-background text-on-surface-dim text-sm leading-relaxed">
                   <strong>Vous avancez les frais.</strong> Vous payez le taxi directement, puis la CPAM vous rembourse par virement.
-                  Les taxis agréés CPAM ne peuvent pas facturer directement à la CPAM. C'est pourquoi conserver votre facture est capital.
+                  Les taxis agréés CPAM ne peuvent pas facturer directement à la CPAM. C&apos;est pourquoi conserver votre facture est capital.
                 </div>
               </details>
             </div>
@@ -365,7 +365,7 @@ export default function TransportCPAMGuidePage() {
       <section className="py-20 px-4 bg-surface">
         <div className="max-w-2xl mx-auto text-center">
           <h2 className="text-4xl font-serif font-bold text-on-surface mb-6">
-            Besoin d'un Taxi Agréé CPAM?
+            Besoin d&apos;un Taxi Agréé CPAM?
           </h2>
           <p className="text-on-surface-dim text-lg mb-8">
             Taxi Leblanc est agréé CPAM en Île-de-France. Réservez votre trajet dès maintenant avec garantie de remboursement.

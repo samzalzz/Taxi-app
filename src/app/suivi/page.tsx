@@ -36,7 +36,7 @@ function SuiviContent() {
             </Link>
             <Link href="/inscription">
               <Button variant="primary" size="sm">
-                S'inscrire
+                S&apos;inscrire
               </Button>
             </Link>
           </div>
@@ -79,7 +79,7 @@ function SuiviContent() {
             <ul className="space-y-2 text-on-surface-dim">
               <li>
                 <span className="font-semibold text-gray-500">En attente</span> — En attente
-                d'un chauffeur
+                d&apos;un chauffeur
               </li>
               <li>
                 <span className="font-semibold text-primary">Confirmée</span> — Un chauffeur
@@ -102,7 +102,7 @@ function SuiviContent() {
 
           <div className="rounded-lg border border-on-surface/10 bg-surface p-6">
             <h3 className="text-lg font-semibold text-on-surface mb-2">
-              ❓ Besoin d'aide ?
+              ❓ Besoin d&apos;aide ?
             </h3>
             <p className="text-on-surface-dim mb-4">
               Si vous avez des questions ou des problèmes avec votre réservation, contactez
@@ -110,7 +110,7 @@ function SuiviContent() {
             </p>
             <Link href="/">
               <Button variant="secondary" className="w-full">
-                Retour à l'accueil
+                Retour à l&apos;accueil
               </Button>
             </Link>
           </div>

@@ -36,7 +36,7 @@ export default function TransportAeroportPage() {
             Transport vers les <em className="text-primary not-italic">Aéroports de Paris</em>
           </h1>
           <p className="text-lg text-on-surface-dim mb-8 leading-relaxed">
-            Service de transport fiable et ponctuel vers Charles de Gaulle, Orly et Beauvais. Prise en charge directe de votre domicile, pas d'attente ni de stress.
+            Service de transport fiable et ponctuel vers Charles de Gaulle, Orly et Beauvais. Prise en charge directe de votre domicile, pas d&apos;attente ni de stress.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <Link href="/reserver" className="flex-1">
@@ -60,7 +60,7 @@ export default function TransportAeroportPage() {
               <Clock className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
               <div>
                 <h3 className="text-xl font-semibold text-on-surface mb-2">Ponctualité garantie</h3>
-                <p className="text-on-surface-dim">Nos chauffeurs connaissent les meilleurs itinéraires pour éviter les embouteillages et vous arriver à l'heure.</p>
+                <p className="text-on-surface-dim">Nos chauffeurs connaissent les meilleurs itinéraires pour éviter les embouteillages et vous arriver à l&apos;heure.</p>
               </div>
             </div>
 
@@ -68,7 +68,7 @@ export default function TransportAeroportPage() {
               <MapPin className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
               <div>
                 <h3 className="text-xl font-semibold text-on-surface mb-2">Prise en charge directe</h3>
-                <p className="text-on-surface-dim">Du domicile à l'aéroport, service porte-à-porte. Pas de détours, pas de surcoûts.</p>
+                <p className="text-on-surface-dim">Du domicile à l&apos;aéroport, service porte-à-porte. Pas de détours, pas de surcoûts.</p>
               </div>
             </div>
 
@@ -100,7 +100,7 @@ export default function TransportAeroportPage() {
               <Clock className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
               <div>
                 <h3 className="text-xl font-semibold text-on-surface mb-2">Réservation 2h minimum</h3>
-                <p className="text-on-surface-dim">Réservez votre trajet au minimum 2 heures à l'avance pour plus de confort.</p>
+                <p className="text-on-surface-dim">Réservez votre trajet au minimum 2 heures à l&apos;avance pour plus de confort.</p>
               </div>
             </div>
           </div>
@@ -114,7 +114,7 @@ export default function TransportAeroportPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
             <div className="rounded-lg border border-on-surface/10 p-6 bg-background">
               <h3 className="text-2xl font-bold text-primary mb-3">Charles de Gaulle</h3>
-              <p className="text-on-surface-dim mb-4">L'aéroport international majeur de l'Île-de-France, accessible via 2-3 routes principales.</p>
+              <p className="text-on-surface-dim mb-4">L&apos;aéroport international majeur de l&apos;Île-de-France, accessible via 2-3 routes principales.</p>
               <p className="font-semibold text-on-surface mb-4">À partir de 55€</p>
               <Link href="/estimation-tarif" className="text-primary hover:underline text-sm font-semibold">
                 → En savoir plus sur les tarifs
@@ -143,10 +143,10 @@ export default function TransportAeroportPage() {
             <h3 className="text-2xl font-bold text-on-surface mb-3">💰 Tarifs Forfaitaires Garantis</h3>
             <p className="text-on-surface-dim mb-4">
               Les tarifs affichés sont des <strong>forfaits réglementés</strong> établis par la Préfecture de Police de Paris.
-              Ils s'appliquent à tous les taxis parisiens conventionnés — aucune surprise, aucun supplément caché.
+              Ils s&apos;appliquent à tous les taxis parisiens conventionnés — aucune surprise, aucun supplément caché.
             </p>
             <Link href="/estimation-tarif" className="inline-flex items-center gap-2 text-primary hover:underline font-semibold">
-              📊 Voir l'estimateur de tarif détaillé →
+              📊 Voir l&apos;estimateur de tarif détaillé →
             </Link>
           </div>
         </div>
@@ -159,7 +159,7 @@ export default function TransportAeroportPage() {
             Prêt pour votre transport aéroport ?
           </h2>
           <p className="text-on-surface-dim text-lg mb-8">
-            Réservez en ligne en quelques secondes ou appelez-nous pour plus d'informations.
+            Réservez en ligne en quelques secondes ou appelez-nous pour plus d&apos;informations.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/reserver">

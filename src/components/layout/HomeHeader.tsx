@@ -29,7 +29,7 @@ export function HomeHeader() {
                 <Button variant="ghost">Connexion</Button>
               </Link>
               <Link href="/inscription">
-                <Button>S'inscrire</Button>
+                <Button>S&apos;inscrire</Button>
               </Link>
             </div>
             {/* Mobile menu button: show on md and below */}
@@ -59,7 +59,7 @@ export function HomeHeader() {
             </Link>
             <Link href="/inscription" onClick={() => setIsMenuOpen(false)} className="w-full">
               <Button className="w-full">
-                S'inscrire
+                S&apos;inscrire
               </Button>
             </Link>
           </div>

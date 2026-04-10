@@ -46,7 +46,7 @@ export default function OccasionsPersonnellesPage() {
       <section className="py-20 px-4 bg-surface">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-4xl font-serif font-bold text-on-surface mb-12">
-            Tous les types d'occasions
+            Tous les types d&apos;occasions
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="rounded-lg border border-on-surface/10 p-6 bg-background">
@@ -99,7 +99,7 @@ export default function OccasionsPersonnellesPage() {
               <Zap className="w-6 h-6 text-purple-500 flex-shrink-0 mt-1" />
               <div>
                 <h3 className="text-xl font-semibold text-on-surface mb-2">Ponctualité absolue</h3>
-                <p className="text-on-surface-dim">Arrivals à l'heure, pas de retards, coordination parfaite avec votre emploi du temps.</p>
+                <p className="text-on-surface-dim">Arrivals à l&apos;heure, pas de retards, coordination parfaite avec votre emploi du temps.</p>
               </div>
             </div>
 
@@ -115,7 +115,7 @@ export default function OccasionsPersonnellesPage() {
               <Trophy className="w-6 h-6 text-purple-500 flex-shrink-0 mt-1" />
               <div>
                 <h3 className="text-xl font-semibold text-on-surface mb-2">Expérience éprouvée</h3>
-                <p className="text-on-surface-dim">Des centaines d'événements réussis, chauffeurs expérimentés, références disponibles.</p>
+                <p className="text-on-surface-dim">Des centaines d&apos;événements réussis, chauffeurs expérimentés, références disponibles.</p>
               </div>
             </div>
           </div>
@@ -129,7 +129,7 @@ export default function OccasionsPersonnellesPage() {
             Prêt pour votre occasion spéciale ?
           </h2>
           <p className="text-on-surface-dim text-lg mb-8">
-            Contactez-nous dès aujourd'hui pour discuter de vos besoins et obtenir un devis.
+            Contactez-nous dès aujourd&apos;hui pour discuter de vos besoins et obtenir un devis.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/reserver">

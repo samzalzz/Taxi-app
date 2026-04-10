@@ -32,7 +32,7 @@ export default function TransportMedicalPage() {
             <span className="text-sm font-semibold text-primary uppercase">CPAM AGRÉÉ</span>
           </div>
           <h1 className="text-5xl md:text-6xl font-serif font-bold text-on-surface mb-6">
-            Transport Médical <em className="text-primary not-italic">Remboursé par l'Assurance Maladie</em>
+            Transport Médical <em className="text-primary not-italic">Remboursé par l&apos;Assurance Maladie</em>
           </h1>
           <p className="text-lg text-on-surface-dim mb-8 leading-relaxed">
             Service spécialisé agréé CPAM pour tous vos trajets de santé. Chauffeurs formés, véhicules adaptés aux personnes à mobilité réduite, confort et sécurité garantis.
@@ -158,7 +158,7 @@ export default function TransportMedicalPage() {
               <CheckCircle className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
               <div>
                 <h3 className="text-xl font-semibold text-on-surface mb-2">Assistance compagnon</h3>
-                <p className="text-on-surface-dim">Accompagnement possible d'une personne de confiance sans frais.</p>
+                <p className="text-on-surface-dim">Accompagnement possible d&apos;une personne de confiance sans frais.</p>
               </div>
             </div>
           </div>
@@ -169,7 +169,7 @@ export default function TransportMedicalPage() {
       <section className="py-20 px-4 bg-surface">
         <div className="max-w-2xl mx-auto text-center">
           <h2 className="text-4xl font-serif font-bold text-on-surface mb-6">
-            Besoin d'un transport médical agréé ?
+            Besoin d&apos;un transport médical agréé ?
           </h2>
           <p className="text-on-surface-dim text-lg mb-8">
             Nous sommes agréés CPAM. Préparez votre ordonnance médicale et réservez votre trajet en ligne.

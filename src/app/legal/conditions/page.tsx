@@ -16,14 +16,14 @@ export default function ConditionsPage() {
       <section className="py-20 px-4">
         <div className="max-w-3xl mx-auto">
           <h1 className="text-5xl font-serif font-bold text-on-surface mb-12">
-            Conditions d'Utilisation
+            Conditions d&apos;Utilisation
           </h1>
 
           <div className="prose prose-invert max-w-none space-y-8">
             <section>
               <h2 className="text-3xl font-bold text-on-surface mt-8 mb-4">1. Introduction</h2>
               <p className="text-on-surface-dim leading-relaxed">
-                Ces conditions d'utilisation régissent l'accès et l'utilisation du site web et des services de Taxi Leblanc.
+                Ces conditions d&apos;utilisation régissent l&apos;accès et l&apos;utilisation du site web et des services de Taxi Leblanc.
                 En utilisant notre plateforme, vous acceptez ces conditions dans leur intégralité.
               </p>
             </section>
@@ -45,8 +45,8 @@ export default function ConditionsPage() {
               <h2 className="text-3xl font-bold text-on-surface mt-8 mb-4">3. Réservations</h2>
               <div className="space-y-4 text-on-surface-dim">
                 <p><strong className="text-on-surface">Délai minimum:</strong> Les réservations doivent être effectuées au minimum 2 heures avant la prise en charge.</p>
-                <p><strong className="text-on-surface">Annulation:</strong> Les annulations peuvent être effectuées jusqu'à 2 heures avant l'heure convenue sans frais.</p>
-                <p><strong className="text-on-surface">Modification:</strong> Les modifications de destination ou d'horaire sont acceptées jusqu'à 2 heures avant le trajet.</p>
+                <p><strong className="text-on-surface">Annulation:</strong> Les annulations peuvent être effectuées jusqu&apos;à 2 heures avant l&apos;heure convenue sans frais.</p>
+                <p><strong className="text-on-surface">Modification:</strong> Les modifications de destination ou d&apos;horaire sont acceptées jusqu&apos;à 2 heures avant le trajet.</p>
               </div>
             </section>
 
@@ -54,7 +54,7 @@ export default function ConditionsPage() {
               <h2 className="text-3xl font-bold text-on-surface mt-8 mb-4">4. Tarification</h2>
               <div className="space-y-4 text-on-surface-dim">
                 <p>Tous les tarifs affichés incluent la prise en charge. Aucun frais supplémentaire ne sera facturé sauf circonstances exceptionnelles.</p>
-                <p>Les tarifs CPAM suivent la tarification officielle de l'Assurance Maladie.</p>
+                <p>Les tarifs CPAM suivent la tarification officielle de l&apos;Assurance Maladie.</p>
               </div>
             </section>
 

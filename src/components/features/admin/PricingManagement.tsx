@@ -434,7 +434,7 @@ export function PricingManagement() {
 
           <div>
             <label className="block text-sm font-semibold text-on-surface mb-2">
-              Réservation à l'avance (€)
+              Réservation à l&apos;avance (€)
             </label>
             <div className="flex items-center gap-2">
               <Input
@@ -489,7 +489,7 @@ export function PricingManagement() {
         <p className="text-xs text-on-surface-dim">
           <strong>Note:</strong> Ces tarifs seront utilisés pour calculer les estimations de prix
           affichées aux clients. Les prix finaux restent des estimations et peuvent varier selon
-          les conditions de circulation et d'autres facteurs.
+          les conditions de circulation et d&apos;autres facteurs.
         </p>
       </div>
     </div>

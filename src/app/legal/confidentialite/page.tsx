@@ -23,7 +23,7 @@ export default function ConfidentialitePage() {
             <section>
               <h2 className="text-3xl font-bold text-on-surface mt-8 mb-4">1. Introduction</h2>
               <p className="text-on-surface-dim leading-relaxed">
-                Taxi Leblanc respecte votre vie privée et s'engage à protéger vos données personnelles.
+                Taxi Leblanc respecte votre vie privée et s&apos;engage à protéger vos données personnelles.
                 Cette politique explique comment nous collectons, utilisons et protégeons vos informations.
               </p>
             </section>
@@ -69,15 +69,15 @@ export default function ConfidentialitePage() {
             <section>
               <h2 className="text-3xl font-bold text-on-surface mt-8 mb-4">5. Sécurité des Données</h2>
               <p className="text-on-surface-dim leading-relaxed">
-                Nous utilisons le chiffrement SSL/TLS et d'autres mesures de sécurité pour protéger vos données.
-                Cependant, aucune transmission internet n'est 100% sûre.
+                Nous utilisons le chiffrement SSL/TLS et d&apos;autres mesures de sécurité pour protéger vos données.
+                Cependant, aucune transmission internet n&apos;est 100% sûre.
               </p>
             </section>
 
             <section>
               <h2 className="text-3xl font-bold text-on-surface mt-8 mb-4">6. Cookies</h2>
               <p className="text-on-surface-dim leading-relaxed">
-                Nous utilisons des cookies pour améliorer votre expérience et analyser l'usage du site.
+                Nous utilisons des cookies pour améliorer votre expérience et analyser l&apos;usage du site.
                 Vous pouvez désactiver les cookies dans les paramètres de votre navigateur.
               </p>
             </section>

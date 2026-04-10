@@ -243,7 +243,7 @@ export function AdminDashboard() {
 
               <div className="flex items-center justify-between p-3 bg-surface-light rounded-lg">
                 <span className="text-sm text-on-surface-dim">
-                  Réservation à l'avance
+                  Réservation à l&apos;avance
                 </span>
                 <span className="font-semibold text-on-surface">
                   {pricing.reservationAdvanceFee.toFixed(2)}€

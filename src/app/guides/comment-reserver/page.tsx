@@ -136,7 +136,7 @@ export default function CommentReserverPage() {
                 </div>
                 <div className="flex items-center gap-2 text-sm text-on-surface-dim">
                   <CheckCircle className="w-4 h-4 text-primary flex-shrink-0" />
-                  <span>Sans prise d'appel</span>
+                  <span>Sans prise d&apos;appel</span>
                 </div>
               </div>
               <a href="tel:+33608550315" className="block">
@@ -163,7 +163,7 @@ export default function CommentReserverPage() {
                 <div className="flex-grow">
                   <h3 className="text-xl font-bold text-on-surface mb-2">Accédez au formulaire de réservation</h3>
                   <p className="text-on-surface-dim">
-                    Cliquez sur "Réserver maintenant" ou visitez la page <Link href="/reserver" className="text-primary hover:underline">www.taxileblanc.fr/reserver</Link>
+                    Cliquez sur &quot;Réserver maintenant&quot; ou visitez la page <Link href="/reserver" className="text-primary hover:underline">www.taxileblanc.fr/reserver</Link>
                   </p>
                 </div>
               </div>
@@ -175,7 +175,7 @@ export default function CommentReserverPage() {
                 <div className="flex-grow">
                   <h3 className="text-xl font-bold text-on-surface mb-2">Remplissez vos informations</h3>
                   <p className="text-on-surface-dim mb-3">
-                    Entrez votre adresse de départ et destination. Vous verrez instantanément l'estimation de prix.
+                    Entrez votre adresse de départ et destination. Vous verrez instantanément l&apos;estimation de prix.
                   </p>
                   <div className="bg-surface rounded p-3 text-sm text-on-surface-dim border-l-4 border-primary">
                     <strong>Informations requises:</strong> Nom, Email, Téléphone, Adresse départ, Destination, Date/Heure
@@ -190,7 +190,7 @@ export default function CommentReserverPage() {
                 <div className="flex-grow">
                   <h3 className="text-xl font-bold text-on-surface mb-2">Sélectionnez vos options</h3>
                   <p className="text-on-surface-dim">
-                    Indiquez le nombre de passagers, si vous avez des bagages, si vous avez besoin d'un véhicule adapté, etc.
+                    Indiquez le nombre de passagers, si vous avez des bagages, si vous avez besoin d&apos;un véhicule adapté, etc.
                   </p>
                 </div>
               </div>
@@ -215,7 +215,7 @@ export default function CommentReserverPage() {
                 <div className="flex-grow">
                   <h3 className="text-xl font-bold text-on-surface mb-2">Confirmez votre réservation</h3>
                   <p className="text-on-surface-dim">
-                    Cliquez sur "Confirmer" et vous recevrez instantanément un email et SMS avec tous les détails de votre réservation.
+                    Cliquez sur &quot;Confirmer&quot; et vous recevrez instantanément un email et SMS avec tous les détails de votre réservation.
                   </p>
                 </div>
               </div>
@@ -255,7 +255,7 @@ export default function CommentReserverPage() {
             <div className="rounded-lg border-l-4 border-primary bg-surface p-6">
               <h3 className="text-lg font-bold text-on-surface mb-3">Annulation gratuite</h3>
               <p className="text-on-surface-dim text-sm">
-                Vous pouvez annuler <strong>jusqu'à 2 heures avant</strong> sans frais.
+                Vous pouvez annuler <strong>jusqu&apos;à 2 heures avant</strong> sans frais.
                 Les annulations tardives peuvent entraîner des frais.
               </p>
             </div>
@@ -272,7 +272,7 @@ export default function CommentReserverPage() {
               <h3 className="text-lg font-bold text-on-surface mb-3">Confirmation de réservation</h3>
               <p className="text-on-surface-dim text-sm">
                 Après réservation, vous recevrez une confirmation avec tous les détails du trajet et les coordonnées du chauffeur.
-                Aucun paiement en ligne n'est requis — arrangez directement avec le chauffeur lors du trajet.
+                Aucun paiement en ligne n&apos;est requis — arrangez directement avec le chauffeur lors du trajet.
               </p>
             </div>
           </div>
@@ -292,7 +292,7 @@ export default function CommentReserverPage() {
                 <h4 className="font-semibold text-on-surface">Dois-je créer un compte pour réserver?</h4>
               </summary>
               <div className="px-6 pb-6 bg-background border-t border-on-surface/10 text-on-surface-dim text-sm">
-                Non, aucun compte n'est requis. Vous pouvez réserver sans inscription. Un email de confirmation vous sera envoyé.
+                Non, aucun compte n&apos;est requis. Vous pouvez réserver sans inscription. Un email de confirmation vous sera envoyé.
               </div>
             </details>
 
@@ -301,7 +301,7 @@ export default function CommentReserverPage() {
                 <h4 className="font-semibold text-on-surface">Puis-je modifier ma réservation après la confirmation?</h4>
               </summary>
               <div className="px-6 pb-6 bg-background border-t border-on-surface/10 text-on-surface-dim text-sm">
-                Oui, vous pouvez modifier la destination ou l'heure jusqu'à 2 heures avant le trajet.
+                Oui, vous pouvez modifier la destination ou l&apos;heure jusqu&apos;à 2 heures avant le trajet.
                 Contactez-nous au +33 6 08 55 03 15 ou via email.
               </div>
             </details>
@@ -311,7 +311,7 @@ export default function CommentReserverPage() {
                 <h4 className="font-semibold text-on-surface">Comment puis-je payer ma réservation?</h4>
               </summary>
               <div className="px-6 pb-6 bg-background border-t border-on-surface/10 text-on-surface-dim text-sm">
-                Vous n'avez rien à payer en ligne. Appelez le chauffeur ou arrangez-vous directement avec lui les modalités de paiement et les détails du trajet.
+                Vous n&apos;avez rien à payer en ligne. Appelez le chauffeur ou arrangez-vous directement avec lui les modalités de paiement et les détails du trajet.
               </div>
             </details>
 
@@ -335,7 +335,7 @@ export default function CommentReserverPage() {
             Prêt à Réserver?
           </h2>
           <p className="text-on-surface-dim text-lg mb-8">
-            Réservez maintenant et bénéficiez d'un transport fiable et transparent.
+            Réservez maintenant et bénéficiez d&apos;un transport fiable et transparent.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/reserver">

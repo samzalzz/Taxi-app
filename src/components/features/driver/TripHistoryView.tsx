@@ -159,7 +159,7 @@ export function TripHistoryView() {
         </div>
       ) : (
         <div className="bg-surface border border-on-surface/10 rounded-lg p-12 text-center">
-          <p className="text-on-surface-dim">Vous n'avez pas encore de courses complétées</p>
+          <p className="text-on-surface-dim">Vous n&apos;avez pas encore de courses complétées</p>
         </div>
       )}
     </div>

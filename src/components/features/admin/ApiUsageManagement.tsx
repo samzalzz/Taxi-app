@@ -84,7 +84,7 @@ export function ApiUsageManagement() {
           Utilisation des APIs
         </h1>
         <p className="text-on-surface-dim">
-          Suivi du nombre d'appels aux différents endpoints API par mois
+          Suivi du nombre d&apos;appels aux différents endpoints API par mois
         </p>
       </div>
 
@@ -118,7 +118,7 @@ export function ApiUsageManagement() {
             onClick={handleToday}
             className="px-4 py-2 bg-primary text-background rounded-lg font-semibold hover:bg-primary-dark transition-colors"
           >
-            Aujourd'hui
+            Aujourd&apos;hui
           </button>
         </div>
       </div>

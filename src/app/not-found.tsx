@@ -18,7 +18,7 @@ export default function NotFound() {
               Page non trouvée
             </p>
             <p className="text-lg text-on-surface-dim mb-8">
-              Désolé, la page que vous cherchez n'existe pas ou a été supprimée.
+              Désolé, la page que vous cherchez n&apos;existe pas ou a été supprimée.
             </p>
           </div>
 
@@ -31,7 +31,7 @@ export default function NotFound() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center mt-12">
             <Link href="/">
               <button className="px-8 py-3 bg-primary text-background rounded-lg font-semibold hover:bg-primary-dark transition-colors">
-                Retour à l'accueil
+                Retour à l&apos;accueil
               </button>
             </Link>
             <Link href="/reserver">

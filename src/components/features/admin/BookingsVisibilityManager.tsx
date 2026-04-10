@@ -184,7 +184,7 @@ export function BookingsVisibilityManager() {
       <div className="bg-primary/5 border border-primary/10 rounded-lg p-4 mt-6">
         <p className="text-sm text-on-surface-dim">
           <strong>📌 Publique:</strong> La course est visible à tous les chauffeurs et peut être acceptée<br/>
-          <strong>🔒 Privée:</strong> La course n'est visible qu'au chauffeur qui l'a créée
+          <strong>🔒 Privée:</strong> La course n&apos;est visible qu&apos;au chauffeur qui l&apos;a créée
         </p>
       </div>
     </div>
