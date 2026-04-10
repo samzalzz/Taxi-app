@@ -38,7 +38,7 @@ export default function HomePage() {
         <HeroEditorial />
 
       {/* Services Section */}
-      <section className="py-20 px-4 bg-background">
+      <section id="partenaire" className="scroll-mt-24 py-20 px-4 bg-background">
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
             {/* Left Column */}
@@ -123,13 +123,21 @@ export default function HomePage() {
         </div>
       </section>
 
-      <StatsEditorial />
+      <div id="chiffres" className="scroll-mt-24">
+        <StatsEditorial />
+      </div>
 
-      <ServicesEditorial />
+      <div id="services" className="scroll-mt-24">
+        <ServicesEditorial />
+      </div>
 
-      <CharacteristicsEditorial />
+      <div id="maison" className="scroll-mt-24">
+        <CharacteristicsEditorial />
+      </div>
 
-      <ContactEditorial />
+      <div id="contact" className="scroll-mt-24">
+        <ContactEditorial />
+      </div>
       </div>
 
       {/* Footer */}

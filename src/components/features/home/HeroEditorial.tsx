@@ -5,6 +5,14 @@ import Link from 'next/link';
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
+const SUMMARY = [
+  { num: 'I', label: 'Notre partenariat', href: '#partenaire' },
+  { num: 'II', label: 'Six années en bref', href: '#chiffres' },
+  { num: 'III', label: 'Nos services', href: '#services' },
+  { num: 'IV', label: 'Nos caractéristiques', href: '#maison' },
+  { num: 'V', label: 'Correspondance', href: '#contact' },
+];
+
 export function HeroEditorial() {
   return (
     <section className="relative min-h-screen w-full overflow-hidden bg-background">
@@ -143,7 +151,7 @@ export function HeroEditorial() {
           </motion.div>
         </div>
 
-        {/* Right: Editorial side panel */}
+        {/* Right: Editorial table of contents */}
         <motion.aside
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
@@ -151,27 +159,39 @@ export function HeroEditorial() {
           className="col-span-12 flex flex-col justify-end lg:col-span-4"
         >
           <div className="relative border-l border-primary/40 pl-6 md:pl-8">
-            <div className="mb-4 flex items-center gap-3">
+            <div className="mb-6 flex items-center gap-3">
               <span className="font-serif text-xs italic text-primary/70">ii.</span>
               <span className="text-[10px] font-sans font-semibold uppercase tracking-[0.3em] text-on-surface-dim">
-                Au programme
+                Sommaire
               </span>
             </div>
 
-            <ul className="space-y-4 font-serif text-lg italic text-on-surface md:text-xl">
-              <li className="flex items-baseline gap-4">
-                <span className="text-xs not-italic text-primary/70">01</span>
-                <span>Transferts aéroport</span>
-              </li>
-              <li className="flex items-baseline gap-4">
-                <span className="text-xs not-italic text-primary/70">02</span>
-                <span>Trajets CPAM conventionnés</span>
-              </li>
-              <li className="flex items-baseline gap-4">
-                <span className="text-xs not-italic text-primary/70">03</span>
-                <span>Occasions personnelles</span>
-              </li>
-            </ul>
+            <ol className="divide-y divide-on-surface/10">
+              {SUMMARY.map((item) => (
+                <li key={item.href}>
+                  <a
+                    href={item.href}
+                    className="group/toc flex items-baseline justify-between gap-4 py-4 transition-colors hover:text-primary"
+                  >
+                    <span className="flex items-baseline gap-4">
+                      <span className="font-sans text-[10px] font-semibold text-primary/70">
+                        {item.num}
+                      </span>
+                      <span className="font-serif text-lg italic text-on-surface transition-colors group-hover/toc:text-primary md:text-xl">
+                        {item.label}
+                      </span>
+                    </span>
+                    <svg
+                      className="h-px w-8 bg-on-surface/40 transition-all duration-500 group-hover/toc:w-14 group-hover/toc:bg-primary"
+                      viewBox="0 0 32 1"
+                      preserveAspectRatio="none"
+                    >
+                      <line x1="0" y1="0.5" x2="32" y2="0.5" stroke="currentColor" strokeWidth="1" />
+                    </svg>
+                  </a>
+                </li>
+              ))}
+            </ol>
 
             <div className="mt-8 flex items-center gap-3">
               <span aria-hidden className="block h-[3px] w-[3px] rounded-full bg-primary" />
