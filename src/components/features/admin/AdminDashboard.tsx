@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { Users, Zap, CheckCircle, TrendingUp, Euro, Settings } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/Button';
+import { formatPrice } from '@/lib/utils/format';
 
 interface AdminStats {
   totalUsers: number;
@@ -57,13 +58,6 @@ export function AdminDashboard() {
 
     fetchData();
   }, []);
-
-  const formatPrice = (amount: number) => {
-    return new Intl.NumberFormat('fr-FR', {
-      style: 'currency',
-      currency: 'EUR',
-    }).format(amount);
-  };
 
   if (isLoading) {
     return (

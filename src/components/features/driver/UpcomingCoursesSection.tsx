@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import { Calendar, Lock, Globe, Info } from 'lucide-react';
 import { BookingClientDetailsModal } from '../booking/BookingClientDetailsModal';
+import { formatDateWeekday } from '@/lib/utils/format';
 
 interface UpcomingBooking {
   id: string;
@@ -55,15 +56,6 @@ export function UpcomingCoursesSection() {
     fetchUpcomingBookings();
   }, []);
 
-  const formatDate = (isoDate: string) => {
-    return new Intl.DateTimeFormat('fr-FR', {
-      weekday: 'short',
-      day: 'numeric',
-      month: 'short',
-      hour: '2-digit',
-      minute: '2-digit',
-    }).format(new Date(isoDate));
-  };
 
   const formatDuration = (minutes: number) => {
     if (minutes < 60) return `${minutes}min`;
@@ -121,7 +113,7 @@ export function UpcomingCoursesSection() {
               <div className="flex items-center gap-2">
                 <Calendar className="w-4 h-4 text-primary" />
                 <span className="font-semibold text-on-surface">
-                  {formatDate(booking.scheduledAt)}
+                  {formatDateWeekday(booking.scheduledAt)}
                 </span>
               </div>
               <div className="flex items-center gap-2">

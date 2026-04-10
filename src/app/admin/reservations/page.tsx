@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { MapPin, Flag, Euro, Eye, EyeOff, Check, Info } from 'lucide-react';
 import { BookingStatus } from '@/generated/prisma/client';
 import { BookingClientDetailsModal } from '@/components/features/booking/BookingClientDetailsModal';
+import { formatDateTime } from '@/lib/utils/format';
 
 interface Booking {
   id: string;
@@ -186,16 +187,6 @@ export default function AdminReservationsPage() {
     }
   };
 
-  const formatDate = (dateString: string) => {
-    const date = new Date(dateString);
-    return new Intl.DateTimeFormat('fr-FR', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric',
-      hour: '2-digit',
-      minute: '2-digit',
-    }).format(date);
-  };
 
   const formatPrice = (amount: number) => {
     return new Intl.NumberFormat('fr-FR', {
@@ -414,7 +405,7 @@ export default function AdminReservationsPage() {
                       </div>
                       <div>
                         <p className="text-on-surface-dim">Date</p>
-                        <p className="font-semibold text-on-surface">{formatDate(booking.createdAt)}</p>
+                        <p className="font-semibold text-on-surface">{formatDateTime(booking.createdAt)}</p>
                       </div>
                     </div>
                     <div className="flex items-center gap-2">

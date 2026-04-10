@@ -1,6 +1,7 @@
 'use client';
 
 import { PriceEstimate as PriceEstimateType } from '@/lib/hooks/useBooking';
+import { formatPrice } from '@/lib/utils/format';
 
 interface PriceEstimateProps {
   estimate: PriceEstimateType | null;
@@ -11,13 +12,6 @@ export function PriceEstimate({
   estimate,
   isLoading,
 }: PriceEstimateProps) {
-  const formatPrice = (price: number) => {
-    return new Intl.NumberFormat('fr-FR', {
-      style: 'currency',
-      currency: 'EUR',
-    }).format(price);
-  };
-
   const formatDuration = (minutes: number): string => {
     if (minutes < 60) return `${minutes} min`;
     const hours = Math.floor(minutes / 60);

@@ -54,21 +54,17 @@ export default function ReservationsPage() {
   }, []);
 
   const handleCancel = async (bookingId: string) => {
-    try {
-      const res = await fetch(`/api/bookings/${bookingId}/cancel`, {
-        method: 'POST',
-      });
+    const res = await fetch(`/api/bookings/${bookingId}/cancel`, {
+      method: 'POST',
+    });
 
-      if (!res.ok) {
-        const data = await res.json();
-        throw new Error(data.error || 'Failed to cancel booking');
-      }
-
-      const updated = await res.json();
-      setBookings(bookings.map(b => (b.id === bookingId ? updated : b)));
-    } catch (err) {
-      throw err;
+    if (!res.ok) {
+      const data = await res.json();
+      throw new Error(data.error || 'Failed to cancel booking');
     }
+
+    const updated = await res.json();
+    setBookings(bookings.map(b => (b.id === bookingId ? updated : b)));
   };
 
   return (

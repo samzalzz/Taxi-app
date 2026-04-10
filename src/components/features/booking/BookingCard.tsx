@@ -6,6 +6,7 @@ import { MapPin, Flag, Calendar, Users, Euro, AlertCircle, Star } from 'lucide-r
 import { useState } from 'react';
 import { RatingModal } from './RatingModal';
 import { CpamVoucherButton } from '@/components/features/cpam/CpamVoucherButton';
+import { formatPrice, formatDateTime } from '@/lib/utils/format';
 
 interface BookingCardProps {
   id: string;
@@ -65,23 +66,7 @@ export function BookingCard({
 
   const config = statusConfig[status];
 
-  const formatDate = (dateString: string) => {
-    const date = new Date(dateString);
-    return new Intl.DateTimeFormat('fr-FR', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric',
-      hour: '2-digit',
-      minute: '2-digit',
-    }).format(date);
-  };
 
-  const formatPrice = (amount: number) => {
-    return new Intl.NumberFormat('fr-FR', {
-      style: 'currency',
-      currency: 'EUR',
-    }).format(amount);
-  };
 
   const formatDuration = (minutes: number) => {
     if (minutes < 60) return `${minutes} min`;
@@ -111,7 +96,7 @@ export function BookingCard({
       <div className="flex items-start justify-between mb-4">
         <div>
           <p className="text-xs text-on-surface-dim mb-1">Réservation #{id.slice(-8)}</p>
-          <p className="text-sm text-on-surface-dim">{formatDate(createdAt)}</p>
+          <p className="text-sm text-on-surface-dim">{formatDateTime(createdAt)}</p>
         </div>
         <div className="flex gap-2 items-center">
           <div className={`px-3 py-1 rounded-full text-sm font-semibold ${config.color} ${config.bgColor}`}>
@@ -181,7 +166,7 @@ export function BookingCard({
         <div className="mb-4 p-3 bg-blue-500/10 border border-blue-500/20 rounded-lg flex gap-2">
           <Calendar className="w-4 h-4 text-blue-400 flex-shrink-0 mt-0.5" />
           <p className="text-sm text-blue-400">
-            Prévu pour: {formatDate(scheduledAt)}
+            Prévu pour: {formatDateTime(scheduledAt)}
           </p>
         </div>
       )}

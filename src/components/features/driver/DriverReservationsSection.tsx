@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import { MapPin, Flag, Filter, ArrowUpDown } from 'lucide-react';
 import { BookingStatus } from '@/generated/prisma/client';
+import { formatDateCompact } from '@/lib/utils/format';
 
 interface Booking {
   id: string;
@@ -160,15 +161,6 @@ export function DriverReservationsSection() {
     }
   };
 
-  const formatDate = (dateString: string) => {
-    const date = new Date(dateString);
-    return new Intl.DateTimeFormat('fr-FR', {
-      month: 'short',
-      day: 'numeric',
-      hour: '2-digit',
-      minute: '2-digit',
-    }).format(date);
-  };
 
   const formatPrice = (amount: number) => {
     return new Intl.NumberFormat('fr-FR', {
@@ -363,7 +355,7 @@ export function DriverReservationsSection() {
                       {booking.requestedVehicleType}
                     </h3>
                     <p className="text-xs text-on-surface-dim">
-                      {formatDate(booking.createdAt)}
+                      {formatDateCompact(booking.createdAt)}
                     </p>
                   </div>
                   <div className={`px-3 py-1 rounded-full text-sm font-semibold ${config.color} ${config.bgColor}`}>

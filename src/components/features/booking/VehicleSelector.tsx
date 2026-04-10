@@ -3,6 +3,7 @@
 import { Car, Truck, Users, Crown } from 'lucide-react';
 import { PRICING_RATES, VehicleType } from '@/lib/utils/pricing';
 import { PriceEstimate } from '@/lib/hooks/useBooking';
+import { formatPrice } from '@/lib/utils/format';
 
 interface VehicleSelectorProps {
   selected: VehicleType | null;
@@ -23,13 +24,6 @@ export function VehicleSelector({
   priceEstimate,
 }: VehicleSelectorProps) {
   const vehicles: VehicleType[] = ['BERLINE', 'SUV', 'VAN', 'PREMIUM'];
-
-  const formatPrice = (price: number) => {
-    return new Intl.NumberFormat('fr-FR', {
-      style: 'currency',
-      currency: 'EUR',
-    }).format(price);
-  };
 
   return (
     <div className="space-y-4">

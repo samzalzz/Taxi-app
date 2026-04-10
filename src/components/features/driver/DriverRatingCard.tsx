@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { Star, MessageCircle } from 'lucide-react';
+import { formatDateShort } from '@/lib/utils/format';
 
 interface Review {
   bookingId: string;
@@ -75,14 +76,6 @@ export function DriverRatingCard({ driverId }: DriverRatingCardProps) {
       : 0;
   };
 
-  const formatDate = (dateString: string) => {
-    const date = new Date(dateString);
-    return new Intl.DateTimeFormat('fr-FR', {
-      year: 'numeric',
-      month: 'short',
-      day: 'numeric',
-    }).format(date);
-  };
 
   return (
     <div className="glass p-6 rounded-xl space-y-6">
@@ -164,7 +157,7 @@ export function DriverRatingCard({ driverId }: DriverRatingCardProps) {
                         {review.clientName}
                       </p>
                       <p className="text-xs text-on-surface-dim">
-                        {formatDate(review.createdAt)}
+                        {formatDateShort(review.createdAt)}
                       </p>
                     </div>
                   </div>
