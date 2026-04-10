@@ -25,13 +25,10 @@ export function ConsentBanner() {
 
   return (
     <>
-      {/* Backdrop overlay — covers everything (navbar included) for RGPD compliance */}
-      <div className="fixed inset-0 z-[100] bg-black/70 backdrop-blur-md" aria-hidden="true" />
-
-      {/* Modal Dialog centered on viewport, above the navbar */}
-      <div className="fixed inset-0 z-[101] flex items-center justify-center overflow-y-auto p-4">
+      {/* Dropdown panel — sits directly under the navbar like the mobile menu */}
+      <div className="fixed top-16 left-0 right-0 z-40 max-h-[calc(100vh-4rem)] overflow-y-auto bg-background border-b border-on-surface/10">
         <div
-          className="w-full max-w-2xl bg-surface rounded-3xl shadow-2xl border-2 border-primary overflow-hidden animate-in fade-in zoom-in-95 duration-300 my-auto"
+          className="max-w-2xl mx-auto px-4 py-3 bg-surface rounded-3xl border-2 border-primary overflow-hidden my-3"
           role="dialog"
           aria-modal="true"
           aria-labelledby="consent-title"
