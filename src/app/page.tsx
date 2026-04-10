@@ -1,5 +1,5 @@
 import { Footer } from '@/components/layout/Footer';
-import { BackgroundPathsDemo } from '@/components/features/home/BackgroundPathsDemo';
+import { HeroEditorial } from '@/components/features/home/HeroEditorial';
 import { ServicesEditorial } from '@/components/features/home/ServicesEditorial';
 import { CharacteristicsEditorial } from '@/components/features/home/CharacteristicsEditorial';
 import { StatsEditorial } from '@/components/features/home/StatsEditorial';
@@ -35,8 +35,7 @@ export default function HomePage() {
 
       {/* Content wrapper with padding to account for fixed navbar */}
       <div className="pt-16">
-        {/* Hero Section with Background Paths */}
-        <BackgroundPathsDemo />
+        <HeroEditorial />
 
       {/* Services Section */}
       <section className="py-20 px-4 bg-background">
