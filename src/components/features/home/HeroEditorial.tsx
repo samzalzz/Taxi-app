@@ -11,10 +11,11 @@ export function HeroEditorial() {
       {/* Background image + layered washes */}
       <div
         aria-hidden
-        className="absolute inset-0 bg-cover bg-center"
+        className="absolute inset-0 scale-105 bg-cover bg-center blur-md"
         style={{ backgroundImage: 'url("/images/taxi-hero.avif")' }}
       />
-      <div aria-hidden className="absolute inset-0 bg-background/70" />
+      <div aria-hidden className="absolute inset-0 bg-background/80" />
+      <div aria-hidden className="absolute inset-0 bg-black/40" />
       <div
         aria-hidden
         className="absolute inset-0"
