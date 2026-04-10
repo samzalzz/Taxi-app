@@ -28,8 +28,8 @@ export function ConsentBanner() {
       {/* Backdrop overlay — dark & blurred, prevents interaction */}
       <div className="fixed inset-0 z-30 bg-black/60 backdrop-blur-md" aria-hidden="true" />
 
-      {/* Centered Modal Dialog */}
-      <div className="fixed inset-0 z-40 flex items-center justify-center p-4 pt-20">
+      {/* Modal Dialog positioned at top/hero level */}
+      <div className="fixed top-0 left-0 right-0 z-40 flex items-start justify-center p-4 pt-24 md:pt-28">
         <div
           className="w-full max-w-2xl bg-surface rounded-3xl shadow-2xl border-2 border-primary overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-300"
           role="dialog"
