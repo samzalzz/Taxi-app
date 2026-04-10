@@ -33,8 +33,10 @@ export default function HomePage() {
     <div className="min-h-screen bg-background">
       <HomeHeader />
 
-      {/* Hero Section with Background Paths */}
-      <BackgroundPathsDemo />
+      {/* Content wrapper with padding to account for fixed navbar */}
+      <div className="pt-16">
+        {/* Hero Section with Background Paths */}
+        <BackgroundPathsDemo />
 
       {/* Services Section */}
       <section className="py-20 px-4 bg-background">
@@ -326,6 +328,7 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+      </div>
 
       {/* Footer */}
       <Footer />

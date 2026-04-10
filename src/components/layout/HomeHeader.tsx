@@ -12,7 +12,7 @@ export function HomeHeader() {
 
   return (
     <div className="relative">
-      <nav className="sticky top-0 z-50 bg-background/80 backdrop-blur-sm border-b border-on-surface/10">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-sm border-b border-on-surface/10">
         <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
           <Logo href="/" className="h-10 w-auto" />
           <div className="flex gap-4 items-center">
