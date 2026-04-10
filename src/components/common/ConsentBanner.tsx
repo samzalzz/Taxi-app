@@ -25,84 +25,84 @@ export function ConsentBanner() {
 
   return (
     <>
-      {/* Backdrop overlay — blocks interaction with content, but navbar stays above */}
-      <div className="fixed inset-0 z-30 bg-black/50 backdrop-blur-sm" aria-hidden="true" />
+      {/* Backdrop overlay — dark & blurred, prevents interaction */}
+      <div className="fixed inset-0 z-30 bg-black/60 backdrop-blur-md" aria-hidden="true" />
 
-      {/* Centered modal dialog — navbar (z-50) stays above this (z-40) */}
-      <div className="fixed inset-0 z-40 flex items-center justify-center p-4">
+      {/* Centered Modal Dialog */}
+      <div className="fixed inset-0 z-40 flex items-center justify-center p-4 pt-20">
         <div
-          className="w-full max-w-2xl bg-surface rounded-2xl shadow-2xl border-2 border-primary overflow-hidden"
+          className="w-full max-w-2xl bg-surface rounded-3xl shadow-2xl border-2 border-primary overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-300"
           role="dialog"
           aria-modal="true"
           aria-labelledby="consent-title"
         >
-          {/* Header / Summary */}
-          <div className="px-6 md:px-8 py-6 md:py-8 flex items-start justify-between gap-6">
+          {/* Header Section */}
+          <div className="bg-gradient-to-r from-primary/10 to-background px-6 md:px-8 py-8 md:py-10 flex items-start justify-between gap-6 border-b border-primary/30">
             <div className="flex-1">
               <div className="flex items-start gap-4">
-                <div className="flex gap-3 mt-1">
-                  <Shield className="w-6 h-6 text-primary flex-shrink-0" />
-                  <FileText className="w-6 h-6 text-primary flex-shrink-0" />
+                <div className="flex gap-2 mt-1">
+                  <Shield className="w-7 h-7 text-primary flex-shrink-0" />
+                  <FileText className="w-7 h-7 text-primary flex-shrink-0" />
                 </div>
                 <div className="flex-1 min-w-0">
-                  <h3 id="consent-title" className="text-xl md:text-2xl font-bold text-on-surface mb-2">
+                  <h2 id="consent-title" className="text-2xl md:text-3xl font-bold text-on-surface mb-3">
                     Votre consentement est requis
-                  </h3>
-                  <p className="text-sm md:text-base text-on-surface-dim">
+                  </h2>
+                  <p className="text-sm md:text-base text-on-surface-dim leading-relaxed">
                     Avant de continuer, veuillez accepter nos Conditions d'Utilisation et nos politiques de cookies.
                   </p>
                 </div>
               </div>
             </div>
 
-            {/* Toggle expand button */}
+            {/* Expand Toggle */}
             <button
               onClick={() => setExpanded(!expanded)}
-              className="flex-shrink-0 p-2 hover:bg-surface-light rounded-lg transition-colors"
+              className="flex-shrink-0 p-2 hover:bg-surface-light rounded-lg transition-colors duration-200"
               aria-label={expanded ? 'Réduire' : 'Développer'}
               aria-expanded={expanded}
             >
               {expanded ? (
-                <ChevronDown className="w-6 h-6 text-on-surface-dim" />
+                <ChevronDown className="w-6 h-6 text-primary" />
               ) : (
-                <ChevronUp className="w-6 h-6 text-on-surface-dim" />
+                <ChevronUp className="w-6 h-6 text-primary" />
               )}
             </button>
           </div>
 
-          {/* Expandable details section */}
+          {/* Expandable Content Section */}
           {expanded && (
-            <div className="px-6 md:px-8 pb-6 md:pb-8 border-t border-on-surface/10 pt-6 space-y-6 max-h-64 overflow-y-auto">
-              {/* CGU Section */}
+            <div className="px-6 md:px-8 py-8 border-b border-on-surface/10 space-y-5 max-h-72 overflow-y-auto">
+              {/* CGU Card */}
               {!cguResponded && (
-                <div className="bg-background/40 rounded-lg p-4 border border-primary/20">
-                  <div className="flex gap-3">
-                    <FileText className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                <div className="bg-background/50 rounded-xl p-5 border-2 border-primary/40 hover:border-primary/60 transition-colors">
+                  <div className="flex gap-4">
+                    <FileText className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
                     <div className="flex-1">
-                      <h4 className="font-semibold text-on-surface mb-2">📋 Conditions Générales d'Utilisation</h4>
-                      <p className="text-sm text-on-surface-dim mb-2">
-                        Vous devez accepter nos CGU pour utiliser notre service.
+                      <h3 className="font-bold text-on-surface mb-2 text-lg">📋 Conditions Générales d'Utilisation</h3>
+                      <p className="text-sm text-on-surface-dim mb-3 leading-relaxed">
+                        Vous devez accepter nos CGU pour utiliser notre service. Elles définissent les règles d'utilisation et vos droits.
                       </p>
-                      <Link href="/legal/conditions" className="text-primary hover:text-primary-light underline text-sm inline-block" target="_blank">
-                        → Consulter les CGU complètes
+                      <Link href="/legal/conditions" className="text-primary hover:text-primary-light font-semibold underline text-sm inline-flex items-center gap-1" target="_blank">
+                        Consulter les CGU complètes →
                       </Link>
                     </div>
                   </div>
                 </div>
               )}
 
-              {/* Cookies Section */}
+              {/* Cookies Card */}
               {!cookiesResponded && (
-                <div className="bg-background/40 rounded-lg p-4 border border-primary/20">
-                  <div className="flex gap-3">
-                    <Shield className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                <div className="bg-background/50 rounded-xl p-5 border-2 border-primary/40 hover:border-primary/60 transition-colors">
+                  <div className="flex gap-4">
+                    <Shield className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
                     <div className="flex-1">
-                      <h4 className="font-semibold text-on-surface mb-2">🔒 Cookies & Confidentialité</h4>
-                      <p className="text-sm text-on-surface-dim mb-2">
-                        Nous utilisons des cookies pour améliorer votre expérience. Les cookies essentiels sont obligatoires, les autres nécessitent votre accord.
+                      <h3 className="font-bold text-on-surface mb-2 text-lg">🔒 Cookies & Confidentialité</h3>
+                      <p className="text-sm text-on-surface-dim mb-3 leading-relaxed">
+                        Nous utilisons des cookies pour améliorer votre expérience. Les essentiels sont obligatoires, les autres nécessitent votre accord.
                       </p>
-                      <Link href="/legal/confidentialite" className="text-primary hover:text-primary-light underline text-sm inline-block" target="_blank">
-                        → Politique de confidentialité
+                      <Link href="/legal/confidentialite" className="text-primary hover:text-primary-light font-semibold underline text-sm inline-flex items-center gap-1" target="_blank">
+                        Politique de confidentialité →
                       </Link>
                     </div>
                   </div>
@@ -111,44 +111,41 @@ export function ConsentBanner() {
             </div>
           )}
 
-          {/* Action buttons */}
-          <div className="px-6 md:px-8 py-6 md:py-7 border-t border-on-surface/10 bg-background/20 flex flex-col sm:flex-row gap-3 justify-end">
+          {/* Footer / Action Buttons */}
+          <div className="px-6 md:px-8 py-6 md:py-8 bg-background/80 border-t border-primary/20 flex flex-col sm:flex-row gap-4 justify-end items-stretch sm:items-center">
             {cookiesResponded && !cguResponded ? (
-              // Only CGU needs response
               <button
                 onClick={acceptCGU}
-                className="w-full sm:w-auto px-8 py-3 bg-primary text-background font-bold rounded-lg hover:bg-primary-dark transition-all hover:shadow-lg"
+                className="px-8 py-3.5 bg-primary text-background font-bold rounded-xl hover:bg-primary-dark transition-all duration-200 hover:shadow-xl text-base"
               >
                 J'accepte les CGU
               </button>
             ) : cguResponded && !cookiesResponded ? (
-              // Only cookies need response
               <>
                 <button
                   onClick={rejectCookies}
-                  className="w-full sm:w-auto px-6 py-3 text-on-surface border-2 border-on-surface/30 rounded-lg hover:bg-surface-light transition-colors font-semibold"
+                  className="px-6 py-3.5 text-on-surface border-2 border-on-surface/40 rounded-xl hover:bg-surface-light transition-all duration-200 font-semibold text-base"
                 >
                   Refuser
                 </button>
                 <button
                   onClick={acceptCookies}
-                  className="w-full sm:w-auto px-8 py-3 bg-primary text-background font-bold rounded-lg hover:bg-primary-dark transition-all hover:shadow-lg"
+                  className="px-8 py-3.5 bg-primary text-background font-bold rounded-xl hover:bg-primary-dark transition-all duration-200 hover:shadow-xl text-base"
                 >
                   Accepter
                 </button>
               </>
             ) : (
-              // Both need response
               <>
                 <button
                   onClick={rejectCookies}
-                  className="w-full sm:w-auto px-6 py-3 text-on-surface border-2 border-on-surface/30 rounded-lg hover:bg-surface-light transition-colors font-semibold"
+                  className="px-6 py-3.5 text-on-surface border-2 border-on-surface/40 rounded-xl hover:bg-surface-light transition-all duration-200 font-semibold text-base"
                 >
                   Refuser tout
                 </button>
                 <button
                   onClick={handleAcceptAll}
-                  className="w-full sm:w-auto px-8 py-3 bg-primary text-background font-bold rounded-lg hover:bg-primary-dark transition-all hover:shadow-lg"
+                  className="px-8 py-3.5 bg-primary text-background font-bold rounded-xl hover:bg-primary-dark transition-all duration-200 hover:shadow-xl text-base"
                 >
                   J'accepte tout
                 </button>
