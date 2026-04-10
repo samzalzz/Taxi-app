@@ -1,12 +1,11 @@
 import { Footer } from '@/components/layout/Footer';
-import { StatCounter } from '@/components/features/stats/StatCounter';
 import { BackgroundPathsDemo } from '@/components/features/home/BackgroundPathsDemo';
 import { ServicesEditorial } from '@/components/features/home/ServicesEditorial';
 import { CharacteristicsEditorial } from '@/components/features/home/CharacteristicsEditorial';
+import { StatsEditorial } from '@/components/features/home/StatsEditorial';
+import { ContactEditorial } from '@/components/features/home/ContactEditorial';
 import { HomeHeader } from '@/components/layout/HomeHeader';
 import { CheckmarkIcon } from '@/components/ui/CheckmarkIcon';
-import Link from 'next/link';
-import { Button } from '@/components/ui/Button';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -125,144 +124,13 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section className="py-24 px-4 border-t border-b border-primary/30">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
-            {/* Years of Experience */}
-            <div>
-              <div className="text-7xl md:text-8xl font-serif font-bold text-primary mb-4 font-light">
-                <StatCounter end={6} />
-              </div>
-              <p className="text-sm font-semibold text-on-surface-dim uppercase tracking-widest">Années d&apos;expérience</p>
-            </div>
-
-            {/* Vehicles */}
-            <div>
-              <div className="text-7xl md:text-8xl font-serif font-bold text-primary mb-4 font-light">
-                <StatCounter end={5} />
-              </div>
-              <p className="text-sm font-semibold text-on-surface-dim uppercase tracking-widest">Véhicules</p>
-            </div>
-
-            {/* Passengers */}
-            <div>
-              <div className="text-7xl md:text-8xl font-serif font-bold text-primary mb-4 font-light">
-                <StatCounter end={60000} format="+" />
-              </div>
-              <p className="text-sm font-semibold text-on-surface-dim uppercase tracking-widest">Passagers transportés</p>
-            </div>
-          </div>
-        </div>
-      </section>
+      <StatsEditorial />
 
       <ServicesEditorial />
 
       <CharacteristicsEditorial />
 
-      {/* Contact Section */}
-      <section className="py-24 px-4 bg-background">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            {/* Left Column - Contact Info */}
-            <div>
-              <p className="text-sm font-semibold text-primary uppercase tracking-widest mb-6">PRENDRE CONTACT</p>
-
-              <h2 className="text-5xl md:text-6xl font-serif font-bold text-on-surface mb-6">
-                Des questions ?<br />
-                <em className="text-primary not-italic">Contactez-nous</em>
-              </h2>
-
-              <div className="border-t border-primary/30 my-8"></div>
-
-              {/* Address */}
-              <div className="flex gap-4 mb-8">
-                <div className="flex-shrink-0">
-                  <div className="flex items-center justify-center h-12 w-12 rounded-lg bg-primary/10 border border-primary/20">
-                    <svg className="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                    </svg>
-                  </div>
-                </div>
-                <div>
-                  <p className="text-xs font-bold text-primary uppercase">Notre adresse</p>
-                  <p className="text-on-surface">30 Allée des Bergeries</p>
-                  <p className="text-on-surface-dim">Draveil, 91210, France</p>
-                </div>
-              </div>
-
-              {/* Hours */}
-              <div className="flex gap-4 mb-8">
-                <div className="flex-shrink-0">
-                  <div className="flex items-center justify-center h-12 w-12 rounded-lg bg-primary/10 border border-primary/20">
-                    <svg className="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 2m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                  </div>
-                </div>
-                <div>
-                  <p className="text-xs font-bold text-primary uppercase">Horaires d&apos;ouverture</p>
-                  <p className="text-on-surface">Lundi — Dimanche</p>
-                  <p className="text-on-surface-dim">00:00 — 00:00 (24h/24)</p>
-                </div>
-              </div>
-
-              {/* Phone */}
-              <div className="flex gap-4">
-                <div className="flex-shrink-0">
-                  <div className="flex items-center justify-center h-12 w-12 rounded-lg bg-primary/10 border border-primary/20">
-                    <svg className="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 00.948.684l2.498 0a1 1 0 00.502-.135l2.5-1.25a1 1 0 00.502-.135L17.72 2.684a1 1 0 00.948-.684h3.28a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5z" />
-                    </svg>
-                  </div>
-                </div>
-                <div>
-                  <p className="text-xs font-bold text-primary uppercase">Téléphone</p>
-                  <p className="text-on-surface">+33 6 08 55 03 15</p>
-                  <p className="text-on-surface-dim">Disponible 24h/24 et 7j/7</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Right Column - CTA */}
-            <div className="rounded-2xl border border-primary/20 bg-surface/50 backdrop-blur p-8 lg:p-12 flex flex-col justify-center">
-              <h3 className="text-3xl md:text-4xl font-serif font-bold text-on-surface mb-4">
-                Réservez votre taxi dès maintenant
-              </h3>
-              <p className="text-on-surface-dim mb-8">
-                Indiquez le lieu et l&apos;heure de prise en charge, ainsi que votre destination. Nous vous répondrons dans les plus brefs délais.
-              </p>
-
-              <div className="flex flex-col gap-4">
-                <a href="tel:+33608550315">
-                  <button className="w-full px-6 py-4 bg-primary text-background rounded-lg font-semibold hover:bg-primary-dark transition-colors flex items-center justify-center gap-2">
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 00.948.684l2.498 0a1 1 0 00.502-.135l2.5-1.25a1 1 0 00.502-.135L17.72 2.684a1 1 0 00.948-.684h3.28a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5z" />
-                    </svg>
-                    Appeler le +33 6 08 55 03 15
-                  </button>
-                </a>
-
-                <Link href="/reserver">
-                  <Button className="w-full" variant="outline">
-                    Réserver maintenant
-                  </Button>
-                </Link>
-
-                <a href="mailto:TaxiLeblanc@gmail.com">
-                  <button className="w-full px-6 py-4 border-2 border-primary text-primary rounded-lg font-semibold hover:bg-primary hover:text-background transition-colors flex items-center justify-center gap-2">
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                    </svg>
-                    Écrire à TaxiLeblanc@gmail.com
-                  </button>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <ContactEditorial />
       </div>
 
       {/* Footer */}
