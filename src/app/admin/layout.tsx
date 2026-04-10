@@ -29,7 +29,8 @@ export default async function AdminLayout({
       {/* Top Navigation */}
       <AdminHeader />
 
-      <div className="flex relative">
+      {/* Content with padding to account for fixed navbar */}
+      <div className="flex relative pt-16">
         {/* Sidebar with Toggle */}
         <AdminSidebar />
 

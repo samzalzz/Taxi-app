@@ -13,8 +13,8 @@ export default function AuthLayout({
       {/* Header */}
       <HomeHeader />
 
-      {/* Main Content */}
-      <main className="flex-1 flex items-center justify-center px-4 py-8">
+      {/* Main Content with padding to account for fixed navbar */}
+      <main className="flex-1 flex items-center justify-center px-4 py-8 pt-16">
         <div className="w-full max-w-md">
           <div className="glass p-8 rounded-2xl border border-on-surface/10">
             <div className="mb-8 text-center">

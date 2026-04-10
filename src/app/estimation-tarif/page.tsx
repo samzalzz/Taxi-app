@@ -30,8 +30,9 @@ export default function EstimationTarifPage() {
     <div className="min-h-screen bg-background">
       <HomeHeader />
 
-      {/* Hero Section */}
-      <section className="py-20 px-4 bg-gradient-to-br from-primary/10 via-background to-background">
+      <div className="pt-16">
+        {/* Hero Section */}
+        <section className="py-20 px-4 bg-gradient-to-br from-primary/10 via-background to-background">
         <div className="max-w-4xl mx-auto">
           <h1 className="text-5xl md:text-6xl font-serif font-bold text-on-surface mb-6">
             Estimateur de Tarif <em className="text-primary not-italic">Transparents</em>
@@ -374,6 +375,7 @@ export default function EstimationTarifPage() {
           </div>
         </div>
       </section>
+      </div>
 
       <Footer />
     </div>

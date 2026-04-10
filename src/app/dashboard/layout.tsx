@@ -15,7 +15,8 @@ export default async function DashboardLayout({
       {/* Top Navigation */}
       <DashboardHeader />
 
-      <div className="flex relative">
+      {/* Content with padding to account for fixed navbar */}
+      <div className="flex relative pt-16">
         {/* Sidebar with Toggle */}
         <DashboardSidebar session={session} />
 
