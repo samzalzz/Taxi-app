@@ -55,7 +55,7 @@ prisma/*.db
 prisma/*.db-journal
 src/generated/
 
-# Claude Code
+# Editor / tooling
 .claude/
 .clauderc
 
