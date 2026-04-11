@@ -6,6 +6,7 @@ import ErrorBoundary from '@/components/common/ErrorBoundary';
 import { AuthProvider } from '@/components/providers/AuthProvider';
 import { ThemeProvider } from '@/components/providers/ThemeProvider';
 import { ConsentBanner } from '@/components/common/ConsentBanner';
+import { ServiceWorkerRegister } from '@/components/common/ServiceWorkerRegister';
 
 export function ClientProviders({ children }: { children: ReactNode }) {
   return (
@@ -19,6 +20,7 @@ export function ClientProviders({ children }: { children: ReactNode }) {
             <div>
               <ConsentBanner />
             </div>
+            <ServiceWorkerRegister />
           </ToastProvider>
         </AuthProvider>
       </ErrorBoundary>

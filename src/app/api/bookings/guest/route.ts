@@ -3,6 +3,7 @@ import { z } from 'zod';
 import { createBooking } from '@/persistence/queries/bookingQueries';
 import { calculateDistance, calculatePrice, estimateDuration } from '@/lib/utils/pricing';
 import { sendGuestBookingConfirmationEmail } from '@/lib/email/mailer';
+import { sendPushToAdmins } from '@/lib/push/sendPush';
 import { VehicleType } from '@/generated/prisma/client';
 
 const CoordinateSchema = z.number().min(-180).max(180).finite();
@@ -92,6 +93,14 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
       console.error('Failed to send guest booking confirmation email:', emailError);
       // Not rethrown — booking already succeeded
     }
+
+    // Notify admins (fire-and-forget)
+    sendPushToAdmins({
+      title: 'Nouvelle course',
+      body: `${booking.guestName || 'Invité'} · ${booking.pickupCity} → ${booking.dropoffCity}`,
+      url: `/admin/reservations?id=${booking.id}`,
+      tag: `booking-${booking.id}`,
+    }).catch((err) => console.error('Push to admins failed:', err));
 
     return NextResponse.json(
       {

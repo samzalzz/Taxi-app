@@ -35,6 +35,11 @@ export default function RootLayout({
       <head>
         <meta charSet="utf-8" />
         <meta name="theme-color" content="#d4af37" />
+        <link rel="manifest" href="/manifest.json" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <meta name="apple-mobile-web-app-title" content="Taxi Leblanc" />
+        <link rel="apple-touch-icon" href="/icon-192.png" />
         <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='75' font-size='75' fill='%23f5c518'>🚕</text></svg>" />
       </head>
       <body className="bg-background text-on-surface antialiased bg-cloth">

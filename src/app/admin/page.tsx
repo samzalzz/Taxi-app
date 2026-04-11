@@ -1,6 +1,7 @@
 'use client';
 
 import { AdminDashboard } from '@/components/features/admin/AdminDashboard';
+import { PushNotificationToggle } from '@/components/features/admin/PushNotificationToggle';
 
 export default function AdminPage() {
   return (
@@ -13,6 +14,8 @@ export default function AdminPage() {
           Vue d&apos;ensemble et gestion de la plateforme
         </p>
       </div>
+
+      <PushNotificationToggle />
 
       <AdminDashboard />
 

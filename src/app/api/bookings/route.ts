@@ -6,6 +6,7 @@ import { calculateDistance, calculatePrice, estimateDuration } from '@/lib/utils
 import { getUserById } from '@/persistence/queries/userQueries';
 import { getEmailTemplate } from '@/persistence/queries/appConfigQueries';
 import { sendBookingConfirmationEmail } from '@/lib/email/mailer';
+import { sendPushToAdmins } from '@/lib/push/sendPush';
 import { logApiCall } from '@/lib/api/logApiCall';
 import { BookingStatus } from '@/generated/prisma/client';
 
@@ -92,6 +93,14 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
       console.error('Failed to send booking confirmation:', emailError);
       // Not rethrown — booking already succeeded
     }
+
+    // Notify admins (fire-and-forget)
+    sendPushToAdmins({
+      title: 'Nouvelle course',
+      body: `${booking.pickupCity} → ${booking.dropoffCity}`,
+      url: `/admin/reservations?id=${booking.id}`,
+      tag: `booking-${booking.id}`,
+    }).catch((err) => console.error('Push to admins failed:', err));
 
     return NextResponse.json(booking, { status: 201 });
   } catch (error) {

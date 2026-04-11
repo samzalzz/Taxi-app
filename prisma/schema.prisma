@@ -36,6 +36,7 @@ model User {
   complaintReplies ComplaintReply[]
   passwordResetTokens PasswordResetToken[]
   savedAddresses SavedAddress[]
+  pushSubscriptions PushSubscription[]
 
   // Timestamps
   createdAt     DateTime   @default(now())
@@ -43,6 +44,21 @@ model User {
 
   @@index([email])
   @@index([role])
+}
+
+// ============ WEB PUSH SUBSCRIPTIONS ============
+
+model PushSubscription {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  endpoint  String   @unique
+  p256dh    String
+  auth      String
+  userAgent String?
+  createdAt DateTime @default(now())
+
+  @@index([userId])
 }
 
 enum UserRole {
