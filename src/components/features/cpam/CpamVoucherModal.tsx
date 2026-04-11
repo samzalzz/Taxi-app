@@ -115,7 +115,7 @@ export function CpamVoucherModal({
           </div>
           <button
             onClick={onClose}
-            className="text-on-surface-dim hover:text-on-surface"
+            className="inline-flex items-center justify-center p-1 rounded-lg text-on-surface-dim hover:text-on-surface hover:bg-on-surface/10 transition-colors"
           >
             <X className="w-5 h-5" />
           </button>

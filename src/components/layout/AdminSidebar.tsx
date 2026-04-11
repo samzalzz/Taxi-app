@@ -12,7 +12,7 @@ export function AdminSidebar() {
       {/* Toggle Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed top-20 left-4 z-50 p-2 rounded-lg bg-surface border border-on-surface/10 hover:bg-surface-light transition-colors lg:hidden"
+        className="fixed top-20 left-4 z-50 inline-flex items-center justify-center p-2 rounded-lg bg-surface border border-on-surface/10 hover:bg-surface-light transition-colors lg:hidden"
         aria-label={isOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
       >
         {isOpen ? (

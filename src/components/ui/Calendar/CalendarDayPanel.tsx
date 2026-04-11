@@ -51,7 +51,7 @@ export function CalendarDayPanel({
           <h3 className="font-semibold text-on-surface capitalize">{dateStr}</h3>
           <button
             onClick={onClose}
-            className="text-on-surface-dim hover:text-on-surface transition-colors lg:hidden"
+            className="inline-flex items-center justify-center p-1 rounded-lg text-on-surface-dim hover:text-on-surface hover:bg-on-surface/10 transition-colors lg:hidden"
           >
             <X className="w-5 h-5" />
           </button>

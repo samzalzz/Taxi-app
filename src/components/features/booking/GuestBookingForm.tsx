@@ -112,7 +112,7 @@ export function GuestBookingForm() {
               </div>
               <button
                 onClick={copyCodeToClipboard}
-                className="absolute top-2 right-2 p-2 rounded-lg bg-surface-light hover:bg-surface border border-on-surface/10 transition-colors"
+                className="absolute top-2 right-2 inline-flex items-center justify-center p-2 rounded-lg bg-surface-light hover:bg-surface border border-on-surface/10 transition-colors"
                 title="Copier le code"
               >
                 <Copy className="w-4 h-4 text-on-surface" />

@@ -210,7 +210,7 @@ export function AddressPicker({
                       <button
                         type="button"
                         onClick={() => handleDeleteSavedAddress(saved.id)}
-                        className="opacity-0 group-hover:opacity-100 transition-opacity px-3 py-3 text-on-surface-dim hover:text-red-500"
+                        className="opacity-0 group-hover:opacity-100 transition-opacity inline-flex items-center justify-center px-3 py-3 text-on-surface-dim hover:text-red-500"
                       >
                         <Trash2 className="w-4 h-4" />
                       </button>
@@ -258,7 +258,7 @@ export function AddressPicker({
                             <button
                               type="button"
                               onClick={() => setShowSaveModal(true)}
-                              className="px-3 py-3 text-primary hover:bg-surface-light transition-colors"
+                              className="inline-flex items-center justify-center px-3 py-3 text-primary hover:bg-surface-light transition-colors"
                               title="Ajouter aux favoris"
                             >
                               <Star className="w-4 h-4" />

@@ -72,7 +72,7 @@ export function BookingClientDetailsModal({
           </h2>
           <button
             onClick={onClose}
-            className="p-2 hover:bg-surface-light rounded-lg transition-colors"
+            className="inline-flex items-center justify-center p-2 hover:bg-surface-light rounded-lg transition-colors"
           >
             <X className="w-5 h-5 text-on-surface" />
           </button>

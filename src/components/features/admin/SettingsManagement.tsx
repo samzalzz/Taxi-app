@@ -155,7 +155,7 @@ export function SettingsManagement() {
               />
               <button
                 onClick={() => setShowApiKey(!showApiKey)}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-dim hover:text-on-surface"
+                className="absolute right-3 top-1/2 -translate-y-1/2 inline-flex items-center justify-center text-on-surface-dim hover:text-on-surface"
               >
                 {showApiKey ? (
                   <EyeOff className="w-4 h-4" />

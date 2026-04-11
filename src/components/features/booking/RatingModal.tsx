@@ -75,7 +75,7 @@ export function RatingModal({
           </h2>
           <button
             onClick={onClose}
-            className="p-1 hover:bg-on-surface/10 rounded-lg transition-colors"
+            className="inline-flex items-center justify-center p-1 hover:bg-on-surface/10 rounded-lg transition-colors"
           >
             <X className="w-5 h-5" />
           </button>
