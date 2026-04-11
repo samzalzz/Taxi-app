@@ -39,6 +39,7 @@ export function VehicleSelector({
           return (
             <button
               key={type}
+              type="button"
               onClick={() => onSelect(type)}
               className={`p-4 rounded-lg border-2 transition-all text-left ${
                 isSelected

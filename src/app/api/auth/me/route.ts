@@ -7,25 +7,16 @@ export async function GET() {
     const session = await getSession();
 
     if (!session) {
-      return NextResponse.json(
-        { error: 'Non authentifié' },
-        { status: 401 }
-      );
+      return NextResponse.json({ user: null }, { status: 200 });
     }
 
     const user = await getUserById(session.userId);
 
     if (!user) {
-      return NextResponse.json(
-        { error: 'Utilisateur non trouvé' },
-        { status: 404 }
-      );
+      return NextResponse.json({ user: null }, { status: 200 });
     }
 
-    return NextResponse.json(
-      { success: true, user },
-      { status: 200 }
-    );
+    return NextResponse.json({ success: true, user }, { status: 200 });
   } catch (error) {
     console.error('Auth me error:', error);
     return NextResponse.json(

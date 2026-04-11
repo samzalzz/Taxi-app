@@ -14,10 +14,10 @@ export default function ReserverPage() {
         {/* Page Header */}
         <div className="mb-12">
           <h1 className="text-4xl font-bold text-on-surface mb-3">
-            Réserver sans compte
+            Réserver une course
           </h1>
           <p className="text-lg text-on-surface-dim">
-            Réservez une course en 2 minutes. Pas besoin de créer un compte.
+            Réservez votre trajet en 2 minutes.
           </p>
         </div>
 

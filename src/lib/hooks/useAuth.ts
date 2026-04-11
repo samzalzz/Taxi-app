@@ -36,7 +36,7 @@ export function useAuth(): AuthContextType {
       });
       if (response.ok) {
         const data = await response.json();
-        setUser(data.user);
+        setUser(data.user ?? null);
       } else {
         setUser(null);
       }

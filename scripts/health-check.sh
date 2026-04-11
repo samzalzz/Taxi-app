@@ -27,7 +27,7 @@ fi
 
 # Test 3: Backend API - Auth endpoint
 echo -n "✓ Testing backend API (/api/auth/me)..."
-if curl -s http://localhost:3000/api/auth/me | grep -q "error\|success"; then
+if curl -s http://localhost:3000/api/auth/me | grep -q "user"; then
   echo " ✅ OK"
 else
   echo " ❌ FAILED"
