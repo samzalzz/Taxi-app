@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { useAuthContext } from '@/components/providers/AuthProvider';
 
 export interface SavedAddress {
   id: string;
@@ -13,12 +14,17 @@ export interface SavedAddress {
 }
 
 export function useFavoriteAddresses() {
+  const { isAuthenticated, isLoading: authLoading } = useAuthContext();
   const [addresses, setAddresses] = useState<SavedAddress[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   // Fetch all saved addresses
   const fetchAddresses = async () => {
+    if (!isAuthenticated) {
+      setAddresses([]);
+      return;
+    }
     try {
       setIsLoading(true);
       setError(null);
@@ -96,10 +102,12 @@ export function useFavoriteAddresses() {
     }
   };
 
-  // Load addresses on mount
+  // Load addresses once auth state is resolved and user is logged in
   useEffect(() => {
+    if (authLoading) return;
     fetchAddresses();
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [authLoading, isAuthenticated]);
 
   return {
     addresses,

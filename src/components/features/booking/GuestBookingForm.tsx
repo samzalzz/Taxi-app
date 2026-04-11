@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { useGuestBooking } from '@/lib/hooks/useGuestBooking';
+import { useAuthContext } from '@/components/providers/AuthProvider';
 import { AddressPicker } from './AddressPicker';
 import { VehicleSelector } from './VehicleSelector';
 import { PriceEstimate } from './PriceEstimate';
@@ -11,6 +12,7 @@ import { MapPin, Flag, CheckCircle, Copy, AlertCircle } from 'lucide-react';
 import Link from 'next/link';
 
 export function GuestBookingForm() {
+  const { isAuthenticated } = useAuthContext();
   const {
     formState,
     priceEstimate,
@@ -54,11 +56,27 @@ export function GuestBookingForm() {
     return diffHours < 2;
   };
 
-  const copyCodeToClipboard = () => {
-    if (bookingResult?.reservationCode) {
-      navigator.clipboard.writeText(bookingResult.reservationCode);
+  const copyCodeToClipboard = async () => {
+    if (!bookingResult?.reservationCode) return;
+    const code = bookingResult.reservationCode;
+    try {
+      if (typeof navigator !== 'undefined' && navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(code);
+      } else {
+        // Fallback for insecure (HTTP) contexts where Clipboard API is undefined
+        const textarea = document.createElement('textarea');
+        textarea.value = code;
+        textarea.style.position = 'fixed';
+        textarea.style.opacity = '0';
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textarea);
+      }
       setCodeCopied(true);
       setTimeout(() => setCodeCopied(false), 2000);
+    } catch {
+      // Silently ignore — user can still read the code on screen
     }
   };
 
@@ -162,6 +180,11 @@ export function GuestBookingForm() {
 
   const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    // Logged-in users bypass the "continue as guest" modal entirely
+    if (isAuthenticated) {
+      await submitBooking();
+      return;
+    }
     setShowConfirmModal(true);
   };
 
