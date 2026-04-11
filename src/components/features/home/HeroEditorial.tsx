@@ -10,7 +10,8 @@ const SUMMARY = [
   { num: 'II', label: 'Six années en bref', href: '#chiffres' },
   { num: 'III', label: 'Nos services', href: '#services' },
   { num: 'IV', label: 'Nos caractéristiques', href: '#maison' },
-  { num: 'V', label: 'Correspondance', href: '#contact' },
+  { num: 'V', label: 'Paroles de clients', href: '#avis' },
+  { num: 'VI', label: 'Correspondance', href: '#contact' },
 ];
 
 export function HeroEditorial() {
