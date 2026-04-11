@@ -14,8 +14,11 @@ export function ClientProviders({ children }: { children: ReactNode }) {
         <AuthProvider>
           <ToastProvider>
             {children}
-            {/* Unified consent banner (cookies + CGU) renders at bottom of page globally */}
-            <ConsentBanner />
+            {/* Wrapper isolates ConsentBanner from `.bg-cloth > *` rule
+                which would otherwise override its `position: fixed`. */}
+            <div>
+              <ConsentBanner />
+            </div>
           </ToastProvider>
         </AuthProvider>
       </ErrorBoundary>
