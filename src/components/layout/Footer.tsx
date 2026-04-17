@@ -125,7 +125,7 @@ export function Footer() {
                 <MapPin className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
                 <div className="text-on-surface-dim text-xs">
                   30 Allée des bergeries<br />
-                  Draveille, 91210
+                  Draveil, 91210
                 </div>
               </div>
             </div>

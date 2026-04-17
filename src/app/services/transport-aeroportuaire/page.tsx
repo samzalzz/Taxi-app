@@ -13,8 +13,8 @@ export const metadata: Metadata = {
     title: 'Transport Aéroport Île-de-France | Taxi Leblanc',
     description: 'Service de transport vers les aéroports de Paris. Réservez dès maintenant.',
     type: 'website',
-    url: 'https://taxileblanc.fr/services/transport-aeroportuaire',
-    images: [{ url: 'https://taxileblanc.fr/og-aeroport.jpg', width: 1200, height: 630 }],
+    url: 'https://taxi-leblanc.fr/services/transport-aeroportuaire',
+    images: [{ url: 'https://taxi-leblanc.fr/opengraph-image', width: 1200, height: 630 }],
   },
 };
 

@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     title: 'Transport Médical CPAM - Guide Complet Remboursement | Taxi Leblanc',
     description: 'Comment obtenir 55% ou 100% de remboursement pour un taxi? Guide étape par étape.',
     type: 'website',
-    url: 'https://taxileblanc.fr/guides/transport-cpam',
+    url: 'https://taxi-leblanc.fr/guides/transport-cpam',
   },
 };
 

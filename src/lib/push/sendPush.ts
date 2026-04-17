@@ -10,7 +10,7 @@ function configure() {
   if (configured) return;
   const publicKey = process.env.VAPID_PUBLIC_KEY;
   const privateKey = process.env.VAPID_PRIVATE_KEY;
-  const subject = process.env.VAPID_SUBJECT || 'mailto:admin@taxileblanc.fr';
+  const subject = process.env.VAPID_SUBJECT || 'mailto:admin@taxi-leblanc.fr';
 
   if (!publicKey || !privateKey) {
     throw new Error('VAPID keys missing — set VAPID_PUBLIC_KEY and VAPID_PRIVATE_KEY');

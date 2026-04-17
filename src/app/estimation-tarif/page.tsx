@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     title: 'Estimateur de Tarif - Taxi Aéroport Paris | Taxi Leblanc',
     description: 'Calculez le prix exact de votre taxi vers CDG, Orly ou Beauvais. Forfaits légaux 2026.',
     type: 'website',
-    url: 'https://taxileblanc.fr/estimation-tarif',
+    url: 'https://taxi-leblanc.fr/estimation-tarif',
   },
 };
 

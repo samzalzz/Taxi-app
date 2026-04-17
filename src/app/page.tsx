@@ -13,16 +13,16 @@ export const metadata: Metadata = {
   title: 'Taxi Leblanc - Taxi en Île-de-France | Aéroport, CPAM, Occasions',
   description: 'Taxi en Île-de-France : transferts aéroport, trajets médicalisés CPAM agréés et occasions personnelles. Réservation en ligne 24h/24.',
   alternates: {
-    canonical: 'https://taxileblanc.fr',
+    canonical: 'https://taxi-leblanc.fr',
   },
   openGraph: {
     title: 'Taxi Leblanc - Service Premium de Transport en Île-de-France',
     description: 'Réservez votre taxi pour l\'aéroport, transports médicalisés CPAM ou occasions spéciales.',
     type: 'website',
-    url: 'https://taxileblanc.fr',
+    url: 'https://taxi-leblanc.fr',
     images: [
       {
-        url: 'https://taxileblanc.fr/og-image.jpg',
+        url: 'https://taxi-leblanc.fr/opengraph-image',
         width: 1200,
         height: 630,
         alt: 'Taxi Leblanc - Service Premium',
@@ -37,8 +37,8 @@ const jsonLd = {
   name: 'Taxi Leblanc',
   description:
     'Service de taxi en Île-de-France : transferts aéroport, trajets médicalisés CPAM agréés et occasions personnelles.',
-  url: 'https://taxileblanc.fr',
-  image: 'https://taxileblanc.fr/og-image.jpg',
+  url: 'https://taxi-leblanc.fr',
+  image: 'https://taxi-leblanc.fr/opengraph-image',
   telephone: '+33608550315',
   priceRange: '€€',
   areaServed: [

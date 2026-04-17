@@ -1,45 +1,38 @@
 # Robots.txt for Taxi Leblanc
-# Generated for SEO optimization
+# https://taxi-leblanc.fr
 
 User-agent: *
 Allow: /
-Allow: /reserver
-Allow: /suivi
-Allow: /connexion
-Allow: /inscription
-Allow: /services/*
-Allow: /tarifs
-Allow: /contact
-Allow: /sitemap.xml
-Allow: /rss.xml
-
-# Disallow admin and internal routes
 Disallow: /dashboard
 Disallow: /api/
 Disallow: /admin
 Disallow: /private
 Disallow: /_next/
-Disallow: /public/
-Disallow: /*.json$
-
-# Crawl delay (in seconds)
-Crawl-delay: 2
-
-# Request rate (pages per second)
-Request-rate: 1/10
 
 # Sitemaps
-Sitemap: https://taxileblanc.fr/sitemap.xml
+Sitemap: https://taxi-leblanc.fr/sitemap.xml
 
-# Specific bot rules
+# Search engine crawlers
 User-agent: Googlebot
 Allow: /
-Crawl-delay: 1
 
 User-agent: Bingbot
 Allow: /
-Crawl-delay: 2
 
+# AI crawlers — explicitly allowed for GEO visibility
+User-agent: GPTBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+# SEO tool crawlers — allowed for backlink analysis
 User-agent: AhrefsBot
 Allow: /
 Crawl-delay: 10
@@ -48,12 +41,6 @@ User-agent: SemrushBot
 Allow: /
 Crawl-delay: 10
 
-# Block bad bots
+# Block known bad bots
 User-agent: MJ12bot
-Disallow: /
-
-User-agent: AhrefsBot
-Disallow: /
-
-User-agent: SemrushBot
 Disallow: /

@@ -163,7 +163,7 @@ export default function CommentReserverPage() {
                 <div className="flex-grow">
                   <h3 className="text-xl font-bold text-on-surface mb-2">Accédez au formulaire de réservation</h3>
                   <p className="text-on-surface-dim">
-                    Cliquez sur &quot;Réserver maintenant&quot; ou visitez la page <Link href="/reserver" className="text-primary hover:underline">www.taxileblanc.fr/reserver</Link>
+                    Cliquez sur &quot;Réserver maintenant&quot; ou visitez la page <Link href="/reserver" className="text-primary hover:underline">www.taxi-leblanc.fr/reserver</Link>
                   </p>
                 </div>
               </div>

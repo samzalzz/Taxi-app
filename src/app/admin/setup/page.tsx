@@ -106,7 +106,7 @@ export default function AdminSetupPage() {
               </label>
               <Input
                 type="email"
-                placeholder="admin@taxileblanc.fr"
+                placeholder="admin@taxi-leblanc.fr"
                 value={formData.email}
                 onChange={(e) =>
                   setFormData({ ...formData, email: e.target.value })

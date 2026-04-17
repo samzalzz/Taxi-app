@@ -30,7 +30,7 @@ const EXAMPLE_VALUES = {
   bookingId: 'AB12CD34',
   date: 'lundi 7 avril 2026 à 14:30',
   distance: '28.3',
-  signature: '— Taxi Leblanc\nnoreply@taxileblanc.fr',
+  signature: '— Taxi Leblanc\nnoreply@taxi-leblanc.fr',
 };
 
 export function EmailTemplatesManagement() {

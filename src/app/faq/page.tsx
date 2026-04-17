@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     title: 'Questions Fréquentes - Taxi Leblanc',
     description: 'Toutes vos questions sur la réservation, tarifs, CPAM et services spécialisés.',
     type: 'website',
-    url: 'https://taxileblanc.fr/faq',
+    url: 'https://taxi-leblanc.fr/faq',
   },
 };
 
@@ -101,9 +101,31 @@ const faqs = [
   },
 ];
 
+// FAQPage structured data for search engines and AI citation
+// Content is hardcoded above (not user input), so XSS risk is zero
+const faqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: faq.answer,
+    },
+  })),
+};
+
+const faqJsonLdString = JSON.stringify(faqJsonLd).replace(/</g, '\\u003c');
+
 export default function FAQPage() {
   return (
     <div className="min-h-screen bg-background">
+      <script
+        type="application/ld+json"
+        // eslint-disable-next-line react/no-danger
+        dangerouslySetInnerHTML={{ __html: faqJsonLdString }}
+      />
       <HomeHeader />
 
       <div className="pt-16">

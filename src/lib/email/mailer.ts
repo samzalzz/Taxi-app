@@ -19,7 +19,7 @@ export async function sendPasswordResetEmail(
   const resetUrl = `${appUrl}/reinitialisation?token=${rawToken}`;
 
   await transporter.sendMail({
-    from: process.env.SMTP_FROM ?? 'Taxi Leblanc <noreply@taxileblanc.fr>',
+    from: process.env.SMTP_FROM ?? 'Taxi Leblanc <noreply@taxi-leblanc.fr>',
     to: toEmail,
     subject: 'Réinitialisation de votre mot de passe — Taxi Leblanc',
     text: `Bonjour,\n\nVous avez demandé la réinitialisation de votre mot de passe.\n\nCliquez sur ce lien pour continuer :\n${resetUrl}\n\nCe lien expire dans 1 heure et ne peut être utilisé qu'une seule fois.\n\nSi vous n'avez pas fait cette demande, ignorez cet email.\n\n— Taxi Leblanc`,
@@ -125,7 +125,7 @@ export async function sendBookingConfirmationEmail(
   const htmlBody = body.replace(/\n/g, '<br>');
 
   await transporter.sendMail({
-    from: process.env.SMTP_FROM ?? 'Taxi Leblanc <noreply@taxileblanc.fr>',
+    from: process.env.SMTP_FROM ?? 'Taxi Leblanc <noreply@taxi-leblanc.fr>',
     to: toEmail,
     subject,
     text: body,
@@ -197,7 +197,7 @@ export async function sendGuestBookingConfirmationEmail(
   }).format(bookingDate);
 
   await transporter.sendMail({
-    from: process.env.SMTP_FROM ?? 'Taxi Leblanc <noreply@taxileblanc.fr>',
+    from: process.env.SMTP_FROM ?? 'Taxi Leblanc <noreply@taxi-leblanc.fr>',
     to: toEmail,
     subject: 'Votre réservation Taxi Leblanc est confirmée',
     text: `Bonjour ${guestName},\n\nVotre réservation a été enregistrée !\n\nVotre code de réservation:\n${reservationCode}\n\nDépart: ${booking.pickupAddress}\nArrivée: ${booking.dropoffAddress}\nDate: ${formattedDate}\nDistance: ${booking.distance.toFixed(1)} km\nPrix: ${booking.price.toFixed(2)} €\n\nConservez ce code — il vous permettra de retrouver votre réservation sur ${appUrl}/suivi\n\nMerci de votre confiance.\n\n— Taxi Leblanc`,

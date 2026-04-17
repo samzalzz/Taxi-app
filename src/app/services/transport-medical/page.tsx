@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     title: 'Transport Médical CPAM | Taxi Leblanc',
     description: 'Transport médical agréé avec prise en charge CPAM remboursée.',
     type: 'website',
-    url: 'https://taxileblanc.fr/services/transport-medical',
+    url: 'https://taxi-leblanc.fr/services/transport-medical',
   },
 };
 
