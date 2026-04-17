@@ -13,6 +13,18 @@ interface PricingConfig {
   minimumPrice: number;
   maximumHourlyRate: number;
 
+  // Tiered per-km rates
+  tier1PricePerKm: number;
+  tier2PricePerKm: number;
+  tier3PricePerKm: number;
+  tier4PricePerKm: number;
+
+  // Vehicle multipliers
+  vehicleMultiplierBerline: number;
+  vehicleMultiplierSuv: number;
+  vehicleMultiplierVan: number;
+  vehicleMultiplierPremium: number;
+
   // CPAM pricing
   cpamPricePerKm: number;
   cpamPickupCharge: number;
@@ -209,6 +221,178 @@ export function PricingManagement() {
             </div>
             <p className="text-xs text-on-surface-dim mt-1">
               Tarif actuel: {pricing?.maximumHourlyRate.toFixed(2)}€
+            </p>
+          </div>
+        </div>
+
+        {/* Tiered Pricing Section */}
+        <div className="bg-surface border border-on-surface/10 rounded-lg p-6 space-y-4">
+          <h3 className="font-semibold text-lg text-on-surface">
+            Tarifs par paliers (€/km)
+          </h3>
+          <p className="text-xs text-on-surface-dim -mt-2">
+            Tarif au km appliqué selon la distance totale du trajet.
+          </p>
+
+          <div>
+            <label className="block text-sm font-semibold text-on-surface mb-2">
+              0 – 20 km
+            </label>
+            <div className="flex items-center gap-2">
+              <Input
+                type="number"
+                step="0.01"
+                value={formData.tier1PricePerKm ?? ''}
+                onChange={(e) => handleInputChange('tier1PricePerKm', e.target.value)}
+                placeholder="2.00"
+              />
+              <span className="text-on-surface-dim">€/km</span>
+            </div>
+            <p className="text-xs text-on-surface-dim mt-1">
+              Tarif actuel: {pricing?.tier1PricePerKm.toFixed(2)}€
+            </p>
+          </div>
+
+          <div>
+            <label className="block text-sm font-semibold text-on-surface mb-2">
+              20 – 50 km
+            </label>
+            <div className="flex items-center gap-2">
+              <Input
+                type="number"
+                step="0.01"
+                value={formData.tier2PricePerKm ?? ''}
+                onChange={(e) => handleInputChange('tier2PricePerKm', e.target.value)}
+                placeholder="1.60"
+              />
+              <span className="text-on-surface-dim">€/km</span>
+            </div>
+            <p className="text-xs text-on-surface-dim mt-1">
+              Tarif actuel: {pricing?.tier2PricePerKm.toFixed(2)}€
+            </p>
+          </div>
+
+          <div>
+            <label className="block text-sm font-semibold text-on-surface mb-2">
+              50 – 100 km
+            </label>
+            <div className="flex items-center gap-2">
+              <Input
+                type="number"
+                step="0.01"
+                value={formData.tier3PricePerKm ?? ''}
+                onChange={(e) => handleInputChange('tier3PricePerKm', e.target.value)}
+                placeholder="1.30"
+              />
+              <span className="text-on-surface-dim">€/km</span>
+            </div>
+            <p className="text-xs text-on-surface-dim mt-1">
+              Tarif actuel: {pricing?.tier3PricePerKm.toFixed(2)}€
+            </p>
+          </div>
+
+          <div>
+            <label className="block text-sm font-semibold text-on-surface mb-2">
+              100 km et plus
+            </label>
+            <div className="flex items-center gap-2">
+              <Input
+                type="number"
+                step="0.01"
+                value={formData.tier4PricePerKm ?? ''}
+                onChange={(e) => handleInputChange('tier4PricePerKm', e.target.value)}
+                placeholder="1.00"
+              />
+              <span className="text-on-surface-dim">€/km</span>
+            </div>
+            <p className="text-xs text-on-surface-dim mt-1">
+              Tarif actuel: {pricing?.tier4PricePerKm.toFixed(2)}€
+            </p>
+          </div>
+        </div>
+
+        {/* Vehicle Multipliers Section */}
+        <div className="bg-surface border border-on-surface/10 rounded-lg p-6 space-y-4">
+          <h3 className="font-semibold text-lg text-on-surface">
+            Multiplicateurs par véhicule
+          </h3>
+          <p className="text-xs text-on-surface-dim -mt-2">
+            Coefficient appliqué au tarif du palier selon le véhicule choisi.
+          </p>
+
+          <div>
+            <label className="block text-sm font-semibold text-on-surface mb-2">
+              Berline
+            </label>
+            <div className="flex items-center gap-2">
+              <Input
+                type="number"
+                step="0.01"
+                value={formData.vehicleMultiplierBerline ?? ''}
+                onChange={(e) => handleInputChange('vehicleMultiplierBerline', e.target.value)}
+                placeholder="1.00"
+              />
+              <span className="text-on-surface-dim">×</span>
+            </div>
+            <p className="text-xs text-on-surface-dim mt-1">
+              Coefficient actuel: {pricing?.vehicleMultiplierBerline.toFixed(2)}×
+            </p>
+          </div>
+
+          <div>
+            <label className="block text-sm font-semibold text-on-surface mb-2">
+              SUV
+            </label>
+            <div className="flex items-center gap-2">
+              <Input
+                type="number"
+                step="0.01"
+                value={formData.vehicleMultiplierSuv ?? ''}
+                onChange={(e) => handleInputChange('vehicleMultiplierSuv', e.target.value)}
+                placeholder="1.30"
+              />
+              <span className="text-on-surface-dim">×</span>
+            </div>
+            <p className="text-xs text-on-surface-dim mt-1">
+              Coefficient actuel: {pricing?.vehicleMultiplierSuv.toFixed(2)}×
+            </p>
+          </div>
+
+          <div>
+            <label className="block text-sm font-semibold text-on-surface mb-2">
+              Van
+            </label>
+            <div className="flex items-center gap-2">
+              <Input
+                type="number"
+                step="0.01"
+                value={formData.vehicleMultiplierVan ?? ''}
+                onChange={(e) => handleInputChange('vehicleMultiplierVan', e.target.value)}
+                placeholder="1.60"
+              />
+              <span className="text-on-surface-dim">×</span>
+            </div>
+            <p className="text-xs text-on-surface-dim mt-1">
+              Coefficient actuel: {pricing?.vehicleMultiplierVan.toFixed(2)}×
+            </p>
+          </div>
+
+          <div>
+            <label className="block text-sm font-semibold text-on-surface mb-2">
+              Premium
+            </label>
+            <div className="flex items-center gap-2">
+              <Input
+                type="number"
+                step="0.01"
+                value={formData.vehicleMultiplierPremium ?? ''}
+                onChange={(e) => handleInputChange('vehicleMultiplierPremium', e.target.value)}
+                placeholder="2.30"
+              />
+              <span className="text-on-surface-dim">×</span>
+            </div>
+            <p className="text-xs text-on-surface-dim mt-1">
+              Coefficient actuel: {pricing?.vehicleMultiplierPremium.toFixed(2)}×
             </p>
           </div>
         </div>
@@ -460,7 +644,7 @@ export function PricingManagement() {
             </p>
             <div className="text-on-surface-dim text-xs space-y-1">
               <div>
-                Standard: Prise en charge + (Distance × €/km) + Frais réservation
+                Standard: Distance × €/km du palier × multiplicateur véhicule
               </div>
               <div>
                 CPAM: Tarifs réduits + (Distance × €/km CPAM)

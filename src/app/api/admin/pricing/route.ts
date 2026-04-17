@@ -10,6 +10,18 @@ const updatePricingSchema = z.object({
   minimumPrice: z.number().positive().optional(),
   maximumHourlyRate: z.number().positive().optional(),
 
+  // Tiered per-km rates
+  tier1PricePerKm: z.number().positive().optional(),
+  tier2PricePerKm: z.number().positive().optional(),
+  tier3PricePerKm: z.number().positive().optional(),
+  tier4PricePerKm: z.number().positive().optional(),
+
+  // Vehicle multipliers
+  vehicleMultiplierBerline: z.number().positive().optional(),
+  vehicleMultiplierSuv: z.number().positive().optional(),
+  vehicleMultiplierVan: z.number().positive().optional(),
+  vehicleMultiplierPremium: z.number().positive().optional(),
+
   // CPAM pricing
   cpamPricePerKm: z.number().positive().optional(),
   cpamPickupCharge: z.number().positive().optional(),

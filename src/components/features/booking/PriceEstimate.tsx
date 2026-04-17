@@ -58,21 +58,6 @@ export function PriceEstimate({
         </div>
       </div>
 
-      <div className="border-t border-on-surface/10 pt-4">
-        <div className="flex justify-between items-center mb-2">
-          <span className="text-sm text-on-surface-dim">Prix de base</span>
-          <span className="text-sm text-on-surface">
-            {formatPrice(estimate.basePrice)}
-          </span>
-        </div>
-        <div className="flex justify-between items-center mb-4">
-          <span className="text-sm text-on-surface-dim">Trajet</span>
-          <span className="text-sm text-on-surface">
-            {formatPrice(estimate.distance * estimate.pricePerKm)}
-          </span>
-        </div>
-      </div>
-
       <div className="bg-primary/10 border border-primary/20 rounded-lg p-4 flex justify-between items-center">
         <span className="font-semibold text-on-surface">Total estimé</span>
         <span className="text-2xl font-bold text-primary">

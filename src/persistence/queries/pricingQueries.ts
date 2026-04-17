@@ -8,6 +8,18 @@ export interface UpdatePricingInput {
   minimumPrice?: number;
   maximumHourlyRate?: number;
 
+  // Tiered pricing
+  tier1PricePerKm?: number;
+  tier2PricePerKm?: number;
+  tier3PricePerKm?: number;
+  tier4PricePerKm?: number;
+
+  // Vehicle multipliers
+  vehicleMultiplierBerline?: number;
+  vehicleMultiplierSuv?: number;
+  vehicleMultiplierVan?: number;
+  vehicleMultiplierPremium?: number;
+
   // CPAM pricing
   cpamPricePerKm?: number;
   cpamPickupCharge?: number;
@@ -28,6 +40,45 @@ export interface UpdatePricingInput {
   reservationAdvanceFee?: number;
 }
 
+const DEFAULT_PRICING_CONFIG = {
+  // Base pricing
+  pricePerKm: 1.30,
+  pickupCharge: 4.48,
+  minimumPrice: 8.00,
+  maximumHourlyRate: 42.15,
+
+  // Tiered pricing
+  tier1PricePerKm: 2.00,
+  tier2PricePerKm: 1.60,
+  tier3PricePerKm: 1.30,
+  tier4PricePerKm: 1.00,
+
+  // Vehicle multipliers
+  vehicleMultiplierBerline: 1.00,
+  vehicleMultiplierSuv: 1.30,
+  vehicleMultiplierVan: 1.60,
+  vehicleMultiplierPremium: 2.30,
+
+  // CPAM pricing
+  cpamPricePerKm: 0.91,
+  cpamPickupCharge: 3.10,
+  cpamMinimumPrice: 6.00,
+
+  // Airport rates
+  airportCdgPrice: 50.0,
+  airportOrlyPrice: 36.0,
+  airportBeauvaisPrice: 65.0,
+
+  // CPAM airport rates
+  cpamAirportCdgPrice: 35.0,
+  cpamAirportOrlyPrice: 25.0,
+  cpamAirportBeauvaisPrice: 45.0,
+
+  // Reservation fees
+  reservationImmediateFee: 4.0,
+  reservationAdvanceFee: 7.0,
+} as const;
+
 /**
  * Get current pricing configuration
  * Returns the singleton pricing config record
@@ -40,32 +91,7 @@ export async function getPricingConfig(): Promise<PricingConfig> {
     // Create default config if it doesn't exist
     if (!config) {
       config = await prisma.pricingConfig.create({
-        data: {
-          // Base pricing
-          pricePerKm: 1.30,
-          pickupCharge: 4.48,
-          minimumPrice: 8.00,
-          maximumHourlyRate: 42.15,
-
-          // CPAM pricing (tarifs conventionnels)
-          cpamPricePerKm: 0.91,
-          cpamPickupCharge: 3.10,
-          cpamMinimumPrice: 6.00,
-
-          // Airport rates
-          airportCdgPrice: 50.0,
-          airportOrlyPrice: 36.0,
-          airportBeauvaisPrice: 65.0,
-
-          // CPAM airport rates
-          cpamAirportCdgPrice: 35.0,
-          cpamAirportOrlyPrice: 25.0,
-          cpamAirportBeauvaisPrice: 45.0,
-
-          // Reservation fees
-          reservationImmediateFee: 4.0,
-          reservationAdvanceFee: 7.0,
-        },
+        data: DEFAULT_PRICING_CONFIG,
       });
     }
 
@@ -78,21 +104,7 @@ export async function getPricingConfig(): Promise<PricingConfig> {
         id: 'default',
         createdAt: new Date(),
         updatedAt: new Date(),
-        pricePerKm: 1.30,
-        pickupCharge: 4.48,
-        minimumPrice: 8.00,
-        maximumHourlyRate: 42.15,
-        cpamPricePerKm: 0.91,
-        cpamPickupCharge: 3.10,
-        cpamMinimumPrice: 6.00,
-        airportCdgPrice: 50.0,
-        airportOrlyPrice: 36.0,
-        airportBeauvaisPrice: 65.0,
-        cpamAirportCdgPrice: 35.0,
-        cpamAirportOrlyPrice: 25.0,
-        cpamAirportBeauvaisPrice: 45.0,
-        reservationImmediateFee: 4.0,
-        reservationAdvanceFee: 7.0,
+        ...DEFAULT_PRICING_CONFIG,
       } as PricingConfig;
     }
     throw error;
@@ -111,32 +123,7 @@ export async function updatePricingConfig(
 
     if (!config) {
       config = await prisma.pricingConfig.create({
-        data: {
-          // Base pricing
-          pricePerKm: 1.30,
-          pickupCharge: 4.48,
-          minimumPrice: 8.00,
-          maximumHourlyRate: 42.15,
-
-          // CPAM pricing
-          cpamPricePerKm: 0.91,
-          cpamPickupCharge: 3.10,
-          cpamMinimumPrice: 6.00,
-
-          // Airport rates
-          airportCdgPrice: 50.0,
-          airportOrlyPrice: 36.0,
-          airportBeauvaisPrice: 65.0,
-
-          // CPAM airport rates
-          cpamAirportCdgPrice: 35.0,
-          cpamAirportOrlyPrice: 25.0,
-          cpamAirportBeauvaisPrice: 45.0,
-
-          // Reservation fees
-          reservationImmediateFee: 4.0,
-          reservationAdvanceFee: 7.0,
-        },
+        data: DEFAULT_PRICING_CONFIG,
       });
     }
 

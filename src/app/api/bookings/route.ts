@@ -2,7 +2,8 @@ import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
 import { getSession } from '@/lib/auth/session';
 import { createBooking, getBookingsByClientId } from '@/persistence/queries/bookingQueries';
-import { calculateDistance, calculatePrice, estimateDuration } from '@/lib/utils/pricing';
+import { calculateDistance, calculateTieredPrice, estimateDuration } from '@/lib/utils/pricing';
+import { getPricingConfig } from '@/persistence/queries/pricingQueries';
 import { getUserById } from '@/persistence/queries/userQueries';
 import { getEmailTemplate } from '@/persistence/queries/appConfigQueries';
 import { sendBookingConfirmationEmail } from '@/lib/email/mailer';
@@ -51,9 +52,11 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
     );
 
     const estimatedDuration = estimateDuration(distance);
-    const { basePrice, price, pricePerKm } = calculatePrice(
+    const pricingConfig = await getPricingConfig();
+    const { basePrice, price, pricePerKm } = calculateTieredPrice(
       validated.vehicleType,
-      distance
+      distance,
+      pricingConfig
     );
 
     const booking = await createBooking({

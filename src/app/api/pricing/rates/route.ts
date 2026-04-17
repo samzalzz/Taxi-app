@@ -18,6 +18,22 @@ export async function GET(_request: NextRequest): Promise<NextResponse> {
         maximumHourlyRate: config.maximumHourlyRate,
       },
 
+      // Tiered per-km rates (applied by total distance)
+      tiers: {
+        tier1PricePerKm: config.tier1PricePerKm,
+        tier2PricePerKm: config.tier2PricePerKm,
+        tier3PricePerKm: config.tier3PricePerKm,
+        tier4PricePerKm: config.tier4PricePerKm,
+      },
+
+      // Per-vehicle multipliers applied on top of tier rate
+      vehicleMultipliers: {
+        vehicleMultiplierBerline: config.vehicleMultiplierBerline,
+        vehicleMultiplierSuv: config.vehicleMultiplierSuv,
+        vehicleMultiplierVan: config.vehicleMultiplierVan,
+        vehicleMultiplierPremium: config.vehicleMultiplierPremium,
+      },
+
       // CPAM pricing
       cpam: {
         pricePerKm: config.cpamPricePerKm,

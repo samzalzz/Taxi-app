@@ -1,7 +1,7 @@
 'use client';
 
 import { Car, Truck, Users, Crown } from 'lucide-react';
-import { PRICING_RATES, VehicleType } from '@/lib/utils/pricing';
+import { VEHICLE_META, VehicleType } from '@/lib/utils/pricing';
 import { PriceEstimate } from '@/lib/hooks/useBooking';
 import { formatPrice } from '@/lib/utils/format';
 
@@ -30,11 +30,10 @@ export function VehicleSelector({
       <h3 className="text-lg font-semibold text-on-surface">Choisissez votre véhicule</h3>
       <div className="grid grid-cols-2 gap-4">
         {vehicles.map(type => {
-          const rate = PRICING_RATES[type];
+          const meta = VEHICLE_META[type];
           const isSelected = selected === type;
-          const totalPrice = priceEstimate
-            ? (rate.basePrice + priceEstimate.distance * rate.pricePerKm)
-            : null;
+          const displayedPrice =
+            isSelected && priceEstimate ? priceEstimate.price : null;
 
           return (
             <button
@@ -56,24 +55,19 @@ export function VehicleSelector({
                 )}
               </div>
 
-              <h4 className="font-semibold text-on-surface mb-1">{rate.label}</h4>
-              <p className="text-xs text-on-surface-dim mb-3">{rate.description}</p>
+              <h4 className="font-semibold text-on-surface mb-1">{meta.label}</h4>
+              <p className="text-xs text-on-surface-dim mb-3">{meta.description}</p>
 
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-1 text-xs text-on-surface-dim">
                   <Users className="w-3 h-3" />
-                  {rate.capacity}
+                  {meta.capacity}
                 </div>
-                <div className="text-right">
-                  <div className="text-xs text-on-surface-dim">
-                    {rate.pricePerKm.toFixed(2)} €/km
+                {displayedPrice !== null && (
+                  <div className="text-sm font-semibold text-primary">
+                    {formatPrice(displayedPrice)}
                   </div>
-                  {totalPrice !== null && (
-                    <div className="text-sm font-semibold text-primary">
-                      {formatPrice(totalPrice)}
-                    </div>
-                  )}
-                </div>
+                )}
               </div>
             </button>
           );

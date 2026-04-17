@@ -4,7 +4,7 @@ import { getSession } from '@/lib/auth/session';
 import { createBooking } from '@/persistence/queries/bookingQueries';
 import { createUser } from '@/persistence/queries/userQueries';
 import { getPricingConfig } from '@/persistence/queries/pricingQueries';
-import { calculateDistance, calculateDynamicPrice, estimateDuration } from '@/lib/utils/pricing';
+import { calculateDistance, calculateTieredPrice, estimateDuration } from '@/lib/utils/pricing';
 import { prisma } from '@/persistence/client';
 
 const CreateDriverBookingSchema = z.object({
@@ -79,22 +79,12 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
 
     const estimatedDuration = estimateDuration(distance);
 
-    // Get dynamic pricing from config
     const pricingConfig = await getPricingConfig();
-    const isScheduledInAdvance = validated.scheduledAt ? true : false;
-
-    const priceCalculation = calculateDynamicPrice(
+    const { basePrice, price, pricePerKm } = calculateTieredPrice(
+      validated.vehicleType,
       distance,
-      pricingConfig.pricePerKm,
-      pricingConfig.pickupCharge,
-      pricingConfig.minimumPrice,
-      isScheduledInAdvance,
-      pricingConfig.reservationAdvanceFee
+      pricingConfig
     );
-
-    const basePrice = priceCalculation.pickupCharge;
-    const price = priceCalculation.totalPrice;
-    const pricePerKm = pricingConfig.pricePerKm;
 
     // Create the booking
     const booking = await createBooking({

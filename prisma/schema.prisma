@@ -527,10 +527,22 @@ model PricingConfig {
   id                     String   @id @default(cuid())
 
   // Base pricing (tarifs normaux)
-  pricePerKm             Float    @default(1.30)  // €/km
+  pricePerKm             Float    @default(1.30)  // €/km (legacy, still used for CPAM simple calc)
   pickupCharge           Float    @default(4.48)  // € (prise en charge)
   minimumPrice           Float    @default(8.00)  // € (prix minimum)
   maximumHourlyRate      Float    @default(42.15) // € (tarif horaire max)
+
+  // Tiered pricing — flat rate per tier, picked by total distance
+  tier1PricePerKm        Float    @default(2.00)  // 0-20 km
+  tier2PricePerKm        Float    @default(1.60)  // 20-50 km
+  tier3PricePerKm        Float    @default(1.30)  // 50-100 km
+  tier4PricePerKm        Float    @default(1.00)  // 100+ km
+
+  // Vehicle multipliers applied on top of the tier rate
+  vehicleMultiplierBerline Float  @default(1.00)
+  vehicleMultiplierSuv     Float  @default(1.30)
+  vehicleMultiplierVan     Float  @default(1.60)
+  vehicleMultiplierPremium Float  @default(2.30)
 
   // CPAM pricing (tarifs conventionnels)
   cpamPricePerKm         Float    @default(0.91)  // €/km (tarif conventionnel CPAM)
@@ -626,7 +638,7 @@ model AppConfig {
   // Email Templates
   bookingConfirmationSubject String @default("Confirmation de votre réservation — Taxi Leblanc")
   bookingConfirmationBody String @default("Bonjour {{clientName}},\n\nVotre réservation a été confirmée.\n\nDépart : {{pickupAddress}}\nArrivée : {{dropoffAddress}}\nPrix : {{price}} €\nDistance : {{distance}} km\nRéférence : #{{bookingId}}\n\nMerci de votre confiance.\n\n{{signature}}")
-  bookingEmailSignature   String @default("— Taxi Leblanc\nnoreply@taxileblanc.fr")
+  bookingEmailSignature   String @default("— Taxi Leblanc\nnoreply@taxi-leblanc.fr")
 
   // Timestamps
   createdAt               DateTime @default(now())

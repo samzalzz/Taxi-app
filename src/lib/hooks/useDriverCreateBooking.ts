@@ -1,7 +1,8 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { calculateDistance, calculatePrice, estimateDuration, VehicleType } from '@/lib/utils/pricing';
+import { calculateDistance, calculateTieredPrice, estimateDuration, VehicleType } from '@/lib/utils/pricing';
+import { usePricingConfig } from './usePricingConfig';
 
 export interface AddressResult {
   address: string;
@@ -75,10 +76,11 @@ export function useDriverCreateBooking(): UseDriverCreateBookingReturn {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [bookingResult, setBookingResult] = useState<any | null>(null);
+  const pricingConfig = usePricingConfig();
 
   // Calculate price estimate whenever pickup, dropoff, or vehicleType changes
   useEffect(() => {
-    if (!formState.pickup || !formState.dropoff || !formState.vehicleType) {
+    if (!formState.pickup || !formState.dropoff || !formState.vehicleType || !pricingConfig) {
       setPriceEstimate(null);
       return;
     }
@@ -91,9 +93,10 @@ export function useDriverCreateBooking(): UseDriverCreateBookingReturn {
     );
 
     const estimatedDuration = estimateDuration(distance);
-    const { basePrice, price, pricePerKm } = calculatePrice(
+    const { basePrice, price, pricePerKm } = calculateTieredPrice(
       formState.vehicleType,
-      distance
+      distance,
+      pricingConfig
     );
 
     setPriceEstimate({
@@ -104,7 +107,7 @@ export function useDriverCreateBooking(): UseDriverCreateBookingReturn {
       pricePerKm,
       currency: 'EUR',
     });
-  }, [formState.pickup, formState.dropoff, formState.vehicleType]);
+  }, [formState.pickup, formState.dropoff, formState.vehicleType, pricingConfig]);
 
   const submitBooking = async () => {
     if (!formState.clientName || !formState.clientPhone) {

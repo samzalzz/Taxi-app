@@ -20,6 +20,11 @@ interface PricingConfig {
   pickupCharge: number;
   minimumPrice: number;
   maximumHourlyRate: number;
+  tier1PricePerKm: number;
+  tier2PricePerKm: number;
+  tier3PricePerKm: number;
+  tier4PricePerKm: number;
+  vehicleMultiplierBerline: number;
   reservationImmediateFee: number;
   reservationAdvanceFee: number;
 }
@@ -183,37 +188,37 @@ export function AdminDashboard() {
             <div className="grid grid-cols-2 gap-4">
               <div>
                 <p className="text-xs text-on-surface-dim uppercase font-semibold">
-                  €/km
+                  Palier 0-20 km
                 </p>
                 <p className="text-2xl font-bold text-on-surface">
-                  {pricing.pricePerKm.toFixed(2)}€
+                  {pricing.tier1PricePerKm.toFixed(2)}€
                 </p>
               </div>
 
               <div>
                 <p className="text-xs text-on-surface-dim uppercase font-semibold">
-                  Prise en charge
+                  Palier 20-50 km
                 </p>
                 <p className="text-2xl font-bold text-on-surface">
-                  {pricing.pickupCharge.toFixed(2)}€
+                  {pricing.tier2PricePerKm.toFixed(2)}€
                 </p>
               </div>
 
               <div>
                 <p className="text-xs text-on-surface-dim uppercase font-semibold">
-                  Prix minimum
+                  Palier 50-100 km
                 </p>
                 <p className="text-2xl font-bold text-on-surface">
-                  {pricing.minimumPrice.toFixed(2)}€
+                  {pricing.tier3PricePerKm.toFixed(2)}€
                 </p>
               </div>
 
               <div>
                 <p className="text-xs text-on-surface-dim uppercase font-semibold">
-                  Max horaire
+                  Palier 100+ km
                 </p>
                 <p className="text-2xl font-bold text-on-surface">
-                  {pricing.maximumHourlyRate.toFixed(2)}€
+                  {pricing.tier4PricePerKm.toFixed(2)}€
                 </p>
               </div>
             </div>
@@ -253,15 +258,12 @@ export function AdminDashboard() {
 
             <div className="bg-primary/5 border border-primary/10 rounded-lg p-3 text-xs text-on-surface-dim mt-4">
               <p className="font-semibold text-on-surface mb-2">
-                💡 Exemple de calcul
+                💡 Exemple de calcul (Berline)
               </p>
               <p>
-                Course de 5 km: {pricing.pickupCharge.toFixed(2)}€ + (5 ×{' '}
-                {pricing.pricePerKm.toFixed(2)}€) ={' '}
-                {(
-                  pricing.pickupCharge +
-                  5 * pricing.pricePerKm
-                ).toFixed(2)}€
+                Course de 5 km: 5 × {pricing.tier1PricePerKm.toFixed(2)}€ ×{' '}
+                {pricing.vehicleMultiplierBerline.toFixed(2)} ={' '}
+                {(5 * pricing.tier1PricePerKm * pricing.vehicleMultiplierBerline).toFixed(2)}€
               </p>
             </div>
           </div>

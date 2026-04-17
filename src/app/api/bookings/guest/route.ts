@@ -1,7 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
 import { createBooking } from '@/persistence/queries/bookingQueries';
-import { calculateDistance, calculatePrice, estimateDuration } from '@/lib/utils/pricing';
+import { calculateDistance, calculateTieredPrice, estimateDuration } from '@/lib/utils/pricing';
+import { getPricingConfig } from '@/persistence/queries/pricingQueries';
 import { sendGuestBookingConfirmationEmail } from '@/lib/email/mailer';
 import { sendPushToAdmins } from '@/lib/push/sendPush';
 import { VehicleType } from '@/generated/prisma/client';
@@ -47,9 +48,11 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
     );
 
     const estimatedDuration = estimateDuration(distance);
-    const { basePrice, price, pricePerKm } = calculatePrice(
+    const pricingConfig = await getPricingConfig();
+    const { basePrice, price, pricePerKm } = calculateTieredPrice(
       validated.vehicleType as VehicleType,
-      distance
+      distance,
+      pricingConfig
     );
 
     // Create guest booking (generates unique reservation code)
