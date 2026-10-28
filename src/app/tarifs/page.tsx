@@ -6,6 +6,7 @@ import { Check } from 'lucide-react';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
+  alternates: { canonical: '/tarifs' },
   title: 'Tarifs Taxi | Taxi Leblanc',
   description: 'Découvrez nos tarifs transparents pour transports aéroport, trajets médicalisés CPAM et occasions. Pas de frais cachés.',
   keywords: ['tarifs taxi', 'prix taxi', 'transport aéroport tarif', 'taxi CPAM'],

@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   title: 'Taxi Leblanc - Taxi en Île-de-France | Aéroport, CPAM, Occasions',
   description: 'Taxi en Île-de-France : transferts aéroport, trajets médicalisés CPAM agréés et occasions personnelles. Réservation en ligne 24h/24.',
   alternates: {
-    canonical: 'https://taxi-leblanc.fr',
+    canonical: '/',
   },
   openGraph: {
     title: 'Taxi Leblanc - Service Premium de Transport en Île-de-France',
@@ -41,18 +41,25 @@ const jsonLd = {
   image: 'https://taxi-leblanc.fr/opengraph-image',
   telephone: '+33608550315',
   priceRange: '€€',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: '30 Allée des Bergeries',
+    postalCode: '91210',
+    addressLocality: 'Draveil',
+    addressRegion: 'Île-de-France',
+    addressCountry: 'FR',
+  },
+  // Coordinates from the Base Adresse Nationale (api-adresse.data.gouv.fr)
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: 48.688796,
+    longitude: 2.431812,
+  },
   areaServed: [
     { '@type': 'AdministrativeArea', name: 'Île-de-France' },
     { '@type': 'City', name: 'Paris' },
     { '@type': 'City', name: 'Draveil' },
   ],
-  aggregateRating: {
-    '@type': 'AggregateRating',
-    ratingValue: '5.0',
-    reviewCount: '31',
-    bestRating: '5',
-    worstRating: '1',
-  },
   availableService: [
     { '@type': 'Service', name: 'Transport aéroport' },
     { '@type': 'Service', name: 'Transport médical CPAM' },

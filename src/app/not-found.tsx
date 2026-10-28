@@ -1,5 +1,10 @@
 import Link from 'next/link';
 import { Logo } from '@/components/ui/Logo';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Page introuvable | Taxi Leblanc',
+};
 
 export default function NotFound() {
   return (

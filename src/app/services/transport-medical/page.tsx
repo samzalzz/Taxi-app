@@ -6,6 +6,7 @@ import { Heart, Shield, Users, Clock, Accessibility, CheckCircle } from 'lucide-
 import Link from 'next/link';
 
 export const metadata: Metadata = {
+  alternates: { canonical: '/services/transport-medical' },
   title: 'Transport Médical CPAM Agréé | Taxi Leblanc',
   description: 'Transport médical spécialisé avec prise en charge CPAM. Chauffeurs formés, véhicules adaptés aux personnes à mobilité réduite.',
   keywords: ['transport médical', 'CPAM', 'transport santé', 'PMR', 'personnes âgées'],

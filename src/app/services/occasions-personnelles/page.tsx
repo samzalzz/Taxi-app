@@ -6,6 +6,7 @@ import { Sparkles, Heart, Users, Zap, Trophy, Music } from 'lucide-react';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
+  alternates: { canonical: '/services/occasions-personnelles' },
   title: 'Taxi pour Occasions Personnelles | Taxi Leblanc',
   description: 'Transport premium pour vos occasions spéciales : mariages, anniversaires, événements. Chauffeurs professionnels, véhicules confortables.',
   keywords: ['taxi mariage', 'événement', 'anniversaire', 'taxi occasion', 'transport événement'],

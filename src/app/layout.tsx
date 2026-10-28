@@ -15,8 +15,10 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
-  title: 'Taxi Leblanc - Votre Taxi de Route',
-  description: 'Service de taxi premium en Île-de-France',
+  metadataBase: new URL('https://taxi-leblanc.fr'),
+  title: 'Taxi Leblanc - Taxi à Draveil et en Île-de-France',
+  description:
+    'Taxi Leblanc à Draveil (91) : transferts aéroport CDG, Orly et Beauvais, transport médical CPAM agréé et trajets privés en Île-de-France, 24h/24.',
 };
 
 export const viewport: Viewport = {

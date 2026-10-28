@@ -2,6 +2,12 @@ import { HomeHeader } from '@/components/layout/HomeHeader';
 import { Footer } from '@/components/layout/Footer';
 import { Logo } from '@/components/ui/Logo';
 import { CookieConsentGate } from '@/components/common/CookieConsentGate';
+import type { Metadata } from 'next';
+
+// Account pages (connexion, inscription, mot de passe...) stay out of Google
+export const metadata: Metadata = {
+  robots: { index: false, follow: true },
+};
 
 export default function AuthLayout({
   children,
