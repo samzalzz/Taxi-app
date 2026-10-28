@@ -3,6 +3,7 @@ import { Footer } from '@/components/layout/Footer';
 import { HomeHeader } from '@/components/layout/HomeHeader';
 
 export const metadata: Metadata = {
+  alternates: { canonical: '/legal/confidentialite' },
   title: 'Politique de Confidentialité | Taxi Leblanc',
   description: 'Politique de confidentialité et protection des données personnelles chez Taxi Leblanc',
   robots: 'noindex',

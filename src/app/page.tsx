@@ -33,37 +33,45 @@ export const metadata: Metadata = {
 
 const jsonLd = {
   '@context': 'https://schema.org',
-  '@type': 'TaxiService',
+  // LocalBusiness porte l'adresse et les horaires (résultats locaux / Maps),
+  // TaxiService précise l'activité.
+  '@type': ['LocalBusiness', 'TaxiService'],
+  '@id': 'https://taxi-leblanc.fr/#taxi',
   name: 'Taxi Leblanc',
   description:
     'Service de taxi en Île-de-France : transferts aéroport, trajets médicalisés CPAM agréés et occasions personnelles.',
   url: 'https://taxi-leblanc.fr',
   image: 'https://taxi-leblanc.fr/opengraph-image',
   telephone: '+33608550315',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: '30 Allée des Bergeries',
+    postalCode: '91210',
+    addressLocality: 'Draveil',
+    addressRegion: 'Île-de-France',
+    addressCountry: 'FR',
+  },
   priceRange: '€€',
   areaServed: [
     { '@type': 'AdministrativeArea', name: 'Île-de-France' },
-    { '@type': 'City', name: 'Paris' },
+    { '@type': 'AdministrativeArea', name: 'Essonne' },
     { '@type': 'City', name: 'Draveil' },
+    { '@type': 'City', name: 'Paris' },
   ],
-  aggregateRating: {
-    '@type': 'AggregateRating',
-    ratingValue: '5.0',
-    reviewCount: '31',
-    bestRating: '5',
-    worstRating: '1',
-  },
-  availableService: [
-    { '@type': 'Service', name: 'Transport aéroport' },
-    { '@type': 'Service', name: 'Transport médical CPAM' },
-    { '@type': 'Service', name: 'Occasions personnelles' },
-  ],
-  hoursAvailable: {
+  openingHoursSpecification: {
     '@type': 'OpeningHoursSpecification',
     dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
     opens: '00:00',
     closes: '23:59',
   },
+  makesOffer: [
+    { name: 'Transport aéroport', url: 'https://taxi-leblanc.fr/services/transport-aeroportuaire' },
+    { name: 'Transport médical CPAM', url: 'https://taxi-leblanc.fr/services/transport-medical' },
+    { name: 'Occasions personnelles', url: 'https://taxi-leblanc.fr/services/occasions-personnelles' },
+  ].map(({ name, url }) => ({
+    '@type': 'Offer',
+    itemOffered: { '@type': 'Service', name, url },
+  })),
 };
 
 const jsonLdString = JSON.stringify(jsonLd).replace(/</g, '\\u003c');

@@ -6,6 +6,7 @@ import { MapPin, Info, AlertCircle, CheckCircle } from 'lucide-react';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
+  alternates: { canonical: '/estimation-tarif' },
   title: 'Estimateur de Tarif Taxi Aéroport | Forfaits CDG, Orly, Beauvais | Taxi Leblanc',
   description: 'Estimez le prix exact de votre taxi vers les aéroports parisiens. Forfaits légaux CDG, Orly, Beauvais. Tarifs transparents, pas de surprises. Calcul instantané.',
   keywords: [

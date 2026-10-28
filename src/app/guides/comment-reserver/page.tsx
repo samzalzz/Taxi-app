@@ -6,6 +6,7 @@ import { CheckCircle, MapPin, CreditCard, Smartphone } from 'lucide-react';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
+  alternates: { canonical: '/guides/comment-reserver' },
   title: 'Comment Réserver un Taxi en 2 Minutes | Guide Complet | Taxi Leblanc',
   description: 'Guide complet: comment réserver un taxi en ligne ou par téléphone? Étapes simples, tarifs transparents, réservation 24h/24.',
   keywords: [

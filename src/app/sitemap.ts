@@ -1,68 +1,34 @@
 import { MetadataRoute } from 'next';
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://taxi-leblanc.fr';
+const baseUrl = 'https://taxi-leblanc.fr';
 
-  return [
-    {
-      url: baseUrl,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 1.0,
-    },
-    {
-      url: `${baseUrl}/reserver`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/suivi`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/connexion`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/inscription`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/services/transport-aeroportuaire`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/services/transport-medical`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/services/occasions-personnelles`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/tarifs`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/contact`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.6,
-    },
-  ];
+// Pages publiques indexables uniquement.
+// Exclues volontairement : /connexion, /inscription, /suivi (noindex),
+// /legal/* (noindex), /dashboard, /admin, /api.
+const pages: Array<{
+  path: string;
+  changeFrequency: MetadataRoute.Sitemap[number]['changeFrequency'];
+  priority: number;
+}> = [
+  { path: '', changeFrequency: 'weekly', priority: 1.0 },
+  { path: '/reserver', changeFrequency: 'monthly', priority: 0.9 },
+  { path: '/services/transport-aeroportuaire', changeFrequency: 'monthly', priority: 0.9 },
+  { path: '/services/transport-medical', changeFrequency: 'monthly', priority: 0.9 },
+  { path: '/services/occasions-personnelles', changeFrequency: 'monthly', priority: 0.8 },
+  { path: '/estimation-tarif', changeFrequency: 'monthly', priority: 0.8 },
+  { path: '/tarifs', changeFrequency: 'monthly', priority: 0.8 },
+  { path: '/guides/transport-cpam', changeFrequency: 'monthly', priority: 0.7 },
+  { path: '/guides/comment-reserver', changeFrequency: 'monthly', priority: 0.7 },
+  { path: '/faq', changeFrequency: 'monthly', priority: 0.7 },
+  { path: '/contact', changeFrequency: 'yearly', priority: 0.6 },
+];
+
+export default function sitemap(): MetadataRoute.Sitemap {
+  const lastModified = new Date();
+  return pages.map(({ path, changeFrequency, priority }) => ({
+    url: `${baseUrl}${path}`,
+    lastModified,
+    changeFrequency,
+    priority,
+  }));
 }
