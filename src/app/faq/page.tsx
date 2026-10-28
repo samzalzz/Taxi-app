@@ -6,6 +6,7 @@ import { ChevronDown } from 'lucide-react';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
+  alternates: { canonical: '/faq' },
   title: 'FAQ - Questions Fréquentes | Comment réserver? Tarifs? CPAM? | Taxi Leblanc',
   description: 'Questions fréquentes taxi: comment réserver, tarifs CDG Orly, remboursement CPAM, animaux, PMR. Réponses complètes et conseils.',
   keywords: [

@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/Button';
 import { Mail, Phone, MapPin, Clock } from 'lucide-react';
 
 export const metadata: Metadata = {
+  alternates: { canonical: '/contact' },
   title: 'Contact | Taxi Leblanc',
   description: 'Contactez Taxi Leblanc. Adresse, téléphone, email. Support 24h/24, 7j/7.',
   keywords: ['contact taxi', 'appeler taxi', 'email taxi', 'adresse taxi leblanc'],

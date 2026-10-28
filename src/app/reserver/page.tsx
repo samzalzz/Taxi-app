@@ -2,6 +2,13 @@ import Link from 'next/link';
 import { HomeHeader } from '@/components/layout/HomeHeader';
 import { Footer } from '@/components/layout/Footer';
 import { GuestBookingForm } from '@/components/features/booking/GuestBookingForm';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Réserver un taxi en ligne | Draveil & Île-de-France | Taxi Leblanc',
+  description: 'Réservez votre taxi en 2 minutes : aéroports Orly, CDG, Beauvais, transport médical CPAM, gares et occasions. Service 24h/24 depuis Draveil (91).',
+  alternates: { canonical: '/reserver' },
+};
 
 export default function ReserverPage() {
   return (

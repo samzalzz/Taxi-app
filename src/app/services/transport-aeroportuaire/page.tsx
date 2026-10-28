@@ -6,6 +6,7 @@ import { Plane, MapPin, Clock, Shield, Users, Briefcase } from 'lucide-react';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
+  alternates: { canonical: '/services/transport-aeroportuaire' },
   title: 'Transport Aéroport Île-de-France | Taxi Leblanc',
   description: 'Service de transport vers les aéroports de Paris CDG, Orly et Beauvais. Prise en charge directe, bagages inclus, réservation 24h/24.',
   keywords: ['transport aéroport', 'CDG', 'Orly', 'Beauvais', 'taxi aéroport', 'Île-de-France'],

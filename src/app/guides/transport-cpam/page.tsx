@@ -6,6 +6,7 @@ import { CheckCircle, Info, FileText, Clock, Users } from 'lucide-react';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
+  alternates: { canonical: '/guides/transport-cpam' },
   title: 'Guide Complet Transport Médical CPAM | Remboursement 100% | Taxi Leblanc',
   description: 'Guide complet: comment se faire rembourser un taxi par la CPAM? Ordonnance, documents, procédure, ALD, remboursement 55% ou 100%. Taxi agréé Île-de-France.',
   keywords: [
